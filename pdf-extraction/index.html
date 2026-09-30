@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF Data Extraction (2026): Invoices, POs and Forms Without Manual Entry — Honest Switch</title>
+<meta name="description" content="If your team still retypes invoice data from PDFs by hand, you are paying twice. Source-verified extraction tools, a free open-source route — real prices, honest catches, checked 30 Sep 2026.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/pdf-extraction/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/pdf-extraction/">
+<meta property="og:title" content="PDF Data Extraction (2026): Stop Retyping Invoices — Honest Switch">
+<meta property="og:description" content="OCR vs AI extraction, explained. Source-verified tools from $32.50/mo, a free open-source route — real prices, honest catches.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og-pdf-extraction.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PDF Data Extraction (2026): Stop Retyping Invoices — Honest Switch">
+<meta name="twitter:description" content="Source-verified PDF extraction tools + a free open-source route. Real prices, honest catches.">
+<meta name="twitter:image" content="https://nypsus.github.io/honest-switch/og-pdf-extraction.png">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "OCR or AI extraction — which do I need?",
+     "acceptedAnswer": {"@type": "Answer", "text": "OCR turns a page into raw characters; it reads text, not meaning. To get named fields in a spreadsheet you need extraction on top. Most modern tools bundle both. How well it works depends on your documents — test on your own files."}},
+    {"@type": "Question", "name": "Do I need a developer?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily — Parseur, Airparser and Docparser run on templates and clicks. Mindee is API-first; Rossum and Docsumo are sales-led."}},
+    {"@type": "Question", "name": "What happens when I run out of credits?",
+     "acceptedAnswer": {"@type": "Answer", "text": "It varies: Parseur and Airparser stop processing until renewal (Parseur also sells top-up credits); Nanonets is pay-as-you-go. Know this before month-end."}},
+    {"@type": "Question", "name": "Can they read scanned PDFs and photos?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Support differs by vendor. Airparser states OCR support for images, scanned documents and handwritten text; our open-source pick cannot handle scans at all. Verify on your worst documents."}},
+    {"@type": "Question", "name": "Are the links on this page affiliate links?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not at launch: as of 30 September 2026 there are no affiliate links on this page. If that changes, each affiliate link will be labeled on the spot and this answer will be updated with the date it started."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="../">All guides</a>
+      <a href="../invoice-reminders/">Invoice reminders</a>
+      <a href="#oss">Free route</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#honesty">Honesty</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+
+  <section class="hero">
+    <p class="kicker">Independent · source-verified · checked 30 Sep 2026</p>
+    <h1>Stop retyping invoices from PDFs by hand.</h1>
+    <p class="lede">If your team still retypes invoice data from PDFs and email attachments into accounting or ERP systems, you are paying twice: once for software, once in hours. Two technologies get mixed up here. <strong>OCR</strong> turns a page — scan or photo — into raw characters; it reads text, not meaning. <strong>AI extraction</strong> adds understanding: models locate the fields you actually need and return them as structured data you can push into a spreadsheet or ERP — how well depends on your documents, so test on your own files. Below: the tools, what they charge, and the free route we could stand behind.</p>
+    <p class="chips">
+      <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
+      <span class="chip">Prices checked 30 Sep 2026</span>
+    </p>
+  </section>
+
+  <section id="tools" class="switch">
+    <h2>The comparison</h2>
+    <div class="tblwrap">
+      <table>
+        <caption>PDF extraction tools — prices verified on the vendors&rsquo; own pages, 30 Sep 2026</caption>
+        <thead>
+          <tr><th scope="col">Tool</th><th scope="col">Price we verified</th><th scope="col">Best if</th><th scope="col">The catch</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><a href="https://docparser.com/pricing/">Docparser</a></th>
+            <td>From $32.50/mo billed annually ($39/mo monthly) for 100 credits; higher tiers scale by credits</td>
+            <td>Recurring document types — invoices, POs, statements — where you build a template once and export to Excel/Sheets/JSON.</td>
+            <td>1 credit = one document up to 5 pages; the low rate needs annual billing; top tiers are quote-only.</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="https://parseur.com/pricing">Parseur</a></th>
+            <td>Free tier (20 pages/mo); paid $49/mo (100 pages) up to $8,499/mo (250k pages); annual saves up to 25%</td>
+            <td>Email-first intake: forward invoices to a mailbox, get structured rows out, no code.</td>
+            <td>Unused credits expire each billing period; prices exclude VAT/GST; a 3-page PDF consumes 3 credits.</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="https://nanonets.com/pricing">Nanonets</a></th>
+            <td>$50 in free credits, then $100/mo for 100 credits; usage priced $0.02–$0.30 per block-run</td>
+            <td>Workflow automation — classify, extract, route to ERP — scaled by volume.</td>
+            <td>Per-block pricing is hard to model up front; &ldquo;under $2 per invoice&rdquo; is their own estimate.</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="https://mindee.com/pricing">Mindee</a></th>
+            <td>Starter €44/mo billed annually (€529/yr); Pro €116/mo (€1393/yr); extra credits from $0.05; Enterprise custom</td>
+            <td>Developers embedding extraction into their own product via API.</td>
+            <td>Credit math: 1 page = 1 credit, 1.5 with confidence score; Enterprise floor is 500,000+ credits/year.</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="https://rossum.ai/pricing/">Rossum</a></th>
+            <td>&ldquo;Starting at $18,000 per year&rdquo; (Starter)</td>
+            <td>Larger AP teams that want an end-to-end workflow, not just parsing.</td>
+            <td>No self-serve tier; everything is a tailored quote.</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="https://airparser.com/pricing/">Airparser</a></th>
+            <td>$33/mo (100 credits), $49/mo (500), $249/mo (5,000) — billed annually; free trial 20 credits/mo</td>
+            <td>GPT-style extraction from emails and PDF/image attachments, no code, with Python post-processing.</td>
+            <td>Credits don&rsquo;t roll over; no PayPal or bank transfer; monthly billing costs ~17% more.</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="https://www.docsumo.com/pricing">Docsumo</a></th>
+            <td>Custom quote only — check the site (free 14-day trial, up to 1,000 pages)</td>
+            <td>Teams that want a managed onboarding call before committing to one production workflow.</td>
+            <td>No public list price; their FAQ says &ldquo;Set-up fees are charged in addition to your subscription plan.&rdquo;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="footnote">Also checked: Klippa — its pricing page now returns a 404 after the move into Doxis; no public price list found. Check the site.</p>
+  </section>
+
+  <section id="oss" class="switch">
+    <h2>The free route we checked: open source</h2>
+    <div class="why">
+      <p>At low volume, with text-based PDFs, the honest $0 option is a Python stack: <a href="https://github.com/invoice-x/invoice2data">invoice2data</a> (MIT licence) for invoice fields via templates, and <a href="https://camelot-py.readthedocs.io/en/master/">Camelot</a> (MIT licence) for tables. Limits, stated plainly: Camelot and Tabula &ldquo;only work with text-based PDFs&rdquo; (add your own OCR for scans); invoice2data needs a template per supplier layout; and you get no hosted UI, support contract, mailbox ingestion or security paperwork. Free like self-hosting is free.</p>
+    </div>
+  </section>
+
+  <section id="checklist" class="switch">
+    <h2>Before you buy: the 3 questions</h2>
+    <ol class="steps">
+      <li><strong>Volume — and how is it counted?</strong> Most vendors count credits per page or per document (Parseur: an email = 1 credit, a 3-page PDF = 3 credits); Nanonets counts per block-run in a workflow.</li>
+      <li><strong>Formats.</strong> Text PDFs, scans, photos, emails? Check the vendor&rsquo;s supported list and test your worst scan — support varies widely.</li>
+      <li><strong>Where does the data land?</strong> Which integrations/API, how long documents are kept, and where they are processed (data residency) — relevant with client data.</li>
+    </ol>
+
+    <h2 style="margin-top:34px">5-step rollout</h2>
+    <ol class="steps">
+      <li>Pick one or two document types with clear pain.</li>
+      <li>Collect 20–50 real samples, including your worst scans.</li>
+      <li>Run the shortlisted tools&rsquo; free trials on the same samples; score field-level accuracy yourself.</li>
+      <li>Check the exit: exports/API, retention limits, and what happens mid-month when credits run out.</li>
+      <li>Put one workflow into production for 30 days; compare time saved against plan cost before scaling.</li>
+    </ol>
+  </section>
+
+  <section id="faq" class="switch">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details><summary>OCR or AI extraction — which do I need?</summary><p>OCR only reads characters; to get named fields in a spreadsheet you need extraction on top. Most modern tools bundle both.</p></details>
+      <details><summary>Do I need a developer?</summary><p>Not necessarily — Parseur, Airparser and Docparser run on templates and clicks. Mindee is API-first; Rossum and Docsumo are sales-led.</p></details>
+      <details><summary>What happens when I run out of credits?</summary><p>It varies: Parseur and Airparser stop processing until renewal (Parseur also sells top-up credits); Nanonets is pay-as-you-go. Know this before month-end.</p></details>
+      <details><summary>Can they read scanned PDFs and photos?</summary><p>Support differs by vendor. Airparser states OCR support for images, scanned documents and handwritten text; our open-source pick cannot handle scans at all. Verify on your worst documents.</p></details>
+      <details><summary>Are the links on this page affiliate links?</summary><p>Not at launch: as of 30 September 2026 there are no affiliate links on this page. If that changes, each affiliate link will be labeled and this answer will be updated with the date it started.</p></details>
+    </div>
+  </section>
+
+  <section id="honesty" class="switch">
+    <h2>How this page stays honest</h2>
+    <ul class="honest-list">
+      <li><strong>No affiliate links at launch.</strong> As of 30 Sep 2026, no link on this page pays us. If we join a partner program later, affected links will be labeled on the spot, and this box will state when it started.</li>
+      <li><strong>Every price was checked on the vendor&rsquo;s own pricing page</strong> on 30 September 2026. The links are in Sources — check them yourself.</li>
+      <li><strong>No fake urgency, no invented numbers, no paid placements.</strong> Where a vendor publishes no price, we say so instead of guessing.</li>
+      <li><strong>Spotted an error or a new price?</strong> Email us — corrections ship fast.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch">
+    <h2>Sources</h2>
+    <p class="srcline">All links checked 30 Sep 2026.</p>
+    <ul class="sources">
+      <li><a href="https://docparser.com/pricing/">Docparser — official pricing</a> · <a href="https://docparser.com/affiliate-program">affiliate program page</a></li>
+      <li><a href="https://parseur.com/pricing">Parseur — official pricing</a></li>
+      <li><a href="https://nanonets.com/pricing">Nanonets — official pricing</a></li>
+      <li><a href="https://mindee.com/pricing">Mindee — official pricing</a> · <a href="https://mindee.com/partners">partners page</a></li>
+      <li><a href="https://rossum.ai/pricing/">Rossum — official pricing</a></li>
+      <li><a href="https://airparser.com/pricing/">Airparser — official pricing</a> · <a href="https://airparser.com/affiliate-program">affiliate program page</a></li>
+      <li><a href="https://www.docsumo.com/pricing">Docsumo — official pricing</a></li>
+      <li><a href="https://www.klippa.com/en/pricing/">Klippa — pricing page (404 after Doxis move)</a></li>
+      <li><a href="https://github.com/invoice-x/invoice2data">invoice2data — GitHub (MIT)</a> · <a href="https://camelot-py.readthedocs.io/en/master/">Camelot docs (MIT)</a> · <a href="https://tabula.technology/">Tabula</a></li>
+      <li>Related guide: <a href="../invoice-reminders/">Invoice reminder tools (get paid faster)</a></li>
+      <li>Related guide: <a href="../">Harvest &amp; QuickBooks alternatives</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — an independent comparison page. Prices change; confirm on the official page before subscribing.</p>
+    <p>Updated 30 Sep 2026 · No cookies, no trackers, no analytics on this site · <a href="mailto:nypsus.business@gmail.com">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+</body>
+</html>

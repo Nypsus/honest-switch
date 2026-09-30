@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nypsus.github.io/honest-switch/sitemap.xml

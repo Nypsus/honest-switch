@@ -21,6 +21,21 @@
 <meta name="theme-color" content="#0e7b52">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="../styles.css">
+<style>
+  /* Visuels propres à cette page — mêmes couleurs que le site, aucun chiffre inventé */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -62,11 +77,21 @@
   <section class="hero">
     <p class="kicker">Indépendant · vérifié sur les pages officielles · consulté le 1 oct. 2026</p>
     <h1>Vos licences AnyDesk ont changé de modèle. Vérifiez ce que ça coûte réellement avant de renouveler.</h1>
-    <p class="lede">SSII, MSP, freelances du support informatique et PME qui dépannent plusieurs postes à distance : AnyDesk a modifié sa structure tarifaire (hausse d'environ 25 % selon un avis français vérifié) et basculé sur des licences par connexion facturées annuellement. Cette page est la version sans panique de ce débat : ce que les utilisateurs reprochent réellement, ce qu'il faut vérifier avant de changer, les outils dont nous avons lu les prix sur leurs propres pages aujourd'hui — et qui vous paie pour changer.</p>
+    <p class="lede">SSII, MSP, freelances du support informatique et PME qui dépannent plusieurs postes à distance : AnyDesk a modifié sa structure tarifaire — <span class="hl">hausse d'environ 25 %</span> selon un avis français vérifié — et basculé sur des <span class="hl">licences par connexion facturées annuellement</span>. Cette page est la version sans panique de ce débat : ce que les utilisateurs reprochent réellement, ce qu'il faut vérifier avant de changer, les outils dont nous avons lu les prix sur leurs propres pages aujourd'hui — et qui vous paie pour changer.</p>
     <p class="chips">
       <span class="chip chip-good">Aucun lien affilié (pour l'instant) — voir <a href="#honesty">comment ça marche</a></span>
       <span class="chip">Prix vérifiés le 1 oct. 2026</span>
     </p>
+
+    <div class="callout">
+      <h2>En résumé</h2>
+      <ul>
+        <li><b>AnyDesk</b> : licence par connexion, annuel obligatoire — <span class="hl">Solo 27,90 €/mois</span>.</li>
+        <li><b>RustDesk</b> : <span class="hl">gratuit en auto-hébergé</span> (open source), Pro à partir de 11,88 $/mois.</li>
+        <li><b>Splashtop</b> : le coût d'entrée le plus bas du marché en clé en main, <span class="hl">à partir de 6 $/mois</span>.</li>
+        <li><b>TeamViewer</b> : licence par expert, pas par connexion — mais le plus cher du comparatif.</li>
+      </ul>
+    </div>
   </section>
 
   <section id="changement" class="switch">
@@ -74,10 +99,11 @@
     <div class="why">
       <p>Un avis français vérifié sur softwareadvice.fr (07/05/2026, secteur Gestion de l'enseignement, 51–200 employés, alternatives envisagées : TeamViewer ONE) résume le déclencheur, dans les mots du client :</p>
     </div>
+    <blockquote class="quotebox">&ldquo;Ils ont récemment modifié leur structure tarifaire et augmenté leurs tarifs d'environ 25 %. C'est toujours moins cher que TeamViewer, nous continuerons donc probablement à l'utiliser pendant un certain temps.&rdquo;<span class="qsrc">— softwareadvice.fr, 07/05/2026 · vérifié le 1 oct. 2026</span></blockquote>
     <ul class="sources">
-      <li><strong>La hausse.</strong> &ldquo;Ils ont récemment modifié leur structure tarifaire et augmenté leurs tarifs d'environ 25 %. C'est toujours moins cher que TeamViewer, nous continuerons donc probablement à l'utiliser pendant un certain temps.&rdquo; &mdash; un départ nié mais un signal réel : le client compare déjà.</li>
-      <li><strong>Le changement de modèle.</strong> De la licence par connexion depuis octobre 2025 (sobrii.io, analysé pour cette page) : ce qui coûtait par technicien coûte désormais par session simultanée — un coût qui grandit avec le nombre de postes à dépanner en même temps.</li>
-      <li><strong>La facturation annuelle en France.</strong> La page officielle française ne propose plus que de l'annuel : <strong>Solo 27,90 €/mois</strong>, <strong>Standard 49,90 €/mois</strong>, <strong>Advanced 111,90 €/mois</strong>, tous &ldquo;facturés par an&rdquo; (anydesk.com/fr/commander, lu le 1 oct. 2026) &mdash; impossible de tester un trimestre.</li>
+      <li><strong>Un départ nié mais un signal réel :</strong> ce client compare déjà TeamViewer — et il n'est pas seul. Quatre faits documentés alimentent la réflexion :</li>
+      <li><strong>Le changement de modèle.</strong> De la <strong>licence par connexion</strong> depuis octobre 2025 (sobrii.io, analysé pour cette page) : ce qui coûtait par technicien coûte désormais par session simultanée — un coût qui grandit avec le nombre de postes à dépanner en même temps.</li>
+      <li><strong>La facturation annuelle en France.</strong> La page officielle française ne propose plus que de l'annuel : <strong>Solo 27,90 €/mois</strong>, <strong>Standard 49,90 €/mois</strong>, <strong>Advanced 111,90 €/mois</strong>, tous &ldquo;facturés par an&rdquo; (anydesk.com/fr/commander, lu le 1 oct. 2026) — impossible de tester un trimestre.</li>
       <li><strong>Le précédent de sécurité.</strong> Les systèmes de production d'AnyDesk ont été compromis fin décembre 2023 ; l'alerte CERT-FR couvre les versions Windows d'AnyDesk signées avant la 8.15 (source secondaire : sobrii.io, qui cite CERT-FR/ANSSI). En France, cela alimente le réflexe de souveraineté des données, souvent cité comme raison de regarder RustDesk (serveur auto-hébergé, open source).</li>
     </ul>
     <p class="footnote">Ce sont des raisons d'évaluer, pas de sauter le pas : le témoignage cité reste client pour l'instant, et la checklist ci-dessous vous dit ce qu'il faut vérifier en premier selon VOTRE usage réel.</p>
@@ -85,11 +111,16 @@
 
   <section id="checklist" class="switch">
     <h2>Ce qu'il faut vérifier avant de changer — 5 étapes</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Comptez</b><span>vos <strong>connexions simultanées réelles</strong>, pas vos techniciens — c'est la donnée qui change tout avec la licence par connexion.</span></div>
+      <div class="step"><b>2 · Tranchez</b><span><strong>SaaS ou auto-hébergé</strong> : données chez vous avec RustDesk, ou zéro infrastructure avec Splashtop/TeamViewer.</span></div>
+      <div class="step"><b>3 · Testez</b><span><strong>14 jours en conditions réelles</strong> de dépannage : multi-écrans, impression à distance, accès non surveillé.</span></div>
+    </div>
     <ol class="steps">
       <li><strong>Comptez vos connexions simultanées réelles, pas vos techniciens.</strong> La licence par connexion change l'équation : combien de sessions de dépannage tournent en même temps au pic de la journée ? Si la réponse est 1 ou 2, le nouveau modèle peut vous coûter moins cher que vous ne le craignez — c'est la première chose à chiffrer, sur votre page de compte AnyDesk.</li>
       <li><strong>Décidez la question d'hébergement.</strong> SaaS (Splashtop, TeamViewer, AnyDesk) ou serveur auto-hébergé (RustDesk) ? L'auto-hébergé garde les données chez vous mais vous rend responsable de l'infrastructure : c'est un choix de souveraineté, pas seulement de budget.</li>
       <li><strong>Posez la question sécurité sur la table.</strong> Antécédent d'incident (AnyDesk, déc. 2023 — alerte CERT-FR), open source auditable (RustDesk), certifications et localisation des données (TeamViewer communique sur &ldquo;Security made in Germany&rdquo;). Votre client vous demandera un jour ce que vous utilisez pour entrer dans ses machines : ayez une réponse écrite.</li>
-      <li><strong>Vérifiez la facturation à votre taille.</strong> Annuel uniquement chez AnyDesk (FR) et TeamViewer ; annuel aussi chez Splashtop et RustDesk Pro, mais l'entrée de gamme est beaucoup plus basse (voir le tableau). Une capture d'écran de blog n'est pas votre prix : la page officielle est votre prix.</li>
+      <li><strong>Vérifiez la facturation à votre taille.</strong> Annuel uniquement chez AnyDesk (FR) et TeamViewer ; annuel aussi chez Splashtop et RustDesk Pro, mais l'entrée de gamme est beaucoup plus basse (voir le graphique dans la section suivante). Une capture d'écran de blog n'est pas votre prix : la page officielle est votre prix.</li>
       <li><strong>Testez en conditions réelles de dépannage.</strong> Un essai de 14 jours avec de vraies sessions clients (multi-écrans, impression à distance, accès non surveillé aux postes) vaut mieux qu'un comparatif de fiches. RustDesk et Splashtop proposent des essais sans carte bancaire pour l'entrée de gamme — vérifiez sur leurs pages.</li>
     </ol>
   </section>
@@ -105,30 +136,55 @@
         <tbody>
           <tr>
             <th scope="row"><a href="https://anydesk.com/fr/commander">AnyDesk (référence)</a></th>
-            <td>Licence par connexion, facturation annuelle uniquement en France : Solo 27,90 €/mois, Standard 49,90 €/mois, Advanced 111,90 €/mois — tous &ldquo;facturés par an&rdquo; (lecture du 1 oct. 2026 ; la page bloque la relecture automatique depuis notre poste, protection anti-bot)</td>
+            <td>Licence par connexion, facturation annuelle uniquement en France : <strong>Solo 27,90 €/mois</strong>, <strong>Standard 49,90 €/mois</strong>, <strong>Advanced 111,90 €/mois</strong> — tous &ldquo;facturés par an&rdquo; (lecture du 1 oct. 2026 ; la page bloque la relecture automatique depuis notre poste, protection anti-bot)</td>
             <td>Vous voulez rester sur l'outil connu et que le nouveau tarif passe au moment du renouvellement.</td>
             <td>C'est le produit que le témoignage français critique (hausse ~25 %), et le coût par connexion simultanée grandit avec votre équipe.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://rustdesk.com/pricing">RustDesk</a></th>
-            <td>Plan OSS gratuit (serveur auto-hébergé, open source, licence AGPL) ; Pro Individual 11,88 $/mois facturé annuellement — 1 utilisateur, 20 appareils, connexions simultanées illimitées ; Pro Basic 23,88 $/mois — 10 utilisateurs, 100 appareils, OIDC/LDAP (rustdesk.com/pricing, lu le 1 oct. 2026). Ce n'est PAS un SaaS : c'est une licence pour serveur que vous hébergez.</td>
+            <td>Plan OSS <strong>gratuit</strong> (serveur auto-hébergé, open source, licence AGPL) ; Pro Individual <strong>11,88 $/mois</strong> facturé annuellement — 1 utilisateur, 20 appareils, connexions simultanées illimitées ; Pro Basic <strong>23,88 $/mois</strong> — 10 utilisateurs, 100 appareils, OIDC/LDAP (rustdesk.com/pricing, lu le 1 oct. 2026). Ce n'est PAS un SaaS : c'est une licence pour serveur que vous hébergez.</td>
             <td>La souveraineté des données ou le budget zéro : les données restent chez vous, client et serveur open source.</td>
             <td>Vous gérez l'infrastructure (Docker ou VM, mises à jour, sauvegardes) et le support communautaire sur le plan gratuit — pas de hotline.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.splashtop.com/pricing">Splashtop</a></th>
-            <td>Remote Access : Solo 6 $/mois (facturé annuellement, 72 $/an), Pro 8,25 $/mois/utilisateur (99 $/an), Performance 13 $/mois/utilisateur (149 $/an) — prix en USD lus sur splashtop.com/pricing le 1 oct. 2026. Les plans Remote Support (techniciens qui dépannent des clients) sont à part, par technicien.</td>
+            <td>Remote Access : <strong>Solo 6 $/mois</strong> (facturé annuellement, 72 $/an), <strong>Pro 8,25 $/mois/utilisateur</strong> (99 $/an), <strong>Performance 13 $/mois/utilisateur</strong> (149 $/an) — prix en USD lus sur splashtop.com/pricing le 1 oct. 2026. Les plans Remote Support (techniciens qui dépannent des clients) sont à part, par technicien.</td>
             <td>Vous cherchez le coût d'entrée le plus bas avec un produit SaaS packagé, clé en main.</td>
             <td>Le tarif d'entrée (Solo 6 $/mois) couvre l'accès à VOS machines, pas le dépannage de machines de clients : vérifiez la gamme Remote Support pour l'usage MSP.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.teamviewer.com/fr/">TeamViewer</a></th>
-            <td>Abonnements annuels uniquement ; licence par EXPERT, pas par connexion — la FAQ officielle (lue le 1 oct. 2026) : &ldquo;No, only an expert needs a license. The connection that they are supporting does not require one.&rdquo; Plus cher qu'AnyDesk : c'est le témoignage français qui le dit (&ldquo;C'est toujours moins cher que TeamViewer&rdquo;).</td>
+            <td>Abonnements annuels uniquement ; licence par <strong>EXPERT</strong>, pas par connexion — la FAQ officielle (lue le 1 oct. 2026) : &ldquo;No, only an expert needs a license. The connection that they are supporting does not require one.&rdquo; Plus cher qu'AnyDesk : c'est le témoignage français qui le dit (&ldquo;C'est toujours moins cher que TeamViewer&rdquo;).</td>
             <td>Vous voulez un acteur historique avec une offre packagée (TeamViewer ONE) et une communication sécurité assumée.</td>
             <td>Le coût est le plus élevé du comparatif ; la facturation est annuelle ; les modules complémentaires (gestion d'actifs, monitoring) s'ajoutent au panier.</td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="chartbox">
+      <h3>Le coût d'entrée, en clair</h3>
+      <p class="srcline">Prix d'entrée par mois lus sur les pages officielles le 1 oct. 2026, dans la devise affichée par chaque éditeur. TeamViewer ne publie pas de prix d'entrée simple (licence par expert) : pas de barre inventée.</p>
+      <svg viewBox="0 0 640 250" role="img" aria-label="Comparaison des prix d'entrée mensuels : RustDesk OSS gratuit, Splashtop Solo 6 dollars, RustDesk Pro 11,88 dollars, AnyDesk Solo 27,90 euros, TeamViewer non chiffré.">
+        <g font-family="Georgia,serif">
+          <text x="8" y="42" font-size="14" fill="#1a1a1a">RustDesk OSS</text>
+          <rect x="205" y="28" width="4" height="22" rx="3" fill="#0e7b52"/>
+          <text x="218" y="45" font-size="13" fill="#0e7b52" font-weight="bold">gratuit · auto-hébergé</text>
+          <text x="8" y="82" font-size="14" fill="#1a1a1a">Splashtop Solo</text>
+          <rect x="205" y="68" width="86" height="22" rx="3" fill="#0e7b52"/>
+          <text x="300" y="85" font-size="13" fill="#0e7b52" font-weight="bold">6 $/mois</text>
+          <text x="8" y="122" font-size="14" fill="#1a1a1a">RustDesk Pro Ind.</text>
+          <rect x="205" y="108" width="170" height="22" rx="3" fill="#4c9a75"/>
+          <text x="384" y="125" font-size="13" fill="#0e7b52" font-weight="bold">11,88 $/mois</text>
+          <text x="8" y="162" font-size="14" fill="#1a1a1a">AnyDesk Solo</text>
+          <rect x="205" y="148" width="390" height="22" rx="3" fill="#b58900"/>
+          <text x="604" y="165" font-size="13" fill="#8a6d00" font-weight="bold">27,90 €/mois</text>
+          <text x="8" y="202" font-size="14" fill="#1a1a1a">TeamViewer</text>
+          <rect x="205" y="188" width="4" height="22" rx="3" fill="#9aa09b"/>
+          <text x="218" y="205" font-size="13" fill="#57523f">par expert — pas de prix d'entrée publié</text>
+        </g>
+      </svg>
+      <p class="footnote">Barres proportionnelles aux prix lus : RustDesk OSS et TeamViewer n'ont pas de prix d'entrée simple — la barre reste à zéro plutôt que d'inventer un chiffre. Les devises diffèrent volontairement (€ côté AnyDesk FR, $ chez RustDesk et Splashtop).</p>
     </div>
     <p class="footnote">Chaque chiffre ci-dessus a été lu sur la page officielle de l'éditeur à la date indiquée, et les pages sont liées dans <a href="#sources">Sources</a>. Là où nous n'avons pas pu relire un chiffre (prix FR d'AnyDesk derrière la protection anti-bot), la page le dit explicitement au lieu de deviner — c'est tout l'objet de ce site.</p>
   </section>
@@ -163,7 +219,7 @@
     <ul class="honest-list">
       <li><strong>Aucun lien affilié au lancement.</strong> Au 1 oct. 2026, aucun lien de cette page ne nous paie. Si nous rejoignons un programme plus tard, les liens concernés seront étiquetés sur place et cet encadré indiquera la date de début.</li>
       <li><strong>Chaque chiffre a été vérifié sur la page officielle de l'éditeur</strong> le 1 oct. 2026, avec la date de contrôle indiquée à côté et liée dans Sources. Vérifiez-les vous-même.</li>
-      <li><strong>Pas de chiffres inventés, pas d'urgence factice.</strong> Là où un chiffre n'a pas pu être relu (prix FR d'AnyDesk derrière la protection anti-bot), la page le dit exactement au lieu de deviner. Le témoignage cité reste client pour l'instant : c'est un signal d'évaluation, pas un exode.</li>
+      <li><strong>Pas de chiffres inventés, pas d'urgence factice.</strong> Là où un chiffre n'a pas pu être relu (prix FR d'AnyDesk derrière la protection anti-bot), la page le dit exactement au lieu de deviner. Le graphique ne barre que des prix réellement lus. Le témoignage cité reste client pour l'instant : c'est un signal d'évaluation, pas un exode.</li>
       <li><strong>Une erreur ou un nouveau tarif repéré ?</strong> Écrivez-nous — les corrections partent vite.</li>
     </ul>
   </section>

@@ -20,6 +20,21 @@
 <meta name="theme-color" content="#0e7b52">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="../styles.css">
+<style>
+  /* Page visuals — same site colours, no invented figures */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -59,11 +74,21 @@
   <section class="hero">
     <p class="kicker">Independent · source-verified · checked 1 Oct 2026</p>
     <h1>Xero raised US prices on 1 October 2026. Check your actual bill before switching.</h1>
-    <p class="lede">On 1 October 2026, Xero&rsquo;s US plans moved from $25/$55/$90 to $27/$59/$97 a month. For some businesses that&rsquo;s a shrug; for others on Established it&rsquo;s the third annual increase in a row — a legitimate reason to re-shop your books. This page is the boring version of that debate: what changed, what to check before you move, alternatives with prices we verified ourselves, and the catches nobody mentions.</p>
+    <p class="lede">On 1 October 2026, Xero&rsquo;s US plans moved from <span class="hl">$25/$55/$90 to $27/$59/$97 a month</span>. For some businesses that&rsquo;s a shrug; for others on Established it&rsquo;s the <span class="hl">third annual increase in a row</span> — a legitimate reason to re-shop your books. This page is the boring version of that debate: what changed, what to check before you move, alternatives with prices we verified ourselves, and the catches nobody mentions.</p>
     <p class="chips">
       <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Xero prices checked 1 Oct 2026</span>
     </p>
+
+    <div class="callout">
+      <h2>In brief</h2>
+      <ul>
+        <li><b>Xero US</b>: Early <span class="hl">$27/mo</span>, Growing <span class="hl">$59/mo</span>, Established <span class="hl">$97/mo</span> — up $2/$4/$7 on 1 Oct 2026.</li>
+        <li><b>Zoho Books</b>: <span class="hl">free tier</span> (revenue under $50K/yr, up to 1,000 invoices); paid Standard at $15/mo annual.</li>
+        <li><b>Wave</b>: Starter free; Pro <span class="hl">$19/mo</span> — card payments extra (2.9% + $0.60).</li>
+        <li><b>FreshBooks / QuickBooks</b>: Lite $23/mo; Simple Start $38/mo — QuickBooks raised its own prices in Aug 2026 too.</li>
+      </ul>
+    </div>
   </section>
 
   <section id="changed" class="switch">
@@ -95,6 +120,11 @@
 
   <section id="checklist" class="switch">
     <h2>What to check before switching — 5 steps</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Your bill</b><span>read your <strong>Xero Billing page</strong> — plan + next charge date, not a blog chart.</span></div>
+      <div class="step"><b>2 · Size it</b><span>the delta is <strong>$2–$7 a month</strong> — it alone rarely pays for a migration.</span></div>
+      <div class="step"><b>3 · Whole stack</b><span>compare <strong>including payroll and add-ons</strong>, at your own size, on official pages.</span></div>
+    </div>
     <ol class="steps">
       <li><strong>Read your Xero Billing page first.</strong> It shows your plan and next charge date. Increases land on billing dates, so if your next invoice still shows the old price, you have weeks — a switch should never be a same-day panic move.</li>
       <li><strong>Size the actual raise.</strong> We&rsquo;re talking $2, $4 or $7 a month. Ask whether the increase alone breaks anything, or whether the real problem is being on Established while using it like Early — that overpay existed before this change.</li>
@@ -115,36 +145,63 @@
         <tbody>
           <tr>
             <th scope="row"><a href="https://www.xero.com/us/pricing-plans/">Xero (staying)</a></th>
-            <td>Early $27/mo; Growing $59/mo; Established $97/mo (new prices, verified 1 Oct 2026)</td>
+            <td>Early <strong>$27/mo</strong>; Growing <strong>$59/mo</strong>; Established <strong>$97/mo</strong> (new prices, verified 1 Oct 2026)</td>
             <td>Your integrations or accountant are Xero-only — a price rise alone doesn&rsquo;t pay for a migration.</td>
             <td>The new prices are the ones above; add-ons (payroll via Gusto) bill on top.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.zoho.com/us/books/pricing/">Zoho Books</a></th>
-            <td>Free (revenue under $50K/yr, up to 1,000 invoices); Standard $15/mo billed annually</td>
+            <td>Free (revenue under $50K/yr, up to 1,000 invoices); Standard <strong>$15/mo</strong> billed annually</td>
             <td>You want the cheapest credible books, with a bigger suite around it.</td>
             <td>A different ecosystem to learn; the free tier is capped by revenue; some payroll setups need workarounds.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.waveapps.com/pricing">Wave</a></th>
-            <td>Starter free; Pro $19/mo (or $190/yr)</td>
+            <td>Starter free; Pro <strong>$19/mo</strong> (or $190/yr)</td>
             <td>US/Canada freelancers and small shops who want free core bookkeeping + invoicing.</td>
             <td>The real cost is payments (2.9% + $0.60 per card transaction); payroll is a paid add-on (from $25/mo); USD/CAD plans.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.freshbooks.com/pricing">FreshBooks</a></th>
-            <td>Lite $23/mo (5 billable clients); Plus $43/mo; Premium $70/mo — new 2026 prices</td>
+            <td>Lite <strong>$23/mo</strong> (5 billable clients); Plus $43/mo; Premium $70/mo — new 2026 prices</td>
             <td>You invoice more than you track, and want books attached to it.</td>
             <td>FreshBooks raised its own prices in March 2026 (Lite was $19); client caps on lower tiers.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://quickbooks.intuit.com/pricing">QuickBooks Online</a></th>
-            <td>Simple Start $38/mo; Essentials $85/mo; Plus $140/mo; Advanced $340/mo (raised 1 Aug 2026)</td>
+            <td>Simple Start <strong>$38/mo</strong>; Essentials $85/mo; Plus $140/mo; Advanced $340/mo (raised 1 Aug 2026)</td>
             <td>Your accountant lives in QuickBooks and the ecosystem matters more than the bill.</td>
             <td>QuickBooks raised prices itself in August 2026 — the second consecutive summer — so the &ldquo;escape the hikes&rdquo; argument cuts both ways.</td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="chartbox">
+      <h3>The entry price per month, in plain terms</h3>
+      <p class="srcline">Monthly entry prices read on the official pages (Xero 1 Oct 2026; alternatives 30 Sep 2026). Payroll and card fees are extra on every line.</p>
+      <svg viewBox="0 0 640 270" role="img" aria-label="Entry monthly prices: Zoho free tier, Zoho Standard 15 dollars, Wave Pro 19, FreshBooks Lite 23, Xero Early 27, QuickBooks Simple Start 38.">
+        <g font-family="Georgia,serif">
+          <text x="8" y="42" font-size="14" fill="#1a1a1a">Zoho Books · free tier</text>
+          <rect x="205" y="28" width="4" height="22" rx="3" fill="#0e7b52"/>
+          <text x="218" y="45" font-size="13" fill="#0e7b52" font-weight="bold">free under $50K/yr</text>
+          <text x="8" y="78" font-size="14" fill="#1a1a1a">Zoho Books · Standard</text>
+          <rect x="205" y="64" width="153.9" height="22" rx="3" fill="#0e7b52"/>
+          <text x="371.9" y="81" font-size="13" fill="#0e7b52" font-weight="bold">15 $/mo</text>
+          <text x="8" y="114" font-size="14" fill="#1a1a1a">Wave · Pro</text>
+          <rect x="205" y="100" width="195.0" height="22" rx="3" fill="#0e7b52"/>
+          <text x="413.0" y="117" font-size="13" fill="#0e7b52" font-weight="bold">19 $/mo</text>
+          <text x="8" y="150" font-size="14" fill="#1a1a1a">FreshBooks · Lite</text>
+          <rect x="205" y="136" width="236.1" height="22" rx="3" fill="#0e7b52"/>
+          <text x="454.1" y="153" font-size="13" fill="#0e7b52" font-weight="bold">23 $/mo</text>
+          <text x="8" y="186" font-size="14" fill="#1a1a1a">Xero · Early (new)</text>
+          <rect x="205" y="172" width="277.1" height="22" rx="3" fill="#b58900"/>
+          <text x="495.1" y="189" font-size="13" fill="#8a6d00" font-weight="bold">27 $/mo</text>
+          <text x="8" y="222" font-size="14" fill="#1a1a1a">QuickBooks · Simple Start</text>
+          <rect x="205" y="208" width="390.0" height="22" rx="3" fill="#0e7b52"/>
+          <text x="587.0" y="225" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="end">38 $/mo</text>
+        </g>
+      </svg>
+      <p class="footnote">QuickBooks and FreshBooks raised their own prices in 2026 too — both are included so the comparison is like-for-like. Bars proportional to the verified figures.</p>
     </div>
     <p class="footnote">Every figure above was read on the vendor&rsquo;s own page on the date stated, and the pages are linked in <a href="#sources">Sources</a>. Where we could not verify a number, we say so instead of guessing — that is the entire point of this site.</p>
   </section>

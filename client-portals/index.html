@@ -16,6 +16,21 @@
 <meta name="theme-color" content="#0e7b52">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="../styles.css">
+<style>
+  /* Page visuals — same site colours, no invented figures */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -56,11 +71,21 @@
   <section class="hero">
     <p class="kicker">Independent · source-verified · checked 1 Oct 2026</p>
     <h1>HoneyBook raised prices for the first time ever.<br>Here&rsquo;s what to check before you jump.</h1>
-    <p class="lede">On <strong>20 February 2026</strong>, HoneyBook CEO Oz Alon published a letter announcing the company&rsquo;s <strong>first-ever price increase</strong> — no amounts given. HoneyBook is where many solo pros keep their whole client workflow: proposals, contracts, invoices, payments, scheduling. That makes switching feel big. It is — so we compared the client-portal suites people actually move to, with prices we verified on their own pages on 1 October 2026, and the catches nobody mentions.</p>
+    <p class="lede">On <strong>20 February 2026</strong>, HoneyBook CEO Oz Alon published a letter announcing the company&rsquo;s <span class="hl">first-ever price increase</span> — no amounts given. HoneyBook is where many solo pros keep their whole client workflow: proposals, contracts, invoices, payments, scheduling. That makes switching feel big. It is — so we compared the client-portal suites people actually move to, with <span class="hl">prices we verified on their own pages on 1 October 2026</span>, and the catches nobody mentions.</p>
     <p class="chips">
       <span class="chip chip-good">No affiliate links on this page (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Prices checked 1 Oct 2026</span>
     </p>
+
+    <div class="callout">
+      <h2>In brief</h2>
+      <ul>
+        <li><b>HoneyBook</b>: three plans billed yearly — <span class="hl">29, 49 and 109 $/month</span>; the Feb 2026 letter announces the first increase in its history, amounts unpublished.</li>
+        <li><b>Dubsado</b>: <span class="hl">335 $/year</span> (Starter) — annual-only billing at check time, no free plan.</li>
+        <li><b>Bonsai</b>: entry at <span class="hl">9 $/user/month</span> billed annually (15 monthly) — free plan exists.</li>
+        <li><b>17hats</b>: one flat plan at <span class="hl">60 $/month</span> — add-ons stack on top of the flat price.</li>
+      </ul>
+    </div>
   </section>
 
   <section id="tools" class="switch">
@@ -74,36 +99,62 @@
         <tbody>
           <tr>
             <th scope="row"><a href="https://www.honeybook.com/pricing">HoneyBook</a></th>
-            <td>Three plans billed yearly: 29, 49 and 109&nbsp;$/month; page advertised up to 25% off some plans and 2 months free on annual, at check time</td>
+            <td>Three plans billed yearly: <strong>29, 49 and 109&nbsp;$/month</strong>; page advertised up to 25% off some plans and 2 months free on annual, at check time</td>
             <td>You want one place for proposals, contracts, invoices, payments and scheduling with a client-facing portal, and you stay within US/Canada/UK/Australia (where HoneyBook operates).</td>
             <td>The 20 Feb 2026 CEO letter announces the first price increase in company history without publishing amounts — renewals are when it bites; check your renewal date.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.dubsado.com/pricing">Dubsado</a></th>
-            <td>Starter 335&nbsp;$/year, Premier 525&nbsp;$ /year (annual billing); extra brands +10&nbsp;$/month; additional users 25&ndash;60&nbsp;$/month by band</td>
+            <td>Starter <strong>335&nbsp;$/year</strong>, Premier <strong>525&nbsp;$ /year</strong> (annual billing); extra brands +10&nbsp;$/month; additional users 25&ndash;60&nbsp;$/month by band</td>
             <td>Photographers, designers and wedding pros who run project flows (forms, proposals, contracts, invoices) and want a flat-ish annual price.</td>
             <td>Annual-only pricing on the page at check time; no free plan (trial only); recent price bumps have been discussed in its own user community.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.hellobonsai.com/pricing">Bonsai</a></th>
-            <td>Basic 15&nbsp;$/user/month (9&nbsp;$ if paid annually), Essentials 25 (19), Premium 39 (29), Elite 59 (49) — annual &ldquo;2 months worth of savings&rdquo;</td>
+            <td>Basic <strong>15&nbsp;$/user/month</strong> (<strong>9&nbsp;$</strong> if paid annually), Essentials 25 (19), Premium 39 (29), Elite 59 (49) — annual &ldquo;2 months worth of savings&rdquo;</td>
             <td>Freelancers and small agencies that want contracts, proposals and invoices plus built-in time tracking and tax tools in one app.</td>
             <td>Priced per user; some tiers note a minimum of 3 users; the tax/compliance extras are US-centric — check what applies outside the US.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.17hats.com/pricing">17hats</a></th>
-            <td>One all-inclusive plan: 60&nbsp;$/month, 600&nbsp;$/year, 800&nbsp;$/2 years; page advertised &ldquo;save 50%&rdquo; on the first year (300&nbsp;$/year or 400&nbsp;/2 years) at check time</td>
+            <td>One all-inclusive plan: <strong>60&nbsp;$/month</strong>, 600&nbsp;$/year, 800&nbsp;$/2 years; page advertised &ldquo;save 50%&rdquo; on the first year (300&nbsp;$/year or 400&nbsp;/2 years) at check time</td>
             <td>Service businesses that want everything (CRM, proposals, contracts, invoicing, scheduling, workflows) in a single flat plan.</td>
             <td>Add-ons stack: online scheduling 5&ndash;10&nbsp;$/month, time tracking 5&nbsp;$/month, bank connect 5&nbsp;$/month, extra users/brands 5&ndash;10&nbsp;$/month — the flat price is the floor, not the ceiling.</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <div class="chartbox">
+      <h3>The entry price per month, in plain terms</h3>
+      <p class="srcline">Entry plans as displayed at check time (1 Oct 2026), annual where the vendor bills annually. Dubsado bills annually only — 335 $/year shown as ≈28 $/month.</p>
+      <svg viewBox="0 0 640 210" role="img" aria-label="Entry monthly prices: Bonsai 9 dollars (annual), Dubsado about 28 dollars (335 per year), HoneyBook 29 dollars, 17hats 60 dollars.">
+        <g font-family="Georgia,serif">
+          <text x="8" y="42" font-size="14" fill="#1a1a1a">Bonsai Basic · annual</text>
+          <rect x="205" y="28" width="58.5" height="22" rx="3" fill="#0e7b52"/>
+          <text x="276.5" y="45" font-size="13" fill="#0e7b52" font-weight="bold">9 $/mo</text>
+          <text x="8" y="82" font-size="14" fill="#1a1a1a">Dubsado Starter · annual</text>
+          <rect x="205" y="68" width="181.3" height="22" rx="3" fill="#0e7b52"/>
+          <text x="399.3" y="85" font-size="13" fill="#0e7b52" font-weight="bold">≈28 $/mo</text>
+          <text x="8" y="122" font-size="14" fill="#1a1a1a">HoneyBook · yearly</text>
+          <rect x="205" y="108" width="188.5" height="22" rx="3" fill="#b58900"/>
+          <text x="406.5" y="125" font-size="13" fill="#8a6d00" font-weight="bold">29 $/mo</text>
+          <text x="8" y="162" font-size="14" fill="#1a1a1a">17hats · regular</text>
+          <rect x="205" y="148" width="390.0" height="22" rx="3" fill="#0e7b52"/>
+          <text x="587.0" y="165" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="end">60 $/mo</text>
+        </g>
+      </svg>
+      <p class="footnote">Bars are proportional to the monthly figures read on the official pages. 17hats shows its regular 60 $/month (the page advertised a 50% first-year promo at check time); Bonsai shows its annual-billing rate (9 $ vs 15 $ monthly).</p>
+    </div>
     <p class="footnote">Also watched: Assembly (ex-Copilot) — no public list price on its site at check time (quote-based), so we did not rank it. Bookipi and HoneyBook&rsquo;s own referral bonuses exist, but no price list means no comparison from us.</p>
   </section>
 
   <section id="checklist" class="switch">
     <h2>Before you switch: the checklist</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Renewal date</b><span>find <strong>your renewal date</strong> first — increases bite at renewal, so you almost always have weeks.</span></div>
+      <div class="step"><b>2 · Your five flows</b><span>list what you run weekly — <strong>proposal, contract, invoice, scheduling, messages</strong> — and compare those.</span></div>
+      <div class="step"><b>3 · Test for real</b><span><strong>one real project end-to-end</strong> with a test client, and export your data before cancelling.</span></div>
+    </div>
     <ol class="steps">
       <li><strong>Renewal date first.</strong> HoneyBook price increases usually bite at renewal. If you are mid-year on an annual plan, you have time — decide deliberately, not under a deadline.</li>
       <li><strong>What&rsquo;s actually in your workflow?</strong> List the flows you run weekly: proposal, contract signature, invoice + payment, appointment scheduling, client messages. The tool that covers all five beats the one with the prettiest portal.</li>

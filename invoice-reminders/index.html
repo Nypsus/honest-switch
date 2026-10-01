@@ -20,6 +20,21 @@
 <meta name="theme-color" content="#0e7b52">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="../styles.css">
+<style>
+  /* Page visuals — same site colours, no invented figures */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -60,11 +75,21 @@
   <section class="hero">
     <p class="kicker">Independent · source-verified · checked 30 Sep 2026</p>
     <h1>Get paid faster — without the awkward emails.</h1>
-    <p class="lede">Late invoices have one boring cause: nobody chased them. Following up is the task that keeps slipping down the list — manual chasing burns hours a month, and the longer an invoice sits, the less likely it is to be paid. Below: the tools that do the chasing (and what they charge), the free routes you probably already pay for, and a system that works.</p>
+    <p class="lede">Late invoices have one boring cause: nobody chased them. Following up is the task that keeps slipping down the list — manual chasing <span class="hl">burns hours a month</span>, and the longer an invoice sits, the less likely it is to be paid. Below: the tools that do the chasing (and what they charge), the free routes you probably already pay for, and a system that works.</p>
     <p class="chips">
       <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Prices checked 30 Sep 2026</span>
     </p>
+
+    <div class="callout">
+      <h2>In brief</h2>
+      <ul>
+        <li><b>Chaser</b>: from <span class="hl">$233/mo</span> (Compact) — gated by your revenue band.</li>
+        <li><b>Paidnice</b>: <span class="hl">$69/mo</span> up to 150 invoices; $99 up to 300 — adds onto Xero/QuickBooks.</li>
+        <li><b>Free routes</b>: QuickBooks <span class="hl">3 automatic emails</span>; FreshBooks on all plans; Zoho from its Free plan; Wave needs Pro at $19/mo.</li>
+        <li><b>Float &amp; Upflow</b>: Float <span class="hl">doesn&rsquo;t chase</span> (its own docs); Upflow and Invoiced publish no price.</li>
+      </ul>
+    </div>
   </section>
 
   <section id="tools" class="switch">
@@ -78,13 +103,13 @@
         <tbody>
           <tr>
             <th scope="row"><a href="https://www.chaserhq.com/chaser-pricing">Chaser</a></th>
-            <td>&ldquo;From $233 per month&rdquo; (Compact), &ldquo;From $700 per month&rdquo; (Core), &ldquo;From $1050 per month&rdquo; (Complete)</td>
+            <td>&ldquo;From <strong>$233 per month</strong>&rdquo; (Compact), &ldquo;From <strong>$700 per month</strong>&rdquo; (Core), &ldquo;From <strong>$1050 per month</strong>&rdquo; (Complete)</td>
             <td>You have real overdue-debt volume and want automation, escalation, statements and SMS.</td>
             <td>Gated by your annual revenue band (entry tier: &lt;£4m revenue, 4 users); steep jump to Core.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.paidnice.com/pricing">Paidnice</a></th>
-            <td>&ldquo;Essentials Plan 69 USD per month&rdquo; (up to 150 invoices); Pro tiered by invoice volume — &ldquo;Up to 300 invoices per month: 99 USD&rdquo;; Custom from 999 USD</td>
+            <td>&ldquo;Essentials Plan <strong>69 USD per month</strong>&rdquo; (up to 150 invoices); Pro tiered by invoice volume — &ldquo;Up to 300 invoices per month: <strong>99 USD</strong>&rdquo;; Custom from 999 USD</td>
             <td>You run Xero or QuickBooks Online and want reminders, late fees and statements without a sales call.</td>
             <td>Email caps per tier (600/mo on Essentials); SMS billed per region ($0.10 US); extra entities $29/mo.</td>
           </tr>
@@ -102,12 +127,33 @@
           </tr>
           <tr>
             <th scope="row"><a href="https://floatapp.com/pricing">Float</a></th>
-            <td>&ldquo;£99/mo&rdquo; (Essentials), &ldquo;£199/mo&rdquo; (Growth), &ldquo;£295/mo&rdquo; (Scale) — GBP, excluding VAT</td>
+            <td>&ldquo;<strong>£99/mo</strong>&rdquo; (Essentials), &ldquo;<strong>£199/mo</strong>&rdquo; (Growth), &ldquo;<strong>£295/mo</strong>&rdquo; (Scale) — GBP, excluding VAT</td>
             <td>You want a live cash forecast built from Xero/QuickBooks data.</td>
             <td>It is <strong>not a reminder tool</strong> — Float&rsquo;s own page states: &ldquo;Float does not send payment reminders, automate collections, or process payments.&rdquo;</td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="chartbox">
+      <h3>The monthly price of a chaser, in plain terms</h3>
+      <p class="srcline">Monthly entry prices read 30 Sep 2026, in the currency each vendor displays (Float bills in GBP).</p>
+      <svg viewBox="0 0 640 210" role="img" aria-label="Monthly entry prices: Paidnice 69 dollars, Float 99 pounds, Chaser 233 dollars; Upflow and Invoiced unpriced.">
+        <g font-family="Georgia,serif">
+          <text x="8" y="42" font-size="14" fill="#1a1a1a">Paidnice · Essentials</text>
+          <rect x="205" y="28" width="115.5" height="22" rx="3" fill="#0e7b52"/>
+          <text x="333.5" y="45" font-size="13" fill="#0e7b52" font-weight="bold">69 $/mo</text>
+          <text x="8" y="82" font-size="14" fill="#1a1a1a">Float · Essentials</text>
+          <rect x="205" y="68" width="165.7" height="22" rx="3" fill="#0e7b52"/>
+          <text x="383.7" y="85" font-size="13" fill="#0e7b52" font-weight="bold">£99/mo</text>
+          <text x="8" y="122" font-size="14" fill="#1a1a1a">Chaser · Compact</text>
+          <rect x="205" y="108" width="390.0" height="22" rx="3" fill="#b58900"/>
+          <text x="587.0" y="125" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="end">233 $/mo</text>
+          <text x="8" y="162" font-size="14" fill="#1a1a1a">Upflow · Invoiced</text>
+          <rect x="205" y="148" width="4" height="22" rx="3" fill="#9aa09b"/>
+          <text x="218" y="165" font-size="13" fill="#57523f">no public price — no bar</text>
+        </g>
+      </svg>
+      <p class="footnote">Float is shown for scale but is NOT a chasing tool — its own page says it does not send payment reminders. Upflow and Invoiced publish no price: no bar rather than an invented one.</p>
     </div>
     <p class="footnote">Chaser and Paidnice figures are the US monthly prices shown on the pages we checked; other currencies and billing periods differ. Upflow and Invoiced publish no price — check the site for a quote.</p>
   </section>
@@ -126,25 +172,25 @@
         <tbody>
           <tr>
             <th scope="row"><a href="https://quickbooks.intuit.com/pricing">QuickBooks Online</a></th>
-            <td>Simple Start $38/mo; Essentials $85/mo; Plus $140/mo; Advanced $340/mo (50% off for 3 months when checked)</td>
+            <td>Simple Start <strong>$38/mo</strong>; Essentials $85/mo; Plus $140/mo; Advanced $340/mo (50% off for 3 months when checked)</td>
             <td>Automatic invoice reminders built in — three emails max, schedulable 90 days either side of the due date.</td>
             <td>Only invoices emailed after you switch it on; one schedule for all customers; Advanced adds workflows.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.freshbooks.com/pricing">FreshBooks</a></th>
-            <td>List: Lite $23/mo, Plus $43/mo, Premium $70/mo — with promos at check (Lite $1.00 first year, Plus $8.60/mo, Premium $14.00/mo)</td>
+            <td>List: Lite <strong>$23/mo</strong>, Plus $43/mo, Premium $70/mo — with promos at check (Lite $1.00 first year, Plus $8.60/mo, Premium $14.00/mo)</td>
             <td>&ldquo;Automated Late Payment Reminders&rdquo; included on every plan, alongside scheduled late fees.</td>
             <td>Promo prices are time-limited; client caps on lower tiers.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.zoho.com/us/books/pricing/">Zoho Books</a></th>
-            <td>Free $0; Standard $20/org/mo ($15 billed annually); Professional $50 ($40); Premium $70 ($60); Elite $150 ($120); Ultimate $275 ($240)</td>
+            <td>Free <strong>$0</strong>; Standard $20/org/mo ($15 billed annually); Professional $50 ($40); Premium $70 ($60); Elite $150 ($120); Ultimate $275 ($240)</td>
             <td>&ldquo;Automate payment reminders&rdquo; from the Free plan upward.</td>
             <td>The free tier is capped (revenue under $50K/yr); a different ecosystem to learn.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.waveapps.com/pricing">Wave</a></th>
-            <td>Starter free; Pro $19/mo (or $190/yr)</td>
+            <td>Starter free; Pro <strong>$19/mo</strong> (or $190/yr)</td>
             <td>Automatic reminders 3, 7 and 14 days after sent invoices are due (Pro / online payments).</td>
             <td>The free Starter plan does not include them; USD/CAD focus.</td>
           </tr>
@@ -155,6 +201,11 @@
 
   <section id="checklist" class="switch">
     <h2>A chasing system that works — 5 steps</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Switch it on</b><span>the reminders you <strong>already pay for</strong> — QuickBooks, FreshBooks, Zoho — today, at $0 extra.</span></div>
+      <div class="step"><b>2 · Build the ladder</b><span>a polite nudge, then <strong>+3, +7, +14 days</strong> — hardening the tone at each step.</span></div>
+      <div class="step"><b>3 · Add teeth</b><span><strong>late fees or a payment plan</strong> for repeat late payers; review AR aging weekly.</span></div>
+    </div>
     <ol class="steps">
       <li><strong>Invoice immediately and make paying easy</strong> — same-day invoice, due date on the document, payment link included.</li>
       <li><strong>Turn on the reminders you already have</strong> — QuickBooks, FreshBooks or Zoho Books cover this at no extra cost; switch the setting on today.</li>

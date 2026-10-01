@@ -16,6 +16,21 @@
 <meta name="theme-color" content="#0e7b52">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="../styles.css">
+<style>
+  /* Page visuals — same site colours, no invented figures */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -56,11 +71,22 @@
   <section class="hero">
     <p class="kicker">Independent · source-verified · checked 1 Oct 2026</p>
     <h1>Coaches, trainers, community builders: which platform should your paid community live on?</h1>
-    <p class="lede">Creators keep asking the same question: <strong>Skool or Circle?</strong> — the platform r/CircleSoPlatform thread we start from compares the two in detail. But the real decision has four players, not two: <strong>Skool, Circle, Mighty Networks and Kajabi</strong> all sell the same promise — a home for your paid community, your courses and your members. Their prices, feature ceilings and payout programs differ a lot. We compared the four with prices read on the vendors&rsquo; own pages on <strong>1 October 2026</strong>, and the catches the marketing pages do not mention.</p>
+    <p class="lede">Creators keep asking the same question: <span class="hl">Skool or Circle?</span> — the platform r/CircleSoPlatform thread we start from compares the two in detail. But the real decision has four players, not two: <span class="hl">Skool, Circle, Mighty Networks and Kajabi</span> all sell the same promise — a home for your paid community, your courses and your members. Their prices, feature ceilings and payout programs differ a lot. We compared the four with prices read on the vendors&rsquo; own pages on <strong>1 October 2026</strong>, and the catches the marketing pages do not mention.</p>
     <p class="chips">
       <span class="chip chip-good">No affiliate links on this page (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Prices checked 1 Oct 2026</span>
     </p>
+
+    <div class="callout">
+      <h2>In brief</h2>
+      <ul>
+        <li><b>Skool</b>: <span class="hl">9 $/mo Hobby · 99 $/mo Pro</span> — flat rate, member count not billed.</li>
+        <li><b>Circle</b>: from <span class="hl">89 $/mo</span> (Professional) — member-based pricing higher up; the white-label tier has no public price.</li>
+        <li><b>Mighty Networks</b>: from <span class="hl">79 $/mo</span> (Launch) — growth tiers jump quickly.</li>
+        <li><b>Kajabi</b>: from <span class="hl">143 $/mo</span> on annual billing — the most expensive of the four.</li>
+        <li><b>Referral money</b>: Skool <span class="hl">40% recurring</span>; Circle <span class="hl">$100 + up to 20% recurring</span> (official pages).</li>
+      </ul>
+    </div>
   </section>
 
   <section id="tools" class="switch">
@@ -74,36 +100,62 @@
         <tbody>
           <tr>
             <th scope="row"><a href="https://www.skool.com/pricing">Skool</a></th>
-            <td>Hobby 9&nbsp;$/month, Pro 99&nbsp;$/month — flat rate, member count not billed; 14-day trial, &ldquo;2 months free&rdquo; promoted on the page</td>
+            <td>Hobby <strong>9&nbsp;$/month</strong>, Pro <strong>99&nbsp;$/month</strong> — flat rate, member count not billed; 14-day trial, &ldquo;2 months free&rdquo; promoted on the page</td>
             <td>You want the simplest possible setup: one feed, one course, built-in gamification (points, leaderboard) and a flat price whatever your member count.</td>
             <td>Famously limited: no email marketing built in, minimal customization, no API. The Reddit thread we start from and the r/CircleSoPlatform community repeatedly hit those limits once communities grow past the first few hundred members.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://circle.so/pricing">Circle</a></th>
-            <td>Professional 89&nbsp;$/month, Business 199&nbsp;$/month (prices shown on annual billing); Circle Plus custom-priced; 14-day trial, 30-day money-back</td>
+            <td>Professional <strong>89&nbsp;$/month</strong>, Business <strong>199&nbsp;$/month</strong> (prices shown on annual billing); Circle Plus custom-priced; 14-day trial, 30-day money-back</td>
             <td>You want structure: spaces, folders, live rooms, a branded mobile app, strong customization and built-in email + Zapier/Make/webhooks — the most &ldquo;full platform&rdquo; feel of the four.</td>
             <td>Member-based pricing on higher tiers can get expensive as you grow; the advanced white-label &ldquo;Circle Plus&rdquo; tier has no public price. Teams used to Kajabi&rsquo;s all-in-one may find themselves assembling integrations.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.mightynetworks.com/pricing">Mighty Networks</a></th>
-            <td>Launch 79&nbsp;$/month (or 950&nbsp;$/year advertised with &ldquo;2 months free&rdquo; on annual), Scale 179&nbsp;$/month, Growth 354&nbsp;$/month</td>
+            <td>Launch <strong>79&nbsp;$/month</strong> (or <strong>950&nbsp;$/year</strong> advertised with &ldquo;2 months free&rdquo; on annual), Scale 179&nbsp;$/month, Growth 354&nbsp;$/month</td>
             <td>You want courses + community + events in one product with an AI co-host and a native mobile app, without assembling your own stack.</td>
             <td>Its pricing page advertises income examples (&ldquo;Launch plans earn an average $14,400/year&rdquo;) with a disclaimer that results are not guaranteed — treat those as marketing, not a promise. Its growth tiers jump quickly in price.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://kajabi.com/pricing">Kajabi</a></th>
-            <td>Basic 143&nbsp;$/month on annual billing (179 monthly), Growth 199&nbsp;$/month annual (249 monthly), Pro 399&nbsp;$/month annual (499 monthly); extra contacts billed in blocks of 25,000 for 125&nbsp;$/month</td>
+            <td>Basic <strong>143&nbsp;$/month</strong> on annual billing (179 monthly), Growth 199&nbsp;$/month annual (249 monthly), Pro 399&nbsp;$/month annual (499 monthly); extra contacts billed in blocks of 25,000 for 125&nbsp;$/month</td>
             <td>You want the all-in-one: website, funnel, email marketing, courses, community, payments and affiliate management in one system — the &ldquo;everything included&rdquo; approach.</td>
             <td>The most expensive of the four; your community/course features are tied to a big marketing suite you may not need. Contact-block surcharges kick in as your list grows.</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <div class="chartbox">
+      <h3>The entry price per month, in plain terms</h3>
+      <p class="srcline">Entry plans as shown on the official pages at check time (1 Oct 2026). Kajabi&rsquo;s 143 $/month is its annual-billing rate (179 monthly). Circle Plus (white-label) is custom-priced — no public figure, no bar.</p>
+      <svg viewBox="0 0 640 210" role="img" aria-label="Entry monthly prices: Skool 9 dollars, Mighty Networks 79 dollars, Circle 89 dollars, Kajabi 143 dollars.">
+        <g font-family="Georgia,serif">
+          <text x="8" y="42" font-size="14" fill="#1a1a1a">Skool · Hobby</text>
+          <rect x="205" y="28" width="24.5" height="22" rx="3" fill="#0e7b52"/>
+          <text x="242.5" y="45" font-size="13" fill="#0e7b52" font-weight="bold">9 $/mo</text>
+          <text x="8" y="82" font-size="14" fill="#1a1a1a">Mighty Networks · Launch</text>
+          <rect x="205" y="68" width="215.5" height="22" rx="3" fill="#0e7b52"/>
+          <text x="433.5" y="85" font-size="13" fill="#0e7b52" font-weight="bold">79 $/mo</text>
+          <text x="8" y="122" font-size="14" fill="#1a1a1a">Circle · Professional</text>
+          <rect x="205" y="108" width="242.7" height="22" rx="3" fill="#b58900"/>
+          <text x="460.7" y="125" font-size="13" fill="#8a6d00" font-weight="bold">89 $/mo</text>
+          <text x="8" y="162" font-size="14" fill="#1a1a1a">Kajabi · Basic (annual)</text>
+          <rect x="205" y="148" width="390.0" height="22" rx="3" fill="#0e7b52"/>
+          <text x="587.0" y="165" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="end">143 $/mo</text>
+        </g>
+      </svg>
+      <p class="footnote">Bars proportional to the monthly entry prices read; member-based pricing higher up can climb — see the table.</p>
+    </div>
     <p class="footnote">Also considered but not ranked: Discord (free/freemium — great for chat, not built to sell courses or memberships) and Patreon (membership billing, not a community home). No public price list means no comparison from us.</p>
   </section>
 
   <section id="checklist" class="switch">
     <h2>Before you commit: the checklist</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · The maths</b><span>flat or per-member? model your member count at <strong>3× growth</strong>, not today&rsquo;s number.</span></div>
+      <div class="step"><b>2 · The scope</b><span><strong>course, community, or both?</strong> — it decides between Skool, Circle, Mighty and Kajabi.</span></div>
+      <div class="step"><b>3 · The lock-in</b><span><strong>email is the real lock-in</strong>: one bill or two decides more than the sticker price.</span></div>
+    </div>
     <ol class="steps">
       <li><strong>Price per member or flat?</strong> Skool and Kajabi charge a flat platform fee; Circle &mdash; like Mighty Networks above their entry tier &mdash; scales with members or products. Model your headcount at 3&times; growth, not today&rsquo;s number.</li>
       <li><strong>Courses, community or both?</strong> Skool lets a community run one course simply; Circle handles multiple courses with full control; Mighty Networks and Kajabi bundle courses + community + events. If your offer is mostly a course with a side chat, you may be overpaying for community infrastructure.</li>

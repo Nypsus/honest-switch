@@ -20,6 +20,21 @@
 <meta name="theme-color" content="#0e7b52">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="../styles.css">
+<style>
+  /* Page visuals — same site colours, no invented figures */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -59,11 +74,21 @@
   <section class="hero">
     <p class="kicker">Independent · source-verified · checked 1 Oct 2026</p>
     <h1>Kit raised prices for the first time in 12 years. Breathe — then check your actual costs.</h1>
-    <p class="lede">On 8 September 2025, Kit (formerly ConvertKit) announced its first price increase since 2013. If you run a newsletter, coach, or a small service or e-commerce business with anywhere from 500 to 50,000 contacts, you may be weighing a switch. This page is the boring version of that debate: what actually changed, what to check before you move, the platforms whose prices we read on their own pages today, and who pays you to switch.</p>
+    <p class="lede">On 8 September 2025, Kit (formerly ConvertKit) announced its <span class="hl">first price increase since 2013</span>. If you run a newsletter, coach, or a small service or e-commerce business with anywhere from 500 to 50,000 contacts, you may be weighing a switch. This page is the boring version of that debate: what actually changed, what to check before you move, the platforms whose prices we read on their own pages today, and who pays you to switch.</p>
     <p class="chips">
       <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Prices checked 1 Oct 2026</span>
     </p>
+
+    <div class="callout">
+      <h2>In brief</h2>
+      <ul>
+        <li><b>Kit</b>: Free <span class="hl">$0</span> up to <span class="hl">10,000 subscribers</span>; Creator $33/mo ($390/yr), Pro $66/mo ($790/yr) at 1,000 subscribers.</li>
+        <li><b>Buttondown</b>: flat subscription + <span class="hl">$9/mo add-ons</span> — no per-subscriber math.</li>
+        <li><b>Mailchimp</b>: promo <span class="hl">$20/mo for 12 months</span> — re-prices at renewal.</li>
+        <li><b>Referral money</b>: Kit <span class="hl">50% for 12 months</span>; GetResponse up to 60% recurring; beehiiv up to 60% monthly.</li>
+      </ul>
+    </div>
   </section>
 
   <section id="changed" class="switch">
@@ -71,8 +96,9 @@
     <div class="why">
       <p>From Kit&rsquo;s own letter to its creator community (linked in Sources), the facts — not the panic:</p>
     </div>
+    <blockquote class="quotebox">&ldquo;Let me get straight to it: we&rsquo;re raising prices for the first time in 12 years.&rdquo;<span class="qsrc">— Nathan Barry, Kit founder, letter of 8 Sep 2025 · checked 1 Oct 2026</span></blockquote>
     <ul class="sources">
-      <li><strong>First increase in 12 years.</strong> Founder Nathan Barry: &ldquo;Let me get straight to it: we&rsquo;re raising prices for the first time in 12 years.&rdquo; Prices had stood since the product was priced in 2013.</li>
+      <li><strong>First increase in 12 years.</strong> Founder Nathan Barry says it himself — quoted above — and prices had stood since the product was priced in 2013.</li>
       <li><strong>New customers:</strong> the new prices took effect on the announcement day, 8 September 2025.</li>
       <li><strong>Existing customers:</strong> nothing changes until the first billing date after <strong>15 October 2025</strong>, with at least 30 days&rsquo; notice before anything shifts on the account.</li>
       <li><strong>What this is not:</strong> a surprise charge landing tomorrow. Current customers were grandfathered for more than a month, and the company kept a support route for anyone materially affected.</li>
@@ -82,6 +108,11 @@
 
   <section id="checklist" class="switch">
     <h2>What to check before switching — 5 steps</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Renewal</b><span>read <strong>your</strong> billing date first — you almost always have weeks.</span></div>
+      <div class="step"><b>2 · List size</b><span>under <strong>10k subscribers</strong>, Kit&rsquo;s free tier may cover you at $0.</span></div>
+      <div class="step"><b>3 · Import test</b><span>run a <strong>real test with a sample list</strong> before committing.</span></div>
+    </div>
     <ol class="steps">
       <li><strong>Read your renewal date first.</strong> Price increases for existing customers usually bite at the next billing cycle (Kit&rsquo;s: after 15 Oct 2025). You almost always have weeks, so a switch should never be a same-day panic move.</li>
       <li><strong>Size your list against the free tiers.</strong> Kit&rsquo;s Free plan covers up to 10,000 subscribers at $0/month (verified 1 Oct 2026). At under 10k contacts, the &ldquo;Kit hike&rdquo; may cost you exactly nothing.</li>
@@ -102,19 +133,19 @@
         <tbody>
           <tr>
             <th scope="row"><a href="https://kit.com/pricing">Kit</a></th>
-            <td>Free $0/mo (&ldquo;up to 10,000 subscribers&rdquo;); Creator $33/mo or $390/yr; Pro $66/mo or $790/yr (Creator/Pro shown &ldquo;for 1,000 email subscribers&rdquo;)</td>
+            <td>Free <strong>$0/mo</strong> (&ldquo;up to 10,000 subscribers&rdquo;); Creator <strong>$33/mo</strong> or $390/yr; Pro <strong>$66/mo</strong> or $790/yr (Creator/Pro shown &ldquo;for 1,000 email subscribers&rdquo;)</td>
             <td>Staying is a legitimate choice: creator-native features, free migrations, free tier up to 10k contacts.</td>
             <td>It just raised prices for the first time in 12 years; re-check the figure at your exact list size.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://buttondown.com/pricing">Buttondown</a></th>
-            <td>Flat subscription; optional add-ons at +$9/mo each (tagging &amp; segmentation, paid subscriptions, comments &amp; surveys, analytics); 50% discount for registered non-profits; positioning: &ldquo;Most places overcharge&rdquo;</td>
+            <td>Flat subscription; optional add-ons at <strong>+$9/mo</strong> each (tagging &amp; segmentation, paid subscriptions, comments &amp; surveys, analytics); 50% discount for registered non-profits; positioning: &ldquo;Most places overcharge&rdquo;</td>
             <td>You want simple, predictable flat pricing, privacy-first hosting, and dislike per-subscriber math.</td>
             <td>Small-team product with add-ons priced separately; the feature suite is deliberately narrower.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://mailchimp.com/pricing/">Mailchimp</a></th>
-            <td>Promo shown at $20.00/mo &ldquo;for 12 months&rdquo; on the lower contact bands, then per-contact pricing above; &ldquo;Save 15% on 10,000+ contacts&rdquo; noted on the page</td>
+            <td>Promo shown at <strong>$20.00/mo</strong> &ldquo;for 12 months&rdquo; on the lower contact bands, then per-contact pricing above; &ldquo;Save 15% on 10,000+ contacts&rdquo; noted on the page</td>
             <td>You already run a wider Intuit/Mailchimp marketing stack and accept contact-band pricing.</td>
             <td>&ldquo;For 12 months&rdquo; means the promo re-prices at renewal; per-contact bands climb with your list. We did not capture every band&rsquo;s number — check yours on the page.</td>
           </tr>
@@ -132,6 +163,24 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="chartbox">
+      <h3>The verified monthly prices, in plain terms</h3>
+      <p class="srcline">Monthly figures read 1 Oct 2026: Kit shown for 1,000 subscribers; Mailchimp&rsquo;s 20 $/month is its 12-month promo rate on the lower contact bands.</p>
+      <svg viewBox="0 0 640 170" role="img" aria-label="Monthly prices: Mailchimp promo 20 dollars, Kit Creator 33 dollars, Kit Pro 66 dollars.">
+        <g font-family="Georgia,serif">
+          <text x="8" y="42" font-size="14" fill="#1a1a1a">Mailchimp · promo (12 mo)</text>
+          <rect x="205" y="28" width="118.2" height="22" rx="3" fill="#0e7b52"/>
+          <text x="336.2" y="45" font-size="13" fill="#0e7b52" font-weight="bold">20 $/mo</text>
+          <text x="8" y="82" font-size="14" fill="#1a1a1a">Kit · Creator (1,000 subs)</text>
+          <rect x="205" y="68" width="195.0" height="22" rx="3" fill="#b58900"/>
+          <text x="413.0" y="85" font-size="13" fill="#8a6d00" font-weight="bold">33 $/mo</text>
+          <text x="8" y="122" font-size="14" fill="#1a1a1a">Kit · Pro (1,000 subs)</text>
+          <rect x="205" y="108" width="390.0" height="22" rx="3" fill="#b58900"/>
+          <text x="587.0" y="125" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="end">66 $/mo</text>
+        </g>
+      </svg>
+      <p class="footnote">Buttondown keeps a flat subscription (add-ons +$9/mo) — no per-band figure captured; GetResponse list price and beehiiv&rsquo;s program page were not verified today. No bar rather than an invented one.</p>
     </div>
     <p class="footnote">Every figure above was read on the vendor&rsquo;s own page on the date stated, and the pages are linked in <a href="#sources">Sources</a>. Where we could not verify a number, we say so instead of guessing — that is the entire point of this site.</p>
   </section>

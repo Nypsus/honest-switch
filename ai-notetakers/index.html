@@ -20,6 +20,21 @@
 <meta name="theme-color" content="#0e7b52">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="../styles.css">
+<style>
+  /* Page visuals — same site colours, no invented figures */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -59,11 +74,21 @@
   <section class="hero">
     <p class="kicker">Independent · source-verified · checked 1 Oct 2026</p>
     <h1>Your client calls deserve notes you trust. Pick the AI notetaker that fits them.</h1>
-    <p class="lede">Consultants, coaches, recruiters and solo sales people record client calls on Zoom, Teams and Meet to get summaries and action items afterwards. Otter dominates the category — and the complaints about it are specific: multi-speaker accuracy when people talk over each other, language coverage, a visible bot joining client calls, and minute limits on the free tier. This page is the boring version of that debate: what people actually complain about, what to check before you switch, the tools whose prices we read on their own pages today, and who pays you to switch.</p>
+    <p class="lede">Consultants, coaches, recruiters and solo sales people record client calls on Zoom, Teams and Meet to get summaries and action items afterwards. Otter dominates the category — and the complaints about it are specific: <span class="hl">multi-speaker accuracy</span> when people talk over each other, language coverage, <span class="hl">a visible bot joining client calls</span>, and <span class="hl">minute limits on the free tier</span>. This page is the boring version of that debate: what people actually complain about, what to check before you switch, the tools whose prices we read on their own pages today, and who pays you to switch.</p>
     <p class="chips">
       <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Prices checked 1 Oct 2026</span>
     </p>
+
+    <div class="callout">
+      <h2>In brief</h2>
+      <ul>
+        <li><b>Otter</b>: free tier capped at <span class="hl">300 min/month</span>; Pro <span class="hl">8.33 $/user/month</span> billed annually (16.99 monthly).</li>
+        <li><b>Fathom</b>: individual plan <span class="hl">free with unlimited recordings</span>; Team 19 $/user/month, 2-user minimum.</li>
+        <li><b>Fireflies</b>: named first for <span class="hl">CRM integrations</span> (HubSpot, Salesforce); its affiliate pays <span class="hl">30% recurring</span> for 12 months.</li>
+        <li><b>The bot question</b>: default capture joins as a visible guest — bot-free options exist (Tactiq extension; Fathom beta on Mac), pricing on those two not verified.</li>
+      </ul>
+    </div>
   </section>
 
   <section id="changed" class="switch">
@@ -71,8 +96,9 @@
     <div class="why">
       <p>From the r/NoteTaking discussion &ldquo;Anyone switched from Otter AI? Looking for better alternatives&rdquo; (linked in Sources) — the repeat themes, in the words of the people switching:</p>
     </div>
+    <blockquote class="quotebox">&ldquo;The biggest issues were language limitations and accuracy especially when conversations got messy with people talking over each other. It just needed too much cleanup afterward to be useful.&rdquo;<span class="qsrc">— r/NoteTaking, &ldquo;Anyone switched from Otter AI?&rdquo; · checked 1 Oct 2026</span></blockquote>
     <ul class="sources">
-      <li><strong>Multi-speaker accuracy.</strong> &ldquo;The biggest issues were language limitations and accuracy especially when conversations got messy with people talking over each other. It just needed too much cleanup afterward to be useful.&rdquo; &mdash; and, shorter: &ldquo;The multi-speaker accuracy was the biggest pain point for me.&rdquo;</li>
+      <li><strong>Multi-speaker accuracy.</strong> The complaint that starts the switch — quoted above in the switcher&rsquo;s own words — and, shorter: &ldquo;The multi-speaker accuracy was the biggest pain point for me.&rdquo;</li>
       <li><strong>Language coverage.</strong> Mixed-language client conversations came up repeatedly; people working across languages said English-first tools degraded quickly the moment a call switched languages.</li>
       <li><strong>The bot in the room.</strong> &ldquo;A bot join every call got old fast.&rdquo; On client and sales calls a visible AI-guest is a social and trust issue, not just a technical one &mdash; several users said they switched for exactly that reason.</li>
       <li><strong>Free-tier limits.</strong> Otter&rsquo;s own pricing page (checked 1 Oct 2026): Basic is free with <strong>300 monthly transcription minutes</strong>. For anyone with several client calls a week, that is the wall people hit.</li>
@@ -82,6 +108,11 @@
 
   <section id="checklist" class="switch">
     <h2>What to check before switching — 5 steps</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Count</b><span>your real minutes per month against free caps — <strong>Otter Basic: 300 min</strong>.</span></div>
+      <div class="step"><b>2 · The bot</b><span>will a <strong>visible AI guest</strong> bother your clients? One answer filters the field.</span></div>
+      <div class="step"><b>3 · Test messy</b><span>score <strong>accuracy on a real call</strong> — over-talking, accents, mixed languages — not a demo.</span></div>
+    </div>
     <ol class="steps">
       <li><strong>Count your real meeting volume.</strong> Minutes per month across Zoom/Teams/Meet, compared against free-tier caps (Otter Basic: 300 transcription minutes/month, verified 1 Oct 2026). If you are under the cap, the &ldquo;limit&rdquo; complaint may not bite you at all.</li>
       <li><strong>Decide the bot question up front.</strong> Will a visible AI bot joining the call bother your client? On sales and discovery calls, many users say yes — and that single answer filters the field (bot-based capture vs browser-extension or local tools, and Fathom&rsquo;s bot-free capture, in beta on Mac).</li>
@@ -102,13 +133,13 @@
         <tbody>
           <tr>
             <th scope="row"><a href="https://otter.ai/pricing">Otter</a></th>
-            <td>Basic Free — 300 monthly transcription minutes; Pro $8.33/user/month billed annually ($16.99 monthly) — 1,200 in-app recording minutes, 10 audio/video file imports/month; Business $19.99/user/month billed annually ($30 monthly) — unlimited meetings + in-app recordings</td>
+            <td>Basic Free — 300 monthly transcription minutes; Pro <strong>$8.33/user/month</strong> billed annually ($16.99 monthly) — 1,200 in-app recording minutes, 10 audio/video file imports/month; Business <strong>$19.99/user/month</strong> billed annually ($30 monthly) — unlimited meetings + in-app recordings</td>
             <td>You would rather upgrade in place than migrate your recording habits.</td>
             <td>It is the product people in the thread left — over accuracy, minutes and the bot; the free tier&rsquo;s 300 min/month is the ceiling most complained about.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://www.fathom.ai/pricing">Fathom</a></th>
-            <td>Free plan $0: &ldquo;unlimited recordings, instant call summaries, integrations with LLMs &amp; more&rdquo;; Team $19/user/month ($15 billed annually), 2-user minimum; free tier also lists unlimited transcriptions and call storage</td>
+            <td>Free plan <strong>$0</strong>: &ldquo;unlimited recordings, instant call summaries, integrations with LLMs &amp; more&rdquo;; Team <strong>$19/user/month</strong> ($15 billed annually), 2-user minimum; free tier also lists unlimited transcriptions and call storage</td>
             <td>You are an individual who wants the free tier to genuinely solve the limit problem — thread users call it &ldquo;essentially solves the limit issue&rdquo; versus Otter.</td>
             <td>Default capture joins the call as a visible guest bot; bot-free capture is in beta on Mac only; team pricing requires 2 users.</td>
           </tr>
@@ -138,6 +169,27 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="chartbox">
+      <h3>The entry price per user, in plain terms</h3>
+      <p class="srcline">Entry prices per user/month, billed annually, read on the official pages 1 Oct 2026 (monthly-billing rates: Otter Pro 16.99 $, Fathom Team 19 $).</p>
+      <svg viewBox="0 0 640 210" role="img" aria-label="Entry monthly prices per user: Fathom free, Otter Pro 8 dollars 33, Fathom Team 15 dollars annual, Otter Business 19 dollars 99.">
+        <g font-family="Georgia,serif">
+          <text x="8" y="42" font-size="14" fill="#1a1a1a">Fathom · individual</text>
+          <rect x="205" y="28" width="4" height="22" rx="3" fill="#0e7b52"/>
+          <text x="218" y="45" font-size="13" fill="#0e7b52" font-weight="bold">free · unlimited recordings</text>
+          <text x="8" y="82" font-size="14" fill="#1a1a1a">Otter · Pro (annual)</text>
+          <rect x="205" y="68" width="162.5" height="22" rx="3" fill="#b58900"/>
+          <text x="380.5" y="85" font-size="13" fill="#8a6d00" font-weight="bold">8.33 $/mo</text>
+          <text x="8" y="122" font-size="14" fill="#1a1a1a">Fathom · Team (annual)</text>
+          <rect x="205" y="108" width="292.6" height="22" rx="3" fill="#0e7b52"/>
+          <text x="510.6" y="125" font-size="13" fill="#0e7b52" font-weight="bold">15 $/mo</text>
+          <text x="8" y="162" font-size="14" fill="#1a1a1a">Otter · Business (annual)</text>
+          <rect x="205" y="148" width="390.0" height="22" rx="3" fill="#b58900"/>
+          <text x="587.0" y="165" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="end">19.99 $/mo</text>
+        </g>
+      </svg>
+      <p class="footnote">Fireflies, Notta, Circleback and Tactiq: no simple public entry price was verified today — no bar rather than an invented figure.</p>
     </div>
     <p class="footnote">Every figure above was read on the vendor&rsquo;s own page on the date stated, and the pages are linked in <a href="#sources">Sources</a>. Where we could not verify a number, we say so instead of guessing — that is the entire point of this site.</p>
   </section>

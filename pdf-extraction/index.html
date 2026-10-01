@@ -20,6 +20,21 @@
 <meta name="theme-color" content="#0e7b52">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="../styles.css">
+<style>
+  /* Page visuals — same site colours, no invented figures */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -60,11 +75,22 @@
   <section class="hero">
     <p class="kicker">Independent · source-verified · checked 30 Sep 2026</p>
     <h1>Stop retyping invoices from PDFs by hand.</h1>
-    <p class="lede">If your team still retypes invoice data from PDFs and email attachments into accounting or ERP systems, you are paying twice: once for software, once in hours. Two technologies get mixed up here. <strong>OCR</strong> turns a page — scan or photo — into raw characters; it reads text, not meaning. <strong>AI extraction</strong> adds understanding: models locate the fields you actually need and return them as structured data you can push into a spreadsheet or ERP — how well depends on your documents, so test on your own files. Below: the tools, what they charge, and the free route we could stand behind.</p>
+    <p class="lede">If your team still retypes invoice data from PDFs and email attachments into accounting or ERP systems, you are paying twice: once for software, once in hours. Two technologies get mixed up here. <span class="hl">OCR</span> turns a page — scan or photo — into raw characters; it reads text, not meaning. <span class="hl">AI extraction</span> adds understanding: models locate the fields you actually need and return them as structured data you can push into a spreadsheet or ERP — how well depends on your documents, so test on your own files. Below: the tools, what they charge, and the free route we could stand behind.</p>
     <p class="chips">
       <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Prices checked 30 Sep 2026</span>
     </p>
+
+    <div class="callout">
+      <h2>In brief</h2>
+      <ul>
+        <li><b>Docparser</b>: from <span class="hl">$32.50/mo</span> billed annually (100 credits; 1 credit = 1 document up to 5 pages).</li>
+        <li><b>Parseur</b>: <span class="hl">free up to 20 pages/mo</span>; $49/mo for 100 pages — email-first, no code.</li>
+        <li><b>Nanonets / Airparser</b>: <span class="hl">$100/mo</span> (100 credits) and <span class="hl">$33/mo</span> (100 credits, annual).</li>
+        <li><b>Open source</b>: <span class="hl">$0 — invoice2data + Camelot</span> (MIT), text PDFs only.</li>
+        <li><b>Rossum</b>: from <span class="hl">$18,000/year</span> — enterprise contract, quote only.</li>
+      </ul>
+    </div>
   </section>
 
   <section id="tools" class="switch">
@@ -78,37 +104,37 @@
         <tbody>
           <tr>
             <th scope="row"><a href="https://docparser.com/pricing/">Docparser</a></th>
-            <td>From $32.50/mo billed annually ($39/mo monthly) for 100 credits; higher tiers scale by credits</td>
+            <td>From <strong>$32.50/mo</strong> billed annually (<strong>$39/mo</strong> monthly) for 100 credits; higher tiers scale by credits</td>
             <td>Recurring document types — invoices, POs, statements — where you build a template once and export to Excel/Sheets/JSON.</td>
             <td>1 credit = one document up to 5 pages; the low rate needs annual billing; top tiers are quote-only.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://parseur.com/pricing">Parseur</a></th>
-            <td>Free tier (20 pages/mo); paid $49/mo (100 pages) up to $8,499/mo (250k pages); annual saves up to 25%</td>
+            <td>Free tier (20 pages/mo); paid <strong>$49/mo</strong> (100 pages) up to $8,499/mo (250k pages); annual saves up to 25%</td>
             <td>Email-first intake: forward invoices to a mailbox, get structured rows out, no code.</td>
             <td>Unused credits expire each billing period; prices exclude VAT/GST; a 3-page PDF consumes 3 credits.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://nanonets.com/pricing">Nanonets</a></th>
-            <td>$50 in free credits, then $100/mo for 100 credits; usage priced $0.02–$0.30 per block-run</td>
+            <td>$50 in free credits, then <strong>$100/mo</strong> for 100 credits; usage priced $0.02–$0.30 per block-run</td>
             <td>Workflow automation — classify, extract, route to ERP — scaled by volume.</td>
             <td>Per-block pricing is hard to model up front; &ldquo;under $2 per invoice&rdquo; is their own estimate.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://mindee.com/pricing">Mindee</a></th>
-            <td>Starter €44/mo billed annually (€529/yr); Pro €116/mo (€1393/yr); extra credits from $0.05; Enterprise custom</td>
+            <td>Starter <strong>€44/mo</strong> billed annually (€529/yr); Pro <strong>€116/mo</strong> (€1393/yr); extra credits from $0.05; Enterprise custom</td>
             <td>Developers embedding extraction into their own product via API.</td>
             <td>Credit math: 1 page = 1 credit, 1.5 with confidence score; Enterprise floor is 500,000+ credits/year.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://rossum.ai/pricing/">Rossum</a></th>
-            <td>&ldquo;Starting at $18,000 per year&rdquo; (Starter)</td>
+            <td>&ldquo;Starting at <strong>$18,000 per year</strong>&rdquo; (Starter)</td>
             <td>Larger AP teams that want an end-to-end workflow, not just parsing.</td>
             <td>No self-serve tier; everything is a tailored quote.</td>
           </tr>
           <tr>
             <th scope="row"><a href="https://airparser.com/pricing/">Airparser</a></th>
-            <td>$33/mo (100 credits), $49/mo (500), $249/mo (5,000) — billed annually; free trial 20 credits/mo</td>
+            <td><strong>$33/mo</strong> (100 credits), $49/mo (500), $249/mo (5,000) — billed annually; free trial 20 credits/mo</td>
             <td>GPT-style extraction from emails and PDF/image attachments, no code, with Python post-processing.</td>
             <td>Credits don&rsquo;t roll over; no PayPal or bank transfer; monthly billing costs ~17% more.</td>
           </tr>
@@ -120,6 +146,30 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="chartbox">
+      <h3>The monthly entry price, in plain terms</h3>
+      <p class="srcline">Monthly entry prices read 30 Sep 2026 (Docparser and Airparser billed annually).</p>
+      <svg viewBox="0 0 640 250" role="img" aria-label="Monthly entry prices: Parseur free 20 pages, Docparser 32 dollars 50, Airparser 33, Nanonets 100; Rossum and Docsumo quote-only.">
+        <g font-family="Georgia,serif">
+          <text x="8" y="42" font-size="14" fill="#1a1a1a">Parseur · free tier</text>
+          <rect x="205" y="28" width="4" height="22" rx="3" fill="#0e7b52"/>
+          <text x="218" y="45" font-size="13" fill="#0e7b52" font-weight="bold">free · 20 pages/mo</text>
+          <text x="8" y="82" font-size="14" fill="#1a1a1a">Docparser (annual)</text>
+          <rect x="205" y="68" width="126.8" height="22" rx="3" fill="#0e7b52"/>
+          <text x="344.8" y="85" font-size="13" fill="#0e7b52" font-weight="bold">32.50 $/mo</text>
+          <text x="8" y="122" font-size="14" fill="#1a1a1a">Airparser (annual)</text>
+          <rect x="205" y="108" width="128.7" height="22" rx="3" fill="#0e7b52"/>
+          <text x="346.7" y="125" font-size="13" fill="#0e7b52" font-weight="bold">33 $/mo</text>
+          <text x="8" y="162" font-size="14" fill="#1a1a1a">Nanonets</text>
+          <rect x="205" y="148" width="390.0" height="22" rx="3" fill="#b58900"/>
+          <text x="587.0" y="165" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="end">100 $/mo</text>
+          <text x="8" y="202" font-size="14" fill="#1a1a1a">Rossum · Docsumo</text>
+          <rect x="205" y="188" width="4" height="22" rx="3" fill="#9aa09b"/>
+          <text x="218" y="205" font-size="13" fill="#57523f">quote — Rossum from $18,000/yr</text>
+        </g>
+      </svg>
+      <p class="footnote">Rossum sells annual contracts &ldquo;starting at $18,000 per year&rdquo; — off any monthly scale, left without a proportional bar; Docsumo quotes only. No invented figures.</p>
     </div>
     <p class="footnote">Also checked: Klippa — its pricing page now returns a 404 after the move into Doxis; no public price list found. Check the site.</p>
   </section>
@@ -133,6 +183,11 @@
 
   <section id="checklist" class="switch">
     <h2>Before you buy: the 3 questions</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Volume</b><span>count the <strong>credits you really consume</strong> — a 3-page PDF = 3 credits, an email = 1.</span></div>
+      <div class="step"><b>2 · Formats</b><span>text PDFs, scans, photos? <strong>Test your worst scan</strong> — support varies widely.</span></div>
+      <div class="step"><b>3 · Exit</b><span>check <strong>exports, retention, and what happens when credits run out</strong> before committing.</span></div>
+    </div>
     <ol class="steps">
       <li><strong>Volume — and how is it counted?</strong> Most vendors count credits per page or per document (Parseur: an email = 1 credit, a 3-page PDF = 3 credits); Nanonets counts per block-run in a workflow.</li>
       <li><strong>Formats.</strong> Text PDFs, scans, photos, emails? Check the vendor&rsquo;s supported list and test your worst scan — support varies widely.</li>

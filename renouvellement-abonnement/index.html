@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Renouvellement automatique : trouver votre date limite avant la date anniversaire — Honest Switch</title>
+<meta name="description" content="La reconduction tacite d'un abonnement annuel se joue sur deux dates : la date anniversaire et le préavis écrit dans les conditions. Voici comment les retrouver, ce que la loi impose à l'éditeur — et ne lui impose pas — avec un calculateur qui tourne dans votre navigateur.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/renouvellement-abonnement/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/renouvellement-abonnement/">
+<meta property="og:title" content="Renouvellement automatique : trouver votre date limite avant la date anniversaire — Honest Switch">
+<meta property="og:description" content="Deux dates décident d'un prélèvement : la date anniversaire et la date limite de résiliation. Un calcul local, sans rien envoyer, plus ce que la loi impose réellement.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Renouvellement automatique : la date limite avant la date anniversaire — Honest Switch">
+<meta name="twitter:description" content="Le mécanisme, les verbatims, les textes de loi, et un calculateur qui ne quitte pas votre navigateur.">
+<meta name="twitter:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* Visuels propres à cette page — mêmes couleurs que le site, aucun chiffre inventé */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .tool{border:1px solid rgba(14,123,82,.35);border-radius:12px;background:#fff;padding:18px;margin:18px 0}
+  .tool label{display:block;font-size:.85rem;color:#57523f;margin:12px 0 4px}
+  .tool input[type=text],.tool input[type=date],.tool input[type=number]{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid rgba(0,0,0,.2);border-radius:8px;font:inherit}
+  .tool .row{display:flex;flex-wrap:wrap;gap:14px}
+  .tool .row>div{flex:1 1 180px}
+  .tool button{margin-top:14px;background:#0e7b52;color:#fff;border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:700;cursor:pointer}
+  .tool button.ghost{background:transparent;color:#0e7b52;border:1px solid rgba(14,123,82,.5)}
+  .tool .out{margin-top:14px;font-size:.95rem}
+  .tool .out b{color:#0e7b52}
+  .stamp{display:inline-block;font-size:.78rem;color:#57523f;background:#f2f7f4;border-radius:20px;padding:4px 12px;margin-top:6px}
+  .stars-in{display:flex;gap:4px;margin:8px 0 4px}
+  .stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+  .stars-in .star:hover{transform:scale(1.15)}
+  .stars-in .star.on{color:#ffb400}
+  .stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+  .avis{border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:14px;margin:12px 0;background:#fbfbf9}
+  .avis .stars{color:#ffb400;letter-spacing:2px}
+  .hint{font-size:.84rem;color:#57523f}
+  .card{border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0}
+  .card input,.card textarea{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid rgba(0,0,0,.2);border-radius:8px;font:inherit;margin-top:8px}
+  .card button{margin-top:10px;background:#0e7b52;color:#fff;border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:700;cursor:pointer}
+  .tblwrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;margin:14px 0}
+  th,td{border:1px solid rgba(0,0,0,.12);padding:9px 10px;text-align:left;font-size:.94rem;vertical-align:top}
+  th{background:#f2f7f4}
+  caption{caption-side:top;text-align:left;font-size:.83rem;color:#57523f;padding-bottom:8px}
+
+/* --- Illustration de tete + dynamique douce (meme traitement que les autres guides) --- */
+.hero-img{display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px}
+@keyframes hspulse{0%{opacity:.35}50%{opacity:1}100%{opacity:.35}}
+.hero-img .pulse{animation:hspulse 3.4s ease-in-out infinite}
+.dyn{transition:opacity .55s ease,transform .55s ease}
+html.js .dyn{opacity:0;transform:translateY(16px)}
+html.js .dyn.in{opacity:1;transform:none}
+.chip{transition:transform .15s ease}
+.chip:hover{transform:translateY(-2px)}
+.flow3 .step{transition:transform .18s ease,box-shadow .18s ease}
+.flow3 .step:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(14,123,82,.14)}
+.tblwrap tbody tr{transition:background .15s ease}
+.tblwrap tbody tr:hover{background:#f2f8f4}
+@media (prefers-reduced-motion: reduce){
+  .hero-img .pulse{animation:none}
+  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .chip:hover,.flow3 .step:hover{transform:none}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Mon abonnement annuel s'est renouvelé sans que je sois prévenu. Que puis-je faire ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Tout dépend de votre statut. Si vous êtes particulier, la loi impose à l'éditeur de vous informer par écrit entre trois mois et un mois avant le terme de la période de rejet de la reconduction (article L215-1 du Code de la consommation). Si cette information n'a pas été envoyée, vous pouvez mettre gratuitement fin au contrat à tout moment à compter de la reconduction, et les avances versées sont remboursées dans un délai de trente jours. Si vous êtes une entreprise, ce texte ne s'applique pas par défaut : ce sont les conditions générales que vous avez acceptées qui fixent le préavis. Dans ce cas, écrivez avant la date limite : c'est la preuve d'antériorité qui compte."}},
+    {"@type": "Question", "name": "Quelle différence entre la date anniversaire et la date limite de résiliation ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "La date anniversaire est le jour où l'abonnement se reconduit : c'est à cette date que le prélèvement est déclenché. La date limite de résiliation est la date avant laquelle votre demande doit être parvenue à l'éditeur : elle se calcule en retirant le préavis écrit dans les conditions générales (souvent plusieurs jours, parfois trente ou soixante jours) de la date anniversaire. La date qui vous intéresse est la seconde, et elle est presque toujours plus tôt que ce que vous imaginez."}},
+    {"@type": "Question", "name": "La résiliation en trois clics s'applique-t-elle aux professionnels ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Le dispositif de l'article L215-1-1 du Code de la consommation, obligatoire depuis le 1er juin 2023, impose une fonctionnalité de résiliation en ligne gratuite et permanente pour les contrats pouvant être conclus par voie électronique. Il vise les consommateurs et les clients non professionnels ; un professionnel agissant dans le cadre de son activité n'y est pas couvert par défaut. Il ne modifie de toute façon ni la durée d'engagement ni le préavis : il simplifie le moyen de résilier, pas les conditions de fond."}},
+    {"@type": "Question", "name": "Le calculateur envoie-t-il mes données quelque part ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. Le calcul se fait intégralement dans votre navigateur, en JavaScript, sans requête réseau. Les informations que vous saisissez (nom de l'abonnement, date, préavis) ne quittent pas votre appareil et ne sont pas enregistrées. Le fichier de rappel que vous téléchargez est fabriqué localement."}},
+    {"@type": "Question", "name": "Les liens de cette page sont-ils affiliés ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. Au 1er octobre 2026, aucun lien de cette page ne nous rémunère et nous ne vendons aucun abonnement. Les prix cités sont ceux affichés par les éditeurs eux-mêmes, à la date indiquée, pour chiffrer ce qu'une reconduction met en jeu. Si un lien affilié apparaissait un jour, il serait étiqueté sur place et l'encadré d'honnêteté porterait la date."}}
+  ]
+}
+</script>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#pourquoi">Pourquoi</a>
+      <a href="#enjeu">Ce qui est prélevé</a>
+      <a href="#outil">Votre date limite</a>
+      <a href="#loi">Ce que dit la loi</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="dyn hero">
+    <p class="kicker">Abonnements annuels · avis lus le 1 oct. 2026 · aucune affiliation</p>
+    <h1>Un abonnement annuel ne se résilie pas le jour où vous le décidez. Il se résilie <span class="hl">avant une date que personne ne vous rappelle</span>.</h1>
+    <p class="lede">Dans les avis publics d'utilisateurs français, la même phrase revient : le prélèvement est arrivé après la date limite, et « ce n'est pas annulable ». Ce n'est pas une question de bonne volonté de l'éditeur : c'est une mécanique de dates. Il y en a deux — la <span class="hl">date anniversaire</span>, où l'argent part, et la <span class="hl">date limite de résiliation</span>, calculée en retirant le préavis écrit dans les conditions. Cette page explique le mécanisme, cite les textes qui protègent réellement (et ceux qui ne protègent pas), et vous laisse calculer vos deux dates dans un outil qui ne sort pas de votre navigateur.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — 1 oct. 2026</span>
+      <span class="chip">Aucun formulaire envoyé à un tiers</span>
+      <span class="chip">Cas documentés + textes officiels</span>
+    </p>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="ra-ttl ra-desc" class="hero-img">
+      <title id="ra-ttl">Deux dates décident d'un prélèvement : la date anniversaire et la date limite de résiliation</title>
+      <desc id="ra-desc">Sur une ligne de temps, la date limite de résiliation se situe avant la date anniversaire ; le préavis écrit dans les conditions générales est la distance entre les deux. Après la date anniversaire, le prélèvement part et l'annulation devient un litige.</desc>
+      <defs>
+        <linearGradient id="rabg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#eef6f1"/><stop offset="1" stop-color="#e0efe6"/>
+        </linearGradient>
+      </defs>
+      <rect width="760" height="300" rx="18" fill="url(#rabg)"/>
+      <line x1="60" y1="150" x2="700" y2="150" stroke="#0e7b52" stroke-width="3" opacity=".35"/>
+      <circle cx="190" cy="150" r="11" fill="#ffffff" stroke="#0e7b52" stroke-width="4"/>
+      <text x="190" y="118" font-size="13" fill="#1a1a1a" text-anchor="middle" font-family="Georgia,serif">Date limite</text>
+      <text x="190" y="136" font-size="12" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif">de résiliation</text>
+      <circle cx="560" cy="150" r="11" fill="#0e7b52"/>
+      <text x="560" y="118" font-size="13" fill="#1a1a1a" text-anchor="middle" font-family="Georgia,serif">Date anniversaire</text>
+      <text x="560" y="136" font-size="12" fill="#8a1f1f" text-anchor="middle" font-family="Georgia,serif">prélèvement</text>
+      <path d="M201 172 H 549" stroke="#0e7b52" stroke-width="4" stroke-dasharray="9 8" opacity=".7"/>
+      <text x="375" y="196" font-size="12.5" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">Préavis écrit dans les conditions générales</text>
+      <path d="M560 172 V 246" stroke="#8a1f1f" stroke-width="3" stroke-dasharray="6 6" opacity=".55"/>
+      <text x="560" y="268" font-size="12.5" fill="#8a1f1f" text-anchor="middle" font-family="Georgia,serif">Après cette date : litige, pas résiliation</text>
+      <text x="210" y="268" font-size="12.5" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif">C'est ici qu'on agit</text>
+      <text x="380" y="48" font-size="13" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif">Ce qui décide, ce n'est pas votre intention : c'est une date.</text>
+      <text x="380" y="72" font-size="12" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">Schéma de lecture, sans chiffre : chaque éditeur fixe son propre préavis.</text>
+    </svg>
+
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><b>Deux dates, pas une</b> : la <span class="hl">date anniversaire</span> (le prélèvement) et la <span class="hl">date limite de résiliation</span> (anniversaire moins le préavis). C'est la seconde qui compte, et elle arrive toujours plus tôt.</li>
+        <li><b>Le préavis est écrit, pas deviné</b> : il figure dans les conditions générales de l'éditeur. Tant que vous ne l'avez pas lu, vous ne connaissez pas votre date limite.</li>
+        <li><b>Ce qu'on lit dans les avis</b> : sur la fiche publique d'un éditeur français, des dirigeants de TPE racontent la même séquence — désactivation effectuée début janvier, <span class="hl">prélèvement déjà parti</span> parce que la reconduction était intervenue quelques jours avant.</li>
+        <li><b>La loi protège les particuliers</b> : information obligatoire entre 3 mois et 1 mois avant la date limite, sinon résiliation gratuite à tout moment (art. L215-1, Code de la consommation). <span class="hl">Par défaut, elle ne protège pas une entreprise</span> dans le cadre de son activité.</li>
+        <li><b>Zéro donnée envoyée</b> : le calculateur de cette page tourne en local et produit un rappel calendrier (.ics) que vous gardez.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pourquoi" class="dyn switch">
+    <h2>Pourquoi cette page existe</h2>
+    <div class="why">
+      <p>Ce besoin a été relevé dans des avis publics d'utilisateurs français sur la fiche Trustpilot France d'un éditeur de logiciel de facturation, filtre 1 étoile, le 1<sup>er</sup> octobre 2026. Ce ne sont pas des plaintes sur le produit : ce sont trois récits de la même mécanique de dates, à un an d'intervalle.</p>
+    </div>
+    <blockquote class="quotebox">&ldquo;Client Evoliz depuis un an, j'ai été confronté cette année à un renouvellement automatique de mon abonnement, alors même que je ne souhaitais plus reconduire le service. Aucun rappel préalable n'est envoyé avant l'échéance, et la résiliation doit impérativement être effectuée plusieurs jours avant la date anniversaire, faute de quoi le renouvellement est appliqué automatiquement.&rdquo;<span class="qsrc">— Avis vérifié, 1/5, 16 janv. 2026 · fr.trustpilot.com/review/evoliz.com, lu le 1 oct. 2026</span></blockquote>
+    <blockquote class="quotebox">&ldquo;Je n'ai pas été prévenu au préalable du renouvellement de mon abonnement. Je l'annule sur mon espace mais le prélèvement est toujours prévu.&rdquo;<span class="qsrc">— Avis vérifié, 1/5, 30 janv. 2026 · même source, même lecture</span></blockquote>
+    <div class="why">
+      <p>La réponse publique de l'éditeur, sous ce même avis, raconte la chronologie mieux que n'importe quel commentaire — c'est l'éditeur lui-même qui la donne :</p>
+    </div>
+    <blockquote class="quotebox">&ldquo;Cette désactivation a eu le lieu le 26/01, soit après la date de reconduction de votre abonnement actuel. Vous avez reçu un mail vous informant de cette reconduction de votre abonnement le 15 décembre dernier. Aussi, il n'est malheureusement pas possible d'annuler le prélèvement qui a déjà eu lieu.&rdquo;<span class="qsrc">— Réponse publique de l'éditeur, 30 janv. 2026 · fr.trustpilot.com/review/evoliz.com, lue le 1 oct. 2026</span></blockquote>
+    <blockquote class="quotebox">&ldquo;Dernier incident en date : reconduction tacite de l'abonnement annuel, sans aucun avertissement. Le montant a été prélevé sans mon accord explicite.&rdquo;<span class="qsrc">— Avis vérifié, 1/5, 27 juin 2025 · même source, même lecture</span></blockquote>
+    <div class="why">
+      <p>Ce que ces trois récits demandent n'est pas une alternative à un logiciel précis — aucune des personnes concernées ne cherche à changer d'outil. Elles cherchent à <strong>ne plus se faire prélever par surprise</strong>. Cette page ne vend rien et ne recommande aucun éditeur : elle donne les dates, la méthode et les textes.</p>
+    </div>
+  </section>
+
+  <section id="mecanique" class="dyn switch">
+    <h2>La mécanique, en trois temps</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · La reconduction est tacite</b><span>Le contrat prévoit qu'il repart pour une durée égale s'il n'est pas dénoncé. Personne n'a besoin de vous demander votre accord : votre silence est l'accord.</span></div>
+      <div class="step"><b>2 · Le préavis court avant l'échéance</b><span>Votre demande doit parvenir à l'éditeur avant un délai fixé dans les conditions générales — pas le jour anniversaire. C'est là que tout se perd.</span></div>
+      <div class="step"><b>3 · Après, c'est un litige, pas une résiliation</b><span>Une fois la reconduction intervenue, la demande devient une réclamation commerciale. Dans le cas public cité plus haut, la réponse a été : « il n'est pas possible d'annuler le prélèvement ».</span></div>
+    </div>
+  </section>
+
+  <section id="enjeu" class="dyn switch">
+    <h2>Ce qu'une reconduction met réellement en jeu</h2>
+    <div class="why">
+      <p>Un abonnement annuel n'est pas un petit prélèvement mensuel oublié : c'est la totalité de l'année qui part d'un coup. Les montants ci-dessous sont ceux affichés par l'éditeur cité dans les avis, sur sa propre page tarifaire, <strong>le 1<sup>er</sup> octobre 2026</strong> — c'est un ordre de grandeur réel, pas une moyenne de marché.</p>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <caption>Prix affichés par l'éditeur sur sa page tarifaire publique, relevés le 1<sup>er</sup> oct. 2026 (HT). Colonne de droite : ce qui est débité si la reconduction passe.</caption>
+        <thead>
+          <tr><th scope="col">Formule affichée</th><th scope="col">Au mois</th><th scope="col">Engagement annuel affiché</th><th scope="col">Montant annuel en jeu</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Essentielle</th><td>29 € HT / mois</td><td><strong>290 € / an</strong> (prix plein barré : 348 € / an, « 2 mois offerts »)</td><td><strong>290 €</strong> prélevés sur l'année, en une fois à la reconduction</td></tr>
+          <tr><th scope="row">Avancée</th><td>49 € HT / mois</td><td><strong>490 € / an</strong> (prix plein barré : 588 € / an)</td><td><strong>490 €</strong> prélevés sur l'année, en une fois à la reconduction</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="chartbox">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 260" role="img" aria-labelledby="bar-ttl bar-desc">
+        <title id="bar-ttl">Montants annuels réellement affichés par l'éditeur, en euros</title>
+        <desc id="bar-desc">Quatre barres proportionnelles : 290 euros et 490 euros pour les engagements annuels, 348 euros et 588 euros pour les mêmes formules facturées au mois sur douze mois. Les hauteurs sont proportionnelles aux prix, l'échelle indique 0 euro à la base.</desc>
+        <rect width="700" height="260" rx="14" fill="#ffffff"/>
+        <line x1="70" y1="210" x2="660" y2="210" stroke="#57523f" stroke-width="2"/>
+        <text x="70" y="232" font-size="11.5" fill="#57523f" font-family="Georgia,serif">0 €</text>
+        <text x="660" y="232" font-size="11.5" fill="#57523f" text-anchor="end" font-family="Georgia,serif">Échelle : 588 € = 150 px (1 px ≈ 3,9 €) · montants lus le 1 oct. 2026</text>
+        <!-- échelle : 588 € = 150 px, base à zéro -->
+        <rect x="130" y="136" width="90" height="74" fill="#0e7b52"/>
+        <text x="175" y="126" font-size="13" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">290 €</text>
+        <text x="175" y="206" font-size="11.5" fill="#1a1a1a" text-anchor="middle" font-family="Georgia,serif">Annuel Essentielle</text>
+        <rect x="250" y="121" width="90" height="89" fill="#8fbfa8"/>
+        <text x="295" y="113" font-size="13" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">348 €</text>
+        <text x="295" y="206" font-size="11.5" fill="#1a1a1a" text-anchor="middle" font-family="Georgia,serif">Même offre au mois</text>
+        <rect x="390" y="85" width="90" height="125" fill="#0e7b52"/>
+        <text x="435" y="77" font-size="13" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">490 €</text>
+        <text x="435" y="206" font-size="11.5" fill="#1a1a1a" text-anchor="middle" font-family="Georgia,serif">Annuel Avancée</text>
+        <rect x="510" y="60" width="90" height="150" fill="#8fbfa8"/>
+        <text x="555" y="52" font-size="13" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">588 €</text>
+        <text x="555" y="206" font-size="11.5" fill="#1a1a1a" text-anchor="middle" font-family="Georgia,serif">Même offre au mois</text>
+        <text x="350" y="26" font-size="12.5" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">Prix affichés par l'éditeur cité dans les avis ci-dessus — relevés sur sa page tarifaire le 1 oct. 2026.</text>
+      </svg>
+      <p class="footnote">Barres proportionnelles aux prix réellement lus, base à zéro. Aucun autre montant n'a été ajouté : seuls les prix effectivement affichés sur la page publique consultée figurent ici, rien n'est estimé ni moyenné. Ces montants servent uniquement à dimensionner l'enjeu d'une reconduction tacite — ils ne constituent ni une recommandation, ni une offre.</p>
+    </div>
+    <div class="why">
+      <p>Sur la même fiche publique, au 1<sup>er</sup> octobre 2026, le site affichait <span class="hl">341 avis</span>, dont <span class="hl">112 reçus au cours des 12 derniers mois</span>, avec une répartition de <span class="hl">65 % d'avis à 5 étoiles</span> et <span class="hl">7 % à 1 étoile</span> — soit <span class="hl">12 %</span> d'avis à 1 ou 2 étoiles. Ces chiffres sont ceux de la page elle-même, lus le même jour. Ils ne disent pas que l'éditeur est mauvais : ils disent que le sujet des dates laisse suffisamment de traces publiques pour qu'on en fasse une page.</p>
+    </div>
+  </section>
+
+  <section id="outil" class="dyn switch">
+    <h2>Calculez vos deux dates — et gardez le rappel</h2>
+    <div class="why">
+      <p>Aucun calcul n'est envoyé nulle part : tout se passe dans votre navigateur. Remplissez une ligne par abonnement annuel dont vous ne connaissez pas la date limite. Si vous ne savez pas quel préavis s'applique, ouvrez les conditions générales de l'éditeur et cherchez les mots « reconduction », « tacite », « préavis » — la réponse y est écrite.</p>
+    </div>
+    <div class="tool">
+      <label for="nom">Nom de l'abonnement (ex. « Logiciel de facturation »)</label>
+      <input type="text" id="nom" placeholder="Nom de l'abonnement">
+      <div class="row">
+        <div>
+          <label for="anniv">Date anniversaire (le jour où il se reconduit)</label>
+          <input type="date" id="anniv">
+        </div>
+        <div>
+          <label for="preavis">Préavis écrit dans les conditions, en jours</label>
+          <input type="number" id="preavis" min="0" max="365" placeholder="ex. 30 — à lire, pas à deviner">
+        </div>
+      </div>
+      <label style="display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:.88rem;color:#1a1a1a">
+        <input type="checkbox" id="particulier" style="width:auto;margin-top:3px">
+        <span>Je suis un particulier, une association ou une structure non professionnelle : la loi Chatel s'applique à mon contrat (information obligatoire entre 3 mois et 1 mois avant la date limite).</span>
+      </label>
+      <button type="button" id="calc">Calculer mes dates</button>
+      <button type="button" class="ghost" id="ics" disabled>Télécharger le rappel (.ics)</button>
+      <div class="out" id="out" aria-live="polite"></div>
+      <p class="stamp">Calcul local · aucune donnée transmise · aucune inscription</p>
+    </div>
+    <p class="footnote">Le fichier .ics s'importe dans Google Agenda, Outlook, Apple Calendrier ou n'importe quel agenda compatible. Il contient deux rappels : un pour préparer la résiliation, un pour la date limite.</p>
+  </section>
+
+  <section id="loi" class="dyn switch">
+    <h2>Ce que la loi fait pour vous — et ce qu'elle ne fait pas</h2>
+    <div class="why">
+      <p>Une partie de cette protection existe, elle est précise, et elle est presque toujours oubliée au moment où le prélèvement tombe. L'autre partie n'existe pas, et c'est important de le savoir avant de compter dessus.</p>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <caption>Textes en vigueur, vérifiés le 1<sup>er</sup> oct. 2026 sur Légifrance, service-public.fr et economie.gouv.fr</caption>
+        <thead>
+          <tr><th scope="col">Ce que dit le texte</th><th scope="col">Qui est concerné</th><th scope="col">Ce que ça change pour vous</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Information obligatoire entre <strong>3 mois et 1 mois</strong> avant la date limite de non-reconduction, par écrit, en mentionnant cette date dans un encadré apparent. Sans cette information : résiliation gratuite possible à tout moment dès la reconduction, et remboursement des avances sous 30 jours.<br><span class="hint">Art. L215-1 du Code de la consommation (issu de la loi Chatel n° 2005-67 du 28 janvier 2005)</span></th>
+            <td>Les <strong>consommateurs</strong> — et, par extension (art. L215-3), les <strong>non-professionnels</strong>.</td>
+            <td>Si vous êtes particulier, ce délai est votre filet : cherchez dans votre boîte mail le message envoyé entre 3 mois et 1 mois avant la date limite. S'il n'existe pas, écrivez en citant le texte.</td>
+          </tr>
+          <tr>
+            <th scope="row">Fonctionnalité de résiliation en ligne <strong>gratuite, directe et permanente</strong> (mention « résilier votre contrat »), sans imposer la création d'un espace personnalisé.<br><span class="hint">Art. L215-1-1 ; loi n° 2022-1158 du 16 août 2022 ; décret n° 2023-417 du 31 mai 2023, applicable depuis le 1<sup>er</sup> juin 2023</span></th>
+            <td>Contrats pouvant être conclus par voie électronique, conclus par des consommateurs ou des clients non professionnels.</td>
+            <td>Vous ne devriez pas avoir à écrire un courrier ni à téléphoner. Attention : ce dispositif ne change <strong>ni la durée d'engagement ni le préavis</strong> — il simplifie le moyen de résilier, pas la date.</td>
+          </tr>
+          <tr>
+            <th scope="row">Reconduction tacite d'un contrat professionnel : <strong>aucune fenêtre d'information n'est imposée par défaut</strong>. Ce sont les conditions générales acceptées qui fixent le préavis, la durée et la date limite.<br><span class="hint">Champ d'application de l'art. L215-1 : les professionnels agissant dans le cadre de leur activité ne sont pas couverts par défaut</span></th>
+            <td>Entreprises, indépendants et TPE <strong>dans le cadre de leur activité professionnelle</strong>.</td>
+            <td>C'est votre cas le plus probable, et c'est le plus exposé : personne ne vous préviendra. La seule défense est de connaître par écrit votre date limite avant qu'elle passe — d'où le calculateur ci-dessus.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="footnote">Cette page ne constitue pas un conseil juridique. Les textes font foi, et l'appréciation d'une situation particulière appartient à un professionnel du droit. Ce qui est certain : plus tôt vous écrivez, plus votre position est simple.</p>
+  </section>
+
+  <section id="checklist" class="dyn switch">
+    <h2>Avant la date anniversaire, dans cet ordre</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Retrouver</b><span>Date anniversaire, puis préavis : les deux vont ensemble. L'une sans l'autre ne donne aucune date limite.</span></div>
+      <div class="step"><b>2 · Écrire</b><span>Une demande de non-reconduction datée, envoyée avant la date limite, sur un canal qui laisse une trace.</span></div>
+      <div class="step"><b>3 · Conserver la preuve</b><span>Un accusé de réception ou un ticket suffit. C'est la seule pièce qui vous servira si le prélèvement part quand même.</span></div>
+    </div>
+    <ul class="steps">
+      <li><strong>Ouvrez les conditions générales</strong> et cherchez le mot « reconduction », « tacite » ou « préavis ». Notez le nombre de jours : il est rarement de zéro.</li>
+      <li><strong>Calculez la date limite</strong> avec l'outil ci-dessus, puis placez les deux rappels dans votre agenda. Une date qu'on n'a pas écrite quelque part n'existe pas.</li>
+      <li><strong>Vérifiez vos précédents prélèvements annuels.</strong> La date anniversaire de cette année est presque toujours celle de l'an dernier : votre relevé bancaire vous la donne.</li>
+      <li><strong>Écrivez avant la date limite</strong>, même si vous hésitez encore. Demander la non-reconduction à temps est sans conséquence ; la demander trop tard est un litige.</li>
+      <li><strong>Gardez le message d'information</strong> que l'éditeur vous envoie — ou notez son absence. C'est cette absence qui fait toute la différence devant la loi pour un particulier.</li>
+      <li><strong>Exportez vos données avant de partir.</strong> Conditions d'export et de restitution : vérifiez-les avant d'envoyer votre demande, pas après.</li>
+    </ul>
+  </section>
+
+  <section id="faq" class="dyn switch">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details><summary>Je n'ai jamais reçu de rappel. Est-ce que c'est légal ?</summary><p>Pour un particulier, non : la loi impose une information écrite entre 3 mois et 1 mois avant la date limite de non-reconduction (art. L215-1). Sans elle, vous pouvez résilier gratuitement à tout moment à partir de la reconduction. Pour une entreprise dans le cadre de son activité, la question ne se pose pas dans ces termes : le préavis des conditions générales s'applique, et le fait de ne pas avoir reçu de rappel ne suffit pas à écarter le prélèvement.</p></details>
+      <details><summary>J'ai désactivé l'abonnement sur mon espace client, et le prélèvement est parti quand même. Pourquoi ?</summary><p>Parce que la désactivation est intervenue après la date de reconduction. C'est mot pour mot la chronologie qu'un éditeur a lui-même décrite publiquement : message d'information envoyé le 15 décembre, désactivation faite le 26 janvier, reconduction entre les deux, prélèvement non annulable. Ce qui compte n'est pas le geste, c'est le jour où il est fait.</p></details>
+      <details><summary>Comment connaître le préavis si les conditions sont illisibles ?</summary><p>Commencez par l'espace client, section « abonnement » ou « facturation » : la date du prochain prélèvement et la condition de reconduction y sont souvent affichées. Ensuite, écrivez au support et demandez par écrit la date limite de non-reconduction de votre contrat — un éditeur organisé répond par un chiffre, et cette réponse devient votre preuve.</p></details>
+      <details><summary>La résiliation en ligne en trois clics résout le problème ?</summary><p>Elle le rend moins pénible, pas moins urgent. Le dispositif (art. L215-1-1, en vigueur depuis le 1<sup>er</sup> juin 2023) impose un bouton de résiliation simple et gratuit, mais il précise lui-même qu'il ne modifie pas le préavis ni l'engagement. Résilier en trois clics la veille au soir, quand le préavis est de trente jours, ne change rien au prélèvement.</p></details>
+      <details><summary>Faut-il résilier ou simplement désactiver le renouvellement ?</summary><p>Ce n'est pas la même chose selon les éditeurs, et c'est une source de litige. Demandez toujours la confirmation écrite de deux choses : la fin du contrat à la date d'échéance, et l'arrêt de tout prélèvement automatique. Si vous n'obtenez qu'une confirmation de « désactivation », considérez que rien n'est réglé jusqu'à la date anniversaire.</p></details>
+      <details><summary>Vous vendez quelque chose sur cette page ?</summary><p>Non. Il n'y a ni lien affilié, ni formulaire chez un tiers, ni abonnement à vendre. Le calculateur fonctionne chez vous et n'appelle aucun serveur. Nos autres pages expliquent comment nous gagnerons de l'argent le jour où un lien affilié existera, et il sera alors étiqueté sur place.</p></details>
+    </div>
+  </section>
+
+  <section id="honesty" class="dyn switch">
+    <h2>Comment cette page reste honnête</h2>
+    <ul class="honest-list">
+      <li><strong>Aucune affiliation.</strong> Aucun lien de cette page ne nous rémunère au 1<sup>er</sup> octobre 2026, et nous ne recommandons ici aucun éditeur. Le jour où cela changerait sur une autre page, elle serait étiquetée sur place et la page <a href="/honest-switch/about/">À propos</a> mise à jour.</li>
+      <li><strong>Aucun chiffre inventé.</strong> Les montants du graphique sont ceux affichés par l'éditeur sur sa page tarifaire le 1<sup>er</sup> octobre 2026 ; les pourcentages d'avis sont ceux affichés par la fiche publique le même jour. Ce qui n'a pas été lu n'est pas écrit.</li>
+      <li><strong>Les verbatims sont cités tels quels</strong>, avec la source, la date et le nom d'affichage, orthographe comprise.</li>
+      <li><strong>Aucune promesse de résultat.</strong> Cette page explique une mécanique de dates et reproduit des textes en vigueur ; elle ne garantit ni une résiliation, ni un remboursement.</li>
+      <li><strong>Erreur signalée, erreur corrigée</strong> : si une information de cette page est fausse ou périmée, écrivez-nous — la correction est publique.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="dyn switch">
+    <h2>Sources</h2>
+    <p class="srcline">Toutes les sources ci-dessous ont été ouvertes le 1<sup>er</sup> octobre 2026. Les dates en fin de ligne sont celles affichées par la source elle-même.</p>
+    <ul class="sources">
+      <li><a href="https://fr.trustpilot.com/review/evoliz.com?stars=1">fr.trustpilot.com — fiche « evoliz », avis filtrés 1 étoile</a> (avis du 27 juin 2025, 16 janv. 2026, 30 janv. 2026 ; réponse publique de l'éditeur du 30 janv. 2026 ; compteurs d'avis et répartition affichés sur la page).</li>
+      <li><a href="https://www.evoliz.com/tarifs/">evoliz.com — page tarifaire publique</a> (29 € HT/mois et 290 €/an « Essentielle » ; 49 € HT/mois et 490 €/an « Avancée » ; prix pleins barrés 348 € et 588 € ; « 2 mois offerts »), relevée le 1<sup>er</sup> oct. 2026.</li>
+      <li><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032226876/">Code de la consommation — article L215-1</a> (information entre trois mois et un mois avant le terme de la période autorisant le rejet de la reconduction ; résiliation gratuite à défaut ; remboursement des avances sous trente jours).</li>
+      <li><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032226886/">Code de la consommation — article L215-3</a> (champ d'application : consommateurs et non-professionnels ; les professionnels ne sont pas couverts par défaut).</li>
+      <li><a href="https://www.service-public.gouv.fr/particuliers/actualites/A16599">service-public.gouv.fr — « Contrat en ligne : résiliation en 3 clics »</a> et <a href="https://www.economie.gouv.fr/dgccrf/actualites-dgccrf/resiliation-des-contrats-quels-changements-pour-les-professionnels">economie.gouv.fr (DGCCRF)</a> (art. L215-1-1 ; loi n° 2022-1158 du 16 août 2022 ; décret n° 2023-417 du 31 mai 2023 ; « ne modifie pas les conditions de résiliation du contrat »).</li>
+      <li><a href="https://www.legifrance.gouv.fr/loda/id/JORFTEXT000047314374/">Décret n° 2023-182 du 16 mars 2023</a> (régime parallèle des contrats d'assurance, de prévoyance et de mutuelle : résiliation par voie électronique depuis le 1<sup>er</sup> juin 2023).</li>
+    </ul>
+    <p class="footnote">Les noms de formules et les montants cités appartiennent à l'éditeur mentionné et sont reproduits à titre de mesure, sans lien commercial. Cette page n'entretient aucune relation avec cet éditeur.</p>
+  </section>
+
+  <section id="avis" class="dyn switch">
+    <h2>⭐ Avis clients</h2>
+    <div id="reviews" style="margin:14px 0">
+      <div class="avis"><div class="stars">★★★★★</div><p>Des avis de dirigeants et d'indépendants réels, publiés après vérification. Chaque retour négatif est répondu publiquement — c'est comme ça qu'on s'améliore.</p></div>
+      <p class="hint">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div class="card">
+      <b>Cette page vous a servi ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:#57523f;font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle">
+            <button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button>
+            <button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button>
+            <button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button>
+            <button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button>
+            <button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button>
+          </div>
+          <input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required>
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required></textarea>
+        <button type="submit">Envoyer mon avis</button>
+      </form>
+      <p class="hint" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page d'information indépendante. Les dates, préavis et prix changent : relisez les conditions de votre éditeur et vérifiez vos propres relevés.</p>
+    <p>Mis à jour le 1 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.dyn');
+  var hero = document.querySelector('.hero.dyn');
+  if (hero) hero.classList.add('in');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});
+  for (var j = 0; j < items.length; j++) io.observe(items[j]);
+})();
+</script>
+
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+
+<script>
+/* ---------- calculateur de date limite : 100 % local, aucune requête ---------- */
+(function(){
+  var MS = 86400000;
+  var nom = document.getElementById('nom');
+  var anniv = document.getElementById('anniv');
+  var preavis = document.getElementById('preavis');
+  var particulier = document.getElementById('particulier');
+  var out = document.getElementById('out');
+  var btnIcs = document.getElementById('ics');
+  var lastPlan = null;
+
+  function fr(d){
+    return d.toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+  }
+  function iso(d){
+    var m = d.getMonth() + 1, j = d.getDate();
+    return d.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (j < 10 ? '0' + j : j);
+  }
+  function echappe(s){
+    return String(s || '').replace(/[\\;,]/g, function(c){ return '\\' + c; }).replace(/\n/g, '\\n');
+  }
+
+  function calcul(){
+    var d = anniv.value ? new Date(anniv.value + 'T00:00:00') : null;
+    var p = preavis.value === '' ? NaN : parseInt(preavis.value, 10);
+    if (!d || isNaN(d.getTime())){
+      out.innerHTML = '<span style="color:#8a1f1f">Entrez d\'abord la date anniversaire de l\'abonnement.</span>';
+      btnIcs.disabled = true; lastPlan = null; return;
+    }
+    if (isNaN(p) || p < 0){
+      out.innerHTML = '<span style="color:#8a1f1f">Entrez le préavis en jours lu dans les conditions générales (0 si le contrat n\'en prévoit aucun).</span>';
+      btnIcs.disabled = true; lastPlan = null; return;
+    }
+    var limite = new Date(d.getTime() - p * MS);
+    var alerte = new Date(limite.getTime() - 30 * MS);
+    var aujourdhui = new Date(); aujourdhui.setHours(0,0,0,0);
+    var joursRestants = Math.round((limite - aujourdhui) / MS);
+    var html = '';
+    html += '<p><b>Date limite de résiliation : ' + fr(limite) + '</b><br>'
+         +  'Date anniversaire (prélèvement) : ' + fr(d) + ' · préavis retenu : ' + p + ' jour(s).</p>';
+    if (joursRestants > 0){
+      html += '<p>Il vous reste <b>' + joursRestants + ' jour(s)</b> pour que votre demande de non-reconduction parvienne à l\'éditeur avant cette date.</p>';
+    } else {
+      html += '<p style="color:#8a1f1f">Cette date limite est déjà passée : pour ce cycle, la seule voie est une réclamation après prélèvement, pas une résiliation.</p>';
+    }
+    html += '<p>Rappel de préparation conseillé : ' + fr(alerte) + '.</p>';
+    if (particulier.checked){
+      var debut = new Date(limite.getTime() - 90 * MS);
+      var fin = new Date(limite.getTime() - 30 * MS);
+      html += '<p><b>Votre contrat relève de la loi Chatel (art. L215-1) :</b> l\'éditeur devait vous informer par écrit entre le ' + fr(debut) + ' et le ' + fr(fin) + '. Cherchez ce message dans votre boîte mail : s\'il n\'existe pas, vous pouvez mettre gratuitement fin au contrat à tout moment à partir de la reconduction.</p>';
+    } else {
+      html += '<p><b>Contrat professionnel :</b> aucune fenêtre d\'information ne vous est garantie. Ce sont les conditions générales qui fixent ce préavis — la seule protection est d\'agir avant la date limite, par écrit, avec une trace.</p>';
+    }
+    out.innerHTML = html;
+    lastPlan = {nom: nom.value || 'un abonnement', limite: limite, alerte: alerte, anniv: d, preavis: p};
+    btnIcs.disabled = false;
+  }
+
+  document.getElementById('calc').addEventListener('click', calcul);
+  [anniv, preavis, particulier, nom].forEach(function(el){
+    el.addEventListener('change', calcul);
+  });
+
+  btnIcs.addEventListener('click', function(){
+    if (!lastPlan) return;
+    var p = lastPlan;
+    var lignes = [];
+    lignes.push('BEGIN:VCALENDAR');
+    lignes.push('VERSION:2.0');
+    lignes.push('PRODID:-//Honest Switch//Renouvellement abonnement//FR');
+    lignes.push('CALSCALE:GREGORIAN');
+    lignes.push('BEGIN:VEVENT');
+    lignes.push('UID:hs-prep-' + iso(p.alerte) + '@honest-switch');
+    lignes.push('DTSTAMP:' + iso(new Date()).replace(/-/g,'') + 'T090000Z');
+    lignes.push('DTSTART;VALUE=DATE:' + iso(p.alerte).replace(/-/g,''));
+    lignes.push('DTEND;VALUE=DATE:' + iso(new Date(p.alerte.getTime() + MS)).replace(/-/g,''));
+    lignes.push('SUMMARY:' + echappe('J-30 : préparer la non-reconduction — ' + p.nom));
+    lignes.push('DESCRIPTION:' + echappe('Ouvrez les conditions générales, relisez le préavis, préparez votre demande écrite. Date limite : ' + iso(p.limite) + '.'));
+    lignes.push('END:VEVENT');
+    lignes.push('BEGIN:VEVENT');
+    lignes.push('UID:hs-limite-' + iso(p.limite) + '@honest-switch');
+    lignes.push('DTSTAMP:' + iso(new Date()).replace(/-/g,'') + 'T090000Z');
+    lignes.push('DTSTART;VALUE=DATE:' + iso(p.limite).replace(/-/g,''));
+    lignes.push('DTEND;VALUE=DATE:' + iso(new Date(p.limite.getTime() + MS)).replace(/-/g,''));
+    lignes.push('SUMMARY:' + echappe('DATE LIMITE : non-reconduction — ' + p.nom));
+    lignes.push('DESCRIPTION:' + echappe('Dernier jour pour que votre demande parvienne à l\'éditeur. Date anniversaire (prélèvement) : ' + iso(p.anniv) + ', préavis ' + p.preavis + ' jour(s). Envoyez sur un canal qui laisse une trace.'));
+    lignes.push('END:VEVENT');
+    lignes.push('END:VCALENDAR');
+    var blob = new Blob([lignes.join('\r\n')], {type:'text/calendar;charset=utf-8'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'rappel-non-reconduction.ics';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
+  });
+})();
+</script>
+
+<script>
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Renouvellement automatique des abonnements — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Renouvellement automatique des abonnements\n\nNote : " + sc + "/5\nLecteur : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)"
+  );
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+</body>
+</html>

@@ -35,6 +35,45 @@
   .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
   .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
   .flow3 .step span{font-size:.9rem}
+
+  /* --- illustrations (v2 : demande utilisateur — moins de pavés, plus d'images) --- */
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .fig.tight{padding:12px}
+  .fig.dark{background:#0f1a16}
+  .fig.dark h3{color:#7fd6ae}
+  .fig.dark figcaption{color:#a9c4b8}
+
+  /* --- dynamique (survols, flèches animées, apparitions) --- */
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .callout{transition:background .25s ease}
+  .callout:hover{background:#eef6f1}
+  .fig{transition:box-shadow .25s ease,transform .25s ease}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  .mile{animation:pulse 2.2s ease-in-out infinite;transform-origin:center}
+  @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  details{transition:background .25s ease,border-color .25s ease}
+  details:hover{background:#f7faf8}
+  details[open]{background:#f7faf8}
+  .flip{transition:transform .3s ease}
+  .fig:hover .flip{transform:translateY(-3px)}
+  @media (prefers-reduced-motion:reduce){
+    html.js .dyn{opacity:1;transform:none;transition:none}
+    .arrow,.mile{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover,.fig:hover{transform:none;box-shadow:none}
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -56,6 +95,7 @@
 </script>
 </head>
 <body>
+<script>document.documentElement.classList.add('js');</script>
 <a class="skip" href="#main">Aller au contenu</a>
 
 <header class="masthead">
@@ -81,50 +121,74 @@
       <span class="chip">Conditions lues le 1<sup>er</sup> oct. 2026</span>
     </p>
 
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="fe-ttl fe-desc" class="hero-img" style="display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px">
-      <title id="fe-ttl">Une facture passe d'une entreprise à une plateforme agréée, puis au client</title>
-      <desc id="fe-desc">Trois étapes reliées par des flèches : votre facture, la plateforme agréée, votre client — avec les deux échéances 2026 et 2027.</desc>
-      <defs>
-        <linearGradient id="febg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#eef6f1"/><stop offset="1" stop-color="#e0efe6"/>
-        </linearGradient>
-        <linearGradient id="fegrn" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#0e7b52"/><stop offset="1" stop-color="#0a5e3f"/>
-        </linearGradient>
-      </defs>
-      <rect width="760" height="300" rx="18" fill="url(#febg)"/>
-      <rect x="40" y="96" width="176" height="116" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="2"/>
-      <circle cx="74" cy="134" r="14" fill="url(#fegrn)"/>
-      <text x="74" y="140" font-size="15" fill="#fff" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">1</text>
-      <text x="100" y="130" font-size="14" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">Votre facture</text>
-      <text x="100" y="148" font-size="11.5" fill="#57523f" font-family="Georgia,serif">format structuré,</text>
-      <text x="100" y="163" font-size="11.5" fill="#57523f" font-family="Georgia,serif">mentions obligatoires,</text>
-      <text x="100" y="178" font-size="11.5" fill="#57523f" font-family="Georgia,serif">dont « TVA non applicable »</text>
-      <path d="M224 154 H 292" stroke="#0e7b52" stroke-width="4" fill="none"/>
-      <polygon points="290,147 306,154 290,161" fill="#0e7b52"/>
-      <rect x="310" y="96" width="176" height="116" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="2"/>
-      <circle cx="344" cy="134" r="14" fill="#4c9a75"/>
-      <text x="344" y="140" font-size="15" fill="#fff" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">2</text>
-      <text x="370" y="130" font-size="14" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">Plateforme agréée</text>
-      <text x="370" y="148" font-size="11.5" fill="#57523f" font-family="Georgia,serif">émet, transmet,</text>
-      <text x="370" y="163" font-size="11.5" fill="#57523f" font-family="Georgia,serif">reçoit, puis déclare</text>
-      <text x="370" y="178" font-size="11.5" fill="#57523f" font-family="Georgia,serif">à l'administration</text>
-      <path d="M494 154 H 562" stroke="#0e7b52" stroke-width="4" fill="none"/>
-      <polygon points="560,147 576,154 560,161" fill="#0e7b52"/>
-      <rect x="580" y="96" width="140" height="116" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="2"/>
-      <circle cx="612" cy="134" r="14" fill="url(#fegrn)"/>
-      <text x="612" y="140" font-size="15" fill="#fff" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">3</text>
-      <text x="636" y="130" font-size="14" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">Votre client</text>
-      <text x="636" y="148" font-size="11.5" fill="#57523f" font-family="Georgia,serif">reçoit sur sa</text>
-      <text x="636" y="163" font-size="11.5" fill="#57523f" font-family="Georgia,serif">propre plateforme</text>
-      <text x="40" y="248" font-size="13" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">1<tspan font-size="10" dy="-4">er</tspan><tspan dy="4"> septembre 2026</tspan></text>
-      <text x="250" y="248" font-size="12.5" fill="#57523f" font-family="Georgia,serif">recevoir devient obligatoire pour tout le monde</text>
-      <text x="40" y="274" font-size="13" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">1<tspan font-size="10" dy="-4">er</tspan><tspan dy="4"> septembre 2027</tspan></text>
-      <text x="250" y="274" font-size="12.5" fill="#57523f" font-family="Georgia,serif">émettre devient obligatoire pour les micro-entreprises</text>
-    </svg>
+    <div class="fig dyn">
+      <h3>Le trajet d'une facture, en une image</h3>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="fe-ttl fe-desc">
+        <title id="fe-ttl">Une facture passe d'une entreprise à une plateforme agréée, puis au client</title>
+        <desc id="fe-desc">Trois blocs reliés par des flèches animées : votre facture, la plateforme agréée, votre client — avec les deux échéances 2026 et 2027 sous les blocs.</desc>
+        <defs>
+          <linearGradient id="febg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#eef6f1"/><stop offset="1" stop-color="#e0efe6"/>
+          </linearGradient>
+          <linearGradient id="fegrn" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0e7b52"/><stop offset="1" stop-color="#0a5e3f"/>
+          </linearGradient>
+        </defs>
+        <rect width="760" height="300" rx="18" fill="url(#febg)"/>
+
+        <g class="flip">
+          <rect x="30" y="70" width="200" height="150" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="2"/>
+          <circle cx="60" cy="102" r="13" fill="url(#fegrn)"/>
+          <text x="60" y="107" font-size="14" fill="#fff" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">1</text>
+          <text x="82" y="100" font-size="13" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">Votre facture</text>
+          <text x="82" y="118" font-size="11" fill="#57523f" font-family="Georgia,serif">format structuré,</text>
+          <text x="46" y="142" font-size="11" fill="#57523f" font-family="Georgia,serif">mentions obligatoires,</text>
+          <text x="46" y="160" font-size="11" fill="#57523f" font-family="Georgia,serif">dont « TVA non</text>
+          <text x="46" y="178" font-size="11" fill="#57523f" font-family="Georgia,serif">applicable »</text>
+          <text x="46" y="204" font-size="10.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">vous l'émettez</text>
+        </g>
+
+        <path class="arrow" d="M238 145 H 282" stroke="#0e7b52" stroke-width="4" fill="none"/>
+        <polygon points="280,138 296,145 280,152" fill="#0e7b52"/>
+
+        <g class="flip">
+          <rect x="300" y="70" width="200" height="150" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="2"/>
+          <circle cx="330" cy="102" r="13" fill="#4c9a75"/>
+          <text x="330" y="107" font-size="14" fill="#fff" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">2</text>
+          <text x="352" y="100" font-size="13" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">Plateforme agréée</text>
+          <text x="316" y="124" font-size="11" fill="#57523f" font-family="Georgia,serif">émet, transmet,</text>
+          <text x="316" y="142" font-size="11" fill="#57523f" font-family="Georgia,serif">reçoit, puis déclare</text>
+          <text x="316" y="160" font-size="11" fill="#57523f" font-family="Georgia,serif">à l'administration</text>
+          <text x="316" y="186" font-size="10.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">figure sur la liste</text>
+          <text x="316" y="202" font-size="10.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">officielle des impôts</text>
+        </g>
+
+        <path class="arrow" d="M508 145 H 552" stroke="#0e7b52" stroke-width="4" fill="none"/>
+        <polygon points="550,138 566,145 550,152" fill="#0e7b52"/>
+
+        <g class="flip">
+          <rect x="570" y="70" width="160" height="150" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="2"/>
+          <circle cx="600" cy="102" r="13" fill="url(#fegrn)"/>
+          <text x="600" y="107" font-size="14" fill="#fff" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">3</text>
+          <text x="622" y="100" font-size="13" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">Votre client</text>
+          <text x="586" y="124" font-size="11" fill="#57523f" font-family="Georgia,serif">reçoit sur sa</text>
+          <text x="586" y="142" font-size="11" fill="#57523f" font-family="Georgia,serif">propre plateforme</text>
+          <text x="586" y="168" font-size="10.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">il la reçoit</text>
+          <text x="586" y="184" font-size="10.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">au format</text>
+          <text x="586" y="200" font-size="10.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">électronique</text>
+        </g>
+
+        <circle class="mile" cx="130" cy="248" r="5" fill="#0e7b52"/>
+        <text x="146" y="252" font-size="12.5" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">1<tspan font-size="10" dy="-4">er</tspan><tspan dy="4"> sept. 2026 — recevoir</tspan></text>
+        <circle class="mile" cx="400" cy="248" r="5" fill="#4c9a75"/>
+        <text x="416" y="252" font-size="12.5" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">1<tspan font-size="10" dy="-4">er</tspan><tspan dy="4"> sept. 2027 — émettre (micro)</tspan></text>
+        <text x="30" y="284" font-size="11.5" fill="#57523f" font-family="Georgia,serif">Un PDF joint à un e-mail ne passe plus par ce trajet : c'est le point que l'administration répète.</text>
+      </svg>
+      <figcaption>Le seul contrôle qui compte avant de choisir : le bloc 2 doit être une plateforme qui figure réellement sur la liste publiée par impots.gouv.fr. Un outil de facturation peut être « compatible » et passer par une telle plateforme — nous expliquons plus bas comment le vérifier.</figcaption>
+    </div>
   </section>
 
-  <section class="switch">
+  <section class="switch dyn">
     <div class="callout">
       <h2>En résumé</h2>
       <ul>
@@ -136,9 +200,34 @@
     </div>
   </section>
 
-  <section id="changement" class="switch">
+  <section id="changement" class="switch dyn">
     <h2>Ce qui change, dans les mots de l'administration</h2>
     <p class="why">Nous ne résumons pas la loi nous-mêmes : voici les formulations officielles, telles que publiées sur impots.gouv.fr (pages et fiches consultées le 1<sup>er</sup> octobre 2026).</p>
+
+    <div class="fig">
+      <h3>Qui doit faire quoi, et à partir de quand</h3>
+      <svg viewBox="0 0 760 190" role="img" aria-labelledby="tl-ttl tl-desc">
+        <title id="tl-ttl">Chronologie des deux échéances de la facturation électronique</title>
+        <desc id="tl-desc">Une ligne de temps montre le 1er septembre 2026 pour la réception par toutes les entreprises, et le 1er septembre 2027 pour l'émission par les micro, petites et moyennes entreprises.</desc>
+        <line x1="60" y1="96" x2="700" y2="96" stroke="#cfe3d8" stroke-width="6" stroke-linecap="round"/>
+        <circle class="mile" cx="230" cy="96" r="11" fill="#0e7b52"/>
+        <circle cx="230" cy="96" r="4.5" fill="#ffffff"/>
+        <circle class="mile" cx="560" cy="96" r="11" fill="#4c9a75"/>
+        <circle cx="560" cy="96" r="4.5" fill="#ffffff"/>
+        <g font-family="Georgia,serif">
+          <text x="230" y="46" font-size="13.5" fill="#1a1a1a" text-anchor="middle" font-weight="bold">1<tspan font-size="10" dy="-4">er</tspan><tspan dy="4"> septembre 2026</tspan></text>
+          <text x="230" y="66" font-size="11.5" fill="#0e7b52" text-anchor="middle" font-weight="bold">RECEVOIR — tout le monde</text>
+          <text x="230" y="126" font-size="11" fill="#57523f" text-anchor="middle">GE et ETI émettent déjà</text>
+          <text x="230" y="143" font-size="11" fill="#57523f" text-anchor="middle">toutes leurs factures</text>
+          <text x="560" y="46" font-size="13.5" fill="#1a1a1a" text-anchor="middle" font-weight="bold">1<tspan font-size="10" dy="-4">er</tspan><tspan dy="4"> septembre 2027</tspan></text>
+          <text x="560" y="66" font-size="11.5" fill="#4c9a75" text-anchor="middle" font-weight="bold">ÉMETTRE — micro, PME</text>
+          <text x="560" y="126" font-size="11" fill="#57523f" text-anchor="middle">avec transmission des</text>
+          <text x="560" y="143" font-size="11" fill="#57523f" text-anchor="middle">données de transaction</text>
+          <text x="60" y="176" font-size="11" fill="#57523f">Entre les deux, vous pouvez déjà émettre volontairement : l'administration conseille de ne pas attendre la date butoir.</text>
+        </g>
+      </svg>
+      <figcaption>Deux dates, deux obligations distinctes. La première est déjà en vigueur ; la seconde vous laisse encore du temps — mais pas pour choisir en une semaine.</figcaption>
+    </div>
 
     <div class="quotebox">
       « Depuis le 1<sup>er</sup> septembre 2026, toutes les entreprises, quelles que soient leur taille et leur forme juridique, ont l'obligation de recevoir des factures sous format électronique, par l'intermédiaire d'une plateforme agréée. Les grandes entreprises (GE) et les entreprises de taille intermédiaire (ETI) doivent également émettre toutes leurs factures sous format électronique. Les petites, moyennes et micro-entreprises seront, quant à elles tenues, d'émettre leurs factures au format électronique au plus tard le 1<sup>er</sup> septembre 2027. »
@@ -153,13 +242,50 @@
     <p>Deux précisions qui répondent aux questions les plus fréquentes :</p>
     <ul>
       <li><strong>La franchise en base de TVA ne dispense de rien.</strong> L'administration écrit noir sur blanc que les micro-entrepreneurs sont concernés « que vous facturiez ou non de la TVA », en réception comme en émission.</li>
-      <li><strong>Le PDF envoyé par e-mail ne suffit plus</strong> pour les opérations entrant dans le champ de l'obligation : « la facturation électronique, comme on peut l'entendre aujourd'hui, sous la forme de factures "papier" scannées, de PDF ordinaires, de document généré par le logiciel comptable puis envoyé par mail, etc. ne sera plus conforme à la réglementation » (fiche « Que va-t-il se passer pour mon entreprise ? », impots.gouv.fr).</li>
+      <li><strong>Le PDF envoyé par e-mail ne suffit plus</strong> pour les opérations entrant dans le champ de l'obligation : « la facturation électronique, comme on peut l'entendre aujourd'hui, sous la forme de factures \"papier\" scannées, de PDF ordinaires, de document généré par le logiciel comptable puis envoyé par mail, etc. ne sera plus conforme à la réglementation » (fiche « Que va-t-il se passer pour mon entreprise ? », impots.gouv.fr).</li>
     </ul>
   </section>
 
-  <section id="verifier" class="switch">
+  <section id="verifier" class="switch dyn">
     <h2>Comment vérifier un outil en deux minutes</h2>
     <p class="why">C'est le seul contrôle qui compte vraiment, et il est public : la liste des plateformes agréées est publiée par l'administration fiscale. Elle distingue les opérateurs ayant satisfait à l'ensemble des conditions, tests d'interopérabilité compris, de ceux qui attendent encore leur immatriculation définitive.</p>
+
+    <div class="fig">
+      <h3>« Conforme » et « agréé » ne veulent pas dire la même chose</h3>
+      <svg viewBox="0 0 760 210" role="img" aria-labelledby="ch-ttl ch-desc">
+        <title id="ch-ttl">La chaîne réelle : votre outil, la plateforme immatriculée, l'administration</title>
+        <desc id="ch-desc">Deux trajets comparés : un outil qui est lui-même plateforme agréée, et un outil compatible adossé à une plateforme partenaire. Dans les deux cas, la facture finit sur une plateforme immatriculée.</desc>
+        <rect width="760" height="210" rx="16" fill="#f7faf8"/>
+        <g font-family="Georgia,serif">
+          <text x="24" y="34" font-size="12.5" fill="#0e7b52" font-weight="bold">Cas 1 — l'outil est lui-même sur la liste</text>
+          <rect x="24" y="46" width="180" height="46" rx="10" fill="#fff" stroke="#0e7b52" stroke-width="1.6"/>
+          <text x="114" y="74" font-size="12.5" fill="#1a1a1a" text-anchor="middle">Votre outil de facturation</text>
+          <path class="arrow" d="M208 69 H 288" stroke="#0e7b52" stroke-width="3" fill="none"/>
+          <polygon points="286,63 300,69 286,75" fill="#0e7b52"/>
+          <rect x="304" y="46" width="200" height="46" rx="10" fill="#0e7b52"/>
+          <text x="404" y="74" font-size="12.5" fill="#fff" text-anchor="middle" font-weight="bold">Immatriculé PA</text>
+          <path class="arrow" d="M508 69 H 588" stroke="#0e7b52" stroke-width="3" fill="none"/>
+          <polygon points="586,63 600,69 586,75" fill="#0e7b52"/>
+          <rect x="604" y="46" width="132" height="46" rx="10" fill="#fff" stroke="#0e7b52" stroke-width="1.6"/>
+          <text x="670" y="74" font-size="12.5" fill="#1a1a1a" text-anchor="middle">Impôts</text>
+
+          <text x="24" y="140" font-size="12.5" fill="#57523f" font-weight="bold">Cas 2 — l'outil passe par une plateforme partenaire</text>
+          <rect x="24" y="152" width="180" height="46" rx="10" fill="#fff" stroke="#8aa79b" stroke-width="1.6"/>
+          <text x="114" y="174" font-size="12" fill="#1a1a1a" text-anchor="middle">Votre outil</text>
+          <text x="114" y="190" font-size="10.5" fill="#57523f" text-anchor="middle">« solution compatible »</text>
+          <path class="arrow" d="M208 175 H 288" stroke="#8aa79b" stroke-width="3" fill="none"/>
+          <polygon points="286,169 300,175 286,181" fill="#8aa79b"/>
+          <rect x="304" y="152" width="200" height="46" rx="10" fill="#0e7b52"/>
+          <text x="404" y="174" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">Plateforme partenaire</text>
+          <text x="404" y="190" font-size="10.5" fill="#d6efe2" text-anchor="middle">elle, immatriculée PA</text>
+          <path class="arrow" d="M508 175 H 588" stroke="#0e7b52" stroke-width="3" fill="none"/>
+          <polygon points="586,169 600,175 586,181" fill="#0e7b52"/>
+          <rect x="604" y="152" width="132" height="46" rx="10" fill="#fff" stroke="#0e7b52" stroke-width="1.6"/>
+          <text x="670" y="180" font-size="12.5" fill="#1a1a1a" text-anchor="middle">Impôts</text>
+        </g>
+      </svg>
+      <figcaption>Dans les deux cas, une seule question compte : quelle plateforme immatriculée traite vos factures ? La réponse doit vous être donnée par écrit — c'est votre preuve de démarche.</figcaption>
+    </div>
 
     <div class="flow3">
       <div class="step"><b>1 · Ouvrir la liste officielle</b><span>impots.gouv.fr → « Je consulte la liste des plateformes agréées ». La liste est datée : regardez la date de la version que vous lisez.</span></div>
@@ -172,7 +298,7 @@
     <p class="footnote">À notre connaissance, la liste publiée le 22 septembre 2026 comporte plusieurs centaines d'opérateurs : il est normal qu'un outil sérieux n'y apparaisse pas en son nom propre, s'il s'appuie sur une PA partenaire. Ce n'est pas un défaut — c'est une information à vérifier.</p>
   </section>
 
-  <section id="outils" class="switch">
+  <section id="outils" class="switch dyn">
     <h2>Les outils gratuits les plus cités, et ce que leurs pages disent vraiment</h2>
     <p class="why">Ce tableau ne note pas les outils. Il rapporte trois choses vérifiables : le nom figure-t-il dans la liste officielle des plateformes agréées, l'offre gratuite existe-t-elle, et quel est le piège concret. Tout a été lu le 1<sup>er</sup> octobre 2026.</p>
 
@@ -232,15 +358,15 @@
           <text x="252" y="110" font-size="12.5" fill="#0e7b52" font-weight="bold">0 € (gratuit)</text>
 
           <text x="8" y="146" font-size="13.5" fill="#1a1a1a">Indy — offre Plus</text>
-          <rect x="240" y="132" width="72" height="20" rx="3" fill="#4c9a75"/>
+          <rect class="bar" x="240" y="132" width="72" height="20" rx="3" fill="#4c9a75"/>
           <text x="322" y="148" font-size="12.5" fill="#0e7b52" font-weight="bold">9 € HT/mois</text>
 
           <text x="8" y="184" font-size="13.5" fill="#1a1a1a">Tiime — offre Initial</text>
-          <rect x="240" y="170" width="80" height="20" rx="3" fill="#4c9a75"/>
+          <rect class="bar" x="240" y="170" width="80" height="20" rx="3" fill="#4c9a75"/>
           <text x="330" y="186" font-size="12.5" fill="#0e7b52" font-weight="bold">9,99 € HT/mois</text>
 
           <text x="8" y="222" font-size="13.5" fill="#1a1a1a">Henrri — offre Expert</text>
-          <rect x="240" y="208" width="136" height="20" rx="3" fill="#0e7b52"/>
+          <rect class="bar" x="240" y="208" width="136" height="20" rx="3" fill="#0e7b52"/>
           <text x="386" y="224" font-size="12.5" fill="#0e7b52" font-weight="bold">17 € HT/mois (annuel)</text>
         </g>
       </svg>
@@ -254,9 +380,33 @@
     </div>
   </section>
 
-  <section id="paroles" class="switch">
+  <section id="paroles" class="switch dyn">
     <h2>Ce que disent les indépendants eux-mêmes</h2>
     <p class="why">Le point de départ de cette page est un fil public, et non une intuition. Voici ce qui s'y dit, mot pour mot — les citations sont reproduites telles quelles, sans correction.</p>
+
+    <div class="fig">
+      <h3>Les deux questions qui reviennent toujours</h3>
+      <svg viewBox="0 0 760 230" role="img" aria-labelledby="bb-ttl bb-desc">
+        <title id="bb-ttl">Deux bulles de discussion : est-ce vraiment gratuit, et comment vérifier le statut</title>
+        <desc id="bb-desc">Deux bulles reprennent les citations du fil public : la recherche d'une solution gratuite fiable, puis la vérification du statut de plateforme agréée.</desc>
+        <g font-family="Georgia,serif">
+          <rect x="20" y="18" width="430" height="86" rx="16" fill="#f7faf8" stroke="#0e7b52" stroke-width="1.5"/>
+          <path d="M60 104 L 52 124 L 84 104 Z" fill="#f7faf8" stroke="#0e7b52" stroke-width="1.5"/>
+          <text x="38" y="44" font-size="12" fill="#0e7b52" font-weight="bold">La question du départ</text>
+          <text x="38" y="66" font-size="11.5" fill="#1a1a1a">« je recherche une solution logicielle gratuite. Il en</text>
+          <text x="38" y="84" font-size="11.5" fill="#1a1a1a">existe plusieurs (Tiime, Henrri...), auriez vous des</text>
+          <text x="38" y="100" font-size="11.5" fill="#1a1a1a">suggestions […] pour ne pas se tromper ? »</text>
+
+          <rect x="310" y="126" width="432" height="86" rx="16" fill="#0e7b52"/>
+          <path d="M700 212 L 712 230 L 676 212 Z" fill="#0e7b52"/>
+          <text x="328" y="152" font-size="12" fill="#d6efe2" font-weight="bold">La question qui suit, toujours la même</text>
+          <text x="328" y="174" font-size="11.5" fill="#ffffff">« Merci ! Mais je ne vois pas que c'est agréée sur</text>
+          <text x="328" y="192" font-size="11.5" fill="#ffffff">leur site ? » — « Je te confirme qu'ils sont agrées.</text>
+          <text x="328" y="208" font-size="11.5" fill="#ffffff">Tu peux le vérifier sur le site des impots. »</text>
+        </g>
+      </svg>
+      <figcaption>Ce n'est pas le prix qui bloque en premier, c'est le statut. C'est exactement ce que cette page sert à lever — en deux minutes, sur la liste publique.</figcaption>
+    </div>
 
     <div class="quotebox">
       « Bonjour ! Je suis auto-entrepreneur (avec un petit chiffre d'affaire) et avec l'arrivée de la facturation électronique obligatoire, je recherche une solution logicielle gratuite. Il en existe plusieurs (Tiime, Henrri...), auriez vous des suggestions, des conseils pour ne pas se tromper ? »
@@ -281,8 +431,41 @@
     <p class="footnote">Les avis de ce fil portent sur les versions consultées par leurs auteurs à leur date de publication. Les conditions des éditeurs évoluent : ne vous en servez pas comme d'un contrat — vérifiez la page tarifaire le jour où vous vous inscrivez.</p>
   </section>
 
-  <section id="checklist" class="switch">
+  <section id="checklist" class="switch dyn">
     <h2>Avant de vous engager — 5 vérifications</h2>
+
+    <div class="fig tight">
+      <svg viewBox="0 0 760 92" role="img" aria-labelledby="cl-ttl" aria-label="Cinq vérifications : échéance, statut sur la liste officielle, plateforme de réception, essai d'une vraie facture, porte de sortie.">
+        <title id="cl-ttl">Les cinq contrôles avant de s'engager</title>
+        <g font-family="Georgia,serif">
+          <circle cx="52" cy="46" r="24" fill="#0e7b52"/>
+          <text x="52" y="52" font-size="17" fill="#fff" text-anchor="middle" font-weight="bold">1</text>
+          <text x="52" y="88" font-size="10.5" fill="#57523f" text-anchor="middle">échéance</text>
+
+          <circle cx="200" cy="46" r="24" fill="#1a8d61"/>
+          <text x="200" y="52" font-size="17" fill="#fff" text-anchor="middle" font-weight="bold">2</text>
+          <text x="200" y="88" font-size="10.5" fill="#57523f" text-anchor="middle">liste officielle</text>
+
+          <circle cx="348" cy="46" r="24" fill="#2f9d72"/>
+          <text x="348" y="52" font-size="17" fill="#fff" text-anchor="middle" font-weight="bold">3</text>
+          <text x="348" y="88" font-size="10.5" fill="#57523f" text-anchor="middle">réception d'abord</text>
+
+          <circle cx="496" cy="46" r="24" fill="#4c9a75"/>
+          <text x="496" y="52" font-size="17" fill="#fff" text-anchor="middle" font-weight="bold">4</text>
+          <text x="496" y="88" font-size="10.5" fill="#57523f" text-anchor="middle">vraie facture test</text>
+
+          <circle cx="644" cy="46" r="24" fill="#6fae8f"/>
+          <text x="644" y="52" font-size="17" fill="#fff" text-anchor="middle" font-weight="bold">5</text>
+          <text x="644" y="88" font-size="10.5" fill="#57523f" text-anchor="middle">porte de sortie</text>
+
+          <line x1="76" y1="46" x2="176" y2="46" stroke="#cfe3d8" stroke-width="4"/>
+          <line x1="224" y1="46" x2="324" y2="46" stroke="#cfe3d8" stroke-width="4"/>
+          <line x1="372" y1="46" x2="472" y2="46" stroke="#cfe3d8" stroke-width="4"/>
+          <line x1="520" y1="46" x2="620" y2="46" stroke="#cfe3d8" stroke-width="4"/>
+        </g>
+      </svg>
+    </div>
+
     <ol>
       <li><strong>Repérez votre échéance réelle.</strong> Si vous êtes micro-entrepreneur, votre obligation d'émission est fixée au 1<sup>er</sup> septembre 2027 au plus tard — mais l'obligation de réception, elle, est déjà en vigueur depuis le 1<sup>er</sup> septembre 2026. Sans plateforme choisie, vous ne pouvez pas recevoir les factures de vos fournisseurs déjà passés à l'électronique.</li>
       <li><strong>Cherchez l'éditeur dans la liste officielle.</strong> Si son nom n'y apparaît pas, demandez par écrit quelle plateforme agréée il utilise. Conservez la réponse : c'est votre preuve de démarche.</li>
@@ -292,7 +475,7 @@
     </ol>
   </section>
 
-  <section id="faq" class="switch">
+  <section id="faq" class="switch dyn">
     <h2>Questions fréquentes</h2>
     <details><summary>Je suis auto-entrepreneur en franchise de TVA : suis-je concerné ?</summary><p>Oui. L'administration le répète : les micro-entrepreneurs sont concernés « que vous facturiez ou non la TVA », en réception depuis le 1<sup>er</sup> septembre 2026 et en émission au plus tard le 1<sup>er</sup> septembre 2027. Vos factures continueront de porter la mention « TVA non applicable, article 293 B du CGI ».</p></details>
     <details><summary>Puis-je continuer à envoyer un PDF par e-mail ?</summary><p>Non pour les opérations entrant dans le champ de l'obligation : l'administration indique qu'un PDF ordinaire envoyé par mail ne sera plus conforme, et que la facture doit transiter par une plateforme agréée. En cas de difficulté de démarrage, elle demande de documenter la démarche engagée plutôt que d'interrompre la facturation.</p></details>
@@ -301,17 +484,18 @@
     <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non. Aucun lien de cette page ne nous rapporte quoi que ce soit à la date du 1<sup>er</sup> octobre 2026. Si cela change, chaque lien concerné sera étiqueté sur place et la <a href="../about/">page À propos</a> indiquera la date de départ.</p></details>
   </section>
 
-  <section id="honesty" class="switch">
+  <section id="honesty" class="switch dyn">
     <h2>Comment cette page est faite</h2>
     <ul class="honest-list">
       <li><strong>Aucun lien affilié ici.</strong> Vous ne trouverez sur cette page ni lien de parrainage ni code promo. Si nous adhérons un jour à un programme, il sera étiqueté à l'endroit du lien, avec sa date de départ.</li>
       <li><strong>Les prix viennent des pages officielles.</strong> Tiime, Indy, Henrri et jefacture ont été consultés le 1<sup>er</sup> octobre 2026. Quand une information n'était pas lisible — les tarifs de jefacture sans JavaScript — nous l'écrivons au lieu de la deviner.</li>
       <li><strong>Le statut « plateforme agréée » est recoupé avec la liste publique</strong> publiée par impots.gouv.fr, dans sa version du 22 septembre 2026. Nous citons les noms tels qu'ils y figurent.</li>
       <li><strong>Aucun témoignage inventé.</strong> Les citations de cette page sont reproduites d'un fil public, à l'identique, avec leur source.</li>
+      <li><strong>Les illustrations ne portent aucun chiffre inventé.</strong> Les schémas de cette page décrivent un mécanisme ou reprennent le texte des citations ; le seul graphique chiffré est construit sur les prix réellement lus sur les pages tarifaires officielles.</li>
     </ul>
   </section>
 
-  <section id="sources" class="switch">
+  <section id="sources" class="switch dyn">
     <h2>Sources</h2>
     <ul class="sources">
       <li><a href="https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique">impots.gouv.fr — Je découvre la facturation électronique</a> (consultée le 1<sup>er</sup> oct. 2026)</li>
@@ -326,7 +510,7 @@
     </ul>
   </section>
 
-  <section id="avis" class="switch">
+  <section id="avis" class="switch dyn">
     <h2>Avis clients</h2>
     <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
     <div style="margin:14px 0">
@@ -363,6 +547,24 @@
 </footer>
 <script src="/honest-switch/counter.js" defer></script>
 <script>
+/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.dyn');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});
+  for (var j = 0; j < items.length; j++) io.observe(items[j]);
+  /* la première section est visible immédiatement */
+  var hero = document.querySelector('.hero.dyn');
+  if (hero) hero.classList.add('in');
+})();
 function sendReview(ev){
   var sc = document.getElementById("rscore").value;
   var em = document.getElementById("remail").value;

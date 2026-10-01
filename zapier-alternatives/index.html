@@ -46,6 +46,25 @@
     .hero-img .pulse{animation:none}
     .chip:hover,.flow3 .step:hover{transform:none}
   }
+""
+/* --- Illustration de tete + dynamique douce (meme traitement que les autres guides) --- */
+.hero-img{display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px}
+@keyframes hspulse{0%{opacity:.35}50%{opacity:1}100%{opacity:.35}}
+.hero-img .pulse{animation:hspulse 3.4s ease-in-out infinite}
+.dyn{transition:opacity .55s ease,transform .55s ease}
+html.js .dyn{opacity:0;transform:translateY(16px)}
+html.js .dyn.in{opacity:1;transform:none}
+.chip{transition:transform .15s ease}
+.chip:hover{transform:translateY(-2px)}
+.flow3 .step{transition:transform .18s ease,box-shadow .18s ease}
+.flow3 .step:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(14,123,82,.14)}
+.tblwrap tbody tr{transition:background .15s ease}
+.tblwrap tbody tr:hover{background:#f2f8f4}
+@media (prefers-reduced-motion: reduce){
+  .hero-img .pulse{animation:none}
+  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .chip:hover,.flow3 .step:hover{transform:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -69,6 +88,7 @@
   ]
 }
 </script>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -87,7 +107,7 @@
 </header>
 
 <main id="main" class="wrap">
-  <section class="hero">
+  <section class="dyn hero">
     <p class="kicker">Independent · source-verified · checked 1 Oct 2026</p>
     <h1>Tired of Zapier&rsquo;s pricing? You&rsquo;re not alone. Here&rsquo;s where automation switchers actually land.</h1>
     <p class="lede">Freelancers, ops managers, no-code agencies and small teams have automated their workflows on Zapier for years — and the complaints are specific: <span class="hl">pricing that keeps climbing</span>, <span class="hl">task caps that surprise you mid-month</span>, and a calculator that makes the real number hard to see before you subscribe. This page is the boring version of that debate: what switchers actually say, what to check before you migrate, the prices we read on the official pages of n8n, Make and Pabbly today — and which programs pay you to switch.</p>
@@ -148,7 +168,7 @@
     </div>
   </section>
 
-  <section id="what-changed" class="switch">
+  <section id="what-changed" class="dyn switch">
     <h2>What people actually complain about — and what changed</h2>
     <div class="why">
       <p>The trigger is documented in public threads, not invented. The opening of a long-running r/automation discussion (09/10/2025), in the author&rsquo;s words:</p>
@@ -162,7 +182,7 @@
     <p class="footnote">These are reasons to re-evaluate, not to panic-migrate: most teams run a handful of Zaps, and the checklist below tells you what to verify against YOUR actual usage before touching anything.</p>
   </section>
 
-  <section id="checklist" class="switch">
+  <section id="checklist" class="dyn switch">
     <h2>Before you switch anything — 5 steps</h2>
     <div class="flow3">
       <div class="step"><b>1 · Count</b><span>your <strong>real monthly tasks/operations</strong> in the last 90 days — not your plan name. That number decides which alternative is cheapest.</span></div>
@@ -178,7 +198,7 @@
     </ol>
   </section>
 
-  <section id="tools" class="switch">
+  <section id="tools" class="dyn switch">
     <h2>The alternatives we verified today</h2>
     <div class="tblwrap">
       <table>
@@ -242,7 +262,7 @@
     <p class="footnote">Each figure above was read on the vendor&rsquo;s own pricing page on 1 October 2026, and the pages are linked in <a href="#sources">Sources</a>. Where a price depends on your volume (Zapier tiers, Make credits), we say so instead of inventing a flat number — that is the whole point of this site.</p>
   </section>
 
-  <section id="affiliates" class="switch">
+  <section id="affiliates" class="dyn switch">
     <h2>Who pays you to switch</h2>
     <div class="why">
       <p>All three alternatives publish affiliate programs on their official sites. Verified 1 Oct 2026:</p>
@@ -255,7 +275,7 @@
     <p class="footnote">Honest note: no link on this page pays us today. The affiliate programs are the reason this category of page exists — if we join one, every affected link will be labeled on the spot and the honesty box will state the start date. We will not link a program we are not enrolled in as if it paid us.</p>
   </section>
 
-  <section id="faq" class="switch">
+  <section id="faq" class="dyn switch">
     <h2>Questions</h2>
     <div class="faq">
       <details><summary>Why are Zapier users switching now?</summary><p>The documented signal is pricing and task caps: the r/automation thread opens with &ldquo;TIRED OF ZAPIER (…) been a Zapier user for YEARS and am tired of the pricing. What started as $10 per month…&rdquo; (09/10/2025), and reports framed as a &ldquo;600% price increase&rdquo; circulate in the same thread. Zapier&rsquo;s own page shows Professional &ldquo;from $19.99/month&rdquo; and Team &ldquo;from $69/month&rdquo; with task tiers on top.</p></details>
@@ -267,7 +287,7 @@
     </div>
   </section>
 
-  <section id="honesty" class="switch">
+  <section id="honesty" class="dyn switch">
     <h2>How this page stays honest</h2>
     <ul class="honest-list">
       <li><strong>No affiliate links at launch.</strong> As of 1 Oct 2026, no link on this page pays us. If we join a program later, the affected links will be labeled on the spot and this box will state the start date.</li>
@@ -277,7 +297,7 @@
     </ul>
   </section>
 
-  <section id="sources" class="switch">
+  <section id="sources" class="dyn switch">
     <h2>Sources</h2>
     <p class="srcline">Control dates are noted per link. Vendor pricing pages read 1 Oct 2026.</p>
     <ul class="sources">
@@ -293,7 +313,7 @@
     </ul>
   </section>
 
-  <section id="avis" class="switch">
+  <section id="avis" class="dyn switch">
     <h2>Reader reviews</h2>
     <p class="why">Reviews of this guide, published after verification. Every negative review receives a public answer — that&rsquo;s how we get better.</p>
     <div style="margin:14px 0">
@@ -329,6 +349,25 @@
   </div>
 </footer>
 <script src="/honest-switch/counter.js" defer></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.dyn');
+  var hero = document.querySelector('.hero.dyn');
+  if (hero) hero.classList.add('in');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});
+  for (var j = 0; j < items.length; j++) io.observe(items[j]);
+})();
+</script>
+
 <script>
 function sendReview(ev){
   var sc = document.getElementById("rscore").value;

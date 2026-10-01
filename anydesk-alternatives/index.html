@@ -34,6 +34,25 @@
   .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
   .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
   .flow3 .step span{font-size:.9rem}
+
+/* --- Illustration de tete + dynamique douce (meme traitement que les autres guides) --- */
+.hero-img{display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px}
+@keyframes hspulse{0%{opacity:.35}50%{opacity:1}100%{opacity:.35}}
+.hero-img .pulse{animation:hspulse 3.4s ease-in-out infinite}
+.dyn{transition:opacity .55s ease,transform .55s ease}
+html.js .dyn{opacity:0;transform:translateY(16px)}
+html.js .dyn.in{opacity:1;transform:none}
+.chip{transition:transform .15s ease}
+.chip:hover{transform:translateY(-2px)}
+.flow3 .step{transition:transform .18s ease,box-shadow .18s ease}
+.flow3 .step:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(14,123,82,.14)}
+.tblwrap tbody tr{transition:background .15s ease}
+.tblwrap tbody tr:hover{background:#f2f8f4}
+@media (prefers-reduced-motion: reduce){
+  .hero-img .pulse{animation:none}
+  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .chip:hover,.flow3 .step:hover{transform:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -55,6 +74,7 @@
   ]
 }
 </script>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
@@ -73,7 +93,7 @@
 </header>
 
 <main id="main" class="wrap">
-  <section class="hero">
+  <section class="dyn hero">
     <p class="kicker">Indépendant · vérifié sur les pages officielles · consulté le 1 oct. 2026</p>
     <h1>Vos licences AnyDesk ont changé de modèle. Vérifiez ce que ça coûte réellement avant de renouveler.</h1>
     <p class="lede">SSII, MSP, freelances du support informatique et PME qui dépannent plusieurs postes à distance : AnyDesk a modifié sa structure tarifaire — <span class="hl">hausse d'environ 25 %</span> selon un avis français vérifié — et basculé sur des <span class="hl">licences par connexion facturées annuellement</span>. Cette page est la version sans panique de ce débat : ce que les utilisateurs reprochent réellement, ce qu'il faut vérifier avant de changer, les outils dont nous avons lu les prix sur leurs propres pages aujourd'hui — et qui vous paie pour changer.</p>
@@ -136,7 +156,7 @@
     </div>
   </section>
 
-  <section id="changement" class="switch">
+  <section id="changement" class="dyn switch">
     <h2>Ce qui change réellement, et ce qu'on reproche à AnyDesk</h2>
     <div class="why">
       <p>Un avis français vérifié sur softwareadvice.fr (07/05/2026, secteur Gestion de l'enseignement, 51–200 employés, alternatives envisagées : TeamViewer ONE) résume le déclencheur, dans les mots du client :</p>
@@ -151,7 +171,7 @@
     <p class="footnote">Ce sont des raisons d'évaluer, pas de sauter le pas : le témoignage cité reste client pour l'instant, et la checklist ci-dessous vous dit ce qu'il faut vérifier en premier selon VOTRE usage réel.</p>
   </section>
 
-  <section id="checklist" class="switch">
+  <section id="checklist" class="dyn switch">
     <h2>Ce qu'il faut vérifier avant de changer — 5 étapes</h2>
     <div class="flow3">
       <div class="step"><b>1 · Comptez</b><span>vos <strong>connexions simultanées réelles</strong>, pas vos techniciens — c'est la donnée qui change tout avec la licence par connexion.</span></div>
@@ -167,7 +187,7 @@
     </ol>
   </section>
 
-  <section id="outils" class="switch">
+  <section id="outils" class="dyn switch">
     <h2>Les alternatives que nous avons vérifiées aujourd'hui</h2>
     <div class="tblwrap">
       <table>
@@ -220,7 +240,7 @@
           <text x="384" y="125" font-size="13" fill="#0e7b52" font-weight="bold">11,88 $/mois</text>
           <text x="8" y="162" font-size="14" fill="#1a1a1a">AnyDesk Solo</text>
           <rect x="205" y="148" width="390" height="22" rx="3" fill="#b58900"/>
-          <text x="604" y="165" font-size="13" fill="#8a6d00" font-weight="bold">27,90 €/mois</text>
+          <text x="586" y="165" font-size="13" fill="#ffffff" font-weight="bold" text-anchor="end">27,90 €/mois</text>
           <text x="8" y="202" font-size="14" fill="#1a1a1a">TeamViewer</text>
           <rect x="205" y="188" width="4" height="22" rx="3" fill="#9aa09b"/>
           <text x="218" y="205" font-size="13" fill="#57523f">par expert — pas de prix d'entrée publié</text>
@@ -231,7 +251,7 @@
     <p class="footnote">Chaque chiffre ci-dessus a été lu sur la page officielle de l'éditeur à la date indiquée, et les pages sont liées dans <a href="#sources">Sources</a>. Là où nous n'avons pas pu relire un chiffre (prix FR d'AnyDesk derrière la protection anti-bot), la page le dit explicitement au lieu de deviner — c'est tout l'objet de ce site.</p>
   </section>
 
-  <section id="affilies" class="switch">
+  <section id="affilies" class="dyn switch">
     <h2>Qui vous paie pour changer</h2>
     <div class="why">
       <p>La catégorie de l'accès à distance a des programmes de parrainage construits sur exactement ce moment de bascule. Vérifiés sur les pages officielles :</p>
@@ -244,7 +264,7 @@
     <p class="footnote">Note honnête : aucun lien de cette page ne nous rémunère actuellement. Les programmes de parrainage sont la raison d'être de cette catégorie de pages — dès que notre adhésion Splashtop est active, chaque lien concerné sera étiqueté sur place et l'encadré d'honnêteté ci-dessous indiquera la date de début.</p>
   </section>
 
-  <section id="faq" class="switch">
+  <section id="faq" class="dyn switch">
     <h2>Questions</h2>
     <div class="faq">
       <details><summary>Pourquoi les équipes IT françaises cherchent-elles des alternatives à AnyDesk ?</summary><p>Deux déclencheurs documentés : un avis français vérifié (softwareadvice.fr, 07/05/2026) qui cite une hausse des tarifs d'environ 25 % ; et le changement de modèle — des licences par connexion depuis octobre 2025 et une facturation exclusivement annuelle en France. S'y ajoute le précédent de sécurité de décembre 2023 (systèmes de production compromis, alerte CERT-FR).</p></details>
@@ -257,7 +277,7 @@
     </div>
   </section>
 
-  <section id="honesty" class="switch">
+  <section id="honesty" class="dyn switch">
     <h2>Comment cette page reste honnête</h2>
     <ul class="honest-list">
       <li><strong>Aucun lien affilié au lancement.</strong> Au 1 oct. 2026, aucun lien de cette page ne nous paie. Si nous rejoignons un programme plus tard, les liens concernés seront étiquetés sur place et cet encadré indiquera la date de début.</li>
@@ -267,7 +287,7 @@
     </ul>
   </section>
 
-  <section id="sources" class="switch">
+  <section id="sources" class="dyn switch">
     <h2>Sources</h2>
     <p class="srcline">Les dates de contrôle sont indiquées par lien. Pages éditeurs consultées le 1 oct. 2026.</p>
     <ul class="sources">
@@ -283,7 +303,7 @@
     </ul>
   </section>
 
-  <section id="avis" class="switch">
+  <section id="avis" class="dyn switch">
     <h2>Avis clients</h2>
     <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
     <div style="margin:14px 0">
@@ -319,6 +339,25 @@
   </div>
 </footer>
 <script src="/honest-switch/counter.js" defer></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.dyn');
+  var hero = document.querySelector('.hero.dyn');
+  if (hero) hero.classList.add('in');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});
+  for (var j = 0; j < items.length; j++) io.observe(items[j]);
+})();
+</script>
+
 <script>
 function sendReview(ev){
   var sc = document.getElementById("rscore").value;

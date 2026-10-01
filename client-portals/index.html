@@ -30,6 +30,25 @@
   .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
   .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
   .flow3 .step span{font-size:.9rem}
+
+/* --- Illustration de tete + dynamique douce (meme traitement que les autres guides) --- */
+.hero-img{display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px}
+@keyframes hspulse{0%{opacity:.35}50%{opacity:1}100%{opacity:.35}}
+.hero-img .pulse{animation:hspulse 3.4s ease-in-out infinite}
+.dyn{transition:opacity .55s ease,transform .55s ease}
+html.js .dyn{opacity:0;transform:translateY(16px)}
+html.js .dyn.in{opacity:1;transform:none}
+.chip{transition:transform .15s ease}
+.chip:hover{transform:translateY(-2px)}
+.flow3 .step{transition:transform .18s ease,box-shadow .18s ease}
+.flow3 .step:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(14,123,82,.14)}
+.tblwrap tbody tr{transition:background .15s ease}
+.tblwrap tbody tr:hover{background:#f2f8f4}
+@media (prefers-reduced-motion: reduce){
+  .hero-img .pulse{animation:none}
+  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .chip:hover,.flow3 .step:hover{transform:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -49,6 +68,7 @@
   ]
 }
 </script>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -68,10 +88,34 @@
 
 <main id="main" class="wrap">
 
-  <section class="hero">
+  <section class="dyn hero">
     <p class="kicker">Independent · source-verified · checked 1 Oct 2026</p>
     <h1>HoneyBook raised prices for the first time ever.<br>Here&rsquo;s what to check before you jump.</h1>
     <p class="lede">On <strong>20 February 2026</strong>, HoneyBook CEO Oz Alon published a letter announcing the company&rsquo;s <span class="hl">first-ever price increase</span> — no amounts given. HoneyBook is where many solo pros keep their whole client workflow: proposals, contracts, invoices, payments, scheduling. That makes switching feel big. It is — so we compared the client-portal suites people actually move to, with <span class="hl">prices we verified on their own pages on 1 October 2026</span>, and the catches nobody mentions.</p>
+
+    <svg class="hero-img" viewBox="0 0 760 260" role="img" aria-labelledby="cpo-ttl cpo-desc" xmlns="http://www.w3.org/2000/svg">
+      <title id="cpo-ttl">Proposal, contract and invoice, together in one portal</title>
+      <desc id="cpo-desc">Three documents — a proposal, a contract and an invoice — each marked as handled in a client portal.</desc>
+      <defs><linearGradient id="cpog" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef6f1"/><stop offset="1" stop-color="#e0efe6"/></linearGradient></defs>
+      <rect width="760" height="260" rx="14" fill="url(#cpog)"/>
+      <text x="380" y="42" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#1a1a1a" font-weight="bold">One place for every step</text>
+      <rect x="70" y="92" width="96" height="118" rx="10" fill="#ffffff" stroke="#cfe3d8"/>
+      <g stroke="#4c9a75" stroke-width="5" stroke-linecap="round"><line x1="88" y1="122" x2="148" y2="122"/><line x1="88" y1="142" x2="134" y2="142"/><line x1="88" y1="162" x2="142" y2="162"/></g>
+      <circle cx="146" cy="188" r="12" fill="#0e7b52"/><path d="M140 188 l4 4 8 -9" stroke="#ffffff" stroke-width="2.5" fill="none"/>
+      <rect x="332" y="92" width="96" height="118" rx="10" fill="#ffffff" stroke="#cfe3d8"/>
+      <g stroke="#4c9a75" stroke-width="5" stroke-linecap="round"><line x1="350" y1="122" x2="410" y2="122"/><line x1="350" y1="142" x2="396" y2="142"/><line x1="350" y1="162" x2="404" y2="162"/></g>
+      <circle cx="408" cy="188" r="12" fill="#0e7b52"/><path d="M402 188 l4 4 8 -9" stroke="#ffffff" stroke-width="2.5" fill="none"/>
+      <rect x="594" y="92" width="96" height="118" rx="10" fill="#ffffff" stroke="#cfe3d8"/>
+      <g stroke="#4c9a75" stroke-width="5" stroke-linecap="round"><line x1="612" y1="122" x2="672" y2="122"/><line x1="612" y1="142" x2="658" y2="142"/><line x1="612" y1="162" x2="666" y2="162"/></g>
+      <circle cx="670" cy="188" r="12" fill="#0e7b52"/><path d="M664 188 l4 4 8 -9" stroke="#ffffff" stroke-width="2.5" fill="none"/>
+      <g class="pulse" fill="#4c9a75" stroke="#4c9a75" stroke-width="3" stroke-linecap="round"><line x1="190" y1="130" x2="312" y2="130"/><path d="M312 130 l-13 -8 v16 z" stroke="none"/></g>
+      <g class="pulse" fill="#4c9a75" stroke="#4c9a75" stroke-width="3" stroke-linecap="round"><line x1="452" y1="130" x2="574" y2="130"/><path d="M574 130 l-13 -8 v16 z" stroke="none"/></g>
+      <text x="146" y="236" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#57523f">Proposal</text>
+      <text x="380" y="236" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#57523f">Contract</text>
+      <text x="642" y="236" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#57523f">Invoice</text>
+
+    </svg>
+
     <p class="chips">
       <span class="chip chip-good">No affiliate links on this page (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Prices checked 1 Oct 2026</span>
@@ -88,7 +132,7 @@
     </div>
   </section>
 
-  <section id="tools" class="switch">
+  <section id="tools" class="dyn switch">
     <h2>The comparison</h2>
     <div class="tblwrap">
       <table>
@@ -148,7 +192,7 @@
     <p class="footnote">Also watched: Assembly (ex-Copilot) — no public list price on its site at check time (quote-based), so we did not rank it. Bookipi and HoneyBook&rsquo;s own referral bonuses exist, but no price list means no comparison from us.</p>
   </section>
 
-  <section id="checklist" class="switch">
+  <section id="checklist" class="dyn switch">
     <h2>Before you switch: the checklist</h2>
     <div class="flow3">
       <div class="step"><b>1 · Renewal date</b><span>find <strong>your renewal date</strong> first — increases bite at renewal, so you almost always have weeks.</span></div>
@@ -166,7 +210,7 @@
     </ol>
   </section>
 
-  <section id="faq" class="switch">
+  <section id="faq" class="dyn switch">
     <h2>Questions</h2>
     <div class="faq">
       <details><summary>Did HoneyBook really raise prices?</summary><p>Yes — the CEO letter of 20 February 2026 announces the first price increase in company history. It publishes no amounts; the current plan prices are on the pricing page (checked above, 1 Oct 2026).</p></details>
@@ -177,7 +221,7 @@
     </div>
   </section>
 
-  <section id="honesty" class="switch">
+  <section id="honesty" class="dyn switch">
     <h2>How this page stays honest</h2>
     <ul class="honest-list">
       <li><strong>No affiliate links at launch.</strong> As of 1 Oct 2026, no link on this page pays us. If we join a partner program later, affected links will be labeled on the spot, and this box will state when it started.</li>
@@ -187,7 +231,7 @@
     </ul>
   </section>
 
-  <section id="sources" class="switch">
+  <section id="sources" class="dyn switch">
     <h2>Sources</h2>
     <p class="srcline">All links checked 1 Oct 2026.</p>
     <ul class="sources">
@@ -200,7 +244,7 @@
     </ul>
   </section>
 
-  <section id="avis" class="switch">
+  <section id="avis" class="dyn switch">
     <h2>Client reviews</h2>
     <p class="why">Reviews of this guide, published after verification. Every negative review gets a public answer — that is how we improve.</p>
     <div style="margin:14px 0">
@@ -236,6 +280,25 @@
   </div>
 </footer>
 <script src="/honest-switch/counter.js" defer></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.dyn');
+  var hero = document.querySelector('.hero.dyn');
+  if (hero) hero.classList.add('in');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});
+  for (var j = 0; j < items.length; j++) io.observe(items[j]);
+})();
+</script>
+
 <script>
 function sendReview(ev){
   var sc = document.getElementById("rscore").value;

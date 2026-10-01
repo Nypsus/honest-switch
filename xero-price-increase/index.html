@@ -34,6 +34,25 @@
   .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
   .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
   .flow3 .step span{font-size:.9rem}
+
+/* --- Illustration de tete + dynamique douce (meme traitement que les autres guides) --- */
+.hero-img{display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px}
+@keyframes hspulse{0%{opacity:.35}50%{opacity:1}100%{opacity:.35}}
+.hero-img .pulse{animation:hspulse 3.4s ease-in-out infinite}
+.dyn{transition:opacity .55s ease,transform .55s ease}
+html.js .dyn{opacity:0;transform:translateY(16px)}
+html.js .dyn.in{opacity:1;transform:none}
+.chip{transition:transform .15s ease}
+.chip:hover{transform:translateY(-2px)}
+.flow3 .step{transition:transform .18s ease,box-shadow .18s ease}
+.flow3 .step:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(14,123,82,.14)}
+.tblwrap tbody tr{transition:background .15s ease}
+.tblwrap tbody tr:hover{background:#f2f8f4}
+@media (prefers-reduced-motion: reduce){
+  .hero-img .pulse{animation:none}
+  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .chip:hover,.flow3 .step:hover{transform:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -53,6 +72,7 @@
   ]
 }
 </script>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -71,10 +91,25 @@
 </header>
 
 <main id="main" class="wrap">
-  <section class="hero">
+  <section class="dyn hero">
     <p class="kicker">Independent · source-verified · checked 1 Oct 2026</p>
     <h1>Xero raised US prices on 1 October 2026. Check your actual bill before switching.</h1>
     <p class="lede">On 1 October 2026, Xero&rsquo;s US plans moved from <span class="hl">$25/$55/$90 to $27/$59/$97 a month</span>. For some businesses that&rsquo;s a shrug; for others on Established it&rsquo;s the <span class="hl">third annual increase in a row</span> — a legitimate reason to re-shop your books. This page is the boring version of that debate: what changed, what to check before you move, alternatives with prices we verified ourselves, and the catches nobody mentions.</p>
+
+    <svg class="hero-img" viewBox="0 0 760 260" role="img" aria-labelledby="xpi-ttl xpi-desc" xmlns="http://www.w3.org/2000/svg">
+      <title id="xpi-ttl">Prices step up on 1 October 2026</title>
+      <desc id="xpi-desc">A step line rises and a flag marks 1 October 2026; a magnifying glass checks the last point.</desc>
+      <defs><linearGradient id="xpig" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef6f1"/><stop offset="1" stop-color="#e0efe6"/></linearGradient></defs>
+      <rect width="760" height="260" rx="14" fill="url(#xpig)"/>
+      <polyline points="80,200 260,200 260,150 470,150 470,104 640,104" fill="none" stroke="#0e7b52" stroke-width="5" stroke-linejoin="round"/>
+      <line x1="470" y1="60" x2="470" y2="108" stroke="#57523f" stroke-width="3"/><path d="M470 60 l44 12 -44 12 z" fill="#4c9a75"/>
+      <text x="632" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a" font-weight="bold">1 Oct 2026</text>
+      <circle cx="640" cy="104" r="34" fill="none" stroke="#4c9a75" stroke-width="4"/><line x1="664" y1="130" x2="692" y2="158" stroke="#4c9a75" stroke-width="6" stroke-linecap="round"/>
+      <text x="190" y="238" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#57523f">your current plan</text>
+      <text x="560" y="238" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#57523f">after the increase</text>
+
+    </svg>
+
     <p class="chips">
       <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Xero prices checked 1 Oct 2026</span>
@@ -91,7 +126,7 @@
     </div>
   </section>
 
-  <section id="changed" class="switch">
+  <section id="changed" class="dyn switch">
     <h2>What actually changed</h2>
     <div class="why">
       <p>The facts, read on Xero&rsquo;s own US pricing page on 1 October 2026 — the day the new prices took effect:</p>
@@ -118,7 +153,7 @@
     <p class="footnote">That last point matters when you read the angry threads: the increase is real and dated, but the only number that decides anything is the one on your next invoice. If it hasn&rsquo;t changed yet, you have time to decide properly.</p>
   </section>
 
-  <section id="checklist" class="switch">
+  <section id="checklist" class="dyn switch">
     <h2>What to check before switching — 5 steps</h2>
     <div class="flow3">
       <div class="step"><b>1 · Your bill</b><span>read your <strong>Xero Billing page</strong> — plan + next charge date, not a blog chart.</span></div>
@@ -134,7 +169,7 @@
     </ol>
   </section>
 
-  <section id="alternatives" class="switch">
+  <section id="alternatives" class="dyn switch">
     <h2>Alternatives whose prices we verified</h2>
     <div class="tblwrap">
       <table>
@@ -206,7 +241,7 @@
     <p class="footnote">Every figure above was read on the vendor&rsquo;s own page on the date stated, and the pages are linked in <a href="#sources">Sources</a>. Where we could not verify a number, we say so instead of guessing — that is the entire point of this site.</p>
   </section>
 
-  <section id="faq" class="switch">
+  <section id="faq" class="dyn switch">
     <h2>Questions</h2>
     <div class="faq">
       <details><summary>Did Xero really raise its US prices?</summary><p>Yes. On Xero&rsquo;s official US pricing page, checked 1 October 2026: Early $27/month, Growing $59/month, Established $97/month — up from $25, $55 and $90. The change took effect 1 October 2026 and is documented in a before/after table by the US accounting firm Numerawise (verified 27 August 2026).</p></details>
@@ -217,7 +252,7 @@
     </div>
   </section>
 
-  <section id="honesty" class="switch">
+  <section id="honesty" class="dyn switch">
     <h2>How this page stays honest</h2>
     <ul class="honest-list">
       <li><strong>No affiliate links at launch.</strong> As of 1 Oct 2026, no link on this page pays us. If we join a partner program later, affected links will be labeled on the spot, and this box will state when it started.</li>
@@ -227,7 +262,7 @@
     </ul>
   </section>
 
-  <section id="sources" class="switch">
+  <section id="sources" class="dyn switch">
     <h2>Sources</h2>
     <p class="srcline">Check dates are stated per link. Xero checked 1 Oct 2026; alternatives checked 30 Sep 2026.</p>
     <ul class="sources">
@@ -254,5 +289,24 @@
   </div>
 </footer>
 <script src="/honest-switch/counter.js" defer></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.dyn');
+  var hero = document.querySelector('.hero.dyn');
+  if (hero) hero.classList.add('in');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});
+  for (var j = 0; j < items.length; j++) io.observe(items[j]);
+})();
+</script>
+
 </body>
 </html>

@@ -34,6 +34,25 @@
   .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
   .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
   .flow3 .step span{font-size:.9rem}
+
+/* --- Illustration de tete + dynamique douce (meme traitement que les autres guides) --- */
+.hero-img{display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px}
+@keyframes hspulse{0%{opacity:.35}50%{opacity:1}100%{opacity:.35}}
+.hero-img .pulse{animation:hspulse 3.4s ease-in-out infinite}
+.dyn{transition:opacity .55s ease,transform .55s ease}
+html.js .dyn{opacity:0;transform:translateY(16px)}
+html.js .dyn.in{opacity:1;transform:none}
+.chip{transition:transform .15s ease}
+.chip:hover{transform:translateY(-2px)}
+.flow3 .step{transition:transform .18s ease,box-shadow .18s ease}
+.flow3 .step:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(14,123,82,.14)}
+.tblwrap tbody tr{transition:background .15s ease}
+.tblwrap tbody tr:hover{background:#f2f8f4}
+@media (prefers-reduced-motion: reduce){
+  .hero-img .pulse{animation:none}
+  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .chip:hover,.flow3 .step:hover{transform:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -53,6 +72,7 @@
   ]
 }
 </script>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -72,10 +92,27 @@
 
 <main id="main" class="wrap">
 
-  <section class="hero">
+  <section class="dyn hero">
     <p class="kicker">Independent · source-verified · checked 30 Sep 2026</p>
     <h1>Get paid faster — without the awkward emails.</h1>
     <p class="lede">Late invoices have one boring cause: nobody chased them. Following up is the task that keeps slipping down the list — manual chasing <span class="hl">burns hours a month</span>, and the longer an invoice sits, the less likely it is to be paid. Below: the tools that do the chasing (and what they charge), the free routes you probably already pay for, and a system that works.</p>
+
+    <svg class="hero-img" viewBox="0 0 760 260" role="img" aria-labelledby="ivr-ttl ivr-desc" xmlns="http://www.w3.org/2000/svg">
+      <title id="ivr-ttl">Invoices get paid without the awkward emails</title>
+      <desc id="ivr-desc">An invoice document, a clock and a three-step timeline: due date, reminder, paid.</desc>
+      <defs><linearGradient id="ivrg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef6f1"/><stop offset="1" stop-color="#e0efe6"/></linearGradient></defs>
+      <rect width="760" height="260" rx="14" fill="url(#ivrg)"/>
+      <rect x="70" y="70" width="150" height="120" rx="12" fill="#ffffff" stroke="#cfe3d8"/>
+      <g stroke="#4c9a75" stroke-width="6" stroke-linecap="round"><line x1="94" y1="104" x2="196" y2="104"/><line x1="94" y1="126" x2="170" y2="126"/><line x1="94" y1="148" x2="188" y2="148"/></g>
+      <circle cx="330" cy="130" r="34" fill="#ffffff" stroke="#cfe3d8" stroke-width="4"/><line x1="330" y1="130" x2="330" y2="108" stroke="#0e7b52" stroke-width="5" stroke-linecap="round"/><line x1="330" y1="130" x2="348" y2="140" stroke="#0e7b52" stroke-width="5" stroke-linecap="round"/>
+      <line x1="420" y1="130" x2="700" y2="130" stroke="#cfe3d8" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="468" cy="130" r="13" fill="#4c9a75"/><circle cx="560" cy="130" r="13" fill="#4c9a75"/><circle cx="652" cy="130" r="13" fill="#0e7b52"/><path d="M646 130 l4 4 9 -10" stroke="#ffffff" stroke-width="3" fill="none"/>
+      <text x="468" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#57523f">due</text>
+      <text x="560" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#57523f">reminder</text>
+      <text x="652" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#57523f">paid</text>
+
+    </svg>
+
     <p class="chips">
       <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Prices checked 30 Sep 2026</span>
@@ -92,7 +129,7 @@
     </div>
   </section>
 
-  <section id="tools" class="switch">
+  <section id="tools" class="dyn switch">
     <h2>The tools, and what they charge</h2>
     <div class="tblwrap">
       <table>
@@ -158,7 +195,7 @@
     <p class="footnote">Chaser and Paidnice figures are the US monthly prices shown on the pages we checked; other currencies and billing periods differ. Upflow and Invoiced publish no price — check the site for a quote.</p>
   </section>
 
-  <section id="builtins" class="switch">
+  <section id="builtins" class="dyn switch">
     <h2>Free or built-in routes: check what you already pay for</h2>
     <div class="why">
       <p>Before adding a subscription, the accounting tools most freelancers and agencies already run include chasing features:</p>
@@ -199,7 +236,7 @@
     </div>
   </section>
 
-  <section id="checklist" class="switch">
+  <section id="checklist" class="dyn switch">
     <h2>A chasing system that works — 5 steps</h2>
     <div class="flow3">
       <div class="step"><b>1 · Switch it on</b><span>the reminders you <strong>already pay for</strong> — QuickBooks, FreshBooks, Zoho — today, at $0 extra.</span></div>
@@ -215,7 +252,7 @@
     </ol>
   </section>
 
-  <section id="faq" class="switch">
+  <section id="faq" class="dyn switch">
     <h2>Questions</h2>
     <div class="faq">
       <details><summary>Does QuickBooks Online chase overdue invoices for me?</summary><p>Yes — up to three automatic emails, each schedulable 90 days either side of the due date; only invoices emailed after you switch it on, one schedule for all customers.</p></details>
@@ -226,7 +263,7 @@
     </div>
   </section>
 
-  <section id="honesty" class="switch">
+  <section id="honesty" class="dyn switch">
     <h2>How this page stays honest</h2>
     <ul class="honest-list">
       <li><strong>No affiliate links at launch.</strong> As of 30 Sep 2026, no link on this page pays us. If we join a partner program later, affected links will be labeled on the spot, and this box will state when it started.</li>
@@ -236,7 +273,7 @@
     </ul>
   </section>
 
-  <section id="sources" class="switch">
+  <section id="sources" class="dyn switch">
     <h2>Sources</h2>
     <p class="srcline">All links checked 30 Sep 2026.</p>
     <ul class="sources">
@@ -263,5 +300,24 @@
   </div>
 </footer>
 <script src="/honest-switch/counter.js" defer></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.dyn');
+  var hero = document.querySelector('.hero.dyn');
+  if (hero) hero.classList.add('in');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});
+  for (var j = 0; j < items.length; j++) io.observe(items[j]);
+})();
+</script>
+
 </body>
 </html>

@@ -34,6 +34,25 @@
   .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
   .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
   .flow3 .step span{font-size:.9rem}
+
+/* --- Illustration de tete + dynamique douce (meme traitement que les autres guides) --- */
+.hero-img{display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px}
+@keyframes hspulse{0%{opacity:.35}50%{opacity:1}100%{opacity:.35}}
+.hero-img .pulse{animation:hspulse 3.4s ease-in-out infinite}
+.dyn{transition:opacity .55s ease,transform .55s ease}
+html.js .dyn{opacity:0;transform:translateY(16px)}
+html.js .dyn.in{opacity:1;transform:none}
+.chip{transition:transform .15s ease}
+.chip:hover{transform:translateY(-2px)}
+.flow3 .step{transition:transform .18s ease,box-shadow .18s ease}
+.flow3 .step:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(14,123,82,.14)}
+.tblwrap tbody tr{transition:background .15s ease}
+.tblwrap tbody tr:hover{background:#f2f8f4}
+@media (prefers-reduced-motion: reduce){
+  .hero-img .pulse{animation:none}
+  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .chip:hover,.flow3 .step:hover{transform:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -53,6 +72,7 @@
   ]
 }
 </script>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -71,10 +91,33 @@
 </header>
 
 <main id="main" class="wrap">
-  <section class="hero">
+  <section class="dyn hero">
     <p class="kicker">Independent · source-verified · checked 1 Oct 2026</p>
     <h1>Your client calls deserve notes you trust. Pick the AI notetaker that fits them.</h1>
     <p class="lede">Consultants, coaches, recruiters and solo sales people record client calls on Zoom, Teams and Meet to get summaries and action items afterwards. Otter dominates the category — and the complaints about it are specific: <span class="hl">multi-speaker accuracy</span> when people talk over each other, language coverage, <span class="hl">a visible bot joining client calls</span>, and <span class="hl">minute limits on the free tier</span>. This page is the boring version of that debate: what people actually complain about, what to check before you switch, the tools whose prices we read on their own pages today, and who pays you to switch.</p>
+
+    <svg class="hero-img" viewBox="0 0 760 260" role="img" aria-labelledby="ant-ttl ant-desc" xmlns="http://www.w3.org/2000/svg">
+      <title id="ant-ttl">A live call becomes structured notes and action items</title>
+      <desc id="ant-desc">Three panels connected by arrows: a call being recorded, a structured summary, and a checklist of action items.</desc>
+      <defs><linearGradient id="antg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef6f1"/><stop offset="1" stop-color="#e0efe6"/></linearGradient></defs>
+      <rect width="760" height="260" rx="14" fill="url(#antg)"/>
+      <rect x="40" y="60" width="200" height="140" rx="12" fill="#ffffff" stroke="#cfe3d8"/>
+      <text x="140" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#1a1a1a" font-weight="bold">Live call</text>
+      <text x="140" y="184" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#57523f">audio captured</text>
+      <g fill="#0e7b52"><rect x="70" y="116" width="7" height="22" rx="3.5"/><rect x="86" y="94" width="7" height="44" rx="3.5"/><rect x="102" y="126" width="7" height="12" rx="3.5"/><rect x="118" y="82" width="7" height="56" rx="3.5"/><rect x="134" y="108" width="7" height="30" rx="3.5"/><rect x="150" y="98" width="7" height="40" rx="3.5"/><rect x="166" y="120" width="7" height="18" rx="3.5"/><rect x="182" y="104" width="7" height="34" rx="3.5"/></g>
+      <g class="pulse" fill="#4c9a75" stroke="#4c9a75" stroke-width="3" stroke-linecap="round"><line x1="258" y1="130" x2="304" y2="130"/><path d="M304 130 l-13 -8 v16 z" stroke="none"/></g>
+      <rect x="322" y="60" width="200" height="140" rx="12" fill="#ffffff" stroke="#cfe3d8"/>
+      <text x="422" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#1a1a1a" font-weight="bold">Summary</text>
+      <text x="422" y="184" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#57523f">speaker notes</text>
+      <g stroke="#4c9a75" stroke-width="6" stroke-linecap="round"><line x1="352" y1="128" x2="470" y2="128"/><line x1="352" y1="146" x2="440" y2="146"/><line x1="352" y1="164" x2="458" y2="164"/></g>
+      <g class="pulse" fill="#4c9a75" stroke="#4c9a75" stroke-width="3" stroke-linecap="round"><line x1="540" y1="130" x2="586" y2="130"/><path d="M586 130 l-13 -8 v16 z" stroke="none"/></g>
+      <rect x="604" y="60" width="116" height="140" rx="12" fill="#ffffff" stroke="#cfe3d8"/>
+      <text x="662" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#1a1a1a" font-weight="bold">Actions</text>
+      <text x="662" y="184" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#57523f">assigned</text>
+      <g stroke="#0e7b52" stroke-width="2.5" fill="none"><rect x="628" y="128" width="16" height="16" rx="4"/><path d="M631 136 l5 5 9 -11"/><rect x="628" y="154" width="16" height="16" rx="4"/><path d="M631 162 l5 5 9 -11"/></g>
+
+    </svg>
+
     <p class="chips">
       <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Prices checked 1 Oct 2026</span>
@@ -91,7 +134,7 @@
     </div>
   </section>
 
-  <section id="changed" class="switch">
+  <section id="changed" class="dyn switch">
     <h2>What people actually complain about</h2>
     <div class="why">
       <p>From the r/NoteTaking discussion &ldquo;Anyone switched from Otter AI? Looking for better alternatives&rdquo; (linked in Sources) — the repeat themes, in the words of the people switching:</p>
@@ -106,7 +149,7 @@
     <p class="footnote">Those are reasons to evaluate, not automatic reasons to switch: the line-up below includes genuinely free tiers and no-bot options, and the checklist tells you what to check first.</p>
   </section>
 
-  <section id="checklist" class="switch">
+  <section id="checklist" class="dyn switch">
     <h2>What to check before switching — 5 steps</h2>
     <div class="flow3">
       <div class="step"><b>1 · Count</b><span>your real minutes per month against free caps — <strong>Otter Basic: 300 min</strong>.</span></div>
@@ -122,7 +165,7 @@
     </ol>
   </section>
 
-  <section id="tools" class="switch">
+  <section id="tools" class="dyn switch">
     <h2>Tools we verified today</h2>
     <div class="tblwrap">
       <table>
@@ -194,7 +237,7 @@
     <p class="footnote">Every figure above was read on the vendor&rsquo;s own page on the date stated, and the pages are linked in <a href="#sources">Sources</a>. Where we could not verify a number, we say so instead of guessing — that is the entire point of this site.</p>
   </section>
 
-  <section id="affiliates" class="switch">
+  <section id="affiliates" class="dyn switch">
     <h2>Who pays you to switch</h2>
     <div class="why">
       <p>The notetaker category is in a pricing and feature arms race, and several vendors run affiliate programs built on exactly this switching moment. Verified on official pages:</p>
@@ -208,7 +251,7 @@
     <p class="footnote">Honest note: no link on this page currently pays us. Referral programs are why this page category exists — if we join one later, every affected link gets labeled on the spot and the honesty box below will say when it started.</p>
   </section>
 
-  <section id="faq" class="switch">
+  <section id="faq" class="dyn switch">
     <h2>Questions</h2>
     <div class="faq">
       <details><summary>Why are people switching away from Otter?</summary><p>The repeat complaints in the source thread: multi-speaker accuracy when people talk over each other, language coverage, a visible bot joining client calls, and free-tier minute limits. Otter&rsquo;s own pricing page (checked 1 Oct 2026) caps Basic at free with 300 monthly transcription minutes.</p></details>
@@ -220,7 +263,7 @@
     </div>
   </section>
 
-  <section id="honesty" class="switch">
+  <section id="honesty" class="dyn switch">
     <h2>How this page stays honest</h2>
     <ul class="honest-list">
       <li><strong>No affiliate links at launch.</strong> As of 1 Oct 2026, no link on this page pays us. If we join a partner program later, affected links will be labeled on the spot, and this box will state when it started.</li>
@@ -230,7 +273,7 @@
     </ul>
   </section>
 
-  <section id="sources" class="switch">
+  <section id="sources" class="dyn switch">
     <h2>Sources</h2>
     <p class="srcline">Check dates are stated per link. All vendor pages checked 1 Oct 2026.</p>
     <ul class="sources">
@@ -248,7 +291,7 @@
     </ul>
   </section>
 
-  <section id="avis" class="switch">
+  <section id="avis" class="dyn switch">
     <h2>Client reviews</h2>
     <p class="why">Reviews of this guide, published after verification. Every negative review gets a public answer — that is how we improve.</p>
     <div style="margin:14px 0">
@@ -284,6 +327,25 @@
   </div>
 </footer>
 <script src="/honest-switch/counter.js" defer></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.dyn');
+  var hero = document.querySelector('.hero.dyn');
+  if (hero) hero.classList.add('in');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});
+  for (var j = 0; j < items.length; j++) io.observe(items[j]);
+})();
+</script>
+
 <script>
 function sendReview(ev){
   var sc = document.getElementById("rscore").value;

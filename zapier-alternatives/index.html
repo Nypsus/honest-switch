@@ -35,6 +35,17 @@
   .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
   .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
   .flow3 .step span{font-size:.9rem}
+  /* Dynamisme léger : les flèches du schéma respirent, les blocs réagissent au survol — sans rien inventer */
+  @keyframes zapflow{0%{opacity:.4}50%{opacity:1}100%{opacity:.4}}
+  .hero-img .pulse{animation:zapflow 3.2s ease-in-out infinite}
+  .chip{transition:transform .15s ease}
+  .chip:hover{transform:translateY(-2px)}
+  .flow3 .step{transition:transform .18s ease,box-shadow .18s ease}
+  .flow3 .step:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(14,123,82,.14)}
+  @media (prefers-reduced-motion: reduce){
+    .hero-img .pulse{animation:none}
+    .chip:hover,.flow3 .step:hover{transform:none}
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -104,7 +115,7 @@
       <text x="108" y="144" font-size="11.5" fill="#57523f" font-family="Georgia,serif">New email · new</text>
       <text x="108" y="159" font-size="11.5" fill="#57523f" font-family="Georgia,serif">payment · new</text>
       <text x="108" y="174" font-size="11.5" fill="#57523f" font-family="Georgia,serif">spreadsheet row</text>
-      <path d="M232 150 H 300" stroke="#0e7b52" stroke-width="4" fill="none"/>
+      <path class="pulse" d="M232 150 H 300" stroke="#0e7b52" stroke-width="4" fill="none"/>
       <polygon points="298,143 314,150 298,157" fill="#0e7b52"/>
       <rect x="318" y="92" width="176" height="116" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="2"/>
       <circle cx="352" cy="130" r="14" fill="#4c9a75"/>
@@ -113,7 +124,7 @@
       <text x="378" y="144" font-size="11.5" fill="#57523f" font-family="Georgia,serif">Filter · search ·</text>
       <text x="378" y="159" font-size="11.5" fill="#57523f" font-family="Georgia,serif">transform · AI ·</text>
       <text x="378" y="174" font-size="11.5" fill="#57523f" font-family="Georgia,serif">conditions</text>
-      <path d="M502 150 H 570" stroke="#0e7b52" stroke-width="4" fill="none"/>
+      <path class="pulse" d="M502 150 H 570" stroke="#0e7b52" stroke-width="4" fill="none"/>
       <polygon points="568,143 584,150 568,157" fill="#0e7b52"/>
       <rect x="588" y="92" width="128" height="116" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="2"/>
       <circle cx="622" cy="130" r="14" fill="url(#zapgrn)"/>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Résiliation envoyée par courrier recommandé, aucune réponse : rendre la résiliation opposable — Honest Switch</title>
+<meta name="description" content="Vous avez envoyé une résiliation par courrier recommandé et personne ne répond. Ce que disent les textes, le cas public documenté d'une TPE restée sans réponse plus d'un mois, et un générateur de courrier qui prépare la demande de confirmation écrite — tout se fait dans votre navigateur.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/resiliation-recommandee/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/resiliation-recommandee/">
+<meta property="og:title" content="Résiliation par courrier recommandé restée sans réponse — Honest Switch">
+<meta property="og:description" content="Un contrat ne se résilie pas par un courrier seul : il faut une confirmation écrite. Voici l'ordre des opérations et un courrier prêt à envoyer.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .gen{border:1px solid rgba(14,123,82,.35);border-radius:12px;padding:16px;background:#fff;margin:18px 0}
+  .gen label{display:block;font-size:.85rem;color:#57523f;margin:10px 0 3px}
+  .gen input,.gen textarea{width:100%;box-sizing:border-box;padding:8px 10px;border:1px solid rgba(14,123,82,.35);border-radius:8px;font:inherit}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  @media (prefers-reduced-motion:reduce){
+    .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
+    .arrow{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Un courrier recommandé suffit-il à résilier un contrat professionnel ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "L'article 1193 du code civil dispose que les contrats ne peuvent être modifiés ou révoqués que du consentement mutuel des parties, ou pour les causes que la loi autorise. Votre courrier est donc une demande de résiliation, pas la résiliation elle-même : ce qui compte, c'est de pouvoir prouver son envoi et d'obtenir une confirmation écrite datée."}},
+    {"@type": "Question", "name": "Que faire si l'éditeur ne répond pas du tout ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Relancer par écrit en reprenant la date et le numéro de suivi du premier courrier, en fixant un délai de réponse, et en demandant explicitement une confirmation de résiliation et le remboursement des sommes prélevées au-delà de la date demandée. Conservez tout : avis de réception, factures, prélèvements, échanges."}},
+    {"@type": "Question", "name": "Puis-je simplement révoquer le prélèvement automatique ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Révoquer un mandat de prélèvement auprès de votre banque est une action technique que vous pouvez effectuer, mais elle n'efface pas la dette contractuelle si le contrat prévoit encore des échéances. Elle arrête les encaissements, elle ne tranche pas le contrat : c'est une décision à prendre en connaissance de cause, et à documenter."}},
+    {"@type": "Question", "name": "Cette page contient-elle des liens affiliés ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. À la date du 2 octobre 2026, aucun lien de cette page ne nous rapporte de commission. Les prestataires de logiciels de gestion n'ont pas de programme public ouvert auquel nous soyons inscrits."}}
+  ]
+}
+</script>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#cas">Le cas</a>
+      <a href="#textes">Les textes</a>
+      <a href="#ordre">L'ordre des opérations</a>
+      <a href="#modele">Le courrier</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero dyn">
+    <p class="kicker">Indépendant · citations publiques reproduites telles quelles · relevés des 1<sup>er</sup> et 2 oct. 2026</p>
+    <h1>Résiliation envoyée par courrier recommandé, aucune réponse : que faire</h1>
+
+    <figure class="photo"><img src="../img/resiliation-recommandee.jpg" alt="Boîte aux lettres postale française, avec les heures de levée affichées" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Vous avez envoyé la résiliation par courrier recommandé. Le recommandé est bien arrivé. Et il ne se passe rien : pas de confirmation, pas d'arrêt des prélèvements, parfois plus un interlocuteur au téléphone. C'est une situation très documentée — nous avons trouvé un avis public qui la décrit presque mot pour mot, avec la réponse de l'éditeur en dessous. <span class="hl">Un contrat ne se résilie pas par un courrier seul</span> : voici ce que disent les textes, l'ordre exact des opérations, et un courrier prêt à envoyer qui ne laisse aucune porte de sortie.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip">Le courrier se génère dans votre navigateur, rien n'est envoyé</span>
+    </p>
+  </section>
+
+  <section id="bref" class="switch dyn">
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><strong>Votre courrier est une demande, pas une résiliation.</strong> Le code civil réserve la modification et la révocation d'un contrat au consentement mutuel, ou aux causes prévues par la loi (art. 1193).</li>
+        <li><strong>Ce qui rend la démarche opposable, c'est la preuve</strong> : avis de réception, numéro de suivi, date d'envoi, et surtout une <span class="hl">confirmation écrite datée</span> de l'éditeur.</li>
+        <li><strong>Le silence n'est pas un accord.</strong> Ne pas répondre n'a aucune valeur juridique d'acceptation : cela vous laisse au contraire une trace utile pour la suite.</li>
+        <li><strong>Révoquer le prélèvement n'est pas résilier.</strong> Cela arrête les encaissements, cela ne tranche pas le contrat — et la dette contractuelle, si elle existe, survit.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="cas" class="switch dyn">
+    <h2>Le cas, tel qu'il a été publié</h2>
+    <p class="why">Cet avis public a été déposé le 29 juin 2026 sur le comparateur d'avis le plus consulté en France, à propos d'un éditeur français de logiciel de gestion. Nous le reproduisons tel quel, suivi de la réponse publique de l'éditeur publiée deux jours plus tard. C'est la situation exacte de cette page.</p>
+
+    <div class="quotebox">
+      « À ce jour, nous perdons 350 € par mois, une lourde dépense pour notre petite entreprise. Suite à notre décision de mettre fin à notre abonnement, nous avons envoyé un courrier recommandé pour demander la résiliation, ainsi qu'un geste commercial étant donné que la solution était inadaptée dès le départ. Résultat : aucune réponse après plus d'un mois. Malgré des dizaines d'appels, impossible d'obtenir un retour du responsable de compte. Le commercial, lui, est totalement silencieux. »
+      <span class="qsrc">Avis public du 29 juin 2026, note 1/5, sur un éditeur français de CRM/ERP — reproduit à l'identique.</span>
+    </div>
+
+    <div class="quotebox">
+      « Nos équipes ont bien pris connaissance de votre message et notre directeur commercial a pris contact avec vous pour en discuter plus en détail. Nous restons à votre disposition pour trouver une solution adaptée à votre situation. »
+      <span class="qsrc">Réponse publique du même éditeur, 1<sup>er</sup> juillet 2026, sous l'avis ci-dessus.</span>
+    </div>
+
+    <p>Ce que ce cas enseigne est contre-intuitif : <strong>la réponse publique arrive en deux jours, la réponse privée n'arrivait pas</strong>. Ce n'est pas un détail de communication, c'est le cœur du problème. Un éditeur qui ne répond pas à un recommandé reste très réactif quand l'avis est public — parce que l'avis public est un coût visible, et le recommandé non. Votre travail consiste donc à rendre votre démarche aussi visible et aussi datée que possible, par écrit, dès le premier envoi.</p>
+
+    <div class="chartbox">
+      <svg viewBox="0 0 700 210" role="img" aria-labelledby="ch3t ch3d" xmlns="http://www.w3.org/2000/svg">
+        <title id="ch3t">Le montant cité dans l'avis public, au mois et sur douze mois</title>
+        <desc id="ch3d">Barres proportionnelles : 350 euros par mois, montant cité tel quel dans l'avis public, et 4200 euros sur douze mois, qui est le produit arithmétique de ce montant par douze. Base à zéro.</desc>
+        <line x1="56" y1="164" x2="660" y2="164" stroke="#cfe3d8" stroke-width="2"/>
+        <g font-family="Georgia,serif">
+          <rect x="140" y="132" width="90" height="32" rx="6" fill="#0e7b52"/>
+          <text x="185" y="122" font-size="14" fill="#0e7b52" text-anchor="middle" font-weight="bold">350 €</text>
+          <text x="185" y="184" font-size="12" fill="#1a1a1a" text-anchor="middle">par mois</text>
+          <text x="185" y="200" font-size="11" fill="#57523f" text-anchor="middle">montant cité tel quel dans l'avis</text>
+
+          <rect x="410" y="60" width="90" height="104" rx="6" fill="#bfcdc6"/>
+          <text x="455" y="50" font-size="14" fill="#6c675c" text-anchor="middle" font-weight="bold">4 200 €</text>
+          <text x="455" y="184" font-size="12" fill="#1a1a1a" text-anchor="middle">sur douze mois</text>
+          <text x="455" y="200" font-size="11" fill="#57523f" text-anchor="middle">notre multiplication : 350 × 12</text>
+        </g>
+      </svg>
+      <p class="footnote" style="margin:10px 0 0">La première barre est un montant cité par l'auteur de l'avis, reproduit tel quel. La seconde n'est pas un montant supplémentaire : c'est le produit de la première par douze, et nous l'écrivons. Aucun autre chiffre n'est avancé sur cette page.</p>
+    </div>
+  </section>
+
+  <section id="textes" class="switch dyn">
+    <h2>Ce que disent les textes, et ce qu'ils ne disent pas</h2>
+
+    <div class="quotebox">
+      « Les contrats ne peuvent être modifiés ou révoqués que du consentement mutuel des parties, ou pour les causes que la loi autorise. »
+      <span class="qsrc">Article 1193 du code civil — version en vigueur, consultée le 2 octobre 2026.</span>
+    </div>
+
+    <p>Cette phrase est celle qui explique votre situation. Elle veut dire que <strong>votre courrier seul ne rompt pas le contrat</strong> : il constate votre décision et demande à l'autre partie de l'accepter. Tant que l'éditeur n'a pas confirmé, le contrat existe encore à ses yeux — et c'est précisément pourquoi la confirmation écrite est l'objet réel de votre démarche. Un courrier bien fait ne demande pas seulement « je résilie » : il demande une <span class="hl">confirmation écrite datée</span>, avec une date d'effet et un décompte.</p>
+
+    <h3>Trois choses que les textes disent aussi</h3>
+    <ul>
+      <li><strong>Le silence ne vaut pas acceptation.</strong> En dehors des cas où la loi en dispose autrement, ne pas répondre à une demande ne l'accepte pas. Le silence de l'éditeur ne vous engage à rien — et il constitue une trace de plus.</li>
+      <li><strong>Le dispositif de résiliation en ligne ne vous protège pas si vous êtes un professionnel.</strong> L'article L. 215-1-1 du code de la consommation, obligatoire depuis le 1<sup>er</sup> juin 2023, impose une fonctionnalité de résiliation gratuite en ligne pour les contrats conclus par voie électronique ; il vise les consommateurs et les clients non professionnels. Une entreprise qui agit dans le cadre de son activité n'y est pas couverte par défaut. Il ne modifie d'ailleurs ni la durée d'engagement ni le préavis.</li>
+      <li><strong>Une clause ne peut pas tout.</strong> Le code de commerce sanctionne le déséquilibre significatif entre partenaires commerciaux (art. L. 442-1, I, 2°) : une clause de reconduction ou de préavis qui rend la sortie impossible se discute. C'est un argument à écrire, pas à brandir au téléphone.</li>
+    </ul>
+
+    <figure class="photo dyn"><img src="../img/resiliation-recommandee-2.jpg" alt="Bureau de travail avec ordinateur, dans lequel un indépendant gère ses contrats et ses relances" loading="lazy" width="1400" height="800"></figure>
+  </section>
+
+  <section id="ordre" class="switch dyn">
+    <h2>L'ordre des opérations</h2>
+    <p class="why">L'ordre compte plus que la formulation. Faites-les dans cet ordre, et gardez une copie de tout ce que vous produisez : c'est cette pile de documents, et non votre colère, qui fera bouger les choses.</p>
+
+    <div class="flow3">
+      <div class="step"><b>1 · Constituer les preuves</b><span>Avis de réception du recommandé, numéro de suivi, date d'envoi, copie du courrier, factures, relevés des prélèvements postérieurs à votre demande. Tout, dans un seul dossier daté.</span></div>
+      <div class="step"><b>2 · Relancer par écrit, avec un délai</b><span>Un courrier qui reprend la référence du premier, demande une confirmation écrite datée avec date d'effet, et fixe un délai de réponse de quinze jours. C'est le courrier ci-dessous.</span></div>
+      <div class="step"><b>3 · Escalader, sans mélanger les terrains</b><span>Si rien ne vient : révoquer le mandat de prélèvement auprès de votre banque (cela arrête les encaissements, cela ne résout pas le contrat) et, si les montants le justifient, consulter un professionnel du droit.</span></div>
+    </div>
+
+    <h3>La partie que personne n'écrit</h3>
+    <p>Dans le cas que nous avons lu, la réponse est venue <strong>après un avis public</strong>, pas après le courrier. Ce n'est pas une méthode que nous conseillons comme première arme : un avis public non documenté se retourne contre vous. Mais une fois les étapes 1 et 2 faites, vous disposez d'un dossier factuel — dates, recommandé, absence de réponse — qui est précisément ce qui rend un avis public honnête et crédible. C'est aussi ce qui le rend gênant pour l'éditeur, ce qui explique l'effet.</p>
+  </section>
+
+  <section id="modele" class="switch dyn">
+    <h2>Le courrier de relance, prêt à envoyer</h2>
+    <p class="why">Remplissez les champs : le texte se construit sous vos yeux. <strong>Rien n'est envoyé nulle part</strong> — aucun serveur, aucun formulaire, aucun envoi automatique. Vous copiez le texte dans votre traitement de texte, vous l'imprimez et vous l'envoyez en recommandé avec avis de réception.</p>
+
+    <div class="gen">
+      <label for="g_dest">Destinataire (raison sociale de l'éditeur)</label>
+      <input id="g_dest" placeholder="Exemple : Société X — Service client">
+      <label for="g_exp">Votre raison sociale et votre adresse</label>
+      <input id="g_exp" placeholder="Exemple : Dupont SARL, 12 rue … , 75000 Paris">
+      <label for="g_ref">Référence du contrat ou du client</label>
+      <input id="g_ref" placeholder="Exemple : contrat n° 12345">
+      <label for="g_date">Date d'envoi du premier courrier recommandé</label>
+      <input id="g_date" placeholder="Exemple : 14 avril 2026">
+      <label for="g_montant">Montant déjà prélevé depuis votre demande (facultatif)</label>
+      <input id="g_montant" placeholder="Exemple : 350 € par mois (facultatif)">
+      <label for="g_effet">Date d'effet demandée pour la fin du contrat</label>
+      <input id="g_effet" placeholder="Exemple : 30 avril 2026 (facultatif)">
+      <button type="button" onclick="buildLetter()" style="margin-top:12px">Construire le courrier</button>
+      <p class="footnote" id="genok" style="margin-top:10px"></p>
+      <label for="g_out" style="margin-top:12px">Votre courrier (à copier)</label>
+      <textarea id="g_out" rows="18" readonly></textarea>
+    </div>
+
+    <p class="footnote">Ce courrier demande une confirmation écrite et fixe un délai. Il ne cite aucun texte de loi à la place de votre conseil juridique, il n'annonce aucune action contentieuse, et il ne promet rien : c'est un courrier de fait, dont chaque élément est vérifiable par l'éditeur.</p>
+  </section>
+
+  <section id="checklist" class="switch dyn">
+    <h2>La checklist avant d'envoyer</h2>
+    <ul>
+      <li><strong>Un courrier par point, une seule question par courrier.</strong> La confirmation de résiliation d'abord ; le remboursement ensuite. Un courrier qui demande tout à la fois se traite par morceaux, ou pas du tout.</li>
+      <li><strong>Reprendre la référence du premier courrier</strong> : date d'envoi et numéro de suivi. C'est ce qui transforme une relance en dossier.</li>
+      <li><strong>Demander une réponse écrite datée</strong>, pas une réponse téléphonique. Une réponse orale ne vaut rien comme preuve.</li>
+      <li><strong>Fixer un délai explicite</strong> (quinze jours dans le modèle ci-dessus) et l'écrire noir sur blanc.</li>
+      <li><strong>Lister les montants prélevés après votre demande</strong>, avec leurs dates, si vous en avez.</li>
+      <li><strong>Garder une copie complète du dossier</strong> : courriers, avis de réception, factures, relevés. C'est le dossier qui servira, pas la mémoire.</li>
+    </ul>
+  </section>
+
+  <section id="faq" class="switch dyn">
+    <h2>Questions</h2>
+    <details><summary>Le courrier recommandé a-t-il une valeur particulière ?</summary><p>Sa valeur, c'est la preuve : il date l'envoi et, avec l'avis de réception, atteste que le destinataire l'a reçu. C'est cette preuve qui manque à une demande faite par téléphone.</p></details>
+    <details><summary>Combien de temps faut-il attendre avant d'escalader ?</summary><p>Il n'existe pas de délai légal unique : cela dépend de votre contrat et de la nature de votre demande. Ce que nous avons lu dans le cas public, c'est un mois sans réponse après un recommandé. À partir de là, une relance écrite avec délai est légitime, et c'est exactement ce que prépare le modèle.</p></details>
+    <details><summary>Puis-je arrêter de payer pendant le litige ?</summary><p>Révoquer le mandat auprès de la banque arrête les encaissements, mais n'éteint pas une dette contractuelle si le contrat court toujours. C'est une décision qui peut se retourner contre vous : prenez-la avec les textes sous les yeux, ou avec un professionnel du droit.</p></details>
+    <details><summary>Le courrier a-t-il une valeur juridique ?</summary><p>Ce modèle est un courrier de fait, pas un acte d'avocat. Il a une valeur de preuve et de mise au point ; ce n'est ni un conseil juridique ni une mise en demeure formelle. Sur un enjeu important, faites-le relire.</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non. Aucun lien de cette page ne nous rapporte de commission à la date du 2 octobre 2026, et nous n'avons pas de programme ouvert chez les éditeurs cités. La <a href="../about/">page À propos</a> le dira le jour où cela changera.</p></details>
+  </section>
+
+  <section id="honesty" class="switch dyn">
+    <h2>Comment cette page est faite</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié ici.</strong> Cette page ne recommande aucun logiciel : elle décrit une procédure, et elle ne rapporte rien.</li>
+      <li><strong>Les citations sont reproduites à l'identique, avec leur date.</strong> L'avis du 29 juin 2026 et la réponse publique du 1<sup>er</sup> juillet 2026 ont été lus sur le comparateur d'avis public le 2 octobre 2026. Elles ne sont ni résumées ni embellies.</li>
+      <li><strong>Un seul montant est cité, et il vient de l'avis.</strong> Le chiffre de 350 € par mois est celui de son auteur. La barre des 4 200 € est une multiplication que nous assumons comme telle, écrite sous le graphique.</li>
+      <li><strong>Le seul texte de loi cité l'est mot pour mot</strong>, avec sa référence, et nous indiquons explicitement ce que la protection des consommateurs ne couvre pas.</li>
+      <li><strong>Le générateur ne transmet rien.</strong> Il construit un texte dans votre navigateur à partir de vos propres champs ; aucun contenu ne quitte votre appareil, et cette page ne contient ni cookie ni traceur.</li>
+      <li><strong>Ceci n'est pas un conseil juridique.</strong> C'est une lecture de textes publics et d'un cas public. Sur un enjeu financier réel, un professionnel du droit est le seul interlocuteur compétent.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch dyn">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041314">Article 1193 du code civil</a> — « Les contrats ne peuvent être modifiés ou révoqués que du consentement mutuel des parties, ou pour les causes que la loi autorise » (version en vigueur relevée le 2 oct. 2026).</li>
+      <li>Article L. 215-1-1 du code de la consommation (résiliation en ligne gratuite pour les contrats conclus par voie électronique, obligatoire depuis le 1<sup>er</sup> juin 2023) — périmètre : consommateurs et clients non professionnels.</li>
+      <li>Article L. 442-1, I, 2° du code de commerce (déséquilibre significatif entre partenaires commerciaux).</li>
+      <li>Comparateur d'avis public, page de l'éditeur cité, filtre une étoile — avis du 29 juin 2026 et réponse publique du 1<sup>er</sup> juillet 2026, lus le 2 octobre 2026 (citations reproduites à l'identique).</li>
+      <li>Crédits images (banque libre) : boîte aux lettres — Benoît Prieur, CC0, via Wikimedia Commons · bureau de travail — Bookmark Content, CC BY-SA 4.0, via Wikimedia Commons.</li>
+      <li>Guides liés : <a href="../documents-apres-abonnement/">Récupérer ses documents après la fin d'un abonnement</a> · <a href="../renouvellement-abonnement/">Renouvellement automatique des abonnements</a> · <a href="../grille-prix-logiciel/">Grille de prix écrite avant de signer</a></li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch dyn">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Ce guide n'est pas un conseil juridique ; confirmez les textes et votre contrat avant d'agir.</p>
+    <p>Mis à jour le 2 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
+(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
+/* barre de progression au scroll */
+(function(){
+  var bar = document.getElementById('progress');
+  function frame(){
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    var p = max > 0 ? (d.scrollTop / max) : 0;
+    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+  }
+  var queued = false;
+  window.addEventListener('scroll', function(){
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function(){ queued = false; frame(); });
+  }, {passive:true});
+  window.addEventListener('resize', frame, {passive:true});
+  frame();
+})();
+/* générateur de courrier — 100 % local, aucune transmission */
+function buildLetter(){
+  function v(id, fallback){ var el = document.getElementById(id); var x = el ? el.value.trim() : ''; return x || fallback; }
+  var dest = v('g_dest', '[raison sociale de l\'éditeur]');
+  var exp  = v('g_exp',  '[votre raison sociale et adresse]');
+  var ref  = v('g_ref',  '[référence du contrat]');
+  var date = v('g_date', '[date du premier courrier recommandé]');
+  var mont = v('g_montant', '');
+  var effet = v('g_effet', '');
+  var today = new Date();
+  var j = today.getDate(), m = today.getMonth() + 1, a = today.getFullYear();
+  var lignes = [];
+  lignes.push(exp);
+  lignes.push('');
+  lignes.push(dest);
+  lignes.push('');
+  lignes.push('Objet : relance — demande de confirmation écrite de la résiliation, référence ' + ref);
+  lignes.push('Lettre recommandée avec avis de réception');
+  lignes.push('');
+  lignes.push('Madame, Monsieur,');
+  lignes.push('');
+  lignes.push('Par courrier recommandé avec avis de réception envoyé le ' + date + ', je vous ai demandé la résiliation de mon contrat ' + ref + '. Ce courrier vous a été remis, l\'avis de réception en fait foi. À ce jour, je n\'ai reçu aucune réponse écrite.');
+  if (mont) {
+    lignes.push('');
+    lignes.push('Depuis cette demande, des sommes continuent d\'être prélevées (' + mont + ').');
+  }
+  lignes.push('');
+  lignes.push('Par la présente, je vous demande, par écrit et sous quinze jours à compter de la réception de ce courrier :');
+  lignes.push('1. de me confirmer par écrit la prise en compte de ma demande de résiliation, en précisant sa date d\'effet' + (effet ? ' (date d\'effet demandée : ' + effet + ')' : '') + ' ;');
+  lignes.push('2. de m\'indiquer le sort des sommes prélevées depuis ma demande initiale, avec le détail des échéances concernées ;');
+  lignes.push('3. de me communiquer les modalités de récupération de mes données, si un accès m\'est encore ouvert.');
+  lignes.push('');
+  lignes.push('Je vous rappelle que l\'absence de réponse ne vaut pas acceptation, et que je conserve l\'ensemble des pièces de ce dossier : copie de ma demande, avis de réception, factures et relevés de prélèvements.');
+  lignes.push('');
+  lignes.push('Dans l\'attente de votre réponse écrite, je vous prie d\'agréer, Madame, Monsieur, l\'expression de mes salutations distinguées.');
+  lignes.push('');
+  lignes.push(exp);
+  lignes.push('Le ' + j + ' ' + ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'][m - 1] + ' ' + a);
+  document.getElementById('g_out').value = lignes.join('\n');
+  document.getElementById('genok').innerHTML = '✓ Courrier construit dans votre navigateur. Copiez-le dans votre traitement de texte, relisez-le, imprimez-le et envoyez-le en recommandé avec avis de réception.';
+}
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Résiliation sans réponse — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Résiliation envoyée par courrier recommandé, sans réponse\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<style>
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style>
+</body>
+</html>

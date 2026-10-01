@@ -83,6 +83,7 @@ h1 {
 .chip a { font-weight: 700; }
 .chip-good { background: var(--accent-soft); border-color: #cfe6d9; color: #14523a; }
 .chip-good a { color: #0a5c3d; }
+.aff-note { display: block; font-weight: 400; font-size: 11px; color: var(--muted); margin-top: 3px; }
 
 /* ---------- sections ---------- */
 .switch { padding: 40px 0 8px; border-top: 1px solid var(--line); }

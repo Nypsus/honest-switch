@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logiciel de gestion : obtenir la grille de prix écrite avant de signer — Honest Switch</title>
+<meta name="description" content="Un abonnement passe de 19,90 € à 61,90 € par mois après l'ajout de lignes de code, et l'éditeur refuse le document tarifaire. Voici comment exiger la grille écrite avant de signer : textes du code de commerce, modèle de demande prêt à envoyer, checklist des huit points.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/grille-prix-logiciel/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/grille-prix-logiciel/">
+<meta property="og:title" content="Logiciel de gestion : obtenir la grille de prix écrite avant de signer — Honest Switch">
+<meta property="og:description" content="Avis lus sur la fiche publique d'un ERP : hausses de 19,90 € à 61,90 € par mois, « pas de grille tarifaire, rien dans les CGV ». Les textes qui obligent, et la demande type à envoyer avant de signer.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Exiger la grille de prix écrite avant de signer un logiciel de gestion">
+<meta name="twitter:description" content="Verbatims publics, textes du code de commerce et modèle de demande écrite à envoyer avant signature.">
+<meta name="twitter:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* Visuels propres à cette page — mêmes couleurs que le site, aucun chiffre inventé */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .tool{border:1px solid rgba(14,123,82,.35);border-radius:12px;background:#fff;padding:18px;margin:18px 0}
+  .tool label{display:block;font-size:.85rem;color:#57523f;margin:12px 0 4px}
+  .tool input[type=text],.tool input[type=date],.tool input[type=email],.tool textarea{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid rgba(0,0,0,.2);border-radius:8px;font:inherit}
+  .tool textarea{min-height:76px;resize:vertical}
+  .tool .row{display:flex;flex-wrap:wrap;gap:14px}
+  .tool .row>div{flex:1 1 180px}
+  .tool button{margin-top:14px;background:#0e7b52;color:#fff;border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:700;cursor:pointer}
+  .tool button.ghost{background:transparent;color:#0e7b52;border:1px solid rgba(14,123,82,.5)}
+  .tool .out{margin-top:14px;font-size:.95rem}
+  .tool .out b{color:#0e7b52}
+  .tool textarea#lettre{min-height:280px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86rem;background:#fbfbf9}
+  .stamp{display:inline-block;font-size:.78rem;color:#57523f;background:#f2f7f4;border-radius:20px;padding:4px 12px;margin-top:6px}
+  .stars-in{display:flex;gap:4px;margin:8px 0 4px}
+  .stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+  .stars-in .star:hover{transform:scale(1.15)}
+  .stars-in .star.on{color:#ffb400}
+  .stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+  .avis{border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:14px;margin:12px 0;background:#fbfbf9}
+  .avis .stars{color:#ffb400;letter-spacing:2px}
+  .hint{font-size:.84rem;color:#57523f}
+  .card{border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0}
+  .card input,.card textarea{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid rgba(0,0,0,.2);border-radius:8px;font:inherit;margin-top:8px}
+  .card button{margin-top:10px;background:#0e7b52;color:#fff;border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:700;cursor:pointer}
+  .tblwrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;margin:14px 0}
+  th,td{border:1px solid rgba(0,0,0,.12);padding:9px 10px;text-align:left;font-size:.94rem;vertical-align:top}
+  th{background:#f2f7f4}
+  caption{caption-side:top;text-align:left;font-size:.83rem;color:#57523f;padding-bottom:8px}
+  .num{white-space:nowrap}
+
+/* --- Illustration de tete + dynamique douce (meme traitement que les autres guides) --- */
+.hero-img{display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px}
+@keyframes hspulse{0%{opacity:.35}50%{opacity:1}100%{opacity:.35}}
+.hero-img .pulse{animation:hspulse 3.4s ease-in-out infinite}
+.dyn{transition:opacity .55s ease,transform .55s ease}
+html.js .dyn{opacity:0;transform:translateY(16px)}
+html.js .dyn.in{opacity:1;transform:none}
+.chip{transition:transform .15s ease}
+.chip:hover{transform:translateY(-2px)}
+.flow3 .step{transition:transform .18s ease,box-shadow .18s ease}
+.flow3 .step:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(14,123,82,.14)}
+.tblwrap tbody tr{transition:background .15s ease}
+.tblwrap tbody tr:hover{background:#f2f8f4}
+@media (prefers-reduced-motion: reduce){
+  .hero-img .pulse{animation:none}
+  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .chip:hover,.flow3 .step:hover{transform:none}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "L'éditeur est-il obligé de me donner sa grille tarifaire avant que je signe ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "S'il établit des conditions générales de vente — ce que fait tout éditeur qui publie des tarifs — l'article L. 441-1 du code de commerce l'oblige à les communiquer à tout acheteur qui en fait la demande pour une activité professionnelle, sur tout support constituant un support durable. Ces conditions comprennent les éléments de détermination du prix, dont le barème des prix unitaires. Et lorsque le prix d'un service ne peut être déterminé a priori ou indiqué avec exactitude, le prestataire doit communiquer la méthode de calcul permettant de vérifier le prix, ou un devis suffisamment détaillé."}},
+    {"@type": "Question", "name": "Peut-il augmenter le prix de mon abonnement en cours d'année ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Pas de sa seule décision. L'article 1193 du code civil dispose que les contrats ne peuvent être modifiés ou révoqués que du consentement mutuel des parties, ou pour les causes que la loi autorise. Une hausse suppose donc une clause de révision écrite dans le contrat ou dans les conditions générales acceptées, appliquée selon ses propres termes. Sans clause, ou hors de ses prévisions, la modification ne s'impose pas à vous : elle doit être acceptée, ou contestée. La clause de révision elle-même peut être discutée si elle fait peser sur vous un déséquilibre significatif (article L. 442-1, I, 2° du code de commerce)."}},
+    {"@type": "Question", "name": "Que répondre quand le commercial dit que « c'est au cas par cas » ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "C'est exactement la situation que l'article L. 441-1 prévoit : si le prix ne peut pas être déterminé a priori ou indiqué avec exactitude, le prestataire doit vous communiquer la méthode de calcul permettant de vérifier le prix, ou un devis suffisamment détaillé. « Au cas par cas » n'est donc pas une réponse recevable : demandez la méthode et le barème par écrit, puis vérifiez le devis ligne par ligne avant de signer."}},
+    {"@type": "Question", "name": "Puis-je exiger que les ajouts futurs passent par un devis que je valide ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "C'est une clause à négocier, et le meilleur moment pour le faire est avant la signature. Demandez qu'elle soit écrite noir sur blanc : « toute prestation non comprise dans le périmètre signé fait l'objet d'un devis écrit, validé par le client avant exécution ». Sans cette phrase, l'ajout d'une ligne de code ou d'un pack d'heures peut être facturé sans votre accord préalable explicite — c'est ce que décrivent plusieurs avis publics cités sur cette page."}},
+    {"@type": "Question", "name": "Et si je refuse un supplément : mes données restent accessibles ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Cela dépend entièrement de ce qui est écrit. Dans un avis public cité ci-dessus, l'utilisateur indique que l'abonnement doit être payé quatre ans et que, sans paiement des suppléments, la base est désactivée. Demandez avant de signer : les conditions exactes de suspension, la durée de conservation de vos données en cas de litige, le format d'export, et le coût éventuel de la reprise. Obtenez la réponse par écrit, et vérifiez qu'elle correspond au contrat que vous signez."}},
+    {"@type": "Question", "name": "Le formulaire de cette page envoie-t-il mes informations quelque part ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. Le générateur de demande tourne entièrement dans votre navigateur, en JavaScript, sans aucune requête réseau. Les informations que vous saisissez (société, éditeur, logiciel, fonctions dont vous avez besoin) ne quittent pas votre appareil et ne sont pas enregistrées. Le texte produit s'affiche pour que vous le copiiez ou l'ouvriez dans votre logiciel de messagerie."}},
+    {"@type": "Question", "name": "Y a-t-il des liens affiliés sur cette page ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. Au 1er octobre 2026, aucun lien de cette page ne nous rémunère, et nous ne vendons aucun logiciel. Les liens présents renvoient aux sources citées (avis publics, pages tarifaires, textes de loi). Le jour où un lien affilié apparaîtrait sur une page du site, il serait étiqueté sur place et la page À propos mise à jour."}}
+  ]
+}
+</script>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#pourquoi">Pourquoi</a>
+      <a href="#mecanique">La mécanique</a>
+      <a href="#enjeu">Ce qui est en jeu</a>
+      <a href="#outil">Votre demande</a>
+      <a href="#loi">Ce que dit la loi</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="dyn hero">
+    <p class="kicker">Logiciels de gestion &amp; ERP · avis lus le 1<sup>er</sup> oct. 2026 · aucune affiliation</p>
+    <h1>Le prix d'un logiciel de gestion se décide avant la signature. Après, on ne discute plus : <span class="hl">on paie</span>.</h1>
+    <p class="lede">Un abonnement qui passe de <span class="hl">19,90 € à 61,90 € par mois</span> deux mois après la souscription, « suite à l'ajout de lignes de code » — et un chargé d'affaires qui refuse de fournir le document tarifaire justifiant la hausse. C'est un avis public, daté, lisible par tout le monde. Le même fil raconte des devis de <span class="hl">1 408,46 $</span> pour du code écrit après la mise en service, des packs d'heures consommés en paramétrage, des formations facturées en plus. Aucun de ces utilisateurs ne demande un autre logiciel : ils demandent tous la même chose — <span class="hl">savoir, par écrit et avant de signer, ce qui est compris et ce qui ne l'est pas</span>. Cette page donne les textes qui vous y autorisent, la liste des points à exiger, et une demande type à envoyer avant la signature.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — 1 oct. 2026</span>
+      <span class="chip">Verbatims publics datés et sourcés</span>
+      <span class="chip">Textes du code de commerce cités</span>
+    </p>
+
+    <figure class="photo"><img src="../img/grille-prix-logiciel.jpg" alt="Contrat imprimé posé sur un bureau, stylo posé sur les lignes de signature" loading="lazy" width="1400" height="1050"><figcaption>Ce qui se signe, ce qui se facture : entre les deux, il manque souvent une grille tarifaire écrite. Photo : Blogtrepreneur — CC BY 2.0 (Wikimedia Commons).</figcaption></figure>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="gp-ttl gp-desc" class="hero-img">
+      <title id="gp-ttl">Ce qui est publié, ce qui s'ajoute à la facture, ce qui n'est écrit nulle part</title>
+      <desc id="gp-desc">Trois colonnes : la grille publique de l'abonnement, les lignes facturées en plus après la signature (code spécifique, maintenance, packs d'heures, formation), et la grille des suppléments qui, dans les avis cités, n'existe dans aucun document. La demande de grille écrite porte sur la troisième colonne.</desc>
+      <defs>
+        <linearGradient id="gpg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#eef6f1"/><stop offset="1" stop-color="#e0efe6"/>
+        </linearGradient>
+      </defs>
+      <rect width="760" height="300" rx="18" fill="url(#gpg)"/>
+      <text x="380" y="34" font-size="13" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif">Ce qui est publié, ce qui s'ajoute, ce qui n'est écrit nulle part</text>
+
+      <rect x="30" y="56" width="212" height="164" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="1.5"/>
+      <text x="46" y="82" font-size="12.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">1 · La grille publique</text>
+      <text x="46" y="108" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">Prix par utilisateur, paliers,</text>
+      <text x="46" y="126" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">remises : affichés sur la</text>
+      <text x="46" y="144" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">page tarifaire.</text>
+      <text x="46" y="176" font-size="11" fill="#57523f" font-family="Georgia,serif">C'est la partie visible —</text>
+      <text x="46" y="194" font-size="11" fill="#57523f" font-family="Georgia,serif">elle n'est pas le sujet.</text>
+
+      <rect x="274" y="56" width="212" height="164" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="1.5"/>
+      <text x="290" y="82" font-size="12.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">2 · Les lignes ajoutées</text>
+      <text x="290" y="108" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">Code spécifique, maintenance,</text>
+      <text x="290" y="126" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">packs d'heures, formation,</text>
+      <text x="290" y="144" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">reprise de données.</text>
+      <text x="290" y="176" font-size="11" fill="#57523f" font-family="Georgia,serif">Facturées après la</text>
+      <text x="290" y="194" font-size="11" fill="#57523f" font-family="Georgia,serif">signature, pas au devis.</text>
+
+      <rect x="518" y="56" width="212" height="164" rx="12" fill="#ffffff" stroke="#8a1f1f" stroke-width="1.5" stroke-dasharray="7 5"/>
+      <text x="534" y="82" font-size="12.5" fill="#8a1f1f" font-family="Georgia,serif" font-weight="bold">3 · La grille manquante</text>
+      <text x="534" y="108" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">Barème des suppléments,</text>
+      <text x="534" y="126" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">conditions de révision du</text>
+      <text x="534" y="144" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">prix, sortie des données.</text>
+      <text x="534" y="176" font-size="11" fill="#8a1f1f" font-family="Georgia,serif">C'est ce que la demande</text>
+      <text x="534" y="194" font-size="11" fill="#8a1f1f" font-family="Georgia,serif">écrite doit obtenir.</text>
+
+      <path d="M136 224 H 624" stroke="#0e7b52" stroke-width="2.5" stroke-dasharray="8 7" opacity=".65"/>
+      <text x="380" y="248" font-size="11.5" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">Un prix qui n'est écrit nulle part ne se vérifie nulle part : il se subit.</text>
+      <text x="380" y="272" font-size="11" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">Schéma de lecture, sans chiffre — les montants réels sont dans les sections suivantes.</text>
+    </svg>
+
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><b>Le problème n'est pas le prix, c'est son absence d'écrit</b> : dans les avis cités plus bas, la hausse est justifiée à l'oral, jamais par un document. « Pas de grille tarifaire, rien dans les CGV, ni sur le site Internet. »</li>
+        <li><b>Il existe un texte qui vous autorise à la demander</b> : l'article <span class="hl">L. 441-1 du code de commerce</span> impose la communication des conditions générales de vente — dont « les éléments de détermination du prix tels que le barème des prix unitaires » — à tout acheteur professionnel qui en fait la demande, sur <span class="hl">support durable</span>. Et si le prix ne peut pas être indiqué avec exactitude, la <span class="hl">méthode de calcul</span> ou un devis suffisamment détaillé doit être fourni.</li>
+        <li><b>Rien ne peut être modifié sans votre accord</b> : l'article <span class="hl">1193 du code civil</span> — « les contrats ne peuvent être modifiés ou révoqués que du consentement mutuel des parties ».</li>
+        <li><b>Le meilleur moment pour négocier, c'est avant de signer</b> : c'est écrit noir sur blanc par un utilisateur mécontent, sur la fiche publique consultée — « pas sans avoir obtenu, par écrit et avant la signature, la confirmation précise et technique de chaque fonctionnalité dont vous avez besoin à un prix annoncé ».</li>
+        <li><b>Zéro donnée envoyée</b> : le générateur de demande de cette page tourne dans votre navigateur et n'appelle aucun serveur.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pourquoi" class="dyn switch">
+    <h2>Pourquoi cette page existe</h2>
+    <div class="why">
+      <p>Ce besoin a été relevé dans les avis 1 étoile de la fiche publique d'un éditeur d'ERP sur Trustpilot France, ouverte le 1<sup>er</sup> octobre 2026 — <span class="hl">1 281 avis</span> publiés, note globale <span class="hl">3,1</span>. Les avis sélectionnés ici ne portent pas sur la qualité du logiciel : ils décrivent tous la même séquence, celle d'une facture qui grandit après la signature, sans document qui l'encadre.</p>
+    </div>
+
+    <blockquote class="quotebox">&ldquo;Après 2 mois d'utilisation mon abonnement est passé du jour au lendemain de <strong>19,90 € à 61,90 € par mois</strong> suite à l'ajout de lignes de code. Ma chargé d'affaire chez Odoo m'a expliqué pourquoi (un supplément pour la maintenance du code est obligatoire, ça aurait été bien de le mentionner avant...), mais refuse de me donner un quelconque document tarifaire justifiant la hausse (<strong>pas de grille tarifaire, rien dans les CGV, ni sur le site Internet</strong>). J'ai donc demandé au moins la liste de ce qui n'est pas compris dans l'abonnement, avec la tarification associée, mais je me heurte à un refus. […] Impossible de savoir quel sera le prix de mon abonnement dans 2 mois et ce qui me sera ou non facturé...&rdquo;<span class="qsrc">— « Axel », avis 1/5, 23 mars 2026 · fr.trustpilot.com/review/odoo.com, lu le 1<sup>er</sup> oct. 2026</span></blockquote>
+
+    <div class="why">
+      <p>Trois autres avis, publiés la même année, complètent la série par des montants précis ou des mécaniques nommées :</p>
+    </div>
+
+    <blockquote class="quotebox">&ldquo;Toujours plus de frais cachés ! […] on reçoit gentillement un mail avec un devis, parce qu'il faut encore payer plus ! « Votre devis SO2026/8368043 […] d'un montant de <strong>US$ 1 408,46</strong> est prêt pour validation. Ce devis est dû à l'ajout de lignes de code dans une base de données hébergée par Odoo. »&rdquo;<span class="qsrc">— « Dax Vouriot », avis 1/5, 24 sept. 2026 · même source, même lecture</span></blockquote>
+
+    <blockquote class="quotebox">&ldquo;Des frais cachés sur frais cachés. […] Dans les faits, 40 heures ont été consommées en configuration de base et onboarding. […] Dès qu'une ligne de code est modifiée, des <strong>centaines d'euros</strong> de « maintenance Studio Code » s'ajoutent à la facture. […] Si vous ne payez pas les suppléments, les accès sont coupés (votre base est désactivée) — alors que l'abonnement est déjà réglé. <strong>Vous n'avez aucun levier.</strong> […] Je ne recommande pas... du moins pas sans avoir obtenu, <strong>par écrit et avant la signature</strong>, la confirmation précise et technique de chaque fonctionnalité dont vous avez besoin à un prix annoncé.&rdquo;<span class="qsrc">— « Margaux », avis 1/5, 12 mai 2026 · même source, même lecture</span></blockquote>
+
+    <blockquote class="quotebox">&ldquo;Un scandale ! […] Entre les formations à <strong>2 500 €</strong> et les petites lignes cachées dans le devis afin de vous refacturer de nouveaux produits, c'est vraiment pathétique. […] ils vous appellent trois semaines après le début de votre abonnement pour vous dire que vous avez touché au code et qu'il faut repayer&rdquo;<span class="qsrc">— « Pierre Portaluppi », avis 1/5, 7 sept. 2026 · même source, même lecture</span></blockquote>
+
+    <div class="why">
+      <p>Ces avis ne sont pas des assertions sans contradicteur. L'éditeur y répond publiquement, et ses réponses décrivent exactement le mécanisme :</p>
+    </div>
+
+    <blockquote class="quotebox">&ldquo;Les frais liés à un abonnement Odoo sont définis au moment de la souscription. Certains coûts supplémentaires peuvent ensuite s'appliquer en fonction des choix effectués, par exemple lors de l'ajout d'utilisateurs, la maintenance de code spécifique ou, pour les bases de données sur des versions obsolètes, dans le cadre du service de maintenance étendue.&rdquo;<span class="qsrc">— Réponse publique de l'éditeur, 10 juil. 2026, sous un avis du 2 juil. 2026 · même source</span></blockquote>
+
+    <blockquote class="quotebox">&ldquo;l'évolution du tarif était liée à l'introduction de code spécifique nécessitant une maintenance. Celle-ci est essentielle pour garantir la stabilité, la sécurité et la compatibilité de votre environnement Odoo dans le temps. Nous comprenons que ce point n'ait pas été clair initialement, d'où notre prise de contact.&rdquo;<span class="qsrc">— Réponse publique de l'éditeur, 3 avr. 2026, sous l'avis du 23 mars 2026 · même source</span></blockquote>
+
+    <div class="why">
+      <p>Rien dans ces échanges ne dit que l'éditeur a tort de facturer ce qu'il facture. Le sujet est ailleurs, et il est plus simple : <strong>la liste de ce qui se facture en plus n'était pas écrite avant la signature</strong>. C'est cette liste qu'il faut obtenir, et le code de commerce donne de quoi la demander.</p>
+    </div>
+  </section>
+
+  <section id="mecanique" class="dyn switch">
+    <h2>La mécanique, en trois temps</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Le prix affiché couvre un périmètre précis</b><span>Un abonnement par utilisateur, sur des applications standard. Ce prix est public, il est clair, et il ne couvre pas le travail sur mesure.</span></div>
+      <div class="step"><b>2 · Votre besoin réel dépasse ce périmètre</b><span>Un champ à ajouter, un document à personnaliser, une connexion à faire : à partir de là, on entre dans du code spécifique, des packs d'heures, de la formation.</span></div>
+      <div class="step"><b>3 · Le supplément arrive après la signature</b><span>C'est là que tout se joue : la ligne apparaît sur la facture sans barème publié. Dans les avis cités, elle est justifiée à l'oral — « un supplément obligatoire » — mais jamais documentée.</span></div>
+    </div>
+  </section>
+
+  <section id="enjeu" class="dyn switch">
+    <h2>Ce qui est publié, ce qui s'ajoute</h2>
+    <div class="why">
+      <p>Deux choses différentes cohabitent sur ce sujet. D'un côté, une grille publique, claire, par utilisateur — que nous avons relevée nous-mêmes sur la page tarifaire de l'éditeur cité dans les avis, le 1<sup>er</sup> octobre 2026. De l'autre, ce que des utilisateurs racontent avoir payé en plus, avec des montants qu'eux seuls connaissent. Nous présentons les deux, séparément, sans les mélanger : les montants d'avis ne sont pas des tarifs.</p>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <caption>Grille tarifaire publique de l'éditeur cité dans les avis, relevée sur sa propre page le 1<sup>er</sup> oct. 2026 (montants affichés en dollars, tels quels, sur la version française du site).</caption>
+        <thead>
+          <tr><th scope="col">Offre affichée</th><th scope="col">Prix publié</th><th scope="col">Ce que la page annonce</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Une app gratuite</th><td class="num"><strong>0 $</strong></td><td>Une application, nombre d'utilisateurs illimité.</td></tr>
+          <tr><th scope="row">Standard</th><td class="num"><strong>24,90 $ / utilisateur / mois</strong></td><td>Toutes les applis. Un second montant (31,10 $) est affiché à côté, avec un astérisque renvoyant à une remise de 12 mois applicables « aux utilisateurs spécifiés dans la commande initiale ».</td></tr>
+          <tr><th scope="row">Personnalisé</th><td class="num"><strong>49,00 $ / utilisateur / mois</strong></td><td>Toutes les applis + Odoo Studio, pluri-entreprises, API externes. Même astérisque (montant de référence affiché : 61,00 $).</td></tr>
+          <tr><th scope="row">Utilisateur léger</th><td class="num"><strong>8,90 $</strong></td><td>Affiché comme un tarif d'utilisateur additionnel.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="why">
+      <p>Sur cette même page, l'éditeur écrit aussi, en toutes lettres : <strong>« Tous nos plans incluent une assistance, un hébergement et une maintenance illimités. Sans frais cachés, sans limite de fonctionnalités ou de données : profitez d'une réelle transparence ! »</strong> C'est une promesse publique. Les avis 1 étoile cités plus haut disent autre chose sur les prestations qui sortent du périmètre standard. Les deux affirmations cohabitent sur Internet ; cette page les cite l'une et l'autre, à leur date, et laisse chacun juger sur pièces. Ce qui manque, dans les deux cas, c'est la même pièce : <span class="hl">la grille écrite des prestations hors abonnement</span>.</p>
+    </div>
+
+    <div class="chartbox">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 260" role="img" aria-labelledby="bar-ttl bar-desc">
+        <title id="bar-ttl">Le montant mensuel cité dans un avis public : 19,90 € puis 61,90 €</title>
+        <desc id="bar-desc">Deux barres proportionnelles aux montants cités par l'auteur de l'avis du 23 mars 2026 : 19,90 euro par mois avant, 61,90 euro par mois après l'ajout de lignes de code. La base de l'échelle est à zéro.</desc>
+        <rect width="700" height="260" rx="14" fill="#ffffff"/>
+        <line x1="80" y1="210" x2="650" y2="210" stroke="#57523f" stroke-width="2"/>
+        <text x="80" y="232" font-size="11.5" fill="#57523f" font-family="Georgia,serif">0 €</text>
+        <text x="650" y="232" font-size="11.5" fill="#57523f" text-anchor="end" font-family="Georgia,serif">Échelle : 61,90 € = 150 px (1 px ≈ 0,41 €) · chiffres cités dans l'avis du 23 mars 2026</text>
+        <!-- échelle : 61,90 € = 150 px, base à zéro -->
+        <rect x="210" y="162" width="110" height="48" fill="#8fbfa8"/>
+        <text x="265" y="152" font-size="14" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">19,90 €</text>
+        <text x="265" y="206" font-size="11.5" fill="#1a1a1a" text-anchor="middle" font-family="Georgia,serif">Avant l'ajout de code</text>
+        <rect x="380" y="60" width="110" height="150" fill="#0e7b52"/>
+        <text x="435" y="50" font-size="14" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">61,90 €</text>
+        <text x="435" y="206" font-size="11.5" fill="#1a1a1a" text-anchor="middle" font-family="Georgia,serif">Après l'ajout de code</text>
+        <text x="350" y="26" font-size="12.5" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">Deux mois après la souscription, selon l'avis public cité en section 2.</text>
+      </svg>
+      <p class="footnote">Barres proportionnelles aux montants réellement cités dans l'avis public du 23 mars 2026, base à zéro. Ces montants proviennent d'un témoignage, pas d'une grille tarifaire publiée par l'éditeur : ils ne sont ni une moyenne, ni un tarif, ni une offre. Ils servent uniquement à montrer l'écart qu'une liste de suppléments non écrite peut produire.</p>
+    </div>
+  </section>
+
+  <section id="outil" class="dyn switch">
+    <h2>Votre demande de grille écrite — prête à envoyer</h2>
+    <div class="why">
+      <p>Cette demande reprend les huit points qu'un devis d'abonnement laisse presque toujours dans le flou. Remplissez ce que vous savez, le texte se construit tout seul, puis copiez-le dans votre messagerie ou ouvrez-la directement depuis cette page. Aucune information ne quitte votre navigateur : il n'y a ni serveur, ni formulaire distant, ni enregistrement.</p>
+    </div>
+    <div class="tool">
+      <div class="row">
+        <div>
+          <label for="societe">Votre société (nom à faire figurer)</label>
+          <input type="text" id="societe" placeholder="ex. Atelier Martin — SARL">
+        </div>
+        <div>
+          <label for="editeur">Éditeur du logiciel</label>
+          <input type="text" id="editeur" placeholder="ex. l'éditeur du logiciel de gestion">
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="logiciel">Logiciel envisagé</label>
+          <input type="text" id="logiciel" placeholder="ex. ERP avec facturation et stock">
+        </div>
+        <div>
+          <label for="contact">E-mail du contact commercial (facultatif)</label>
+          <input type="email" id="contact" placeholder="vous@exemple.fr — sert au lien d'envoi, pas à nous">
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="datesig">Date à laquelle vous comptez signer (facultatif)</label>
+          <input type="date" id="datesig">
+        </div>
+      </div>
+      <label for="fonctions">Les fonctions dont votre activité a réellement besoin (une par ligne)</label>
+      <textarea id="fonctions" placeholder="ex.&#10;devis avec remise par ligne&#10;facturation par acomptes&#10;export comptable au format attendu par mon expert-comptable&#10;suivi de stock avec deux dépôts"></textarea>
+      <button type="button" id="gen">Construire ma demande</button>
+      <button type="button" class="ghost" id="copy" disabled>Copier le texte</button>
+      <button type="button" class="ghost" id="mail" disabled>Ouvrir dans ma messagerie</button>
+      <div class="out" id="out" aria-live="polite"></div>
+      <label for="lettre" style="margin-top:14px">Texte à envoyer (modifiable)</label>
+      <textarea id="lettre" placeholder="Le texte apparaîtra ici après le clic sur « Construire ma demande »."></textarea>
+      <p class="stamp">Texte généré localement · aucune donnée transmise · aucune inscription</p>
+    </div>
+    <p class="footnote">Relisez et adaptez avant d'envoyer : ce modèle pose des questions, il ne formule aucune accusation et ne prétend pas remplacer un conseil juridique. Une réponse écrite, même partielle, vaut mieux qu'un silence : elle devient une pièce que vous pouvez opposer, et c'est le devis signé qui fait foi.</p>
+  </section>
+
+  <section id="loi" class="dyn switch">
+    <h2>Ce que la loi vous autorise à demander</h2>
+    <div class="why">
+      <p>Trois textes suffisent pour transformer une discussion commerciale en demande écrite legitime. Ils sont cités ici dans leur version en vigueur, vérifiée le 1<sup>er</sup> octobre 2026.</p>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <caption>Textes en vigueur consultés le 1<sup>er</sup> oct. 2026 (Légifrance, DGCCRF).</caption>
+        <thead>
+          <tr><th scope="col">Le texte</th><th scope="col">Ce qu'il dit, mot pour mot</th><th scope="col">Ce que ça change pour vous</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Code de commerce, art. <strong>L. 441-1</strong>, II<br><span class="hint">Communication des conditions générales de vente</span></th>
+            <td>« Toute personne exerçant des activités de production, de distribution ou de services qui établit des conditions générales de vente est tenue de les communiquer à tout acheteur qui en fait la demande pour une activité professionnelle. Cette communication s'effectue par tout moyen constituant un support durable. »</td>
+            <td>Vous êtes un acheteur professionnel : demandez les CGV par écrit. Un PDF par e-mail, c'est un support durable. Une réponse orale, non.</td>
+          </tr>
+          <tr>
+            <th scope="row">Code de commerce, art. <strong>L. 441-1</strong>, I<br><span class="hint">Contenu des mêmes conditions</span></th>
+            <td>« Les conditions générales de vente comprennent notamment les conditions de règlement, ainsi que les éléments de détermination du prix tels que le <strong>barème des prix unitaires</strong> et les éventuelles réductions de prix. »</td>
+            <td>C'est le mot qui compte : barème des prix unitaires. Une grille de prix qui n'existe pas est une information manquante — demandez-la nommément.</td>
+          </tr>
+          <tr>
+            <th scope="row">Code de commerce, art. <strong>L. 441-1</strong>, III<br><span class="hint">Prix non déterminable a priori</span></th>
+            <td>« Lorsque le prix d'un service ne peut être déterminé a priori ou indiqué avec exactitude, le prestataire de services est tenu de communiquer au destinataire qui en fait la demande la <strong>méthode de calcul du prix</strong> permettant de vérifier ce dernier, ou un <strong>devis suffisamment détaillé</strong>. »</td>
+            <td>La réponse « ça dépend » ne suffit pas : demandez la méthode de calcul. C'est le seul moyen de vérifier une facture future — et c'est prévu par le texte.</td>
+          </tr>
+          <tr>
+            <th scope="row">Code civil, art. <strong>1193</strong><br><span class="hint">Force obligatoire du contrat</span></th>
+            <td>« Les contrats ne peuvent être modifiés ou révoqués que du consentement mutuel des parties, ou pour les causes que la loi autorise. »</td>
+            <td>Une hausse en cours de contrat suppose une clause de révision écrite et son application conforme. Hors de là, la modification ne s'impose pas : elle doit être acceptée par vous.</td>
+          </tr>
+          <tr>
+            <th scope="row">Code de commerce, art. <strong>L. 442-1</strong>, I, 2°<br><span class="hint">Déséquilibre significatif</span></th>
+            <td>Est sanctionné le fait, pour toute personne exerçant des activités de production, de distribution ou de services, « de soumettre ou de tenter de soumettre l'autre partie à des obligations créant un <strong>déséquilibre significatif</strong> dans les droits et obligations des parties ».</td>
+            <td>Une clause qui vous laisse sans levier — payer des suppléments ou perdre l'accès à vos données — entre dans le champ de ce texte. Le discuter avant de signer coûte moins cher qu'après.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="footnote">Cette page n'est pas un conseil juridique : les textes font foi et l'appréciation d'une situation appartient à un professionnel du droit. Ce qui est certain, c'est que demander par écrit ce que la loi prévoit de communiquer ne vous engage à rien — et que le silence obtenu vaut déjà information.</p>
+  </section>
+
+  <section id="checklist" class="dyn switch">
+    <h2>Avant de signer, dans cet ordre</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Demander</b><span>La demande écrite part avant toute signature : CGV, barème, méthode de calcul, prestations hors périmètre.</span></div>
+      <div class="step"><b>2 · Vérifier</b><span>Chaque fonction dont vous avez besoin est confirmée par écrit, sur le devis, à un prix annoncé — pas « possible » à l'oral.</span></div>
+      <div class="step"><b>3 · Encadrer</b><span>La clause d'ajout et la clause de révision sont écrites, avec devis préalable obligatoire et modalités de sortie chiffrées.</span></div>
+    </div>
+    <ul class="steps">
+      <li><strong>Réclamez les CGV avant la démo finale.</strong> Elles doivent arriver en pièce jointe, pas en lien vers une page modifiable.</li>
+      <li><strong>Exigez le barème des prix unitaires.</strong> Abonnement, utilisateur additionnel, palier, remise : la grille signée est la seule opposable.</li>
+      <li><strong>Listez les prestations hors abonnement avec leur tarif.</strong> Code spécifique, maintenance du code, pack d'heures, formation, reprise de données, connexion à un outil tiers.</li>
+      <li><strong>Écrivez la règle des ajouts futurs</strong> : devis écrit préalable, validation de votre part avant exécution, plafond annuel éventuel. C'est la phrase qui manque dans tous les avis cités plus haut.</li>
+      <li><strong>Demandez les modalités de sortie avant d'entrer.</strong> Format d'export (FEC, CSV, PDF), délai annoncé, coût, et ce qui se passe si vous refusez un supplément.</li>
+      <li><strong>Fixez la révision du prix</strong> : date, préavis, indice ou méthode, plafond. Une clause floue vaut mieux que pas de clause — mais vous l'aurez lue.</li>
+      <li><strong>Notez la date anniversaire et le préavis de non-reconduction.</strong> Un abonnement annuel se renouvelle sur des dates, pas sur votre intention : voir notre guide sur le <a href="../renouvellement-abonnement/">renouvellement automatique</a>.</li>
+      <li><strong>Conservez tout.</strong> La réponse écrite, même incomplète, est la preuve de ce qui vous a été dit avant la signature. C'est ce dossier-là qui vous protège, pas votre mémoire.</li>
+    </ul>
+    <p class="footnote">Aucun de ces points ne demande de compétence particulière, et aucun ne se règle plus tard. Ce qui s'obtient d'un commercial avant la signature est, dans la pratique, beaucoup plus difficile à obtenir après.</p>
+  </section>
+
+  <section id="faq" class="dyn switch">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details><summary>L'éditeur est-il obligé de me donner sa grille avant que je signe ?</summary><p>S'il établit des conditions générales de vente, oui : l'article L. 441-1 lui impose de les communiquer à tout acheteur qui en fait la demande pour une activité professionnelle, sur un support durable. Or ces conditions comprennent les éléments de détermination du prix, dont le barème des prix unitaires. Si le prix ne peut pas être indiqué avec exactitude, la méthode de calcul ou un devis suffisamment détaillé doit vous être communiqué.</p></details>
+      <details><summary>« Nos tarifs sont au cas par cas, on ne donne pas de grille » — que répondre ?</summary><p>Citez la phrase exacte du III de l'article L. 441-1 : quand le prix d'un service ne peut être déterminé a priori ou indiqué avec exactitude, le prestataire doit fournir la méthode de calcul permettant de le vérifier, ou un devis suffisamment détaillé. « Au cas par cas » est donc une réponse à préciser par écrit, pas une fin de non-recevoir.</p></details>
+      <details><summary>J'ai déjà signé. Est-ce trop tard pour demander la grille ?</summary><p>Non, et cela reste utile pour trois raisons : vérifier ce qui vous est facturé au titre de l'abonnement, contester un supplément qui ne figure dans aucune pièce communiquée, et préparer votre sortie ou votre renégociation. Le timing est simplement moins favorable qu'avant signature — c'est précisément ce que déplorent les avis cités sur cette page.</p></details>
+      <details><summary>Et si l'éditeur refuse de répondre à ma demande ?</summary><p>Un refus écrit est en soi une information : notez-le, avec la date, et conservez l'échange. Il vous servira si un supplément apparaît plus tard sur une facture. Pour l'appréciation d'une situation donnée, notamment au titre du déséquilibre significatif (article L. 442-1, I, 2°), le relais naturel est un professionnel du droit ou le service de répression des fraudes compétent.</p></details>
+      <details><summary>Ces textes protègent-ils aussi les consommateurs ?</summary><p>Ce sont des textes propres aux relations entre professionnels. Un particulier dispose d'autres protections, souvent plus contraignantes pour l'éditeur. Cette page s'adresse à des entreprises, des TPE et des indépendants qui achètent un logiciel pour leur activité.</p></details>
+      <details><summary>Pourquoi citer précisément cet éditeur ?</summary><p>Parce que c'est la source de départ : les avis qui décrivent le besoin sont publics, datés, et répondus par l'éditeur lui-même. Nous ne généralisons pas à partir d'un cas : nous citons, avec leur date, les pièces que n'importe qui peut vérifier. Le problème décrit — des suppléments non écrits — n'est pas propre à un éditeur : il est propre à un contrat qui ne les mentionne pas.</p></details>
+      <details><summary>Vous vendez quelque chose sur cette page ?</summary><p>Non. Aucun lien affilié, aucun formulaire chez un tiers, aucun abonnement à vendre. Les liens présents renvoient aux sources. Le générateur de demande fonctionne chez vous et n'appelle aucun serveur.</p></details>
+    </div>
+  </section>
+
+  <section id="honesty" class="dyn switch">
+    <h2>Comment cette page reste honnête</h2>
+    <ul class="honest-list">
+      <li><strong>Aucune affiliation.</strong> Aucun lien de cette page ne nous rémunère au 1<sup>er</sup> octobre 2026, et nous ne revendons aucun logiciel. Le jour où un lien affilié apparaîtrait, il serait étiqueté sur place et la page <a href="/honest-switch/about/">À propos</a> mise à jour.</li>
+      <li><strong>Aucun chiffre inventé.</strong> Les montants des avis sont cités tels quels, avec leur date et leur auteur tel qu'affiché ; les prix du tableau proviennent de la page tarifaire publique de l'éditeur, relevée le 1<sup>er</sup> octobre 2026. Ce qui n'a pas été lu n'est pas écrit.</li>
+      <li><strong>Les pièces sont citées des deux côtés</strong> : avis 1 étoile et réponses publiques de l'éditeur, y compris ce qui le contredit ou le défend.</li>
+      <li><strong>Aucune promesse de résultat.</strong> Cette page explique une méthode et reproduit des textes en vigueur ; elle ne garantit ni l'obtention d'une grille, ni un remboursement, ni une réduction.</li>
+      <li><strong>Erreur signalée, erreur corrigée</strong> : si une information de cette page est fausse ou périmée, écrivez-nous — la correction est publique.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="dyn switch">
+    <h2>Sources</h2>
+    <p class="srcline">Toutes les sources ci-dessous ont été ouvertes le 1<sup>er</sup> octobre 2026. Les dates en fin de ligne sont celles affichées par la source elle-même.</p>
+    <ul class="sources">
+      <li><a href="https://fr.trustpilot.com/review/odoo.com?stars=1">fr.trustpilot.com — fiche « Odoo », avis filtrés 1 étoile</a> (avis du 23 mars 2026, 9 avr. 2026, 12 mai 2026, 7 sept. 2026, 24 sept. 2026 ; réponses publiques de l'éditeur du 3 avr. 2026 et du 10 juil. 2026 ; compteur de 1 281 avis et note 3,1 affichés sur la page).</li>
+      <li><a href="https://www.odoo.com/fr_FR/pricing">odoo.com — page tarifaire publique (version française)</a> (0 $ pour une app, 24,90 $ et 49,00 $ par utilisateur et par mois, 8,90 $ pour un utilisateur léger, mention de remise sur 12 mois, et la phrase sur la transparence citée en section 3), relevée le 1<sup>er</sup> oct. 2026.</li>
+      <li><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038414297">Légifrance — Code de commerce, article L. 441-1</a> (communication des conditions générales de vente sur support durable ; barème des prix unitaires ; méthode de calcul ou devis suffisamment détaillé lorsque le prix ne peut être indiqué avec exactitude).</li>
+      <li><a href="https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/pratiques-restrictives-de-concurrence-les-aspects-generaux">economie.gouv.fr (DGCCRF) — pratiques restrictives de concurrence</a> (reprise de l'article L. 442-1, I : « soumettre ou tenter de soumettre l'autre partie à des obligations créant un déséquilibre significatif dans les droits et obligations des parties »).</li>
+      <li><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032041314">Légifrance — Code civil, article 1193</a> (les contrats ne peuvent être modifiés ou révoqués que du consentement mutuel des parties, ou pour les causes que la loi autorise).</li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Legal_Contract_%26_Signature_-_Warm_Tones.jpg">Photo d'illustration</a> — Blogtrepreneur, CC BY 2.0, via Wikimedia Commons.</li>
+    </ul>
+    <p class="footnote">Les noms d'éditeurs, de formules et les montants cités appartiennent à leurs titulaires respectifs et sont reproduits à titre de mesure, sans lien commercial. Cette page n'entretient aucune relation avec les éditeurs mentionnés.</p>
+  </section>
+
+  <section id="avis" class="dyn switch">
+    <h2>⭐ Avis clients</h2>
+    <div id="reviews" style="margin:14px 0">
+      <div class="avis"><div class="stars">★★★★★</div><p>Des avis de dirigeants et d'indépendants réels, publiés après vérification. Chaque retour négatif est répondu publiquement — c'est comme ça qu'on s'améliore.</p></div>
+      <p class="hint">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div class="card">
+      <b>Cette page vous a servi ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:#57523f;font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle">
+            <button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button>
+            <button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button>
+            <button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button>
+            <button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button>
+            <button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button>
+          </div>
+          <input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required>
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required></textarea>
+        <button type="submit">Envoyer mon avis</button>
+      </form>
+      <p class="hint" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page d'information indépendante. Les tarifs, les conditions générales et les textes de loi changent : relisez les documents de votre éditeur et vérifiez la version en vigueur des articles cités.</p>
+    <p>Mis à jour le 1 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.dyn');
+  var hero = document.querySelector('.hero.dyn');
+  if (hero) hero.classList.add('in');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});
+  for (var j = 0; j < items.length; j++) io.observe(items[j]);
+})();
+</script>
+
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+
+<script>
+/* ---------- générateur de demande de grille tarifaire : 100 % local ---------- */
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var out = $('out'), lettre = $('lettre'), btnCopy = $('copy'), btnMail = $('mail');
+
+  function value(id){ return ($(id).value || '').trim(); }
+
+  function sujet(ed){
+    return "Demande de grille tarifaire écrite avant signature" + (ed ? " — " + ed : "");
+  }
+
+  function texte(){
+    var societe = value('societe');
+    var editeur = value('editeur');
+    var logiciel = value('logiciel');
+    var date = value('datesig');
+    var fns = value('fonctions');
+    var l = [];
+    l.push(sujet(editeur));
+    l.push("");
+    l.push("Bonjour,");
+    l.push("");
+    l.push("Avant de m'engager" + (logiciel ? " sur " + logiciel : "") + ", je souhaite obtenir par écrit, sur un support durable (e-mail ou document joint), les éléments suivants, afin de pouvoir vérifier la facturation à venir :");
+    l.push("");
+    l.push("1. la grille complète des prix unitaires : abonnement, prix par utilisateur, paliers et remises applicables ;");
+    l.push("2. la liste des prestations non comprises dans l'abonnement, avec leur tarif : développement ou modification de code, maintenance de ce code, packs d'heures, formation, reprise de données, connexions à des outils tiers ;");
+    l.push("3. la règle applicable lorsqu'un ajout est demandé en cours de contrat : devis écrit préalable, validation de ma part avant exécution, plafond annuel éventuel ;");
+    l.push("4. les conditions de révision du prix : date d'application, préavis, indice ou méthode de calcul, plafond éventuel ;");
+    l.push("5. les conséquences d'un refus de ma part sur une prestation supplémentaire : maintien de l'accès, conservation de la base de données, durée de conservation ;");
+    l.push("6. les modalités de sortie : format d'export des données (FEC, CSV, PDF), délai annoncé, coût éventuel ;");
+    l.push("7. la durée d'engagement et le préavis de non-reconduction applicables à mon contrat ;");
+    if (fns){
+      l.push("8. la confirmation écrite que les fonctionnalités suivantes, dont mon activité a besoin, sont incluses dans l'offre au prix annoncé :");
+      fns.split("\n").forEach(function(x){
+        x = x.trim();
+        if (x) l.push("   - " + x.replace(/^-+/, "").trim());
+      });
+    } else {
+      l.push("8. la confirmation écrite, fonctionnalité par fonctionnalité, que ce dont mon activité a besoin est inclus dans l'offre au prix annoncé (je vous enverrai la liste si nécessaire).");
+    }
+    l.push("");
+    l.push("Je me permets de rappeler que l'article L. 441-1 du code de commerce prévoit la communication des conditions générales de vente — y compris les éléments de détermination du prix, dont le barème des prix unitaires — à tout acheteur professionnel qui en fait la demande, sur un support durable, et, lorsque le prix d'un service ne peut être indiqué avec exactitude, la communication de la méthode de calcul permettant de le vérifier ou d'un devis suffisamment détaillé.");
+    l.push("");
+    l.push("Ma demande porte sur" + (logiciel ? " " + logiciel : " le logiciel que vous m'avez présenté") + (editeur ? " (" + editeur + ")" : "") + "." + (date ? " J'envisage de signer le " + date + " : merci de me confirmer ces éléments par écrit avant cette date." : " Merci de me confirmer ces éléments par écrit avant toute signature."));
+    l.push("");
+    l.push("Cordialement,");
+    l.push(societe || "[votre société]");
+    return l.join("\n");
+  }
+
+  function construire(){
+    var t = texte();
+    lettre.value = t;
+    btnCopy.disabled = false;
+    btnMail.disabled = false;
+    var societe = value('societe');
+    var editeur = value('editeur');
+    out.innerHTML = "<p><b>" + (societe ? "Demande prête pour " + escapeHtml(societe) : "Demande prête") + ".</b> "
+      + "Huit points, une référence de texte, aucune accusation : " + t.length + " caractères. "
+      + "Relisez, adaptez, puis copiez ou envoyez.</p>"
+      + "<p class=\"hint\">Si l'éditeur répond \"au cas par cas\", renvoyez le point 2 et le point 8 en demandant la méthode de calcul par écrit : c'est exactement ce que prévoit le texte cité.</p>";
+    if (editeur) out.innerHTML += "<p class=\"hint\">Destinataire à indiquer : " + escapeHtml(editeur) + ".</p>";
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  $('gen').addEventListener('click', construire);
+
+  btnCopy.addEventListener('click', function(){
+    var ok = function(){
+      btnCopy.textContent = "Copié ✓";
+      setTimeout(function(){ btnCopy.textContent = "Copier le texte"; }, 2200);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(lettre.value).then(ok, function(){ lettre.select(); document.execCommand('copy'); ok(); });
+    } else {
+      lettre.select(); document.execCommand('copy'); ok();
+    }
+  });
+
+  btnMail.addEventListener('click', function(){
+    var to = value('contact');
+    var url = "mailto:" + encodeURIComponent(to) + "?subject=" + encodeURIComponent(sujet(value('editeur'))) + "&body=" + encodeURIComponent(lettre.value);
+    window.location.href = url;
+  });
+})();
+</script>
+
+<script>
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Grille de prix écrite avant de signer un logiciel de gestion — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Grille de prix écrite avant de signer un logiciel de gestion\n\nNote : " + sc + "/5\nLecteur : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)"
+  );
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+</body>
+</html>

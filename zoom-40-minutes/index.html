@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zoom coupe vos réunions gratuites à 40 minutes : que faire (vérifié le 1 oct. 2026) — Honest Switch</title>
+<meta name="description" content="La limite de 40 minutes du compte Zoom gratuit, vérifiée sur la page d'aide officielle : ce qu'elle couvre (y compris les 1:1 depuis 2022), ce qui ne la lève jamais, et les alternatives gratuites dont les durées sont écrites sur leurs pages officielles — Google Meet, Microsoft Teams, Jitsi Meet.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/zoom-40-minutes/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/zoom-40-minutes/">
+<meta property="og:title" content="Zoom coupe vos réunions gratuites à 40 minutes : que faire">
+<meta property="og:description" content="La limite vérifiée sur la page d'aide officielle Zoom, ce qu'elle couvre, et des alternatives gratuites dont les durées sont écrites noir sur blanc.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/img/zoom-40-minutes.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zoom coupe vos réunions gratuites à 40 minutes : que faire">
+<meta name="twitter:description" content="La limite vérifiée sur la page d'aide officielle Zoom et des alternatives gratuites chiffrées.">
+<meta name="twitter:image" content="https://nypsus.github.io/honest-switch/img/zoom-40-minutes.png">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* Page visuals — same site colours, no invented figures */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+
+  /* --- orientation décision / action --- */
+  .case{border:1px solid rgba(14,123,82,.3);border-left:5px solid #0e7b52;border-radius:10px;padding:14px 16px;margin:14px 0;background:#f7faf8;line-height:1.55}
+  .case b{color:#0e7b52}
+  .case span.hl{color:#0e7b52;font-weight:700}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0 6px}
+  .cta a{display:inline-block;padding:11px 16px;border-radius:10px;background:#0e7b52;color:#fff;font-weight:700;text-decoration:none;font-size:.95rem;transition:transform .2s ease,box-shadow .2s ease}
+  .cta a:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(14,123,82,.25)}
+  .cta a.ghost{background:#fff;color:#0e7b52;border:1.5px solid #0e7b52}
+  .cta a.ghost:hover{background:#f2f7f4}
+
+  /* --- illustrations & dynamique --- */
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .mile{animation:pulse 2.2s ease-in-out infinite;transform-origin:center}
+  @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "La limite de 40 minutes s'applique-t-elle vraiment à toutes les réunions Zoom gratuites ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Oui, depuis 2022 cela inclut les réunions à deux personnes. La page d'aide officielle de Zoom est explicite : les réunions hébergées par un utilisateur en licence gratuite (Basic), sur compte gratuit ou payant, se terminent après 40 minutes dès qu'il y a un hôte et au moins un participant. Une réunion démarrée par l'hôte seul, sans participant, n'est pas limitée à 40 minutes (mais elle doit rester active)."}},
+    {"@type": "Question", "name": "Un participant avec un compte payant lève-t-il la limite des 40 minutes ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non pour la plupart des cas : la durée dépend de la licence de l'HÔTE, pas des participants. Un hôte en licence gratuite qui invite trois participants payants est quand même coupé à 40 minutes. Une exception documentée : si un Zoom Room payant rejoint la réunion (même d'un autre compte), la session n'est plus limitée à 40 minutes."}},
+    {"@type": "Question", "name": "Quel plan Zoom lève la limite de 40 minutes ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Tous les plans payants (licence attribuée à l'hôte) : les réunions peuvent alors durer jusqu'à 30 heures. Le prix d'entrée publié sur la page officielle de Zoom est de 15,99 $/mois par utilisateur facturé mensuellement pour Zoom Workplace Pro (1 à 9 utilisateurs)."}},
+    {"@type": "Question", "name": "Quelle alternative gratuite n'a pas de limite de durée ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Jitsi Meet : la page officielle (jitsi.org) annonce un usage illimité sans compte obligatoire, le projet est open source et auto-hébergeable. Google Meet et Microsoft Teams, dans leurs versions gratuites, limitent les réunions de groupe à 60 minutes (les appels 1:1 vont jusqu'à 24 h chez Google, 30 h chez Microsoft)."}},
+    {"@type": "Question", "name": "Comment les chiffres de cette page ont-ils été vérifiés ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Chaque limite et chaque prix est cité depuis la page officielle de l'éditeur (support.zoom.com, zoom.com, support.google.com, workspace.google.com, microsoft.com, jitsi.org), lue le 1 octobre 2026, et liée dans la section Sources pour que chacun puisse revérifier."}}
+  ]
+}
+</script>
+<script>document.documentElement.classList.add('js')</script>
+    <style>.dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}</style>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#ce-qui-change">Ce qui change</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#outils">Outils</a>
+      <a href="#faq">FAQ</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="dyn hero">
+    <p class="kicker">Indépendant · limites et prix lus sur les pages officielles · consulté le 1 oct. 2026</p>
+    <h1>Votre réunion Zoom gratuite s'arrête à 40 minutes. Voici ce que dit réellement Zoom, et les alternatives dont les durées sont écrites noir sur blanc.</h1>
+
+    <figure class="photo"><img src="../img/zoom-40-minutes.png" alt="Visioconférence Jitsi Meet ouverte dans un navigateur, plusieurs participants à l'écran" loading="lazy" width="1920" height="912"></figure>
+
+    <p class="lede">Professeurs, associations, freelances, familles : la limite des <span class="hl">40 minutes</span> du compte Zoom gratuit interrompt vos réunions au mauvais moment — et depuis 2022, elle touche aussi les appels à deux. Cette page remet la limite à sa place : <span class="hl">ce qu'elle couvre exactement</span> (lu sur la page d'aide officielle), <span class="hl">ce qui ne la lève jamais</span> (le compte payant d'un participant, par exemple), et des alternatives gratuites dont nous avons lu les durées sur les pages officielles aujourd'hui.</p>
+    <p class="chips">
+      <span class="chip">Limites lues le 1 oct. 2026 sur support.zoom.com, support.google.com, microsoft.com et jitsi.org</span>
+      <span class="chip chip-good">Aucun lien affilié au lancement</span>
+    </p>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="zoom-ttl zoom-desc" class="hero-img" style="display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px">
+      <title id="zoom-ttl">Durée maximale d'une réunion gratuite selon l'outil</title>
+      <desc id="zoom-desc">Horloge : Zoom coupe après 40 minutes, Meet et Teams après 60 minutes en groupe, Jitsi n'annonce pas de limite.</desc>
+      <defs>
+        <linearGradient id="zbg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#eef6f1"/><stop offset="1" stop-color="#e0efe6"/>
+        </linearGradient>
+        <linearGradient id="zgrn" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0e7b52"/><stop offset="1" stop-color="#0a5e3f"/>
+        </linearGradient>
+      </defs>
+      <rect width="760" height="300" rx="18" fill="url(#zbg)"/>
+      <circle cx="180" cy="150" r="58" fill="#fff" stroke="#0e7b52" stroke-width="4"/>
+      <circle cx="180" cy="150" r="50" fill="none" stroke="#0e7b52" stroke-width="2" stroke-dasharray="4 6"/>
+      <line x1="180" y1="150" x2="180" y2="112" stroke="#0e7b52" stroke-width="5" stroke-linecap="round"/>
+      <line x1="180" y1="150" x2="209" y2="163" stroke="#0e7b52" stroke-width="5" stroke-linecap="round"/>
+      <text x="180" y="176" font-size="17" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">40 min</text>
+      <text x="180" y="92" font-size="14" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif">Zoom gratuit</text>
+      <rect x="300" y="108" width="204" height="64" rx="10" fill="#fff" stroke="#4c9a75" stroke-width="3"/>
+      <text x="402" y="136" font-size="17" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">60 min en groupe</text>
+      <text x="402" y="160" font-size="13" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">Meet &amp; Teams gratuits</text>
+      <rect x="545" y="108" width="180" height="64" rx="10" fill="#fff" stroke="#b58900" stroke-width="3"/>
+      <text x="635" y="136" font-size="17" fill="#7a5c00" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">Pas de limite</text>
+      <text x="635" y="160" font-size="13" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">Jitsi Meet (officiel)</text>
+      <text x="380" y="248" font-size="14" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif">Durées annoncées sur les pages officielles, lues le 1 oct. 2026</text>
+    </svg>
+
+    <div class="callout">
+      <h2>En résumé</h2>
+      <ul>
+        <li><b>Zoom gratuit</b> : réunion coupée à <span class="hl">40 minutes</span> dès qu'il y a un participant — y compris à deux (depuis 2022).</li>
+        <li><b>Google Meet gratuit</b> : <span class="hl">60 minutes</span> en groupe (3+), <span class="hl">24 h</span> en tête-à-tête (page Google).</li>
+        <li><b>Microsoft Teams gratuit</b> : <span class="hl">60 minutes</span> en groupe, <span class="hl">30 h</span> en appel 1:1 (page Microsoft).</li>
+        <li><b>Jitsi Meet</b> : <span class="hl">pas de limite annoncée</span>, open source, sans compte (page jitsi.org).</li>
+        <li><b>Lever la limite chez Zoom</b> : plan payant à partir de <span class="hl">15,99 $/mois/utilisateur</span> (page officielle, facturé mensuellement).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ce-qui-change" class="dyn switch">
+    <h2>Ce que dit réellement la page d'aide officielle de Zoom</h2>
+    <p>La page d'aide « Understanding time limits for Zoom Meetings » (support.zoom.com, lue le 1 oct. 2026) répartit les durées selon la <strong>licence de l'hôte</strong> :</p>
+    <ul class="sources">
+      <li><strong>Licence gratuite (Basic), sur compte gratuit ou payant :</strong> &ldquo;Meeting ends after 40 minutes&rdquo; — presque toutes les réunions programmées ou démarrées par un hôte Basic sont limitées à 40 minutes, y compris &ldquo;1 host, 1 or more participants&rdquo; (le cas à deux personnes).</li>
+      <li><strong>Réunion démarrée par l'hôte seul :</strong> pas de limite de 40 minutes — mais la réunion doit rester active.</li>
+      <li><strong>Licence payante (Licensed) :</strong> &ldquo;Meeting ends after 30 hours&rdquo; — la durée maximale passe à 30 heures.</li>
+      <li><strong>Le compte payant d'un participant ne change rien :</strong> &ldquo;Users with Basic (free) licenses on Pro, Business, or Enterprise accounts are limited to the free license meeting durations.&rdquo; C'est la licence de l'hôte qui compte.</li>
+      <li><strong>Une exception documentée :</strong> si un Zoom Room payant rejoint la réunion — même depuis un autre compte — &ldquo;the current meeting session will no longer be limited to 40 minutes&rdquo;.</li>
+    </ul>
+    <p class="footnote">Conséquence pratique : inviter « un copain qui a Zoom Pro » ne lève pas la limite. C'est souvent ce que les forums suggèrent à tort ; la règle officielle est la licence de l'hôte.</p>
+  </section>
+
+  <section id="checklist" class="dyn switch">
+    <h2>Ce qu'il faut vérifier avant de décider — 5 étapes</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Identifiez</b><span>qui <strong>héberge</strong> vos réunions récurrentes — la limite suit l'hôte, pas les participants.</span></div>
+      <div class="step"><b>2 · Mesurez</b><span>combien de vos réunions réelles <strong>dépassent 40 minutes</strong> ; celles de moins de 40 min n'ont aucun problème.</span></div>
+      <div class="step"><b>3 · Testez</b><span>une <strong>vraie réunion de plus d'une heure</strong> sur l'alternative choisie avant de déplacer quoi que ce soit.</span></div>
+    </div>
+    <ol class="steps">
+      <li><strong>Identifiez qui héberge chaque réunion récurrente.</strong> Cours, réunion d'association, rendez-vous client, appel familial : notez le compte qui lance la réunion (l'hôte). C'est SA licence qui décide de la durée. Si l'hôte est en Zoom gratuit, la coupure à 40 min s'applique même quand des participants ont des comptes payants.</li>
+      <li><strong>Mesurez ce qui dépasse réellement 40 minutes.</strong> Une réunion de 25 minutes n'a aucune raison de bouger. Dressez la liste des réunions qui durent en pratique plus de 40 min — ce sont les seules concernées par la limite.</li>
+      <li><strong>Comparez les durées gratuites sur les pages officielles.</strong> Meet gratuit : 60 min en groupe (3+), 24 h en 1:1 (support.google.com). Teams gratuit : 60 min en groupe, 30 h en 1:1 (microsoft.com). Jitsi : pas de limite annoncée (jitsi.org). Les durées ci-dessous sont toutes liées dans les Sources.</li>
+      <li><strong>Testez une vraie réunion de plus d'une heure avant de basculer.</strong> Un test réel (écran partagé, caméras, invités qui rejoignent depuis un navigateur sans compte) vaut mieux qu'un tableau comparatif. Meet et Teams acceptent les invités via un lien ; Jitsi ne demande aucun compte, y compris aux participants.</li>
+      <li><strong>Décidez en connaissance du prix de la sortie.</strong> Lever la limite chez Zoom en restant chez Zoom coûte au minimum 15,99 $/mois/utilisateur facturé mensuellement (Zoom Workplace Pro, 1–9 utilisateurs, zoom.com — page tarifaire officielle). Un passage vers une alternative gratuite coûte du temps de migration, pas d'abonnement.</li>
+    </ol>
+  </section>
+
+  <section id="outils" class="dyn switch">
+    <h2>Les alternatives que nous avons vérifiées aujourd'hui</h2>
+    <div class="tblwrap">
+      <table>
+        <caption>Durées des réunions gratuites annoncées par les éditeurs — pages officielles lues le 1 oct. 2026</caption>
+        <thead>
+          <tr><th scope="col">Outil</th><th scope="col">Durée gratuite annoncée</th><th scope="col">Idéal si</th><th scope="col">Le piège</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><a href="https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0067966">Zoom (référence)</a></th>
+            <td>Gratuit : <strong>40 minutes</strong> dès qu'il y a un participant (y compris 1:1 depuis 2022). Payant (licence hôte) : 30 heures. Pro 1–9 utilisateurs : <strong>15,99 $/mois/utilisateur</strong> facturé mensuellement (zoom.com, lu le 1 oct. 2026).</td>
+            <td>Votre écosystème (salle, webinaires, téléphone) est déjà chez Zoom et la limite ne coupe que rarement vos réunions.</td>
+            <td>Le compte payant d'un participant ne lève pas la limite ; seuls la licence de l'hôte ou un Zoom Room payant le font.</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="https://support.google.com/meet/answer/13396001?hl=fr">Google Meet</a></th>
+            <td>Compte Google personnel (gratuit) : <strong>60 minutes</strong> en réunion de 3 participants ou plus, <strong>24 h</strong> en 1:1, jusqu'à 100 participants (support.google.com, lu le 1 oct. 2026).</td>
+            <td>Vous vivez déjà dans Google (Gmail, agenda) et vos réunions de groupe dépassent rarement l'heure.</td>
+            <td>La réunion de groupe se termine à 60 min — redémarrable, mais interrompue ; il faut un compte Google pour héberger.</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="https://www.microsoft.com/fr-fr/microsoft-teams/free">Microsoft Teams</a></th>
+            <td>Version gratuite (compte personnel) : <strong>60 minutes</strong> en réunion de groupe, <strong>30 h</strong> en appel 1:1, jusqu'à 100 participants, 5 Go de stockage (microsoft.com, lu le 1 oct. 2026).</td>
+            <td>Vos interlocuteurs sont déjà dans l'univers Microsoft et vous voulez le chat + le rendez-vous au même endroit.</td>
+            <td>60 min en groupe sur le plan gratuit ; les fonctionnalités avancées (réunions jusqu'à 30 h) demandent un abonnement payant.</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="https://jitsi.org/jitsi-meet">Jitsi Meet</a></th>
+            <td><strong>Pas de limite de durée annoncée</strong> : &ldquo;use all day, every day, for free — with no account needed&rdquo; (jitsi.org, lu le 1 oct. 2026). Open source (Apache 2.0), chiffré, auto-hébergeable.</td>
+            <td>La durée illimitée compte plus que tout, ou vous voulez garder la main sur le serveur (auto-hébergement).</td>
+            <td>Le service public meet.jit.si est une capacité partagée sans engagement de disponibilité ; la qualité dépend de votre connexion et de celle des participants.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="chartbox">
+      <h3>La durée maximale, en clair</h3>
+      <p class="srcline">Durées annoncées par les éditeurs sur leurs pages officielles, lues le 1 oct. 2026. Barres proportionnelles à la durée en minutes pour les réunions de groupe gratuites.</p>
+
+    <figure class="photo dyn"><img src="../img/zoom-40-minutes-2.jpg" alt="Enseignante en cours en ligne depuis son domicile, face à une caméra" loading="lazy" width="1920" height="1281"></figure>
+      <svg viewBox="0 0 640 250" role="img" aria-label="Comparaison des durées gratuites de réunion de groupe : Zoom 40 minutes, Meet 60 minutes, Teams 60 minutes, Jitsi Meet sans limite annoncée.">
+        <g font-family="Georgia,serif">
+          <text x="8" y="42" font-size="14" fill="#1a1a1a">Zoom (gratuit)</text>
+          <rect x="205" y="28" width="128" height="22" rx="3" fill="#b58900"/>
+          <text x="342" y="45" font-size="13" fill="#7a5c00" font-weight="bold">40 min</text>
+          <text x="8" y="82" font-size="14" fill="#1a1a1a">Google Meet (gratuit)</text>
+          <rect x="205" y="68" width="192" height="22" rx="3" fill="#0e7b52"/>
+          <text x="406" y="85" font-size="13" fill="#0e7b52" font-weight="bold">60 min</text>
+          <text x="8" y="122" font-size="14" fill="#1a1a1a">Teams (gratuit)</text>
+          <rect x="205" y="108" width="192" height="22" rx="3" fill="#0e7b52"/>
+          <text x="406" y="125" font-size="13" fill="#0e7b52" font-weight="bold">60 min</text>
+          <text x="8" y="162" font-size="14" fill="#1a1a1a">Jitsi Meet</text>
+          <rect x="205" y="148" width="400" height="22" rx="3" fill="#4c9a75"/>
+          <text x="614" y="165" font-size="13" fill="#0a5e3f" font-weight="bold" text-anchor="end">aucune limite annoncée</text>
+          <text x="8" y="202" font-size="13" fill="#57523f">Échelle : 3,2 px = 1 minute.Sur les pages officielles, les appels 1:1 gratuits vont plus loin : 24 h chez Meet, 30 h chez Teams.</text>
+        </g>
+      </svg>
+      <p class="footnote">Zoom ne publie pas de durée pour son plan payant dans le même format (30 h chez Zoom contre 24 h/30 h en 1:1 chez Meet/Teams) : les barres comparent les réunions de groupe gratuites, seules limites comparables publiées. Jitsi n'annonçant aucune limite, sa barre couvre la largeur du graphique — c'est ce que dit sa page officielle.</p>
+    </div>
+    <p class="footnote">Chaque durée ci-dessus a été lue sur la page officielle de l'éditeur à la date indiquée, et les pages sont liées dans <a href="#sources">Sources</a>. Là où un éditeur ne publie pas de chiffre (Jitsi), la page le dit explicitement au lieu de deviner — c'est tout l'objet de ce site.</p>
+  </section>
+
+  <section id="affilies" class="dyn switch">
+    <h2>Qui vous paie pour changer</h2>
+    <div class="why">
+      <p>La catégorie de la visioconférence a des programmes de parrainage. Vérifiés sur les pages officielles ce jour :</p>
+    </div>
+    <ul class="sources">
+      <li><strong>Aucun lien affilié au lancement.</strong> Au 1 oct. 2026, aucun lien de cette page ne nous rémunère. Si nous rejoignons un programme (Zoom, Jitsi ou autre) plus tard, les liens concernés seront étiquetés sur place et l'encadré d'honnêteté ci-dessous indiquera la date de début.</li>
+    </ul>
+  </section>
+
+  <section id="faq" class="dyn switch">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details><summary>La limite de 40 minutes s'applique-t-elle vraiment à toutes les réunions Zoom gratuites ?</summary><p>Oui, depuis 2022 cela inclut les réunions à deux personnes. La page d'aide officielle de Zoom est explicite : les réunions hébergées par un utilisateur en licence gratuite (Basic), sur compte gratuit ou payant, se terminent après 40 minutes dès qu'il y a un hôte et au moins un participant. Une réunion démarrée par l'hôte seul, sans participant, n'est pas limitée à 40 minutes (mais elle doit rester active).</p></details>
+      <details><summary>Un participant avec un compte payant lève-t-il la limite des 40 minutes ?</summary><p>Non pour la plupart des cas : la durée dépend de la licence de l'HÔTE, pas des participants. Un hôte en licence gratuite qui invite trois participants payants est quand même coupé à 40 minutes. Une exception documentée : si un Zoom Room payant rejoint la réunion (même d'un autre compte), la session n'est plus limitée à 40 minutes.</p></details>
+      <details><summary>Quel plan Zoom lève la limite de 40 minutes ?</summary><p>Tous les plans payants (licence attribuée à l'hôte) : les réunions peuvent alors durer jusqu'à 30 heures. Le prix d'entrée publié sur la page officielle de Zoom est de 15,99 $/mois par utilisateur facturé mensuellement pour Zoom Workplace Pro (1 à 9 utilisateurs).</p></details>
+      <details><summary>Google Meet gratuit coupe-t-il aussi les réunions ?</summary><p>Oui, en réunion de groupe : la page d'aide officielle de Google annonce 60 minutes pour les réunions de 3 participants ou plus avec un compte personnel gratuit, et 24 heures pour les appels en tête-à-tête. Au bout d'une heure, la réunion de groupe se termine — vous pouvez la relancer avec le même lien.</p></details>
+      <details><summary>Quelle alternative gratuite n'a pas de limite de durée ?</summary><p>Jitsi Meet : la page officielle (jitsi.org) annonce un usage illimité sans compte obligatoire, le projet est open source et auto-hébergeable. Google Meet et Microsoft Teams, dans leurs versions gratuites, limitent les réunions de groupe à 60 minutes (les appels 1:1 vont jusqu'à 24 h chez Google, 30 h chez Microsoft).</p></details>
+      <details><summary>Les liens de cette page sont-ils des liens affiliés ?</summary><p>Non au lancement : au 1 octobre 2026, aucun lien de cette page ne nous rémunère. Si cela change, chaque lien concerné sera étiqueté sur place et l'encadré d'honnêteté indiquera la date de début.</p></details>
+      <details><summary>Comment les chiffres de cette page ont-ils été vérifiés ?</summary><p>Chaque limite et chaque prix a été lu sur la page officielle de l'éditeur le 1 octobre 2026 (support.zoom.com, zoom.com, support.google.com, workspace.google.com, microsoft.com, jitsi.org), avec la date de contrôle indiquée à côté et liée dans Sources.</p></details>
+    </div>
+  </section>
+
+  <section id="honesty" class="dyn switch">
+    <h2>Comment cette page reste honnête</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié au lancement.</strong> Au 1 oct. 2026, aucun lien de cette page ne nous paie. Si nous rejoignons un programme plus tard, les liens concernés seront étiquetés sur place et cet encadré indiquera la date de début.</li>
+      <li><strong>Chaque durée et chaque prix a été vérifié sur la page officielle de l'éditeur</strong> le 1 oct. 2026, avec la date de contrôle indiquée à côté et liée dans Sources. Vérifiez-les vous-même.</li>
+      <li><strong>Pas de chiffres inventés, pas d'urgence factice.</strong> Là où un éditeur ne publie pas de durée (Jitsi, plan payant de Zoom), la page le dit exactement au lieu de deviner. Le graphique ne barre que des durées publiées.</li>
+      <li><strong>Une erreur ou une nouvelle limite repérée ?</strong> Écrivez-nous — les corrections partent vite.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="dyn switch">
+    <h2>Sources</h2>
+    <p class="srcline">Les dates de contrôle sont indiquées par lien. Pages éditeurs consultées le 1 oct. 2026.</p>
+    <ul class="sources">
+      <li><a href="https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0067966">Zoom — Understanding time limits for Zoom Meetings (page d'aide officielle)</a> (lue le 1 oct. 2026 : Basic 40 min, Licensed 30 h, la licence de l'hôte fait la règle)</li>
+      <li><a href="https://www.zoom.com/en/products/collaboration-tools/zoom-workplace-pro/">Zoom — Zoom Workplace Pro (page produit officielle)</a> (lue le 1 oct. 2026 : Pro 1–9 utilisateurs, 15,99 $/mois/utilisateur facturé mensuellement)</li>
+      <li><a href="https://support.google.com/meet/answer/13396001?hl=fr">Google — Learn about features in Google Meet (page d'aide officielle)</a> (lue le 1 oct. 2026 : 1:1 jusqu'à 24 h, groupe 3+ jusqu'à 1 h)</li>
+      <li><a href="https://workspace.google.com/products/meet/">Google — Meet, page produit</a> (lue le 1 oct. 2026 : gratuit, jusqu'à 100 participants, 60 min par réunion)</li>
+      <li><a href="https://www.microsoft.com/fr-fr/microsoft-teams/free">Microsoft — Teams gratuit (page officielle)</a> (lue le 1 oct. 2026 : réunions de groupe 60 min, appels 1:1 30 h, 100 participants)</li>
+      <li><a href="https://jitsi.org/jitsi-meet">Jitsi — Jitsi Meet (page officielle)</a> (lue le 1 oct. 2026 : gratuit, sans compte, aucun plafond de durée annoncé, open source Apache 2.0)</li>
+      <li>Guides liés : <a href="../">Honest Switch — comparatif honnête (Harvest, QuickBooks, Invoice Radar)</a> · <a href="../anydesk-alternatives/">Alternatives à AnyDesk</a> · <a href="../newsletter-switchers/">Newsletter platform switchers</a></li>
+    </ul>
+  </section>
+
+  <section id="avis" class="dyn switch">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix changent ; confirmez sur la page officielle avant de vous abonner.</p>
+    <p>Mis à jour le 1 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
+</script>
+
+<script>
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Zoom 40 minutes — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Zoom 40 minutes\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+</body>
+</html>

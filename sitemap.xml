@@ -25,11 +25,17 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nypsus.github.io/honest-switch/xero-price-increase/</loc>
-    <lastmod>2026-10-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+      <loc>https://nypsus.github.io/honest-switch/xero-price-increase/</loc>
+      <lastmod>2026-10-01</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://nypsus.github.io/honest-switch/xero-data-export/</loc>
+      <lastmod>2026-10-01</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+    </url>
   <url>
     <loc>https://nypsus.github.io/honest-switch/ai-notetakers/</loc>
     <lastmod>2026-10-01</lastmod>

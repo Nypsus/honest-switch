@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quitter son CRM ou son ERP : comparer les prix affichés à effectif égal — Honest Switch</title>
+<meta name="description" content="« Chez Axonaut l'abonnement (sans frais cachés) est à 129 € HT pour 3 utilisateurs » : un avis public du 15 oct. 2025. Les grilles affichées en octobre 2026 racontent autre chose. Prix Sellsy, Axonaut, Evoliz et Odoo relevés sur les pages des éditeurs le 1er oct. 2026, règles de facturation expliquées, et un comparateur local.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/alternatives-crm-france/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/alternatives-crm-france/">
+<meta property="og:title" content="Quitter son CRM ou son ERP : comparer les prix affichés à effectif égal — Honest Switch">
+<meta property="og:description" content="Un prix affiché n'est pas un prix comparable. Par utilisateur ou par compte, avec ou sans engagement : les prix lus chez les éditeurs le 1er oct. 2026, et la règle de facturation qui va avec chacun.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Comparer les CRM/ERP français à effectif égal">
+<meta name="twitter:description" content="Prix affichés par Sellsy, Axonaut, Evoliz et Odoo lus le 1er oct. 2026 — et les trois règles de facturation qui manquent dans tous les comparatifs.">
+<meta name="twitter:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* Visuels propres à cette page — mêmes couleurs que le site, aucun chiffre inventé */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .tool{border:1px solid rgba(14,123,82,.35);border-radius:12px;background:#fff;padding:18px;margin:18px 0}
+  .tool label{display:block;font-size:.85rem;color:#57523f;margin:12px 0 4px}
+  .tool input[type=text],.tool input[type=number],.tool select{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid rgba(0,0,0,.2);border-radius:8px;font:inherit;background:#fff}
+  .tool .row{display:flex;flex-wrap:wrap;gap:14px}
+  .tool .row>div{flex:1 1 180px}
+  .tool button{margin-top:14px;background:#0e7b52;color:#fff;border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:700;cursor:pointer}
+  .tool .out{margin-top:14px;font-size:.95rem}
+  .tool .out b{color:#0e7b52}
+  .tool .big{font-size:1.5rem;font-weight:700;color:#0e7b52}
+  .stamp{display:inline-block;font-size:.78rem;color:#57523f;background:#f2f7f4;border-radius:20px;padding:4px 12px;margin-top:6px}
+  .stars-in{display:flex;gap:4px;margin:8px 0 4px}
+  .stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+  .stars-in .star:hover{transform:scale(1.15)}
+  .stars-in .star.on{color:#ffb400}
+  .stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+  .avis{border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:14px;margin:12px 0;background:#fbfbf9}
+  .avis .stars{color:#ffb400;letter-spacing:2px}
+  .hint{font-size:.84rem;color:#57523f}
+  .card{border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0}
+  .card input,.card textarea{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid rgba(0,0,0,.2);border-radius:8px;font:inherit;margin-top:8px}
+  .card button{margin-top:10px;background:#0e7b52;color:#fff;border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:700;cursor:pointer}
+  .tblwrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;margin:14px 0}
+  th,td{border:1px solid rgba(0,0,0,.12);padding:9px 10px;text-align:left;font-size:.94rem;vertical-align:top}
+  th{background:#f2f7f4}
+  caption{caption-side:top;text-align:left;font-size:.83rem;color:#57523f;padding-bottom:8px}
+  .num{white-space:nowrap}
+  .go{display:inline-block;margin:6px 8px 0 0;padding:10px 14px;border-radius:8px;border:1px solid rgba(14,123,82,.5);background:#f7faf8;color:#0e7b52;font-weight:700;text-decoration:none}
+  .go:hover{background:#eef6f1}
+  .go small{display:block;font-weight:400;color:#57523f;font-size:.76rem;letter-spacing:.02em}
+
+/* --- Illustration de tete + dynamique douce (meme traitement que les autres guides) --- */
+.hero-img{display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px}
+@keyframes hspulse{0%{opacity:.35}50%{opacity:1}100%{opacity:.35}}
+.hero-img .pulse{animation:hspulse 3.4s ease-in-out infinite}
+.dyn{transition:opacity .55s ease,transform .55s ease}
+html.js .dyn{opacity:0;transform:translateY(16px)}
+html.js .dyn.in{opacity:1;transform:none}
+.chip{transition:transform .15s ease}
+.chip:hover{transform:translateY(-2px)}
+.flow3 .step{transition:transform .18s ease,box-shadow .18s ease}
+.flow3 .step:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(14,123,82,.14)}
+.tblwrap tbody tr{transition:background .15s ease}
+.tblwrap tbody tr:hover{background:#f2f8f4}
+@media (prefers-reduced-motion: reduce){
+  .hero-img .pulse{animation:none}
+  .chip:hover,.flow3 .step:hover{transform:none}
+}
+
+/* --- barres du graphique : proportions calculees sur les prix lus, rien d'autre --- */
+.chartbox .axis{stroke:#c9d6cf;stroke-width:1}
+.chartbox .base{stroke:#0e7b52;stroke-width:1.5}
+.chartbox .bar{fill:#0e7b52}
+.chartbox .bar.alt{fill:#4d9c78}
+.chartbox .bar.ref{fill:#8a1f1f}
+.chartbox .lbl{font-family:Georgia,serif;font-size:11.5px;fill:#1a1a1a}
+.chartbox .val{font-family:Georgia,serif;font-size:11.5px;fill:#0e7b52;font-weight:700}
+.chartbox .zero{stroke:#8a1f1f;stroke-width:1.5;stroke-dasharray:5 4}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Pourquoi le montant cité dans un avis ne correspond-il pas à la grille affichée ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Parce qu'un avis cite une facture, pas un barème : formule, modules, options, remises, ancienneté et date d'entrée en vigueur ne sont presque jamais précisés. Sur cette page, le chiffre du 15 octobre 2025 (321 € HT/mois pour 3 utilisateurs) ne se reconstitue pas à partir de la grille publique affichée le 1er octobre 2026. C'est pourquoi nous reproduisons les deux : le montant raconté par le client et le prix affiché par l'éditeur, sans faire semblant que l'un explique l'autre."}},
+    {"@type": "Question", "name": "Un prix affiché par utilisateur et un prix affiché par compte sont-ils comparables ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. À trois utilisateurs, un prix « par utilisateur » est multiplié par trois ; un prix « par compte » ne l'est pas. Les pages tarifaires ne le disent pas toujours explicitement, et c'est la première cause d'écart entre un comparatif et la facture réelle. Sur cette page, chaque barre du graphique porte son unité, et le comparateur indique la règle qu'il applique."}},
+    {"@type": "Question", "name": "Le comparateur utilise-t-il des prix que vous n'avez pas vérifiés ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. Chaque prix du comparateur a été lu sur la page officielle de l'éditeur le 1er octobre 2026, et la source est affichée à côté. Les prix en dollars (Odoo) ne sont pas convertis : nous n'inventons aucun taux de change. Le comparateur calcule avec ces prix affichés et avec vos propres chiffres ; rien d'autre."}},
+    {"@type": "Question", "name": "Que faire quand un éditeur affiche un prix « sans engagement » plus cher ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "C'est fréquent et ce n'est pas une anomalie : l'éditeur échange une réduction contre de la durée. La question utile n'est pas « quel est le prix le plus bas » mais « quel prix pour quelle durée, et que se passe-t-il si je pars avant la fin ». Notez la durée d'engagement à côté du prix : chez Axonaut, le même abonnement d'un utilisateur est affiché 97,00 € HT/mois sans engagement et 58,20 € HT/mois avec un engagement d'un an."}},
+    {"@type": "Question", "name": "Le formulaire envoie-t-il mes informations quelque part ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. Le comparateur tourne entièrement dans votre navigateur, en JavaScript, sans aucune requête réseau. Ce que vous saisissez (effectif, prix actuel, heures de migration, coût horaire) ne quitte pas votre appareil et n'est pas enregistré."}},
+    {"@type": "Question", "name": "Y a-t-il des liens affiliés sur cette page ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. Au 1er octobre 2026, aucun lien de cette page ne nous rémunère et nous ne vendons aucun logiciel. Les liens vers les éditeurs sont des liens officiels, non rémunérés, et c'est écrit sur chaque bouton. Le jour où un lien affilié apparaîtrait sur une page du site, il serait étiqueté sur place et la page À propos mise à jour."}},
+    {"@type": "Question", "name": "Cette page recommande-t-elle un logiciel ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non, et elle ne peut pas le faire honnêtement à votre place : nous n'avons testé ni votre métier, ni vos intégrations, ni votre comptable. Elle donne les prix affichés, les règles de facturation qui vont avec, la méthode de comparaison à effectif égal et les questions à poser par écrit avant de signer."}}
+  ]
+}
+</script>
+<script>document.documentElement.classList.add('js')</script>
+    <style>.dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}</style>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#prix">Les prix affichés</a>
+      <a href="#piege">Le piège</a>
+      <a href="#effectif">Comparer à effectif égal</a>
+      <a href="#graphique">Le graphique</a>
+      <a href="#outil">Le comparateur</a>
+      <a href="#ou">Par où commencer</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="dyn hero">
+    <p class="kicker">CRM &amp; logiciels de gestion français · prix relevés sur les pages des éditeurs le 1<sup>er</sup> oct. 2026 · aucune affiliation</p>
+    <h1>Un prix affiché n'est pas un prix comparable. <span class="hl">Comparez à effectif égal</span>, sur les grilles que les éditeurs affichent aujourd'hui.</h1>
+    <p class="lede">Un client écrit publiquement, le 15 octobre 2025 : « Je paie <span class="hl">321 € HT / mois pour 3 utilisateurs</span> pour le compte Evolution vente et facturation chez Sellsy. La ou chez Axonaut l'abonnement (sans frais cachés) est à <span class="hl">129 € HT pour 3 utilisateurs</span> avec bien plus de fonctionnalités. » Dix mois plus tard, nous avons ouvert les pages tarifaires des éditeurs : <span class="hl">les mêmes deux outils n'y affichent plus ces chiffres, et surtout ils ne les facturent pas de la même façon</span> — l'un par utilisateur, l'autre par abonnement de base plus utilisateurs supplémentaires. Cette page met les grilles affichées côte à côte, explique les trois règles qui manquent dans tous les comparatifs, et vous laisse calculer votre coût réel à votre effectif. <span class="hl">Aucun chiffre ici n'est estimé : chaque prix a une source, chaque calcul est montré.</span></p>
+
+    <figure class="photo"><img src="../img/crm-alternatives-france.jpg" alt="Cartons de déménagement ouverts dans une entrée" loading="lazy" width="1400" height="800"><figcaption>Changer de logiciel de gestion ressemble à un déménagement : ce qui coûte n'est pas la nouvelle adresse, c'est tout ce qu'il faut reconditionner. Photo : MoveON moving — CC BY-SA 4.0 (Wikimedia Commons).</figcaption></figure>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — 1<sup>er</sup> oct. 2026</span>
+      <span class="chip">Prix lus sur les pages officielles, le 1<sup>er</sup> oct. 2026</span>
+      <span class="chip">Comparateur 100 % local, calculs affichés</span>
+    </p>
+
+    <div class="callout">
+      <h2>In brief — ce qui se joue en quatre lignes</h2>
+      <ul>
+        <li><strong>Le problème n'est pas de trouver un prix :</strong> c'est de trouver <span class="hl">un prix comparable</span>. Les grilles publiques n'annoncent pas toujours si le montant est par utilisateur ou par compte.</li>
+        <li><strong>Le piège n° 1,</strong> ce sont les chiffres cités dans les avis : ils datent, ils mélangent formule + modules + remises, et ils ne se reconstituent pas dans la grille publique — nous le montrons plus bas, chiffres en main.</li>
+        <li><strong>Le piège n° 2,</strong> c'est l'engagement : le même abonnement Axonaut d'un utilisateur est affiché <span class="hl">97,00 € HT/mois sans engagement</span> et <span class="hl">58,20 € HT/mois avec un an d'engagement</span>. Ce n'est pas la même décision.</li>
+        <li><strong>Ce que cette page ne fait pas :</strong> elle ne vous dit pas quel logiciel choisir, ne promet aucune économie, et ne pose aucun lien rémunéré. Elle vous donne les prix affichés, les règles qui vont avec, et un calculateur qui applique ces règles.</li>
+      </ul>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 250" role="img" aria-labelledby="acf-ttl acf-desc" class="hero-img">
+      <title id="acf-ttl">Les trois règles invisibles d'une grille tarifaire</title>
+      <desc id="acf-desc">Trois cartes : la première rappelle qu'un prix peut être facturé par utilisateur ou par compte ; la deuxième, qu'un prix peut supposer un engagement et coûter plus cher sans ; la troisième, que le périmètre inclus change d'une formule à l'autre. Un bandeau du bas rappelle qu'un comparatif qui ne dit pas ces trois règles ne permet pas de décider.</desc>
+      <defs>
+        <linearGradient id="acfg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef6f1"/><stop offset="1" stop-color="#e0efe6"/></linearGradient>
+      </defs>
+      <rect width="760" height="250" rx="18" fill="url(#acfg)"/>
+      <text x="380" y="32" font-size="13" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif">Les trois règles qui manquent dans la plupart des comparatifs</text>
+
+      <rect x="26" y="56" width="228" height="106" rx="12" fill="#fff" stroke="#0e7b52" stroke-width="1.5"/>
+      <text x="42" y="82" font-size="12.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">1 · L'unité facturée</text>
+      <text x="42" y="104" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">Par utilisateur, ou par compte ?</text>
+      <text x="42" y="122" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">À 3 personnes, l'écart peut tripler.</text>
+      <text x="42" y="146" font-size="10.5" fill="#57523f" font-family="Georgia,serif">« /utilisateur/mois » n'est pas « /mois ».</text>
+
+      <rect x="266" y="56" width="228" height="106" rx="12" fill="#fff" stroke="#0e7b52" stroke-width="1.5"/>
+      <text x="282" y="82" font-size="12.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">2 · L'engagement</text>
+      <text x="282" y="104" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">Sans engagement, le même abonnement</text>
+      <text x="282" y="122" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">est affiché plus cher. C'est un choix,</text>
+      <text x="282" y="140" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">pas une anomalie : on paie la liberté.</text>
+
+      <rect x="506" y="56" width="228" height="106" rx="12" fill="#fff" stroke="#8a1f1f" stroke-width="1.5" stroke-dasharray="7 5"/>
+      <text x="522" y="82" font-size="12.5" fill="#8a1f1f" font-family="Georgia,serif" font-weight="bold">3 · Le périmètre</text>
+      <text x="522" y="104" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">Devis, factures, achats, banque,</text>
+      <text x="522" y="122" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">marketing : ce qui est inclus ici est</text>
+      <text x="522" y="140" font-size="11" fill="#1a1a1a" font-family="Georgia,serif">un module payant ailleurs.</text>
+
+      <text x="380" y="196" font-size="11.5" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">Un comparatif qui ne dit ni l'unité, ni la durée, ni le périmètre compare des phrases, pas des prix.</text>
+      <text x="380" y="222" font-size="11.5" fill="#0e7b52" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">Ici, chaque prix porte son unité et sa source — et l'arithmétique est montrée.</text>
+    </svg>
+  </section>
+
+  <section id="prix" class="dyn switch">
+    <h2>Les prix affichés par les éditeurs, relevés le 1<sup>er</sup> octobre 2026</h2>
+    <p>Voici, reproduits tels quels, les montants que quatre éditeurs affichent sur leurs propres pages tarifaires. Trois précisions valent mieux qu'une longue introduction : Sellsy facture <span class="hl">par utilisateur</span>, Axonaut affiche un <span class="hl">tarif pour un utilisateur</span> avec un prix par utilisateur supplémentaire, Evoliz affiche un prix <span class="hl">sans préciser s'il est par utilisateur</span>, et Odoo affiche ses prix <span class="hl">en dollars</span> même sur sa page française — nous ne les convertissons pas, faute de taux de change que nous aurions lu quelque part.</p>
+
+    <div class="tblwrap">
+      <table>
+        <caption>Prix tels qu'affichés par les éditeurs, lus le 1<sup>er</sup> octobre 2026. Aucun de ces montants ne nous est communiqué par un éditeur, aucun n'est estimé, et aucun n'est converti.</caption>
+        <thead><tr><th>Outil et formule</th><th>Prix affiché</th><th>Unité annoncée par la page</th><th>Où c'est écrit</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Sellsy</strong> — Vente &amp; Facturation, offre « Evolution », engagement 12 mois</td><td><strong>59,00 € HT</strong> / utilisateur / mois<br><span class="hint">soit 708 € HT / utilisateur / an</span></td><td>Par utilisateur, engagement 12 mois</td><td>go.sellsy.com/offres</td></tr>
+          <tr><td><strong>Sellsy</strong> — même offre, mention « Offre Réforme Facturation Électronique » (−17 %)</td><td><strong>49,00 € HT</strong> / utilisateur / mois<br><span class="hint">soit 588 € HT / utilisateur / an</span></td><td>Par utilisateur, 1<sup>re</sup> année</td><td>go.sellsy.com/offres</td></tr>
+          <tr><td><strong>Sellsy</strong> — Facturation, offre « Standard », engagement 12 mois</td><td><strong>39,00 € HT</strong> / utilisateur / mois<br><span class="hint">soit 468 € HT / utilisateur / an</span></td><td>Par utilisateur, engagement 12 mois</td><td>go.sellsy.com/offres</td></tr>
+          <tr><td><strong>Sellsy</strong> — même offre, mention « Offre Réforme Facturation Électronique » (−26 %)</td><td><strong>29,00 € HT</strong> / utilisateur / mois<br><span class="hint">soit 348 € HT / utilisateur / an</span></td><td>Par utilisateur, 1<sup>re</sup> année</td><td>go.sellsy.com/offres</td></tr>
+          <tr><td><strong>Sellsy</strong> — offre « Elite »</td><td><strong>79,00 € HT</strong> / utilisateur / mois</td><td>Par utilisateur, engagement 12 mois</td><td>go.sellsy.com/offres</td></tr>
+          <tr><td><strong>Axonaut</strong> — abonnement mensuel, sans engagement</td><td><strong>97,00 € HT</strong> / mois</td><td>Tarif affiché « pour 1 utilisateur »</td><td>axonaut.com/content/prix</td></tr>
+          <tr><td><strong>Axonaut</strong> — engagement 1 an</td><td><strong>58,20 € HT</strong> / mois</td><td>Tarif affiché « pour 1 utilisateur », −40 %</td><td>axonaut.com/content/prix</td></tr>
+          <tr><td><strong>Axonaut</strong> — utilisateur supplémentaire</td><td><strong>30,00 € HT</strong> / mois et par utilisateur en plus</td><td>Ligne distincte du tarif de base</td><td>axonaut.com/content/prix</td></tr>
+          <tr><td><strong>Evoliz</strong> — formule « Essentielle »</td><td><strong>29,00 € HT</strong> / mois<br><span class="hint">290 € HT / an en paiement annuel</span></td><td>Aucune mention « par utilisateur » sur la page</td><td>evoliz.com/tarifs</td></tr>
+          <tr><td><strong>Evoliz</strong> — formule « Avancée »</td><td><strong>49,00 € HT</strong> / mois<br><span class="hint">490 € HT / an en paiement annuel</span></td><td>Aucune mention « par utilisateur » sur la page</td><td>evoliz.com/tarifs</td></tr>
+          <tr><td><strong>Odoo</strong> — plan « Une App »</td><td><strong>0 $</strong></td><td>Une application, nombre d'utilisateurs illimité</td><td>odoo.com/fr_FR/pricing</td></tr>
+          <tr><td><strong>Odoo</strong> — plan « Standard »</td><td><strong>24,90 $</strong> / utilisateur / mois<br><span class="hint">la page affiche aussi US$ 31,10, avec la note « la remise s'applique pendant 12 mois »</span></td><td>Par utilisateur, prix en dollars US</td><td>odoo.com/fr_FR/pricing</td></tr>
+          <tr><td><strong>Odoo</strong> — plan « Personnalisé »</td><td><strong>49,00 $</strong> / utilisateur / mois<br><span class="hint">la page affiche aussi US$ 61,00</span></td><td>Par utilisateur, prix en dollars US</td><td>odoo.com/fr_FR/pricing</td></tr>
+          <tr><td><strong>TeamSystem Facture</strong> (marque du groupe Sellsy, mentionnée sur la même page)</td><td><strong>dès 3,90 € HT</strong> / mois</td><td>Offre pour indépendants</td><td>go.sellsy.com/offres</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="stamp">Deux réserves écrites noir sur blanc : les offres « réforme » de Sellsy portent la mention « Offre valable jusqu'au 30 septembre 2026 – la 1<sup>re</sup> année d'abonnement » et étaient <em>encore affichées</em> le 1<sup>er</sup> octobre 2026 au soir — donc à confirmer, jamais à supposer. Et la page d'Axonaut affirme « Nous n'avons jamais augmenté nos tarifs pour nos clients. JAMAIS. » — c'est une affirmation de l'éditeur, pas une vérification de notre part : nous la citons comme telle.</p>
+  </section>
+
+  <section id="piege" class="dyn switch">
+    <h2>Le piège : un chiffre cité dans un avis ne se retrouve pas dans la grille</h2>
+    <p>C'est le point le plus utile de cette page, et personne ne l'écrit. Le client cité en introduction donne deux montants — 321 € pour Sellsy, 129 € pour Axonaut, à trois utilisateurs. Nous avons essayé de les reconstituer à partir des grilles publiques affichées aujourd'hui. <span class="hl">Ça ne marche pas — et ce n'est pas une accusation : c'est la démonstration que « moins cher » ne se vérifie pas dans un avis.</span></p>
+
+    <div class="quotebox">
+      « Je paie 321 € HT / mois pour 3 utilisateurs pour le compte Evolution vente et facturation chez Sellsy. La ou chez Axonaut l'abonnement (sans frais cachés) est à 129 € HT pour 3 utilisateurs avec bien plus de fonctionnalités. »
+      <span class="qsrc">« nicolas gimenez », avis public du 15 octobre 2025 — reproduit mot pour mot, fiche Sellsy de Trustpilot FR, lue le 1<sup>er</sup> octobre 2026.</span>
+    </div>
+    <div class="quotebox">
+      « Le service client Sellsy vous prend en otage, la tacite reconduction leur permet de vous dire que pendant 1 an vous êtes bloqué ! Il y a rien à faire... »
+      <span class="qsrc">« nicolas gimenez », même avis du 15 octobre 2025 — reproduit mot pour mot.</span>
+    </div>
+
+    <h3>Ce que la grille affichée aujourd'hui donne, à trois utilisateurs</h3>
+    <div class="flow3">
+      <div class="step"><b>Chez Sellsy</b><span>Offre « Evolution » affichée 59,00 € HT par utilisateur et par mois, engagement 12 mois. À trois utilisateurs : <strong>3 × 59,00 = 177,00 € HT/mois</strong> — et 3 × 49,00 = 147,00 € la première année sous offre « réforme ».</span></div>
+      <div class="step"><b>Chez Axonaut</b><span>La page affiche un tarif « pour 1 utilisateur » (58,20 € HT/mois en engagement 1 an) et une ligne distincte à 30,00 € HT/mois par utilisateur supplémentaire. Deux lectures possibles : <strong>58,20 + 2 × 30,00 = 118,20 € HT/mois</strong>, ou <strong>3 × 58,20 = 174,60 € HT/mois</strong> si l'on applique simplement le tarif unitaire.</span></div>
+      <div class="step"><b>Ce que ça prouve</b><span>Le « 129 € pour 3 utilisateurs » de l'avis ne tombe sur aucune des deux lectures d'aujourd'hui, et le « 321 € » de Sellsy ne se reconstitue pas non plus depuis la grille affichée. Un avis raconte une facture ; il ne publie pas le barème.</span></div>
+    </div>
+
+    <p>Ce n'est pas une raison d'ignorer les avis — l'avis du 15 octobre 2025 dit quelque chose de réel sur la frustration, et un autre client décrit publiquement, le 4 mars 2024, une hausse « de plus 30 % et sans aucune fonctionnalité nouvelle ». Mais <span class="hl">ce qui se vérifie, ce n'est ni l'émotion ni le souvenir : c'est le barème écrit.</span></p>
+
+    <figure class="photo dyn"><img src="../img/crm-alternatives-france-2.jpg" alt="Poteau indicateur avec plusieurs directions et distances" loading="lazy" width="1400" height="800"><figcaption>Un panneau indique la direction et la distance — jamais le prix du trajet ni ce qu'il reste à payer en cours de route. Les grilles tarifaires ont le même défaut : elles affichent un chiffre, pas la règle qui va avec. Photo : Christian Alexander Otto — CC BY 4.0 (Wikimedia Commons).</figcaption></figure>
+
+    <div class="quotebox">
+      « API non fonctionnelle, ne respectant aucun standard, la rendant inexploitable. Augmentation tarifaire sans prévenir, de plus 30 % et sans aucune fonctionnalité nouvelle. »
+      <span class="qsrc">« SML », avis public du 4 mars 2024. Réponse publique de l'éditeur le 5 mars 2024, qui justifie la hausse : « L'augmentation tarifaire est bien le reflet de nombreuses nouveautés et développements sur Sellsy. »</span>
+    </div>
+    <div class="quotebox">
+      « De loin le meilleur CRM mais cette année ils ont violemment augmenté leurs prix !! ça a plus que triplé depuis 10 ans que je bosse avec eux […] j'ai aucune autre solution que d'accepter leurs nouveaux tarifs car développer toutes mes API chez un nouveau prestataire me couterait aussi énormément ! »
+      <span class="qsrc">« Alain BERNARD », avis public du 7 novembre 2025 — extrait reproduit mot pour mot ; la version intégrale et le calcul du coût de sortie sont traités sur <a href="/honest-switch/cout-de-sortie/">notre page dédiée au coût de sortie</a>.</span>
+    </div>
+    <p class="hint">Ces avis sont des témoignages de clients, reproduits avec leur date et, quand elle existe, la réponse publique de l'éditeur. Ils ne prouvent pas ce que chaque éditeur a fait dans chaque dossier : ils montrent un mécanisme, raconté plusieurs fois en deux ans. Le dernier extrait renvoie à un problème différent du prix — le coût de sortie — que nous traitons séparément et sans le mélanger à cette comparaison.</p>
+  </section>
+
+  <section id="effectif" class="dyn switch">
+    <h2>Comparer à effectif égal : la méthode en trois temps</h2>
+    <p>Un prix affiché devient comparable quand on a répondu à trois questions. Ce sont exactement les trois que la plupart des comparatifs oublient de poser.</p>
+
+    <div class="flow3">
+      <div class="step"><b>1 · Ramener à la même unité</b><span>Multiplier les prix « par utilisateur » par votre effectif ; laisser tel quel un prix « par compte », en notant qu'il l'est. Deux montants ne se comparent qu'après cette étape.</span></div>
+      <div class="step"><b>2 · Fixer la durée</b><span>Écrire à côté de chaque prix la durée d'engagement qu'il suppose. Chez Axonaut, 97,00 € sans engagement contre 58,20 € avec un an : ce n'est pas un prix, c'est un couple prix/durée.</span></div>
+      <div class="step"><b>3 · Compter le reste</b><span>Ce qui n'est pas dans la formule : utilisateurs supplémentaires, modules, prestataire d'intégration, heures internes, et le coût de sortie de l'outil que vous quittez.</span></div>
+    </div>
+
+    <h3>La checklist avant de signer</h3>
+    <ul class="honest-list">
+      <li><strong>Le prix est-il « par utilisateur » ou « par compte » ?</strong> Faites-le écrire dans le devis ou la proposition, pas dans un échange oral.</li>
+      <li><strong>Quel est le prix hors offre ?</strong> Une remise de 1<sup>re</sup> année n'est pas un tarif : notez le montant qui s'appliquera ensuite.</li>
+      <li><strong>Quelle durée, et que se passe-t-il si vous partez avant ?</strong> L'engagement est ce qui fait baisser le prix ; il est aussi ce qui vous retient.</li>
+      <li><strong>Le prix est-il par utilisateur supplémentaire dégressif ou fixe ?</strong> Chez Axonaut, la page affiche une ligne fixe à 30,00 € HT/mois par utilisateur en plus.</li>
+      <li><strong>Qu'est-ce qui n'est pas inclus ?</strong> Marketing, banque, achat, stock, signature : demandez la liste écrite de ce qu'il faudra payer en plus.</li>
+      <li><strong>Combien coûte l'entrée ?</strong> Reprise des données, réglages, formation, intégrations. Le coût de sortie de l'outil actuel, lui, se chiffre <a href="/honest-switch/cout-de-sortie/">avec ce calculateur</a>.</li>
+    </ul>
+    <p class="stamp">Ce qu'on refuse de faire ici : classer les outils du « meilleur » au « moins bon ». Nous n'avons testé ni votre métier, ni vos intégrations, ni votre comptable — et un classement serait une opinion déguisée en mesure.</p>
+  </section>
+
+  <section id="graphique" class="dyn switch">
+    <h2>Le graphique : les prix affichés, barre par barre</h2>
+    <p>Chaque barre est un montant réellement lu sur la page de l'éditeur le 1<sup>er</sup> octobre 2026, à l'échelle. Elles ne sont volontairement pas toutes dans la même unité, et c'est justement ce qu'il faut voir : <span class="hl">deux barres de longueur proche peuvent décrire deux choses différentes</span> — un prix par utilisateur et un prix par compte.</p>
+
+    <div class="chartbox">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" role="img" aria-labelledby="ch2-ttl ch2-desc" width="100%">
+        <title id="ch2-ttl">Prix mensuels affichés par les éditeurs, lus le 1er octobre 2026</title>
+        <desc id="ch2-desc">Six barres proportionnelles aux prix affichés : Axonaut sans engagement 97,00 euros par mois pour un utilisateur ; Sellsy Evolution 59,00 euros par utilisateur et par mois ; Axonaut avec engagement d'un an 58,20 euros par mois pour un utilisateur ; Evoliz Avancée 49,00 euros par mois pour le compte ; Sellsy Standard 39,00 euros par utilisateur et par mois ; Evoliz Essentielle 29,00 euros par mois pour le compte. Échelle : 6 pixels pour 1 euro par mois.</desc>
+
+        <text x="20" y="24" font-size="12.5" fill="#0a5e3f" font-family="Georgia,serif">Prix affichés par les éditeurs — lus le 1&#8203;er oct. 2026 · échelle 6 px = 1 €/mois HT</text>
+
+        <line class="base" x1="20" y1="50" x2="20" y2="404"/>
+        <line class="axis" x1="140" y1="50" x2="140" y2="404"/>
+        <text x="140" y="422" font-size="10.5" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">20 €</text>
+        <line class="axis" x1="260" y1="50" x2="260" y2="404"/>
+        <text x="260" y="422" font-size="10.5" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">40 €</text>
+        <line class="axis" x1="380" y1="50" x2="380" y2="404"/>
+        <text x="380" y="422" font-size="10.5" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">60 €</text>
+        <line class="axis" x1="500" y1="50" x2="500" y2="404"/>
+        <text x="500" y="422" font-size="10.5" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">80 €</text>
+        <line class="axis" x1="620" y1="50" x2="620" y2="404"/>
+        <text x="620" y="422" font-size="10.5" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">100 €</text>
+
+        <text class="lbl" x="20" y="66">Axonaut · sans engagement (1 mois), affiché pour 1 utilisateur</text>
+        <rect class="bar ref" x="20" y="72" width="582" height="24" rx="3"/>
+        <text class="val" x="610" y="89">97,00 €</text>
+
+        <text class="lbl" x="20" y="126">Sellsy · « Evolution » (engagement 12 mois) — par utilisateur</text>
+        <rect class="bar" x="20" y="132" width="354" height="24" rx="3"/>
+        <text class="val" x="382" y="149">59,00 €</text>
+
+        <text class="lbl" x="20" y="186">Axonaut · engagement 1 an, affiché pour 1 utilisateur</text>
+        <rect class="bar" x="20" y="192" width="349" height="24" rx="3"/>
+        <text class="val" x="377" y="209">58,20 €</text>
+
+        <text class="lbl" x="20" y="246">Evoliz · « Avancée » — prix du compte (la page ne dit pas « par utilisateur »)</text>
+        <rect class="bar alt" x="20" y="252" width="294" height="24" rx="3"/>
+        <text class="val" x="322" y="269">49,00 €</text>
+
+        <text class="lbl" x="20" y="306">Sellsy · « Standard » (engagement 12 mois) — par utilisateur</text>
+        <rect class="bar" x="20" y="312" width="234" height="24" rx="3"/>
+        <text class="val" x="262" y="329">39,00 €</text>
+
+        <text class="lbl" x="20" y="366">Evoliz · « Essentielle » — prix du compte</text>
+        <rect class="bar alt" x="20" y="372" width="174" height="24" rx="3"/>
+        <text class="val" x="202" y="389">29,00 €</text>
+
+        <text x="20" y="450" font-size="10.5" fill="#57523f" font-family="Georgia,serif">Lecture : les barres vertes sont des prix par utilisateur, les barres vert clair des prix par compte — deux unités différentes,</text>
+        <text x="20" y="466" font-size="10.5" fill="#57523f" font-family="Georgia,serif">donc deux montants qui ne se comparent pas directement. La barre rouge est le même abonnement Axonaut sans engagement (barre haute, à droite) : c'est la prime de la liberté. Prix d'Odoo (en dollars) non tracés : pas de conversion inventée.</text>
+      </svg>
+      <p class="hint" style="margin-top:10px">Toutes ces longueurs viennent de prix publiés, lus le 1<sup>er</sup> octobre 2026 sur les pages citées en bas de page. Aucune barre n'est estimée, aucune remise non affichée n'est appliquée, et aucun prix en dollars n'est converti en euros.</p>
+    </div>
+
+    <div class="tblwrap">
+      <table>
+        <caption>Les deux lectures possibles d'Axonaut, à trois utilisateurs, comme la page de l'éditeur les autorise. Nous ne tranchons pas à sa place.</caption>
+        <thead><tr><th>Lecture</th><th>Ce qu'elle applique</th><th>Résultat à 3 utilisateurs</th></tr></thead>
+        <tbody>
+          <tr><td>Abonnement de base + utilisateurs supplémentaires</td><td>58,20 € HT/mois (1 utilisateur, engagement 1 an) + 2 × 30,00 € HT/mois</td><td><strong>118,20 € HT/mois</strong></td></tr>
+          <tr><td>Tarif unitaire appliqué à l'effectif</td><td>3 × 58,20 € HT/mois</td><td><strong>174,60 € HT/mois</strong></td></tr>
+          <tr><td>Sans engagement</td><td>97,00 € HT/mois (1 utilisateur) + 2 × 30,00 € HT/mois</td><td><strong>157,00 € HT/mois</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="hint">Cette incertitude n'est pas un détail : entre 118,20 € et 174,60 € par mois, il y a 676,80 € par an sur un seul poste. La bonne réponse n'est pas dans un comparatif, elle est dans une réponse écrite de l'éditeur — <a href="/honest-switch/grille-prix-logiciel/">notre modèle de demande de grille tarifaire</a> sert exactement à l'obtenir.</p>
+  </section>
+
+  <section id="outil" class="dyn switch">
+    <h2>Le comparateur : votre effectif, sur les prix affichés</h2>
+    <p>Choisissez un outil et une formule, indiquez votre effectif et ce que vous payez aujourd'hui. Le calcul applique <em>la règle publiée</em> — par utilisateur, ou abonnement de base plus utilisateurs supplémentaires — et affiche le détail, pour que vous puissiez refaire l'opération à la main. Tout se passe dans votre navigateur : rien n'est envoyé, rien n'est enregistré.</p>
+
+    <div class="tool">
+      <div class="row">
+        <div>
+          <label for="outil">Outil et formule (prix affichés le 1<sup>er</sup> oct. 2026)</label>
+          <select id="outil">
+            <option value="sellsy_evo">Sellsy — « Evolution », 59,00 € HT/utilisateur/mois (engagement 12 mois)</option>
+            <option value="sellsy_evo_promo">Sellsy — « Evolution », 49,00 € HT/utilisateur/mois (offre réforme, 1<sup>re</sup> année)</option>
+            <option value="sellsy_std">Sellsy — « Standard », 39,00 € HT/utilisateur/mois (engagement 12 mois)</option>
+            <option value="sellsy_std_promo">Sellsy — « Standard », 29,00 € HT/utilisateur/mois (offre réforme, 1<sup>re</sup> année)</option>
+            <option value="axonaut_an">Axonaut — 58,20 € HT/mois pour 1 utilisateur (engagement 1 an) + 30,00 € par utilisateur en plus</option>
+            <option value="axonaut_mois">Axonaut — 97,00 € HT/mois pour 1 utilisateur (sans engagement) + 30,00 € par utilisateur en plus</option>
+            <option value="evoliz_ava">Evoliz — « Avancée », 49,00 € HT/mois (prix du compte)</option>
+            <option value="evoliz_ess">Evoliz — « Essentielle », 29,00 € HT/mois (prix du compte)</option>
+          </select>
+        </div>
+        <div><label for="neff">Votre effectif concerné (nombre d'utilisateurs)</label><input type="number" id="neff" min="1" step="1" value="3"></div>
+      </div>
+      <div class="row">
+        <div><label for="actuel">Ce que vous payez aujourd'hui (€ HT / mois) — laisser vide si vous partez de zéro</label><input type="number" id="actuel" min="0" step="1" placeholder="Ex. 321"></div>
+        <div><label for="migr_h">Heures de migration estimées (reprise des données, réglages, formation)</label><input type="number" id="migr_h" min="0" step="1" placeholder="Ex. 30"></div>
+      </div>
+      <div class="row">
+        <div><label for="migr_t">Votre coût horaire interne (€ / h) — le vôtre, nous n'affichons aucun barème</label><input type="number" id="migr_t" min="0" step="1" placeholder="Ex. 45"></div>
+        <div><label for="migr_dev">Devis d'un prestataire pour la reprise (€) — laisser vide si vous le faites vous-même</label><input type="number" id="migr_dev" min="0" step="10" placeholder="Ex. 1500"></div>
+      </div>
+      <div>
+        <button id="gencalc">Comparer à effectif égal</button>
+      </div>
+      <div class="out" id="outcalc"><p class="hint">Choisissez un outil, saisissez votre effectif, puis calculez. Les champs de migration servent à savoir au bout de combien de mois la baisse d'abonnement rembourse le coût d'entrée.</p></div>
+    </div>
+  </section>
+
+  <section id="ou" class="dyn switch">
+    <h2>Par où commencer, concrètement</h2>
+    <p>Trois gestes, dans cet ordre. Ils n'engagent rien et ne coûtent rien.</p>
+    <div class="flow3">
+      <div class="step"><b>1 · Obtenez la règle par écrit</b><span>Avant de comparer, demandez à votre éditeur actuel et aux candidats : le prix est-il par utilisateur ou par compte, quel prix après la remise de 1<sup>re</sup> année, et quelle durée d'engagement. Un tableau rempli avec des réponses écrites vaut mieux que dix pages de comparatifs.</span></div>
+      <div class="step"><b>2 · Chiffrez ce que coûte le départ</b><span>Reprendre ses données, refaire ses intégrations, reformer l'équipe : c'est le seul chiffre qui peut annuler une économie d'abonnement. <a href="/honest-switch/cout-de-sortie/">Le calculateur de coût de sortie est ici</a>.</span></div>
+      <div class="step"><b>3 · Vérifiez la conformité facturation électronique</b><span>Si vous facturez, la plateforme agréée doit être vérifiable : <a href="/honest-switch/verifier-plateforme-agreee/">la procédure officielle est ici</a>, avec les deux listes de la DGFiP.</span></div>
+    </div>
+
+    <h3>Les pages tarifaires officielles, sans intermédiaire</h3>
+    <p class="hint">Ces liens ne nous rapportent rien : aucun programme d'affiliation n'est actif sur ce site au 1<sup>er</sup> octobre 2026, et ce n'est pas une manière de parler. Ils sont donnés parce que c'est la source, et que la source vaut mieux que notre résumé.</p>
+    <p>
+      <a class="go" href="https://go.sellsy.com/offres" rel="noopener">Tarifs Sellsy<small>lien officiel — non affilié</small></a>
+      <a class="go" href="https://axonaut.com/content/prix" rel="noopener">Tarifs Axonaut<small>lien officiel — non affilié</small></a>
+      <a class="go" href="https://www.evoliz.com/tarifs/" rel="noopener">Tarifs Evoliz<small>lien officiel — non affilié</small></a>
+      <a class="go" href="https://www.odoo.com/fr_FR/pricing" rel="noopener">Tarifs Odoo<small>lien officiel — non affilié</small></a>
+    </p>
+  </section>
+
+  <section id="faq" class="dyn switch">
+    <h2>Questions fréquentes</h2>
+    <details><summary>Pourquoi le montant cité dans un avis ne correspond-il pas à la grille affichée ?</summary><p>Parce qu'un avis cite une facture, pas un barème : formule, modules, options, remises, ancienneté et date d'entrée en vigueur ne sont presque jamais précisés. Le chiffre du 15 octobre 2025 reproduit sur cette page ne se reconstitue pas depuis la grille publique affichée le 1<sup>er</sup> octobre 2026. Nous reproduisons donc les deux — le montant raconté par le client et le prix affiché par l'éditeur — sans faire semblant que l'un explique l'autre.</p></details>
+    <details><summary>Un prix « par utilisateur » et un prix « par compte » sont-ils comparables ?</summary><p>Non. À trois utilisateurs, un prix par utilisateur est multiplié par trois ; un prix par compte ne l'est pas. Les pages tarifaires ne le disent pas toujours explicitement, et c'est la première cause d'écart entre un comparatif et la facture réelle. Sur cette page, chaque barre du graphique porte son unité et le comparateur indique la règle qu'il applique.</p></details>
+    <details><summary>Le comparateur utilise-t-il des prix que vous n'avez pas vérifiés ?</summary><p>Non. Chaque prix est lu sur la page officielle de l'éditeur le 1<sup>er</sup> octobre 2026, et la source est citée. Les prix en dollars d'Odoo ne sont pas convertis : nous n'inventons aucun taux de change, et nous ne les traçons pas dans le graphique pour la même raison.</p></details>
+    <details><summary>Pourquoi Axonaut a-t-il deux lectures possibles à trois utilisateurs ?</summary><p>Parce que la page affiche un tarif « pour 1 utilisateur » et, séparément, une ligne à 30,00 € HT/mois par utilisateur supplémentaire, sans dire si le tarif unitaire s'applique aussi à chaque utilisateur. Les deux lectures donnent 118,20 € ou 174,60 € par mois — soit 676,80 € d'écart par an. La page ne tranche pas ; nous ne tranchons pas à sa place.</p></details>
+    <details><summary>Le formulaire envoie-t-il mes informations quelque part ?</summary><p>Non. Le comparateur s'exécute dans votre navigateur, en JavaScript, sans requête réseau. Effectif, prix actuel, heures de migration, coût horaire : rien ne quitte votre appareil et rien n'est enregistré.</p></details>
+    <details><summary>Cette page recommande-t-elle un logiciel ?</summary><p>Non. Nous n'avons testé ni votre métier, ni vos intégrations, ni votre comptable, et un classement serait une opinion déguisée en mesure. La page donne les prix affichés, les règles qui vont avec, la méthode de comparaison à effectif égal, les questions à poser par écrit — et un calculateur qui applique ces règles avec vos chiffres.</p></details>
+  </section>
+
+  <section id="honnetete" class="dyn switch">
+    <h2>Nos règles d'honnêteté</h2>
+    <ul class="honest-list">
+      <li><strong>Aucune affiliation.</strong> Aucun lien de cette page ne nous rémunère au 1<sup>er</sup> octobre 2026, et nous ne vendons ni logiciel ni prestation d'intégration. Les liens vers les éditeurs sont étiquetés « lien officiel — non affilié ». Le jour où un lien affilié apparaîtrait, il serait étiqueté sur place et la page <a href="/honest-switch/about/">À propos</a> mise à jour.</li>
+      <li><strong>Aucun prix estimé, aucun taux de change inventé.</strong> Chaque montant vient d'une page tarifaire citée en bas de cette page, lue le 1<sup>er</sup> octobre 2026. Les prix en dollars ne sont pas convertis et ne sont pas tracés dans le graphique.</li>
+      <li><strong>Les deux côtés sont cités</strong> : l'avis du client et, quand elle existe, la réponse publique de l'éditeur — y compris quand elle défend la hausse. Et l'affirmation commerciale d'Axonaut (« nous n'avons jamais augmenté nos tarifs ») est reproduite comme une affirmation d'éditeur, pas comme un fait vérifié par nous.</li>
+      <li><strong>Aucune promesse de résultat.</strong> Cette page aide à comparer et à poser les bonnes questions ; elle ne garantit ni une économie, ni un geste commercial, ni une migration réussie.</li>
+      <li><strong>Ni conseil juridique, ni conseil comptable.</strong> Un changement d'outil de gestion touche des données comptables et contractuelles : pour un contrat litigieux, un professionnel du droit lit vos conditions générales mieux qu'une page web.</li>
+      <li><strong>Erreur signalée, erreur corrigée</strong> : si un prix affiché ici n'est plus d'actualité ou si nous avons mal lu une page, écrivez-nous — la correction est publique.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="dyn switch">
+    <h2>Sources</h2>
+    <p class="srcline">Toutes les pages ci-dessous ont été ouvertes le 1<sup>er</sup> octobre 2026 entre 22 h et 23 h (heure de Paris). Les prix affichés changent vite : vérifiez sur le lien avant de décider quoi que ce soit.</p>
+    <ul class="sources">
+      <li><a href="https://go.sellsy.com/offres">go.sellsy.com — tarifs et offres Sellsy</a> (offres Standard 39,00 € / 29,00 € HT par utilisateur et par mois, Evolution 59,00 € / 49,00 €, Elite 79,00 €, engagement 12 mois ; mention « Offre valable jusqu'au 30 septembre 2026 – la 1<sup>re</sup> année d'abonnement » ; mention TeamSystem Facture « dès 3,90 €/mois »).</li>
+      <li><a href="https://axonaut.com/content/prix">axonaut.com — nos tarifs</a> (97,00 € HT/mois sans engagement, 58,20 € HT/mois en engagement 1 an, 48,50 € en 2 ans, 38,80 € en 3 ans, + 30,00 € HT/mois par utilisateur supplémentaire ; mention « Nous n'avons jamais augmenté nos tarifs pour nos clients. JAMAIS. »).</li>
+      <li><a href="https://www.evoliz.com/tarifs/">evoliz.com — tarifs</a> (formule Essentielle 29 € HT/mois, 290 € HT/an ; formule Avancée 49 € HT/mois, 490 € HT/an ; « Plateforme agréée incluse » ; aucune mention « par utilisateur »).</li>
+      <li><a href="https://www.odoo.com/fr_FR/pricing">odoo.com — tarification (page française)</a> (plan « Une App » gratuit à utilisateurs illimités ; Standard 24,90 $ avec US$ 31,10 affiché et la note « la remise s'applique pendant 12 mois » ; Personnalisé 49,00 $ avec US$ 61,00 ; « Utilisateur Léger à US$ 8,90 » ; prix affichés en dollars US).</li>
+      <li><a href="https://fr.trustpilot.com/review/sellsy.com?stars=1">fr.trustpilot.com — fiche « Sellsy », filtre 1 étoile</a> (avis cités sur cette page : 15 octobre 2025, 4 mars 2024, 7 novembre 2025 ; réponses publiques de l'éditeur des 5 mars 2024 et 14 août 2025).</li>
+      <li><a href="https://www.odoo.com/fr_FR/affiliate">odoo.com — programme d'affiliation</a> : consulté pour vérifier si un lien rémunéré était possible sur cette page. Il existe (10 % des revenus générés pendant les 12 premiers mois, lien valable 31 jours) ; <strong>il n'est pas activé ici</strong> et aucun lien d'affiliation n'est posé sur cette page à ce jour.</li>
+      <li><a href="https://axonaut.com/affiliation">axonaut.com — programme d'affiliation</a> et <a href="https://go.sellsy.com/parrainage">go.sellsy.com — parrainage</a> : mêmes vérifications. Axonaut annonce 300 € par nouveau client, Sellsy 20 % du premier abonnement annuel réservé à ses propres clients. <strong>Aucun de ces programmes n'est activé sur cette page aujourd'hui.</strong></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Moving-boxes.jpg">Photo d'illustration (cartons de déménagement)</a> — MoveON moving, CC BY-SA 4.0, via Wikimedia Commons.</li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Wegweiser_Richtung_Dinghorst_Vivat.jpg">Photo d'illustration (poteau indicateur)</a> — Christian Alexander Otto, CC BY 4.0, via Wikimedia Commons.</li>
+    </ul>
+    <p class="footnote">Les noms d'éditeurs, de formules et les montants cités appartiennent à leurs titulaires respectifs et sont reproduits à titre d'information et de mesure, sans lien commercial. Cette page n'entretient aucune relation avec les éditeurs mentionnés et n'a reçu aucune contrepartie pour les citer.</p>
+  </section>
+
+  <section id="avis" class="dyn switch">
+    <h2>⭐ Avis clients</h2>
+    <div id="reviews" style="margin:14px 0">
+      <div class="avis"><div class="stars">★★★★★</div><p>Des avis de dirigeants et d'indépendants réels, publiés après vérification. Chaque retour négatif est répondu publiquement — c'est comme ça qu'on s'améliore.</p></div>
+      <p class="hint">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div class="card">
+      <b>Cette page vous a servi ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:#57523f;font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle">
+            <button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button>
+            <button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button>
+            <button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button>
+            <button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button>
+            <button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button>
+          </div>
+          <input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required>
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required></textarea>
+        <button type="submit">Envoyer mon avis</button>
+      </form>
+      <p class="hint" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page d'information indépendante. Les grilles tarifaires, les remises et les durées d'engagement changent vite : vérifiez le prix sur la page officielle de l'éditeur avant de décider, et faites écrire la règle de facturation dans votre devis. Cette page n'est ni un conseil juridique ni un conseil comptable.</p>
+    <p>Mis à jour le 1 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
+</script>
+
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+
+<script>
+/* ---------- comparateur à effectif égal — 100 % local, aucun envoi ----------
+   Chaque prix ci-dessous a été lu sur la page officielle de l'éditeur le 1er octobre 2026.
+   mode "pu"  : prix affiché par utilisateur et par mois  -> total = prix x effectif
+   mode "base": abonnement de base (1 utilisateur) + prix par utilisateur supplémentaire
+   mode "pc"  : prix affiché pour le compte               -> total = prix, effectif non multiplié
+   Rien n'est estimé, aucune remise non affichée n'est appliquée. */
+(function(){
+  var PRIX = {
+    sellsy_evo:      {nom:"Sellsy « Evolution » (engagement 12 mois)", mode:"pu",   prix:59.00, note:"Prix affiché par utilisateur et par mois, engagement 12 mois."},
+    sellsy_evo_promo:{nom:"Sellsy « Evolution », offre réforme (1re année)", mode:"pu", prix:49.00, note:"Prix affiché par utilisateur et par mois. La page mentionne « Offre valable jusqu'au 30 septembre 2026 – la 1re année » : à confirmer."},
+    sellsy_std:      {nom:"Sellsy « Standard » (engagement 12 mois)", mode:"pu", prix:39.00, note:"Prix affiché par utilisateur et par mois, engagement 12 mois."},
+    sellsy_std_promo:{nom:"Sellsy « Standard », offre réforme (1re année)", mode:"pu", prix:29.00, note:"Prix affiché par utilisateur et par mois. Remise de 1re année : vérifiez le prix qui s'applique ensuite."},
+    axonaut_an:      {nom:"Axonaut (engagement 1 an)", mode:"base", prix:58.20, extra:30.00, note:"La page affiche 58,20 € HT/mois pour 1 utilisateur et une ligne distincte à 30,00 € HT/mois par utilisateur supplémentaire. La page ne dit pas si le tarif unitaire s'applique aussi à chaque utilisateur : à faire confirmer par écrit."},
+    axonaut_mois:    {nom:"Axonaut (sans engagement, 1 mois)", mode:"base", prix:97.00, extra:30.00, note:"La page affiche 97,00 € HT/mois pour 1 utilisateur et 30,00 € HT/mois par utilisateur supplémentaire."},
+    evoliz_ava:      {nom:"Evoliz « Avancée »", mode:"pc", prix:49.00, note:"Prix affiché pour le compte, sans mention « par utilisateur » sur la page."},
+    evoliz_ess:      {nom:"Evoliz « Essentielle »", mode:"pc", prix:29.00, note:"Prix affiché pour le compte, sans mention « par utilisateur » sur la page."}
+  };
+  var $ = function(id){ return document.getElementById(id); };
+  function num(id){ var v = ($(id).value || '').trim().replace(/\s/g,'').replace(',','.'); if (!v) return 0; var n = parseFloat(v); return isFinite(n) && n > 0 ? n : 0; }
+  function eur(n){ return n.toLocaleString('fr-FR', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' €'; }
+  function eur0(n){ return n.toLocaleString('fr-FR', {minimumFractionDigits:0, maximumFractionDigits:0}) + ' €'; }
+
+  var out = $('outcalc');
+
+  function calculer(){
+    var cle = $('outil').value;
+    var p = PRIX[cle];
+    if (!p){ out.innerHTML = "<p class=\"hint\">Choisissez un outil dans la liste.</p>"; return; }
+    var n = Math.max(1, Math.round(num('neff') || 1));
+    var actuel = num('actuel');
+    var h = num('migr_h'), t = num('migr_t'), dev = num('migr_dev');
+
+    var mensuel, detail;
+    if (p.mode === 'pu'){
+      mensuel = p.prix * n;
+      detail = p.prix.toFixed(2).replace('.',',') + " € × " + n + " utilisateur" + (n>1?"s":"") + " = " + eur(mensuel);
+    } else if (p.mode === 'base'){
+      mensuel = p.prix + p.extra * (n - 1);
+      detail = p.prix.toFixed(2).replace('.',',') + " € (1 utilisateur) + " + (n-1) + " × " + p.extra.toFixed(2).replace('.',',') + " € = " + eur(mensuel) + " — lecture « abonnement de base + utilisateurs supplémentaires »";
+    } else {
+      mensuel = p.prix;
+      detail = "prix du compte = " + eur(mensuel) + " (l'effectif n'est pas multiplié : la page ne dit pas que le prix est par utilisateur)";
+    }
+
+    var r = [];
+    r.push("<p><b>" + p.nom + "</b> — coût mensuel affiché pour " + n + " utilisateur" + (n>1?"s":"") + " : <span class=\"big\">" + eur(mensuel) + "</span> HT</p>");
+    r.push("<p class=\"hint\">Calcul appliqué : " + detail + "</p>");
+    r.push("<p class=\"hint\">" + p.note + "</p>");
+    r.push("<p>Coût annuel au prix affiché : <b>" + eur0(mensuel*12) + " HT</b>.</p>");
+
+    var migr = (h * t) + dev;
+    if (migr > 0){
+      r.push("<p>Coût d'entrée estimé (migration) : <b>" + eur0(migr) + "</b>"
+        + " <span class=\"hint\">= " + h + " h × " + eur0(t) + "/h" + (dev? " + " + eur0(dev) + " de prestataire" : "") + "</span></p>");
+    }
+    if (actuel > 0 && migr > 0){
+      var ecart = actuel - mensuel;
+      if (ecart > 0){
+        r.push("<p><b>Économie d'abonnement :</b> " + eur(ecart) + " HT / mois, soit " + eur0(ecart*12) + " HT sur 12 mois.</p>");
+        r.push("<p><b>Point de bascule :</b> environ <b>" + (migr/ecart).toFixed(1).replace('.',',') + " mois</b> pour que l'économie d'abonnement rembourse le coût d'entrée.</p>");
+      } else if (ecart < 0){
+        r.push("<p class=\"hint\">Aux prix affichés, cet outil coûte <b>" + eur(-ecart) + " HT / mois de plus</b> que ce que vous payez aujourd'hui. Aucune économie d'abonnement à amortir : la question devient « est-ce que ça vaut le surcoût », et elle ne se règle pas ici.</p>");
+      } else {
+        r.push("<p class=\"hint\">Même prix mensuel affiché que ce que vous payez aujourd'hui : la différence, s'il y en a une, est ailleurs (périmètre, modules, effectif facturé).</p>");
+      }
+    } else if (actuel > 0){
+      var d2 = actuel - mensuel;
+      r.push("<p class=\"hint\">Écart avec ce que vous payez : <b>" + (d2>=0?"−":"+") + eur0(Math.abs(d2)) + " HT / mois</b>. Ajoutez vos heures de migration et votre coût horaire pour calculer le point de bascule.</p>");
+    } else if (migr > 0){
+      r.push("<p class=\"hint\">Indiquez ce que vous payez aujourd'hui pour comparer et obtenir le point de bascule.</p>");
+    }
+
+    r.push("<p class=\"hint\">Hypothèses : prix affichés au 1<sup>er</sup> octobre 2026, hors remises non affichées, hors modules et options non compris dans la formule citée, hors promotion de 1<sup>re</sup> année non écrite dans le calcul. Ce calcul tourne dans votre navigateur : aucune de ces valeurs n'est envoyée ni enregistrée.</p>");
+    out.innerHTML = r.join("");
+  }
+
+  $('gencalc').addEventListener('click', calculer);
+})();
+</script>
+
+<script>
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Alternatives CRM/ERP français — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Comparer les CRM/ERP français à effectif égal\n\nNote : " + sc + "/5\nLecteur : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)"
+  );
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+</body>
+</html>

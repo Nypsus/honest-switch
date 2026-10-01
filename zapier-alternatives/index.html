@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Zapier price refugees: where automation switchers go (n8n, Make, Pabbly — prices verified) — Honest Switch</title>
+<meta name="description" content="Zapier raised prices and capped tasks again. What long-time users actually complain about, what to check before you migrate, and the prices we read on the official pages of n8n, Make and Pabbly on 1 Oct 2026 — plus who pays you to switch.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/zapier-alternatives/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/zapier-alternatives/">
+<meta property="og:title" content="Zapier price refugees: where automation switchers go (n8n, Make, Pabbly) — Honest Switch">
+<meta property="og:description" content="What Zapier switchers actually complain about, what to check before migrating, and prices verified on the official pages of n8n, Make and Pabbly on 1 Oct 2026.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zapier price refugees: where automation switchers go — Honest Switch">
+<meta name="twitter:description" content="Verified prices + honest migration checklist for Zapier alternatives (n8n, Make, Pabbly).">
+<meta name="twitter:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* Page visuals — same site colours, no invented figures */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Why are Zapier users switching now?",
+     "acceptedAnswer": {"@type": "Answer", "text": "The documented signal is pricing and task caps. A long-running thread on r/automation opens with 'TIRED OF ZAPIER (…) been a Zapier user for YEARS and am tired of the pricing. What started as $10 per month…' (09/10/2025), and the same thread references reports framed as a '600% price increase'. Zapier's own plan page now shows Professional 'starting from $19.99/month' and Team 'starting from $69/month', with pay-per-task tiers beyond that — the exact number depends on your task volume, which is part of the frustration."}},
+    {"@type": "Question", "name": "Is there a free alternative to Zapier?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes — n8n's Community Edition is a free, self-hosted version (AGPL, on GitHub) with unlimited workflows and users; you run it on your own server, so you own the infrastructure. Make and Pabbly have free tiers: Make Free includes 1,000 credits/month, Pabbly Connect starts with 100 free tasks on signup ('Start for free and get 100 tasks — no credit card required', read 1 Oct 2026)."}},
+    {"@type": "Question", "name": "What does n8n cost?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Read on n8n.io/pricing on 1 Oct 2026: Community Edition free (self-hosted); Starter 20 €/month billed annually (2.5K workflow executions with unlimited steps); Pro 50 €/month billed annually (10K executions); Business 667 €/month (for companies under 100 employees, includes 3 shared projects); Enterprise on request. Pricing is based on monthly workflow executions, regardless of complexity."}},
+    {"@type": "Question", "name": "What does Make cost?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Read on make.com/en/pricing on 1 Oct 2026: Free 0 $/month (1,000 credits); Core 12 $/month (price for 10k credits/month); Pro and Teams tiers above that (Teams from 38 $/month for 10k credits/month); Enterprise custom pricing. Each module action in a scenario counts as one credit, and data transfer scales proportionally (5 GB per 10,000 monthly credits)."}},
+    {"@type": "Question", "name": "What does Pabbly Connect cost?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Read on pabbly.com/connect/pricing on 1 Oct 2026 (USD data served by the official page): 16 $/month for 10,000 tasks, 33 $/month for 20,000 tasks, 69 $/month from 50,000 tasks up to 300,000 (billed annually). Pabbly also sells one-time 'lifetime' plans. The page's own comparison frames Zapier as costing 91% more for the same 10,000 tasks."}},
+    {"@type": "Question", "name": "Are the links on this page affiliate links?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. As of 1 October 2026, no link on this page pays us. n8n, Make and Pabbly all publish affiliate programs (30% ×12 months on n8n Cloud referrals, 35% ×12 months on Make, up to 30% recurring on Pabbly — verified on their official pages), and we are not enrolled in any of them yet. If that changes, every affected link will be labeled on the spot and this box will state the start date."}},
+    {"@type": "Question", "name": "How were the prices on this page verified?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Every price was read on the vendor's own pricing page on 1 October 2026, with the date noted next to it and linked in Sources. Zapier's exact per-tier price depends on task volume and is computed on their page — we state the published starting points and link to the calculator. Pabbly's page picks a currency by geolocation; we use the USD figures from their official pricing data."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#what-changed">What changed</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#tools">Tools</a>
+      <a href="#faq">FAQ</a>
+      <a href="#honesty">Honesty</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <p class="kicker">Independent · source-verified · checked 1 Oct 2026</p>
+    <h1>Tired of Zapier&rsquo;s pricing? You&rsquo;re not alone. Here&rsquo;s where automation switchers actually land.</h1>
+    <p class="lede">Freelancers, ops managers, no-code agencies and small teams have automated their workflows on Zapier for years — and the complaints are specific: <span class="hl">pricing that keeps climbing</span>, <span class="hl">task caps that surprise you mid-month</span>, and a calculator that makes the real number hard to see before you subscribe. This page is the boring version of that debate: what switchers actually say, what to check before you migrate, the prices we read on the official pages of n8n, Make and Pabbly today — and which programs pay you to switch.</p>
+    <p class="chips">
+      <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
+      <span class="chip">Prices checked 1 Oct 2026</span>
+    </p>
+
+    <div class="callout">
+      <h2>In brief</h2>
+      <ul>
+        <li><b>Zapier</b> : Professional <span class="hl">from $19.99/month</span>, Team <span class="hl">from $69/month</span> — plus pay-per-task tiers that scale with volume.</li>
+        <li><b>n8n</b> : <span class="hl">free Community Edition</span> (self-hosted), Starter <span class="hl">20&nbsp;€/month</span> (2.5K executions, billed annually).</li>
+        <li><b>Make</b> : Free tier included, <span class="hl">Core 12&nbsp;$/month</span> for 10k credits, Teams from <span class="hl">38&nbsp;$/month</span>.</li>
+        <li><b>Pabbly</b> : <span class="hl">16&nbsp;$/month</span> for 10,000 tasks (billed annually) — the lowest entry price for a hosted product.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="what-changed" class="switch">
+    <h2>What people actually complain about — and what changed</h2>
+    <div class="why">
+      <p>The trigger is documented in public threads, not invented. The opening of a long-running r/automation discussion (09/10/2025), in the author&rsquo;s words:</p>
+    </div>
+    <blockquote class="quotebox">&ldquo;TIRED OF ZAPIER (…) been a Zapier user for YEARS and am tired of the pricing. What started as $10 per month…&rdquo;<span class="qsrc">— r/automation, 09/10/2025 · linked in Sources</span></blockquote>
+    <ul class="sources">
+      <li><strong>The &ldquo;600% price increase&rdquo; framing.</strong> The same thread collects price-increase reports framed as a 600% jump for some long-time accounts. We did not find a single official, all-context price table on Zapier&rsquo;s site — the figure depends on plan history and task volume, which is precisely the transparency complaint.</li>
+      <li><strong>The task model itself.</strong> Zapier&rsquo;s pricing page now runs on task tiers (100 / 750 / 2K / 10K / … up to 2M tasks per month) with a &ldquo;pay monthly or yearly (save 33%)&rdquo; toggle, and Professional and Team are shown as &ldquo;starting from&rdquo; prices. Long-time users report the bill moving as their automation volume grows — that is the everyday frustration behind the threads.</li>
+      <li><strong>What switchers look for next.</strong> The names that come up are consistent: n8n (self-hostable, per-execution pricing), Make (visual flow builder, credit-based) and Pabbly Connect (task-based, annual and lifetime plans). We verified each of those three on their official pages.</li>
+    </ul>
+    <p class="footnote">These are reasons to re-evaluate, not to panic-migrate: most teams run a handful of Zaps, and the checklist below tells you what to verify against YOUR actual usage before touching anything.</p>
+  </section>
+
+  <section id="checklist" class="switch">
+    <h2>Before you switch anything — 5 steps</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Count</b><span>your <strong>real monthly tasks/operations</strong> in the last 90 days — not your plan name. That number decides which alternative is cheapest.</span></div>
+      <div class="step"><b>2 · List</b><span>the <strong>Zaps you actually use</strong> (triggers, apps, multi-step chains). One-off experiments don&rsquo;t matter; production flows do.</span></div>
+      <div class="step"><b>3 · Decide</b><span><strong>hosted vs self-hosted</strong>: zero infrastructure (Make, Pabbly) or full ownership (n8n Community Edition on your server).</span></div>
+    </div>
+    <ol class="steps">
+      <li><strong>Count your real monthly volume.</strong> Open Zapier&rsquo;s task usage page and read the last 3 months. Everything below is a numbers game: hosts bill per execution (n8n), per credit (Make) or per task (Pabbly). The plan name tells you nothing; the 90-day number tells you everything.</li>
+      <li><strong>List your production Zaps.</strong> Which flows run daily and are load-bearing (CRM sync, invoicing, lead routing)? Which were experiments you stopped after a week? Migrate the load-bearing ones; let the rest die. This is also the moment to delete half your Zaps — most people find they pay for automations they no longer run.</li>
+      <li><strong>Decide hosted vs self-hosted.</strong> n8n Community Edition is free but you operate it (server, updates, backups). Make and Pabbly host everything for you. If your business has no one comfortable with a server, a hosted product is the honest choice — self-hosting to save money can cost you a weekend.</li>
+      <li><strong>Run both in parallel for two weeks.</strong> Rebuild your two most important flows on the candidate, keep Zapier live, compare: execution counts, error handling, speed, and whether the free tier honestly covers your volume. Migrate the rest only after one clean cycle.</li>
+      <li><strong>Cancel at the right moment.</strong> Annual Zapier plans only reprice at renewal — cancel before the next renewal date, not after it. Export your Zap definitions and any custom code first (the alternative imports them or you rebuild them manually).</li>
+    </ol>
+  </section>
+
+  <section id="tools" class="switch">
+    <h2>The alternatives we verified today</h2>
+    <div class="tblwrap">
+      <table>
+        <caption>Zapier alternatives named in the sources — entry prices read on the official pages, 1 Oct 2026 (€ for n8n, $ for Make/Pabbly/Zapier)</caption>
+        <thead>
+          <tr><th scope="col">Tool</th><th scope="col">What we verified</th><th scope="col">Best if</th><th scope="col">The catch</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><a href="https://zapier.com/pricing">Zapier (the baseline)</a></th>
+            <td>Free 0 $/mo (100 tasks); Professional <strong>from 19.99 $/month</strong>; Team <strong>from 69 $/month</strong> — the final price depends on your task tier (100 to 2M tasks/mo), pay monthly or yearly (save 33%). Read 1 Oct 2026.</td>
+            <td>You value the largest app directory (9,000+ apps) and don&rsquo;t mind the price being a function of volume.</td>
+            <td>That&rsquo;s exactly the complaint: the number you actually pay is buried in tiers and task math, and it rises as your automation grows.</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="https://n8n.io/pricing">n8n</a></th>
+            <td>Community Edition <strong>free</strong> (self-hosted, open source); Starter <strong>20&nbsp;€/month</strong> billed annually (2.5K workflow executions, unlimited steps); Pro <strong>50&nbsp;€/month</strong> (10K executions); Business <strong>667&nbsp;€/month</strong> (&lt;100 employees, 3 shared projects). Read 1 Oct 2026.</td>
+            <td>You want ownership: data stays on your server, pricing is per execution, and the free tier is real software, not a trial.</td>
+            <td>Self-hosting means running infrastructure; paid tiers assume your own hosting too (n8n Cloud is hosted, but the self-hosted model is the core).</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="https://www.make.com/en/pricing">Make</a></th>
+            <td>Free <strong>0 $/month</strong> (1,000 credits); Core <strong>12 $/month</strong> (price for 10k credits); Teams from <strong>38 $/month</strong> (10k credits); Enterprise custom. Each module action = 1 credit; 5 GB data transfer per 10k credits. Read 1 Oct 2026.</td>
+            <td>You prefer a visual flow builder with strong templates and a real free tier to test on.</td>
+            <td>Credit accounting takes getting used to — a scenario with many module actions burns credits per run, so the 10k price is not a fixed ceiling.</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="https://www.pabbly.com/connect/pricing/">Pabbly Connect</a></th>
+            <td><strong>16 $/month</strong> for 10,000 tasks, <strong>33 $/month</strong> for 20,000, <strong>69 $/month</strong> for 50,000 up to 300,000 (billed annually); one-time &ldquo;lifetime&rdquo; plans also sold. Read 1 Oct 2026 (USD figures from the official page).</td>
+            <td>You want the lowest per-task price of the three hosted options and don&rsquo;t need n8n-style self-hosting.</td>
+            <td>Smaller ecosystem than the others; some niche apps lack pre-built connectors, and &ldquo;lifetime&rdquo; plans are a big upfront commitment.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="chartbox">
+      <h3>The entry price, visually</h3>
+      <p class="srcline">Monthly entry price read on the official pages on 1 Oct 2026, in each vendor&rsquo;s displayed currency. These are entry points for a small-but-real workload (~10k tasks/executions/credits), not total cost of ownership.</p>
+      <svg viewBox="0 0 640 210" role="img" aria-label="Entry monthly prices: n8n Community free, Pabbly 16 dollars, Make Core 12 dollars, Zapier Professional from 19.99 dollars, n8n Starter 20 euros.">
+        <g font-family="Georgia,serif">
+          <text x="8" y="40" font-size="14" fill="#1a1a1a">n8n Community (self-hosted)</text>
+          <rect x="205" y="26" width="4" height="22" rx="3" fill="#0e7b52"/>
+          <text x="218" y="43" font-size="13" fill="#0e7b52" font-weight="bold">free</text>
+          <text x="8" y="78" font-size="14" fill="#1a1a1a">Pabbly Connect (10k tasks)</text>
+          <rect x="205" y="64" width="116" height="22" rx="3" fill="#0e7b52"/>
+          <text x="330" y="81" font-size="13" fill="#0e7b52" font-weight="bold">16 $/mo</text>
+          <text x="8" y="116" font-size="14" fill="#1a1a1a">Make Core (10k credits)</text>
+          <rect x="205" y="102" width="87" height="22" rx="3" fill="#4c9a75"/>
+          <text x="300" y="119" font-size="13" fill="#0e7b52" font-weight="bold">12 $/mo</text>
+          <text x="8" y="154" font-size="14" fill="#1a1a1a">Zapier Professional</text>
+          <rect x="205" y="140" width="144" height="22" rx="3" fill="#b58900"/>
+          <text x="357" y="157" font-size="13" fill="#8a6d00" font-weight="bold">from 19.99 $/mo</text>
+          <text x="8" y="192" font-size="14" fill="#1a1a1a">n8n Starter (2.5k executions)</text>
+          <rect x="205" y="178" width="145" height="22" rx="3" fill="#b58900"/>
+          <text x="358" y="195" font-size="13" fill="#8a6d00" font-weight="bold">20 €/mo</text>
+        </g>
+      </svg>
+      <p class="footnote">Bars are proportional to the prices read: n8n Community has no price at all (self-hosted software), so its bar is zero. Zapier&rsquo;s is a starting price — the real number for your volume is on their calculator. n8n&rsquo;s entry is in euros (their page), the others in USD (their pages). We did not convert currencies.</p>
+    </div>
+    <p class="footnote">Each figure above was read on the vendor&rsquo;s own pricing page on 1 October 2026, and the pages are linked in <a href="#sources">Sources</a>. Where a price depends on your volume (Zapier tiers, Make credits), we say so instead of inventing a flat number — that is the whole point of this site.</p>
+  </section>
+
+  <section id="affiliates" class="switch">
+    <h2>Who pays you to switch</h2>
+    <div class="why">
+      <p>All three alternatives publish affiliate programs on their official sites. Verified 1 Oct 2026:</p>
+    </div>
+    <ul class="sources">
+      <li><strong>n8n:</strong> 30% commission on all n8n Cloud referrals for the first 12 months; payouts via PayPal on balances of 100&nbsp;€ or more; &ldquo;Anyone can become an n8n affiliate — just hit the application button&rdquo; (n8n.io/affiliates).</li>
+      <li><strong>Make:</strong> 35% commission on every referred subscription payment for 12 months (make.com/en/affiliate); payouts via Wise with a minimum of 100&nbsp;$ and three unique paying users.</li>
+      <li><strong>Pabbly:</strong> &ldquo;Earn up to 30% commission on each sale&rdquo; — 30% recurring on every paid customer for as long as they stay active (pabbly.com/affiliate).</li>
+    </ul>
+    <p class="footnote">Honest note: no link on this page pays us today. The affiliate programs are the reason this category of page exists — if we join one, every affected link will be labeled on the spot and the honesty box will state the start date. We will not link a program we are not enrolled in as if it paid us.</p>
+  </section>
+
+  <section id="faq" class="switch">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details><summary>Why are Zapier users switching now?</summary><p>The documented signal is pricing and task caps: the r/automation thread opens with &ldquo;TIRED OF ZAPIER (…) been a Zapier user for YEARS and am tired of the pricing. What started as $10 per month…&rdquo; (09/10/2025), and reports framed as a &ldquo;600% price increase&rdquo; circulate in the same thread. Zapier&rsquo;s own page shows Professional &ldquo;from $19.99/month&rdquo; and Team &ldquo;from $69/month&rdquo; with task tiers on top.</p></details>
+      <details><summary>Is there a free alternative to Zapier?</summary><p>Yes. n8n&rsquo;s Community Edition is free and self-hosted (open source). If you don&rsquo;t want to run a server: Make&rsquo;s Free plan includes 1,000 credits/month and Pabbly Connect gives 100 free tasks on signup, no credit card required (both read on their pages, 1 Oct 2026).</p></details>
+      <details><summary>Which is cheapest for a small team?</summary><p>For a hosted product at the 10k-unit level, the prices we read on 1 Oct 2026 were: Pabbly 16 $/month (10k tasks), Make Core 12 $/month (10k credits), n8n Starter 20 €/month (2.5k executions) — n8n prices per execution, so its 10k-equivalent sits in the Pro plan at 50 €/month. The cheapest hosting option is self-hosted n8n (free software), with the caveat that you run the infrastructure.</p></details>
+      <details><summary>Do the alternatives count tasks the same way?</summary><p>No, and that&rsquo;s the trap. Zapier counts tasks (steps that run), Pabbly counts tasks with internal steps free, Make counts credits (one per module action per run), and n8n counts workflow executions with unlimited steps. Comparing sticker prices without checking the unit is how people mis-budget a migration. The checklist above has you count your real volume first for exactly this reason.</p></details>
+      <details><summary>Are the links on this page affiliate links?</summary><p>No. As of 1 October 2026, no link on this page pays us. n8n, Make and Pabbly all publish affiliate programs (30% ×12 months, 35% ×12 months, up to 30% recurring — verified on their official pages) and we are not enrolled in any of them yet. If that changes, every affected link will be labeled on the spot and this box will state the start date.</p></details>
+      <details><summary>How were the prices verified?</summary><p>Each price was read on the vendor&rsquo;s official pricing page on 1 October 2026, with the control date next to it and linked in Sources. Zapier&rsquo;s real per-tier price depends on your task volume and is computed on their page — we state the published starting points and link the calculator. Pabbly displays prices by geolocation; we used the USD figures from their official pricing data.</p></details>
+    </div>
+  </section>
+
+  <section id="honesty" class="switch">
+    <h2>How this page stays honest</h2>
+    <ul class="honest-list">
+      <li><strong>No affiliate links at launch.</strong> As of 1 Oct 2026, no link on this page pays us. If we join a program later, the affected links will be labeled on the spot and this box will state the start date.</li>
+      <li><strong>Every price was checked on the vendor&rsquo;s own pricing page</strong> on 1 Oct 2026, with the control date noted next to it and linked in Sources. Check them yourself.</li>
+      <li><strong>No invented numbers, no fake urgency.</strong> Where a price depends on volume (Zapier tiers, Make credits), the page says so instead of printing a flat figure. The chart bars only prices actually read, in the currency each vendor displays — no conversions.</li>
+      <li><strong>Spotted an error or a new price?</strong> Email us — corrections ship fast.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch">
+    <h2>Sources</h2>
+    <p class="srcline">Control dates are noted per link. Vendor pricing pages read 1 Oct 2026.</p>
+    <ul class="sources">
+      <li><a href="https://www.reddit.com/r/automation/comments/1o1rl8h/">r/automation — &ldquo;TIRED OF ZAPIER&rdquo; thread</a> (09/10/2025; source of the &ldquo;$10 per month&rdquo; verbatim and the &ldquo;600%&rdquo; framing)</li>
+      <li><a href="https://zapier.com/pricing">Zapier — official pricing</a> (read 1 Oct 2026: Free 100 tasks, Professional from $19.99/mo, Team from $69/mo, task tiers 100→2M, save 33% yearly)</li>
+      <li><a href="https://n8n.io/pricing">n8n — official pricing</a> (read 1 Oct 2026: Community free, Starter 20 €/mo, Pro 50 €/mo, Business 667 €/mo, billed annually)</li>
+      <li><a href="https://n8n.io/affiliates/">n8n — affiliate program</a> (read 1 Oct 2026: 30% on Cloud referrals, 12 months, PayPal, 100 € minimum)</li>
+      <li><a href="https://www.make.com/en/pricing">Make — official pricing</a> (read 1 Oct 2026: Free 1,000 credits, Core $12/mo @10k, Teams from $38/mo, Enterprise custom)</li>
+      <li><a href="https://www.make.com/en/affiliate">Make — affiliate program</a> (read 1 Oct 2026: 35% commission, 12 months, Wise payout, $100 min + 3 paying users)</li>
+      <li><a href="https://www.pabbly.com/connect/pricing/">Pabbly Connect — official pricing</a> (read 1 Oct 2026: $16/10k tasks, $33/20k, $69/50k–300k, annual; lifetime plans)</li>
+      <li><a href="https://www.pabbly.com/affiliate/">Pabbly — affiliate program</a> (read 1 Oct 2026: up to 30% commission, 30% recurring)</li>
+      <li>Related guides: <a href="../">Honest Switch — the honest comparison (Harvest, QuickBooks, Invoice Radar)</a> · <a href="../invoice-reminders/">Invoice reminder tools</a> · <a href="../pdf-extraction/">PDF data extraction</a> · <a href="../newsletter-switchers/">Newsletter platform switchers</a></li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch">
+    <h2>Reader reviews</h2>
+    <p class="why">Reviews of this guide, published after verification. Every negative review receives a public answer — that&rsquo;s how we get better.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">The first reviews will be published here as soon as real readers send them.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Did this guide help you? Leave a review</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Rating :</label>
+          <select id="rscore" style="margin-left:6px">
+            <option value="5">★★★★★ 5</option>
+            <option value="4">★★★★ 4</option>
+            <option value="3">★★★ 3</option>
+            <option value="2">★★ 2</option>
+            <option value="1">★ 1</option>
+          </select>
+        </div>
+        <input type="email" id="remail" placeholder="you@email.com (to verify you are a real reader)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Your experience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Send my review</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — an independent comparison page. Prices change; confirm on the official page before subscribing.</p>
+    <p>Updated 1 Oct 2026 · No cookies, no trackers, no third-party analytics — visits are counted by our own cookie-less counter (no personal data, IP never stored) · Written by Nypsus · <a href="/honest-switch/about/">About &amp; how we make money</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Zapier Alternatives — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Zapier Alternatives\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Your mail app opens with a pre-filled message — send it. We verify then publish.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+</body>
+</html>

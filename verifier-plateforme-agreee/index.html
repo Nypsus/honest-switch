@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vérifier soi-même si un logiciel de facturation est une plateforme agréée — Honest Switch</title>
+<meta name="description" content="La procédure officielle pour contrôler vous-même qu'un outil de facturation électronique est bien une plateforme agréée : les deux listes de la DGFiP, le piège des noms de fichiers, et ce que « agréée » ne garantit pas.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/verifier-plateforme-agreee/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/verifier-plateforme-agreee/">
+<meta property="og:title" content="Vérifier soi-même si un logiciel de facturation est une plateforme agréée — Honest Switch">
+<meta property="og:description" content="149 plateformes agréées, 14 dossiers en attente d'immatriculation : la méthode pour le vérifier vous-même dans les listes officielles de la DGFiP, sans croire un comparatif.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vérifier soi-même si un outil de facturation est « agréé » — Honest Switch">
+<meta name="twitter:description" content="La procédure officielle, les deux listes de la DGFiP et le piège du nom des fichiers.">
+<meta name="twitter:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* Visuels propres à cette page — mêmes couleurs que le site, aucun chiffre inventé */
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .photo{margin:22px 0 10px;background:#fff;border:1px solid rgba(14,123,82,.30);border-radius:14px;padding:8px;box-shadow:0 12px 32px rgba(16,40,28,.10)}
+  .photo img{display:block;width:100%;height:auto;border-radius:8px}
+  .photo figcaption{font-size:.8rem;color:#57523f;margin:8px 4px 2px;text-align:center}
+
+/* --- Illustration de tete + dynamique douce (meme traitement que les autres guides) --- */
+.hero-img{display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px}
+@keyframes hspulse{0%{opacity:.35}50%{opacity:1}100%{opacity:.35}}
+.hero-img .pulse{animation:hspulse 3.4s ease-in-out infinite}
+.dyn{transition:opacity .55s ease,transform .55s ease}
+html.js .dyn{opacity:0;transform:translateY(16px)}
+html.js .dyn.in{opacity:1;transform:none}
+.chip{transition:transform .15s ease}
+.chip:hover{transform:translateY(-2px)}
+.flow3 .step{transition:transform .18s ease,box-shadow .18s ease}
+.flow3 .step:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(14,123,82,.14)}
+.tblwrap tbody tr{transition:background .15s ease}
+.tblwrap tbody tr:hover{background:#f2f8f4}
+@media (prefers-reduced-motion: reduce){
+  .hero-img .pulse{animation:none}
+  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .chip:hover,.flow3 .step:hover{transform:none}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Comment vérifier qu'un logiciel de facturation est une plateforme agréée ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "La Direction générale des Finances publiques publie la liste des plateformes agréées sur impots.gouv.fr, à la page « Je consulte la liste des plateformes agréées ». Le fichier « Liste des opérateurs satisfaisant à l'ensemble des conditions, incluant les tests d'interopérabilité » contient les opérateurs immatriculés : 149 lignes dans le fichier relu le 1er octobre 2026. Il faut chercher le nom commercial de l'éditeur, pas son slogan."}},
+    {"@type": "Question", "name": "Pourquoi le fichier de la liste des plateformes agréées s'appelle-t-il liste_pa_attente_rapport_audit ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "C'est un des pièges de cette page : sur la page officielle, le premier fichier porte « pa_attente » dans son nom alors qu'il liste les opérateurs satisfaisant à l'ensemble des conditions, tests d'interopérabilité compris. Le second fichier, liste_pa_attente_test_interop, liste ceux qui ont déposé un dossier complet et attendent leur immatriculation définitive. Les deux noms se ressemblent, les contenus pas du tout."}},
+    {"@type": "Question", "name": "Un logiciel « compatible » avec la réforme est-il agréé ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. Le document officiel de la DGFiP (septembre 2025) distingue la plateforme agréée, immatriculée par l'administration, de la solution compatible, qui n'est pas immatriculée et « doit obligatoirement être raccordée à une plateforme agréée ». Un logiciel de facturation ou de comptabilité peut donc être compatible sans être agréé."}},
+    {"@type": "Question", "name": "Combien de plateformes agréées existent aujourd'hui ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "149 opérateurs figurent dans le fichier des opérateurs satisfaisant à l'ensemble des conditions, et 14 dans le fichier des dossiers complets en attente d'immatriculation définitive — comptage fait ligne par ligne dans les deux fichiers officiels téléchargés le 1er octobre 2026. La DGFiP écrivait « plus d'une centaine de plateformes immatriculées » en septembre 2025 : la liste bouge, revérifiez au moment où vous signez."}},
+    {"@type": "Question", "name": "Ces listes garantissent-elles la qualité du logiciel ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. L'immatriculation porte sur des exigences fiscales, de sécurité et d'interopérabilité. Elle ne dit rien du prix, du confort d'usage, de la comptabilité ni du support. Le document officiel prévient lui-même que d'autres labels, souvent antérieurs à la réforme, certifient d'autres fonctionnalités et qu'il faut se renseigner avant de choisir."}},
+    {"@type": "Question", "name": "Les liens de cette page sont-ils affiliés ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. Au 1er octobre 2026, aucun lien de cette page ne nous rémunère. Cette page ne vend rien : elle renvoie uniquement vers les publications officielles. Si cela change, chaque lien concerné sera étiqueté sur place et l'encadré d'honnêteté indiquera la date."}}
+  ]
+}
+</script>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#verifier">Vérifier</a>
+      <a href="#listes">Les listes</a>
+      <a href="#pieges">Pièges</a>
+      <a href="#faq">FAQ</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="dyn hero">
+    <p class="kicker">Facturation électronique · listes officielles relues le 1 oct. 2026 · aucune affiliation</p>
+    <h1>On vous dit que l'outil est « agréé ». Voici comment le vérifier vous-même, sans croire ni l'éditeur ni un comparatif.</h1>
+    <p class="lede">Avant le 1<sup>er</sup> septembre 2027, chaque indépendant et chaque TPE devra pouvoir émettre ses factures sous format électronique. La question n'est donc plus « quel outil est le moins cher » mais <span class="hl">« cet outil est-il réellement autorisé à transmettre mes factures ? »</span>. L'administration publie la réponse : <span class="hl">149 opérateurs</span> satisfont à l'ensemble des conditions au 1<sup>er</sup> octobre 2026, et <span class="hl">14 dossiers</span> attendent leur immatriculation définitive. Cette page vous donne la procédure, les liens directs et les pièges — y compris celui du nom des fichiers officiels.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — 1 oct. 2026</span>
+      <span class="chip">Sources officielles uniquement</span>
+    </p>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="vpa-ttl vpa-desc" class="hero-img">
+      <title id="vpa-ttl">Agréée ou compatible : deux chemins différents vers l'administration fiscale</title>
+      <desc id="vpa-desc">Un logiciel de facturation passe soit par une plateforme agréée immatriculée par la DGFiP, soit par une solution compatible qui doit être raccordée à une plateforme agréée, avant d'atteindre l'administration fiscale.</desc>
+      <defs>
+        <linearGradient id="vpabg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#eef6f1"/><stop offset="1" stop-color="#e0efe6"/>
+        </linearGradient>
+      </defs>
+      <rect width="760" height="300" rx="18" fill="url(#vpabg)"/>
+      <rect x="30" y="112" width="180" height="76" rx="10" fill="#ffffff" stroke="#b8d2c3"/>
+      <text x="120" y="146" font-size="13" fill="#1a1a1a" text-anchor="middle" font-family="Georgia,serif">Votre logiciel de</text>
+      <text x="120" y="166" font-size="13" fill="#1a1a1a" text-anchor="middle" font-family="Georgia,serif">facturation</text>
+      <path d="M214 132 H 268" stroke="#0e7b52" stroke-width="4" stroke-dasharray="9 8" opacity=".75"/>
+      <path d="M214 168 H 268" stroke="#0e7b52" stroke-width="4" stroke-dasharray="9 8" opacity=".75"/>
+      <rect x="270" y="58" width="240" height="70" rx="10" fill="#0e7b52"/>
+      <text x="390" y="84" font-size="13" fill="#ffffff" text-anchor="middle" font-family="Georgia,serif">Plateforme agréée</text>
+      <text x="390" y="104" font-size="11.5" fill="#dff1e8" text-anchor="middle" font-family="Georgia,serif">immatriculée par la DGFiP</text>
+      <rect x="270" y="150" width="240" height="70" rx="10" fill="#ffffff" stroke="#b58900"/>
+      <text x="390" y="176" font-size="13" fill="#8a6500" text-anchor="middle" font-family="Georgia,serif">Solution compatible</text>
+      <text x="390" y="196" font-size="11.5" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">non immatriculée — raccordée à une agréée</text>
+      <path d="M514 93 H 566" stroke="#0e7b52" stroke-width="4" stroke-dasharray="9 8" opacity=".75"/>
+      <path d="M514 185 H 566" stroke="#0e7b52" stroke-width="4" stroke-dasharray="9 8" opacity=".75"/>
+      <rect x="568" y="112" width="162" height="76" rx="10" fill="#1c2b26"/>
+      <text x="649" y="146" font-size="12.5" fill="#cfe9ff" text-anchor="middle" font-family="Georgia,serif">Administration</text>
+      <text x="649" y="166" font-size="12.5" fill="#cfe9ff" text-anchor="middle" font-family="Georgia,serif">fiscale</text>
+      <text x="380" y="254" font-size="13" fill="#0a5e3f" text-anchor="middle" font-family="Georgia,serif">Seule la liste publiée par la DGFiP tranche — pas la page marketing de l'éditeur.</text>
+      <text x="380" y="278" font-size="12" fill="#57523f" text-anchor="middle" font-family="Georgia,serif">Schéma de lecture, sans chiffre : les deux libellés officiels et les deux chemins possibles.</text>
+    </svg>
+
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><b>La liste qui compte</b> : « Je consulte la liste des plateformes agréées » sur <span class="hl">impots.gouv.fr</span> — les opérateurs immatriculés y sont publiés en ODS, XLSX et PDF.</li>
+        <li><b>Deux fichiers, deux statuts</b> : <span class="hl">149 opérateurs</span> satisfont à l'ensemble des conditions (tests d'interopérabilité compris) ; <span class="hl">14</span> ont un dossier complet et attendent leur immatriculation définitive. Comptage fait le 1<sup>er</sup> oct. 2026 dans les deux fichiers officiels.</li>
+        <li><b>Le piège du nom de fichier</b> : la liste des agréés s'appelle <code>liste_pa_attente_rapport_audit</code>. L'« attente » est dans le nom, pas dans le statut de ceux qu'elle contient.</li>
+        <li><b>« Compatible » ≠ « agréée »</b> : un logiciel compatible n'est pas immatriculé et doit être <em>raccordé</em> à une plateforme agréée (document DGFiP, septembre 2025).</li>
+        <li><b>Ce que ça ne garantit pas</b> : ni le prix, ni le confort, ni la comptabilité. L'immatriculation porte sur des exigences fiscales, de sécurité et d'interopérabilité.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pourquoi" class="dyn switch">
+    <h2>Pourquoi cette page existe</h2>
+    <div class="why">
+      <p>Sur le fil r/france où des auto-entrepreneurs demandent quoi utiliser pour la facturation électronique, la question qui revient après chaque recommandation n'est pas le prix — c'est le statut. Verbatims relevés dans le fil, lus le 1<sup>er</sup> octobre 2026 :</p>
+    </div>
+    <blockquote class="quotebox">&ldquo;Merci ! Mais je ne vois pas que c'est agréée sur leur site ?&rdquo;<span class="qsrc">— r/france, fil « Bonjour ! Je suis auto-entrepreneur… », lu le 1 oct. 2026</span></blockquote>
+    <blockquote class="quotebox">&ldquo;Avec tout le marketing autour on a pas de réponse d'utilisateur. A Si les lien affilié avec Promo tout est formidable. Je voudrais comme beaucoup du retour si vous avez testé&rdquo;<span class="qsrc">— même fil, même lecture · orthographe d'origine</span></blockquote>
+    <div class="why">
+      <p>Ce n'est pas une demande de comparatif, c'est une demande de <strong>preuve vérifiable</strong>. Elle a une réponse officielle, courte, et personne ne la met en avant&nbsp;: les deux listes de la DGFiP. Cette page ne compare aucun prix et ne recommande aucun outil — elle vous donne la méthode et les liens pour trancher vous-même.</p>
+    </div>
+  </section>
+
+  <section id="listes" class="dyn switch">
+    <h2>Les deux listes officielles, et ce qu'elles contiennent vraiment</h2>
+    <div class="tblwrap">
+      <table>
+        <caption>Publié par la Direction générale des Finances publiques, page « Je consulte la liste des plateformes agréées » (modifiée le 22/09/2026 ; fichiers téléchargés et comptés le 1<sup>er</sup> oct. 2026)</caption>
+        <thead>
+          <tr><th scope="col">Fichier officiel</th><th scope="col">Ce qu'il liste</th><th scope="col">Ce que ça veut dire pour vous</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><code>liste_pa_attente_rapport_audit</code><br>(ODS · XLSX · PDF)</th>
+            <td>« Liste des opérateurs satisfaisant à l'ensemble des conditions, incluant les tests d'interopérabilité » — <strong>149 opérateurs</strong> dans le fichier relu le 1<sup>er</sup> oct. 2026.</td>
+            <td>C'est <strong>la bonne liste</strong> pour vérifier un outil. Colonnes publiées : nom commercial, adresse de l'établissement principal, site internet.</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>liste_pa_attente_test_interop</code><br>(ODS · XLSX · PDF)</th>
+            <td>« Liste des opérateurs ayant déposé un dossier complet et conforme et en attente de leur immatriculation définitive, conditionnée à la réussite des tests d'interopérabilité » — <strong>14 opérateurs</strong>.</td>
+            <td>Ces opérateurs <strong>ne sont pas encore agréés</strong>. Un outil qui s'appuie dessus ne peut pas encore transmettre les factures à l'administration par ce canal.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="chartbox">
+      <h3>Combien d'opérateurs, dans chaque fichier</h3>
+      <p class="srcline">Comptage ligne par ligne des deux fichiers XLSX officiels téléchargés le 1<sup>er</sup> oct. 2026 (lignes d'en-tête exclues). Barres proportionnelles au nombre réel d'opérateurs listés.</p>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 220" role="img" aria-labelledby="vpa-ch-ttl vpa-ch-desc" style="display:block;width:100%;max-width:760px;height:auto;margin:10px auto 0">
+        <title id="vpa-ch-ttl">149 opérateurs satisfont à l'ensemble des conditions, 14 attendent leur immatriculation</title>
+        <desc id="vpa-ch-desc">Deux barres proportionnelles : 149 opérateurs dans le fichier des opérateurs satisfaisant à l'ensemble des conditions, 14 dans celui des dossiers complets en attente d'immatriculation définitive.</desc>
+        <g font-family="Georgia,serif" font-size="13" fill="#1a1a1a">
+          <text x="20" y="58">Satisfont à l'ensemble des conditions</text>
+          <text x="20" y="132">En attente d'immatriculation définitive</text>
+        </g>
+        <rect x="20" y="72" width="560" height="30" rx="6" fill="#eef6f1" stroke="#dbe9e0"/>
+        <rect x="20" y="72" width="560" height="30" rx="6" fill="#0e7b52"/>
+        <rect x="20" y="146" width="560" height="30" rx="6" fill="#eef6f1" stroke="#dbe9e0"/>
+        <rect x="20" y="146" width="52.6" height="30" rx="6" fill="#b58900"/>
+        <text x="592" y="93" font-size="15" fill="#0a5e3f" font-family="Georgia,serif" font-weight="bold">149</text>
+        <text x="592" y="167" font-size="15" fill="#8a6500" font-family="Georgia,serif" font-weight="bold">14</text>
+        <text x="20" y="202" font-size="12.5" fill="#57523f" font-family="Georgia,serif">Source : fichiers officiels de la DGFiP, lus le 1er oct. 2026 · la liste évolue, revérifiez avant de signer.</text>
+      </svg>
+    </div>
+  </section>
+
+  <section id="verifier" class="dyn switch">
+    <h2>Vérifier un outil, en trois gestes</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Ouvrez la liste</b><span>la page officielle <strong>impots.gouv.fr</strong> « Je consulte la liste des plateformes agréées », puis le fichier des opérateurs <strong>satisfaisant à l'ensemble des conditions</strong>.</span></div>
+      <div class="step"><b>2 · Cherchez le nom commercial</b><span>celui de l'éditeur, pas le nom de son offre ni son slogan : la liste publie <strong>nom commercial, adresse, site internet</strong>.</span></div>
+      <div class="step"><b>3 · Concluez honnêtement</b><span>présent dans la première liste = <strong>agréé</strong> ; seulement dans la seconde = <strong>en attente</strong> ; absent des deux = <strong>à faire confirmer par écrit</strong>.</span></div>
+    </div>
+    <ol class="steps">
+      <li><strong>Ouvrez la page officielle avant toute page d'éditeur.</strong> Une page commerciale peut écrire « conforme à la réforme », « partenaire de la facturation électronique » ou afficher un logo : aucun de ces éléments n'est la liste. Seule la publication de la DGFiP indique une immatriculation.</li>
+      <li><strong>Téléchargez le fichier des opérateurs satisfaisant à l'ensemble des conditions.</strong> Elle est publiée en trois formats (ODS, XLSX, PDF) : prenez celui que vous savez ouvrir, et notez la date de la page (« modifiée le 22/09/2026 » au 1<sup>er</sup> oct. 2026).</li>
+      <li><strong>Cherchez l'éditeur par son nom commercial exact.</strong> Les listes publient le nom commercial, l'adresse de l'établissement principal et le site internet. Un groupe peut apparaître sous un nom différent de la marque que vous connaissez : cherchez les deux.</li>
+      <li><strong>Regardez dans quelle liste il se trouve.</strong> Première liste : les conditions sont satisfaites, tests d'interopérabilité compris. Seconde liste : dossier complet, immatriculation définitive <em>pas encore accordée</em>. Un outil de la seconde liste n'est pas, aujourd'hui, une plateforme agréée — même s'il communique sur la réforme.</li>
+      <li><strong>S'il est absent des deux, demandez une réponse écrite.</strong> Le geste qui règle la question : « Sur quelle plateforme agréée êtes-vous raccordé, et quel est son nom commercial tel qu'il figure dans la liste de la DGFiP ? ». Une solution compatible doit être raccordée à une plateforme agréée ; l'éditeur doit pouvoir la nommer.</li>
+      <li><strong>Méfiez-vous des autres labels.</strong> Le document officiel le dit lui-même : d'autres labels existent, souvent antérieurs à la réforme, et certifient d'autres fonctionnalités (comptabilité, logiciel de caisse, archivage). « Labellisé » ne veut pas dire « agréé pour transmettre vos factures ».</li>
+    </ol>
+    <p class="footnote">Cette vérification vous coûte cinq minutes et ne dépend d'aucun avis, d'aucun influenceur et d'aucun comparatif — y compris du nôtre.</p>
+  </section>
+
+  <section id="pieges" class="dyn switch">
+    <h2>Les trois pièges de cette vérification</h2>
+    <ul class="sources">
+      <li><strong>Le nom des fichiers.</strong> La page officielle nomme son fichier principal <code>liste_pa_attente_rapport_audit</code> alors qu'il liste les opérateurs satisfaisant à l'ensemble des conditions ; le fichier des dossiers en attente s'appelle <code>liste_pa_attente_test_interop</code>. Lire le titre de section <em>dans</em> la page, jamais le nom du fichier.</li>
+      <li><strong>La confusion compatible / agréée.</strong> Beaucoup de logiciels de facturation et de comptabilité sont des « solutions compatibles » : c'est parfaitement légitime, mais cela signifie qu'ils n'émettent pas directement vers l'administration. La nuance est exactement ce que le marketing efface.</li>
+      <li><strong>La liste change.</strong> La DGFiP écrivait « plus d'une centaine de plateformes immatriculées » en septembre 2025 ; au 1<sup>er</sup> octobre 2026, le fichier en compte 149. Une capture d'écran d'un article de 2025 ne prouve rien : vérifiez à la date où vous signez.</li>
+    </ul>
+    <div class="callout">
+      <h2>La question à poser par écrit, telle quelle</h2>
+      <ul>
+        <li>« <strong>Êtes-vous une plateforme agréée immatriculée par la DGFiP, ou une solution compatible raccordée à une plateforme agréée ?</strong> »</li>
+        <li>« <strong>Quel est votre nom commercial exact tel qu'il figure dans la liste publiée sur impots.gouv.fr, et à quelle date y êtes-vous apparu ?</strong> »</li>
+        <li>« <strong>Que se passe-t-il pour mes factures si votre immatriculation ou votre raccordement évolue ?</strong> »</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="limites" class="dyn switch">
+    <h2>Ce que « agréée » ne garantit pas</h2>
+    <ul class="sources">
+      <li><strong>Ni le prix, ni sa stabilité.</strong> L'immatriculation ne dit rien de la grille tarifaire ni de la façon dont elle peut évoluer.</li>
+      <li><strong>Ni la comptabilité.</strong> L'immatriculation porte sur l'émission, la transmission et la réception des factures et sur la remise des données à l'administration — pas sur la tenue de vos comptes.</li>
+      <li><strong>Ni le confort d'usage.</strong> Support en français, personnalisation des factures, export de vos données : ce sont d'autres questions, et ce sont celles que les avis d'utilisateurs révèlent le mieux.</li>
+      <li><strong>Ni le fait que votre prestataire actuel soit prêt.</strong> Le document officiel conseille explicitement de demander à votre prestataire informatique son positionnement au regard de la réforme.</li>
+    </ul>
+  </section>
+
+  <section id="faq" class="dyn switch">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details><summary>Je ne trouve pas mon outil dans la première liste. Il est donc interdit ?</summary><p>Non — c'est peut-être une solution compatible, ce qui est légal, ou un outil pas encore immatriculé. Ce que vous devez obtenir, c'est le nom de la plateforme agréée à laquelle il est raccordé. Un éditeur sérieux répond à cette question par écrit.</p></details>
+      <details><summary>Pourquoi ne pas simplement recommander la plateforme la moins chère ?</summary><p>Parce que ce n'est pas la question posée par les indépendants : la première inquiétude relevée dans les fils français est le statut, pas le prix. Cette page apporte la réponse vérifiable ; les grilles tarifaires sont sur les pages des éditeurs, et elles changent — lisez-les à la date où vous signez.</p></details>
+      <details><summary>Les listes sont-elles fiables si elles bougent tout le temps ?</summary><p>Les listes bougent parce que la réforme avance ; leur contenu, lui, est officiel et daté. Notez la date de la page le jour où vous vérifiez : c'est votre preuve si un éditeur vous affirme autre chose.</p></details>
+      <details><summary>Vous vendez quelque chose sur cette page ?</summary><p>Non. Aucun lien de cette page ne nous rémunère : elle renvoie à des publications publiques. Nos autres pages expliquent comment nous gagnerons de l'argent le jour où un lien affilié existera, et il sera alors étiqueté sur place.</p></details>
+      <details><summary>Le fichier est en ODS ou en XLSX, je n'ai pas Excel. Que faire ?</summary><p>Le PDF liste les mêmes opérateurs et s'ouvre partout, y compris sur téléphone. C'est le même contenu, dans un autre format.</p></details>
+    </div>
+  </section>
+
+  <section id="honesty" class="dyn switch">
+    <h2>Comment cette page reste honnête</h2>
+    <ul class="honest-list">
+      <li><strong>Aucune affiliation.</strong> Cette page ne contient aucun lien affilié et ne recommande aucun outil. Le jour où cela changerait sur une autre page, elle serait étiquetée sur place, et la page <a href="/honest-switch/about/">À propos</a> mise à jour.</li>
+      <li><strong>Aucun chiffre inventé.</strong> Les deux nombres de cette page (149 et 14) ont été comptés ligne par ligne dans les fichiers officiels téléchargés le 1<sup>er</sup> octobre 2026, et la méthode est écrite à côté du graphique.</li>
+      <li><strong>Les verbatims sont cités tels quels</strong>, avec le fil et la date de lecture, orthographe comprise.</li>
+      <li><strong>Erreur signalée, erreur corrigée</strong> : si une information de cette page est fausse ou périmée, écrivez-nous — la correction est publique.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="dyn switch">
+    <h2>Sources</h2>
+    <p class="srcline">Toutes les sources ci-dessous ont été ouvertes le 1<sup>er</sup> octobre 2026. Les dates en fin de ligne sont celles affichées par la source elle-même.</p>
+    <ul class="sources">
+      <li><a href="https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees">impots.gouv.fr — « Je consulte la liste des plateformes agréées »</a> (page publiée le 30/07/2024, modifiée le 22/09/2026).</li>
+      <li><a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/listes_plateformes_agreees/liste_pa_attente_rapport_audit.xlsx">Liste des opérateurs satisfaisant à l'ensemble des conditions (XLSX, 149 lignes)</a> · <a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/listes_plateformes_agreees/liste_pa_attente_rapport_audit.pdf">version PDF</a>.</li>
+      <li><a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/listes_plateformes_agreees/liste_pa_attente_test_interop.xlsx">Liste des opérateurs en attente d'immatriculation définitive (XLSX, 14 lignes)</a> · <a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/listes_plateformes_agreees/liste_pa_attente_test_interop.pdf">version PDF</a>.</li>
+      <li><a href="https://www.impots.gouv.fr/sites/default/files/media/1_metier/2_professionnel/EV/2_gestion/290_facturation_electronique/fe_presentation-des-labels.pdf">DGFiP — « Présentation de la marque de garantie “Plateforme agréée – Facturation électronique” et du label “Solution compatible – Facturation électronique” »</a> (septembre 2025) : définitions des deux libellés, obligation de raccordement pour une solution compatible, avertissement sur les autres labels.</li>
+      <li><a href="https://www.reddit.com/r/france/comments/1srq3vn/bonjour_je_suis_autoentrepreneur_avec_un_petit/">r/france — fil « Bonjour ! Je suis auto-entrepreneur… »</a> (verbatims cités dans la section « Pourquoi cette page existe », lus le 1<sup>er</sup> oct. 2026).</li>
+    </ul>
+    <p class="footnote">Cette page ne constitue pas un conseil juridique ou fiscal. Les listes officielles et les documents de la DGFiP font foi ; vérifiez-les à la date où vous vous engagez.</p>
+  </section>
+
+  <section id="avis" class="dyn switch">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur cette page, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé cette page ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <select id="rscore" style="margin-left:6px">
+            <option value="5">★★★★★ 5</option>
+            <option value="4">★★★★ 4</option>
+            <option value="3">★★★ 3</option>
+            <option value="2">★★ 2</option>
+            <option value="1">★ 1</option>
+          </select>
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix changent ; confirmez sur la page officielle avant de vous abonner.</p>
+    <p>Mis à jour le 1 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.dyn');
+  var hero = document.querySelector('.hero.dyn');
+  if (hero) hero.classList.add('in');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});
+  for (var j = 0; j < items.length; j++) io.observe(items[j]);
+})();
+</script>
+
+<script>
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Vérifier une plateforme agréée (facturation électronique) — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Vérifier une plateforme agréée\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)"
+  );
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+</body>
+</html>

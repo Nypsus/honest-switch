@@ -35,6 +35,36 @@
   .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
   .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
   .flow3 .step span{font-size:.9rem}
+
+  /* --- illustrations & dynamique (même traitement que les autres guides) --- */
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .mile{animation:pulse 2.2s ease-in-out infinite;transform-origin:center}
+  @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .callout{transition:background .25s ease}
+  .callout:hover{background:#eef6f1}
+  .fig{transition:box-shadow .25s ease}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  details{transition:background .25s ease}
+  details:hover,details[open]{background:#f7faf8}
+  @media (prefers-reduced-motion:reduce){
+    html.js .dyn{opacity:1;transform:none;transition:none}
+    .arrow,.mile{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -56,6 +86,7 @@
 </script>
 </head>
 <body>
+<script>document.documentElement.classList.add('js');</script>
 <a class="skip" href="#main">Aller au contenu</a>
 
 <header class="masthead">
@@ -73,7 +104,7 @@
 </header>
 
 <main id="main" class="wrap">
-  <section class="hero">
+  <section class="hero dyn">
     <p class="kicker">TPE / PME · prix relevés sur les pages officielles · consulté le 1<sup>er</sup> oct. 2026</p>
     <h1>Microsoft 365 augmente : ce qu'une TPE française doit vérifier avant sa date anniversaire.</h1>
     <p class="lede">Vous payez Microsoft 365 par utilisateur et vous avez lu qu'une hausse arrivait. Deux choses décident de votre facture, et aucune n'est un pourcentage général : <span class="hl">le jour où votre abonnement se renouvelle</span>, et <span class="hl">les licences que vous payez réellement</span>. Cette page ne reprend pas les chiffres d'un communiqué : elle publie les prix <em>affichés</em> sur la page tarifaire française de Microsoft le 1<sup>er</sup> octobre 2026, l'estimation chiffrée publiée par <em>Le Monde Informatique</em>, et les tarifs d'alternatives dont les éditeurs écrivent le prix noir sur blanc — y compris les cas où nous n'avons pas pu lire un prix, que nous signalons plutôt que d'inventer.</p>
@@ -101,7 +132,7 @@
       <text x="94" y="146" font-size="11.5" fill="#57523f" font-family="Georgia,serif">la hausse s'applique au</text>
       <text x="94" y="161" font-size="11.5" fill="#57523f" font-family="Georgia,serif">renouvellement annuel,</text>
       <text x="94" y="176" font-size="11.5" fill="#57523f" font-family="Georgia,serif">pas au 1er janvier</text>
-      <path d="M240 152 H 296" stroke="#0e7b52" stroke-width="4" fill="none"/>
+      <path class="arrow" d="M240 152 H 296" stroke="#0e7b52" stroke-width="4" fill="none"/>
       <polygon points="294,145 310,152 294,159" fill="#0e7b52"/>
       <rect x="318" y="92" width="196" height="120" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="2"/>
       <circle cx="352" cy="130" r="14" fill="#4c9a75"/>
@@ -110,21 +141,21 @@
       <text x="378" y="146" font-size="11.5" fill="#57523f" font-family="Georgia,serif">combien de comptes,</text>
       <text x="378" y="161" font-size="11.5" fill="#57523f" font-family="Georgia,serif">lesquels sont inactifs,</text>
       <text x="378" y="176" font-size="11.5" fill="#57523f" font-family="Georgia,serif">quel niveau d'offre</text>
-      <path d="M524 152 H 580" stroke="#0e7b52" stroke-width="4" fill="none"/>
+      <path class="arrow" d="M524 152 H 580" stroke="#0e7b52" stroke-width="4" fill="none"/>
       <polygon points="578,145 594,152 578,159" fill="#0e7b52"/>
       <rect x="602" y="92" width="124" height="120" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="2"/>
       <circle cx="632" cy="130" r="14" fill="url(#m3grn)"/>
       <text x="632" y="136" font-size="15" fill="#fff" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">3</text>
       <text x="656" y="126" font-size="14" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">Décider</text>
-      <text x="656" y="146" font-size="11.5" fill="#57523f" font-family="Georgia,serif">réduire, garder,</text>
-      <text x="656" y="161" font-size="11.5" fill="#57523f" font-family="Georgia,serif">ou migrer —</text>
-      <text x="656" y="176" font-size="11.5" fill="#57523f" font-family="Georgia,serif">avant l'échéance</text>
+      <text x="620" y="150" font-size="11.5" fill="#57523f" font-family="Georgia,serif">réduire, garder,</text>
+      <text x="620" y="166" font-size="11.5" fill="#57523f" font-family="Georgia,serif">ou migrer —</text>
+      <text x="620" y="182" font-size="11.5" fill="#57523f" font-family="Georgia,serif">avant l'échéance</text>
       <text x="34" y="252" font-size="13" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">Le plus coûteux n'est pas la hausse.</text>
       <text x="34" y="274" font-size="12.5" fill="#57523f" font-family="Georgia,serif">C'est de découvrir la nouvelle facture après la date de renouvellement, quand la résiliation n'est plus possible.</text>
     </svg>
   </section>
 
-  <section class="switch">
+  <section class="switch dyn">
     <div class="callout">
       <h2>En résumé</h2>
       <ul>
@@ -136,7 +167,7 @@
     </div>
   </section>
 
-  <section id="changement" class="switch">
+  <section id="changement" class="switch dyn">
     <h2>Ce qui change, dans les mots de l'éditeur</h2>
     <p class="why">Plutôt qu'un résumé de plus, voici la phrase publiée par Microsoft, telle que reprise par <em>Le Monde Informatique</em> :</p>
 
@@ -153,7 +184,7 @@
     <p>Autrement dit : <span class="hl">il n'existe pas de « jour de la hausse » unique en France</span>. Deux entreprises clientes de la même offre peuvent voir deux montants différents pendant plusieurs mois, selon leur date d'échéance. C'est la raison pour laquelle cette page ne vous donne pas un pourcentage à appliquer à votre facture, mais la méthode pour la vérifier.</p>
   </section>
 
-  <section id="prix" class="switch">
+  <section id="prix" class="switch dyn">
     <h2>Les prix, séparés en deux colonnes : ce qui est affiché, et ce qui est estimé</h2>
     <p class="why">C'est la distinction la plus utile de cette page. À gauche ce que nous avons lu sur la page tarifaire officielle de Microsoft France le 1<sup>er</sup> octobre 2026 ; à droite l'estimation publiée par <em>Le Monde Informatique</em> le 5 décembre 2025, calculée en appliquant les proportions américaines. Ce ne sont pas les mêmes chiffres — et ce n'est pas une erreur : l'un est un relevé, l'autre une projection.</p>
 
@@ -210,7 +241,7 @@
     <p class="footnote">Deux remarques d'honnêteté sur ce tableau. D'abord, la page française de Microsoft affiche aujourd'hui les offres Standard et Premium <em>associées à Copilot Business</em>, ce qui rend la comparaison directe avec les montants estimés impossible : nous ne faisons donc pas le calcul à votre place. Ensuite, ces deux sources ne disent pas la même chose et nous les laissons côte à côte : c'est à votre facture de trancher.</p>
   </section>
 
-  <section class="switch">
+  <section class="switch dyn">
     <div class="chartbox">
       <h3>Ce que coûte un utilisateur et par mois, en euros réellement affichés</h3>
       <p class="srcline">Prix par utilisateur et par mois, en euros, relevés le 1<sup>er</sup> octobre 2026 : page tarifaire officielle de Microsoft France, et page tarifaire d'Infomaniak pour kSuite Pro. Aucune barre n'est inventée : une offre dont le prix n'est pas publié en euros n'apparaît pas dans ce graphique (voir la note sous le graphique).</p>
@@ -247,7 +278,7 @@
     </div>
   </section>
 
-  <section id="anniversaire" class="switch">
+  <section id="anniversaire" class="switch dyn">
     <h2>Le verrou annuel : la mécanique qui coûte le plus cher</h2>
     <p class="why">Sur la page tarifaire de Microsoft, chaque offre porte la mention « utilisateur/mois, paiement annuel » et « Abonnement annuel – renouvellement automatique ». C'est la mécanique standard de l'édition logicielle, et ce n'est pas propre à Microsoft : des TPE françaises la décrivent mot pour mot sur d'autres abonnements annuels, dans des avis publics vérifiés.</p>
 
@@ -261,6 +292,35 @@
       <span class="qsrc">Avis vérifié, Trustpilot France — fiche Evoliz (lu le 1<sup>er</sup> oct. 2026)</span>
     </div>
 
+    <div class="fig">
+      <h3>La fenêtre de décision, en une image</h3>
+      <svg viewBox="0 0 760 190" role="img" aria-labelledby="fw-ttl fw-desc">
+        <title id="fw-ttl">La fenêtre de décision avant la date anniversaire</title>
+        <desc id="fw-desc">Trois moments sur une ligne : la période où vous pouvez encore agir, la date anniversaire qui déclenche le renouvellement automatique, et la période où l'année est engagée.</desc>
+        <rect x="60" y="76" width="640" height="26" rx="13" fill="#e8f2ec"/>
+        <rect x="60" y="76" width="300" height="26" rx="13" fill="#bfe3d1"/>
+        <circle class="mile" cx="170" cy="89" r="11" fill="#0e7b52"/>
+        <circle cx="170" cy="89" r="4.5" fill="#ffffff"/>
+        <circle class="mile" cx="460" cy="89" r="11" fill="#1a1a1a"/>
+        <circle cx="460" cy="89" r="4.5" fill="#ffffff"/>
+        <circle cx="640" cy="89" r="11" fill="#8a9088"/>
+        <circle cx="640" cy="89" r="4.5" fill="#ffffff"/>
+        <g font-family="Georgia,serif">
+          <text x="170" y="52" font-size="12.5" fill="#0e7b52" text-anchor="middle" font-weight="bold">encore le temps d'agir</text>
+          <text x="460" y="52" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="bold">date anniversaire</text>
+          <text x="640" y="52" font-size="12.5" fill="#8a9088" text-anchor="middle" font-weight="bold">l'année est engagée</text>
+          <text x="170" y="134" font-size="11.5" fill="#57523f" text-anchor="middle">contrôlez les licences,</text>
+          <text x="170" y="150" font-size="11.5" fill="#57523f" text-anchor="middle">comparez, résiliez</text>
+          <text x="460" y="134" font-size="11.5" fill="#57523f" text-anchor="middle">renouvellement</text>
+          <text x="460" y="150" font-size="11.5" fill="#57523f" text-anchor="middle">automatique au nouveau tarif</text>
+          <text x="640" y="134" font-size="11.5" fill="#57523f" text-anchor="middle">la résiliation n'est</text>
+          <text x="640" y="150" font-size="11.5" fill="#57523f" text-anchor="middle">plus possible</text>
+          <text x="60" y="180" font-size="11" fill="#57523f">Le délai de préavis figure dans vos conditions : notez-le à l'avance, pas le jour de l'échéance.</text>
+        </g>
+      </svg>
+      <figcaption>Le déplacement de la flèche vers la droite est le seul vrai enjeu de cette page : à gauche, tout est encore possible sans changer d'outil ; à droite, seule la migration reste.</figcaption>
+    </div>
+
     <div class="flow3">
       <div class="step"><b>1 · Trouvez votre date anniversaire</b><span>Elle figure dans votre facture précédente ou dans l'espace d'administration, rubrique Facturation. Notez-la dans votre agenda avec un rappel à 60 jours.</span></div>
       <div class="step"><b>2 · Vérifiez les conditions de résiliation</b><span>Le délai de préavis est souvent de plusieurs jours à plusieurs semaines avant l'échéance. Passé ce délai, l'année suivante est due.</span></div>
@@ -270,7 +330,7 @@
     <p>Un point que personne ne peut vérifier à votre place : le <strong>nombre de licences actives</strong>. Dans une petite structure, le poste le plus fréquent n'est pas le tarif, c'est le compte de quelqu'un parti il y a deux ans, toujours facturé. C'est le premier contrôle à faire, avant même de comparer les offres.</p>
   </section>
 
-  <section id="alternatives" class="switch">
+  <section id="alternatives" class="switch dyn">
     <h2>Les alternatives, dans la même unité : par utilisateur et par mois</h2>
     <p class="why">Trois règles pour lire ce tableau. Un : ce qui est écrit vient des pages officielles consultées le 1<sup>er</sup> octobre 2026, et la source indique dans quelle devise. Deux : changer de suite n'est pas un simple changement de prix, c'est un changement d'outils — la dernière colonne est la plus importante. Trois : quand un éditeur ne publie pas ses prix, nous l'écrivons au lieu de le deviner.</p>
 
@@ -321,7 +381,7 @@
     </div>
   </section>
 
-  <section id="checklist" class="switch">
+  <section id="checklist" class="switch dyn">
     <h2>Avant votre date anniversaire — 5 vérifications</h2>
     <ol>
       <li><strong>Sortez votre dernière facture annuelle.</strong> Le montant total, pas le prix par utilisateur. Divisez par le nombre d'utilisateurs facturés : c'est votre coût réel par personne.</li>
@@ -332,7 +392,7 @@
     </ol>
   </section>
 
-  <section id="faq" class="switch">
+  <section id="faq" class="switch dyn">
     <h2>Questions fréquentes</h2>
     <details><summary>De combien les prix augmentent-ils en France ?</summary><p>Nous ne publions pas de pourcentage français que nous n'avons pas vérifié. Ce qui est documenté : la hausse est annoncée à compter du 1<sup>er</sup> juillet 2026 sur les tarifs professionnels, et <em>Le Monde Informatique</em> indique que la France serait concernée à la date anniversaire du contrat, entre le 1<sup>er</sup> janvier et le 31 décembre 2026, sans confirmation de Microsoft. Son estimation donne Business Basic à 6,50 € HT et Business Standard à 13,10 € HT, avec Business Premium et Office 365 E1 stables.</p></details>
     <details><summary>Ma facture augmente-t-elle tout de suite ?</summary><p>Au renouvellement, pas avant. La page tarifaire de Microsoft France affiche des abonnements annuels en renouvellement automatique : c'est votre date d'échéance qui décide. Si votre contrat court jusqu'en mars, vous avez encore le temps de décider ; si c'est le mois prochain, commencez par le contrôle du nombre de licences, qui ne demande aucune migration.</p></details>
@@ -341,7 +401,7 @@
     <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non. Aucun lien de cette page ne nous rapporte de commission à la date du 1<sup>er</sup> octobre 2026. Si cela change, chaque lien concerné sera étiqueté sur place et la <a href="../about/">page À propos</a> indiquera la date de départ.</p></details>
   </section>
 
-  <section id="honesty" class="switch">
+  <section id="honesty" class="switch dyn">
     <h2>Comment cette page est faite</h2>
     <ul class="honest-list">
       <li><strong>Aucun lien affilié ici.</strong> Vous ne trouverez sur cette page ni lien de parrainage ni code promo. Si nous adhérons un jour à un programme, il sera étiqueté à l'endroit du lien, avec sa date de départ.</li>
@@ -351,7 +411,7 @@
     </ul>
   </section>
 
-  <section id="sources" class="switch">
+  <section id="sources" class="switch dyn">
     <h2>Sources</h2>
     <ul class="sources">
       <li><a href="https://www.microsoft.com/fr-fr/microsoft-365/business/microsoft-365-plans-and-pricing">microsoft.com — Offres et tarifs Microsoft 365 pour les entreprises (France)</a> — Business Basic 6,07 € HT ; Business Standard + Copilot Business 20,36 € HT ; Business Premium + Copilot Business 27,73 € HT ; Copilot Business 15,60 € HT (relevé le 1<sup>er</sup> oct. 2026)</li>
@@ -365,7 +425,7 @@
     </ul>
   </section>
 
-  <section id="avis" class="switch">
+  <section id="avis" class="switch dyn">
     <h2>Avis clients</h2>
     <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
     <div style="margin:14px 0">
@@ -402,6 +462,22 @@
 </footer>
 <script src="/honest-switch/counter.js" defer></script>
 <script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.dyn');
+  var hero = document.querySelector('.hero.dyn');
+  if (hero) hero.classList.add('in');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});
+  for (var j = 0; j < items.length; j++) io.observe(items[j]);
+})();
 function sendReview(ev){
   var sc = document.getElementById("rscore").value;
   var em = document.getElementById("remail").value;

@@ -352,8 +352,8 @@ html.js .dyn.in{opacity:1;transform:none}
     <div class="tool">
       <div class="row">
         <div>
-          <label for="outil">Outil et formule (prix affichés le 1<sup>er</sup> oct. 2026)</label>
-          <select id="outil">
+          <label for="outil_sel">Outil et formule (prix affichés le 1<sup>er</sup> oct. 2026)</label>
+          <select id="outil_sel">
             <option value="sellsy_evo">Sellsy — « Evolution », 59,00 € HT/utilisateur/mois (engagement 12 mois)</option>
             <option value="sellsy_evo_promo">Sellsy — « Evolution », 49,00 € HT/utilisateur/mois (offre réforme, 1<sup>re</sup> année)</option>
             <option value="sellsy_std">Sellsy — « Standard », 39,00 € HT/utilisateur/mois (engagement 12 mois)</option>
@@ -530,7 +530,7 @@ html.js .dyn.in{opacity:1;transform:none}
   var out = $('outcalc');
 
   function calculer(){
-    var cle = $('outil').value;
+    var cle = $('outil_sel').value;
     var p = PRIX[cle];
     if (!p){ out.innerHTML = "<p class=\"hint\">Choisissez un outil dans la liste.</p>"; return; }
     var n = Math.max(1, Math.round(num('neff') || 1));

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Répéteur WiFi : la promo affichée est-elle une vraie promo ? (cas réel TP-Link RE220BE à 59,10 €) — Honest Switch</title>
+<meta name="description" content="Un répéteur WiFi affiché à 59,10 € au lieu de 96,60 € : ce que veut dire le « prix de référence » d'une place de marché, comment vérifier l'historique, qui vend réellement, et pourquoi le débit annoncé n'est pas celui que vous obtiendrez.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/repeater-wifi-promo/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/repeater-wifi-promo/">
+<meta property="og:title" content="Répéteur WiFi : la promo affichée est-elle une vraie promo ? — Honest Switch">
+<meta property="og:description" content="Le prix de référence affiché par la place de marché ne vient pas d'un relevé indépendant. Voici les trois vérifications à faire avant d'acheter un répéteur en promotion.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  @media (prefers-reduced-motion:reduce){
+    .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
+    .arrow{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Le prix barré affiché par la place de marché est-il un prix réel ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "C'est le prix de référence choisi par le vendeur ou par la place de marché, pas un relevé indépendant. Sur le deal que nous documentons ici, la référence affichée est 96,60 € pour un prix de vente de 59,10 €. Rien n'oblige cette référence à correspondre au prix pratiqué ailleurs le même jour."}},
+    {"@type": "Question", "name": "Le débit annoncé sur la boîte (3,6 Gbit/s) est-il le débit que j'aurai ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. Il s'agit du débit radio théorique cumulé des deux bandes, dans des conditions de laboratoire. En répéteur, votre appareil communique deux fois avec la box (une fois vers la box, une fois vers vous), ce qui divise le débit utile. La fiche du fabricant annonce ici 2882 Mbit/s en 5 GHz et 688 Mbit/s en 2,4 GHz."}},
+    {"@type": "Question", "name": "Un répéteur d'une autre marque est-il compatible avec ma box ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Un répéteur se connecte en Wi-Fi à n'importe quelle box, mais les fonctions avancées — itinérance intelligente, réseau maillé transparent — ne fonctionnent en général que si toute la chaîne utilise la même technologie du même constructeur, ici EasyMesh. C'est la première chose à vérifier avant d'acheter."}},
+    {"@type": "Question", "name": "Cette page contient-elle des liens affiliés ?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Non. À la date du 2 octobre 2026, aucun lien de cette page ne nous rapporte de commission. Nous avons déposé une candidature au programme Partenaires Amazon France, mais elle n'est pas approuvée : la page l'écrit au lieu de l'annoncer comme un gain."}}
+  ]
+}
+</script>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#cas">Le cas</a>
+      <a href="#pieges">Les pièges</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#faq">FAQ</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero dyn">
+    <p class="kicker">Indépendant · aucun lien affilié sur cette page · relevés du 1<sup>er</sup> et du 2 oct. 2026</p>
+    <h1>Répéteur WiFi : la promo affichée est-elle une vraie promo ?</h1>
+
+    <figure class="photo"><img src="../img/repeater-wifi.jpg" alt="Un routeur sans fil posé sur un bureau, avec ses ports réseau et ses voyants allumés" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Un répéteur WiFi passe en tête des bons plans à <span class="hl">59,10 € au lieu de 96,60 €</span>, soit « −39 % ». Le chiffre est vrai au sens strict — c'est celui qui est affiché. Ce qui est beaucoup moins vrai, c'est ce que « 96,60 € » désigne : un prix de référence choisi par le vendeur, jamais un relevé indépendant. Cette page prend le cas réel qui a déclenché notre veille et montre les trois vérifications qui séparent une bonne affaire d'une fausse réduction.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip">Deal observé le 1<sup>er</sup> oct. 2026, expiré depuis</span>
+    </p>
+  </section>
+
+  <section id="bref" class="switch dyn">
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><strong>Le prix barré n'est pas une mesure.</strong> 96,60 € est la référence affichée par la fiche, pas le prix constaté la semaine précédente. <span class="hl">Une réduction se vérifie sur un historique, pas sur un pourcentage.</span></li>
+        <li><strong>Le débit sur la boîte est un cumul théorique.</strong> « 3,6 Gbit/s » = 2882 Mbit/s en 5 GHz + 688 Mbit/s en 2,4 GHz, dans les meilleures conditions. En répéteur, la moitié du temps radio sert à parler à votre box.</li>
+        <li><strong>« Compatible » ne veut pas dire « optimisé ».</strong> Les fonctions d'itinérance et de maillage ne donnent leur plein effet qu'avec toute la chaîne de la même famille technologique.</li>
+        <li><strong>L'expiration fait partie du mécanisme.</strong> Ce deal a été publié le 1<sup>er</sup> octobre 2026 et a expiré en moins d'un jour : l'urgence affichée est un levier, pas une information sur la valeur du produit.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="cas" class="switch dyn">
+    <h2>Le cas qui a déclenché cette page</h2>
+    <p class="why">Notre veille commerciale relève les offres qui passent en tête des places de marché grand public. Le 1<sup>er</sup> octobre 2026, celle-ci est montée en haut de la tendance : un répéteur TP-Link vendu par Amazon, affiché avec une référence barrée. Ce sont les seuls chiffres que nous utilisons dans cette page — ceux qui étaient publiés, reproduits tels quels.</p>
+
+    <div class="quotebox">
+      « Répéteur WiFi TP-Link 7 Puissant 3600 Mbps Bi-Bande, Port Gigabit, RE220BE — <strong>59,10 €</strong> — 96,60 € — <strong>−39 %</strong> — Gratuit · Dispo. chez Amazon »
+      <span class="qsrc">Titre et prix du bon plan, page publique consultée le 1<sup>er</sup> octobre 2026 (deal signalé expiré au 2 octobre).</span>
+    </div>
+
+    <div class="chartbox">
+      <svg viewBox="0 0 700 250" role="img" aria-labelledby="ch1t ch1d" xmlns="http://www.w3.org/2000/svg">
+        <title id="ch1t">Trois montants publiés pour le même répéteur</title>
+        <desc id="ch1d">Prix de vente affiché du bon plan : 59,10 euros. Prix hors promotion relevé par notre veille chez le vendeur direct : 89,90 euros. Prix de référence barré sur la fiche : 96,60 euros. Barres proportionnelles à ces montants, base à zéro.</desc>
+        <line x1="46" y1="196" x2="670" y2="196" stroke="#cfe3d8" stroke-width="2"/>
+        <g font-family="Georgia,serif">
+          <rect x="96" y="122" width="96" height="74" rx="6" fill="#0e7b52"/>
+          <text x="144" y="112" font-size="14" fill="#0e7b52" text-anchor="middle" font-weight="bold">59,10 €</text>
+          <text x="144" y="216" font-size="12" fill="#1a1a1a" text-anchor="middle">Prix du bon plan</text>
+          <text x="144" y="232" font-size="11" fill="#57523f" text-anchor="middle">ce que vous payiez ce jour-là</text>
+
+          <rect x="292" y="84" width="96" height="112" rx="6" fill="#4c9a75"/>
+          <text x="340" y="74" font-size="14" fill="#3f7f61" text-anchor="middle" font-weight="bold">89,90 €</text>
+          <text x="340" y="216" font-size="12" fill="#1a1a1a" text-anchor="middle">Prix relevé hors promo</text>
+          <text x="340" y="232" font-size="11" fill="#57523f" text-anchor="middle">notre lecture du 1<sup>er</sup> oct. 2026</text>
+
+          <rect x="488" y="76" width="96" height="120" rx="6" fill="#bfcdc6"/>
+          <text x="536" y="66" font-size="14" fill="#6c675c" text-anchor="middle" font-weight="bold">96,60 €</text>
+          <text x="536" y="216" font-size="12" fill="#1a1a1a" text-anchor="middle">Prix de référence barré</text>
+          <text x="536" y="232" font-size="11" fill="#57523f" text-anchor="middle">choisi par la fiche</text>
+        </g>
+      </svg>
+      <p class="footnote" style="margin:10px 0 0">Barres proportionnelles, base à zéro. Les trois montants sont ceux qui étaient publiés ; aucune estimation n'a été ajoutée. La référence barrée (96,60 €) est le chiffre le plus élevé — c'est elle qui fabrique le « −39 % ».</p>
+    </div>
+
+    <p>Ce qui se passe ici est le mécanisme standard d'une place de marché. Le prix de vente (59,10 €) est réel : c'est bien ce que vous auriez payé pendant la durée du bon plan, chez le vendeur annoncé. Mais la <strong>référence barrée</strong> qui sert à calculer le pourcentage est fixée par la fiche produit. Elle peut correspondre à un ancien prix, à un prix conseillé, ou à un prix pratiqué nulle part le jour de l'achat. Personne ne vérifie à votre place : c'est à vous de le faire, et c'est faisable en trois minutes.</p>
+  </section>
+
+  <section id="pieges" class="switch dyn">
+    <h2>Les trois pièges d'une promo de répéteur</h2>
+
+    <h3>1. Le pourcentage, qui ne dit rien de la valeur</h3>
+    <p>Un pourcentage de réduction n'est pas une information sur le prix. Deux offres à « −39 % » peuvent cacher un produit bradé à 59 € et un autre dont la référence a été gonflée pour l'occasion. Le seul chiffre qui compte est <span class="hl">le prix final comparé au prix habituellement pratiqué</span>, et ce prix habituel se lit sur un historique, pas sur la fiche du vendeur.</p>
+
+    <h3>2. Le débit annoncé, qui est un cumul théorique</h3>
+    <p>« 3,6 Gbit/s » est la somme des deux bandes radio dans des conditions de laboratoire : la fiche technique du modèle annonce 2882 Mbit/s en 5 GHz et 688 Mbit/s en 2,4 GHz. Un répéteur n'ajoute pas de débit : il le transporte. Comme il dialogue simultanément avec la box et avec votre appareil, <strong>le débit utile à l'arrivée est très inférieur au chiffre de la boîte</strong> — c'est une contrainte de la fonction même de répéteur, pas un défaut du modèle.</p>
+
+    <h3>3. « Compatible », qui n'est pas « optimisé »</h3>
+    <p>Un répéteur se connecte à n'importe quelle box : c'est vrai. Mais les fonctions qui changent l'usage réel — passer d'une pièce à l'autre sans coupure, former un réseau maillé unique — ne s'activent qu'avec une chaîne homogène. Ici, c'est la technologie EasyMesh du constructeur. Si votre box vient d'un opérateur, elle ne la gère probablement pas. Acheter un répéteur pour ses fonctions maillées sans vérifier ce point est le piège le plus fréquent.</p>
+
+    <figure class="photo dyn"><img src="../img/repeater-wifi-2.jpg" alt="Câbles réseau Ethernet conditionnés, avec connecteurs RJ45 visibles" loading="lazy" width="1400" height="800"></figure>
+
+    <div class="flow3">
+      <div class="step"><b>1 · Vérifier l'historique</b><span>Regardez la courbe du prix sur les douze derniers mois, pas la référence barrée. Si le prix « normal » n'a jamais été pratiqué, la remise n'existe pas.</span></div>
+      <div class="step"><b>2 · Vérifier qui vend</b><span>Vendeur direct ou place de marché ? Sur les offres grand public, cela change la garantie, le délai et le service après-vente — pas seulement le prix.</span></div>
+      <div class="step"><b>3 · Vérifier la compatibilité</b><span>Nom et référence de votre box, puis la technologie maillée du constructeur du répéteur. Deux minutes, et la fonction qui vous a fait acheter marche, ou non.</span></div>
+    </div>
+  </section>
+
+  <section id="checklist" class="switch dyn">
+    <h2>La checklist avant d'acheter un répéteur en promotion</h2>
+    <ul>
+      <li><strong>Écrire le prix final</strong> en euros, pas le pourcentage. C'est le seul chiffre qui entrera dans votre décision.</li>
+      <li><strong>Ouvrir l'historique de prix</strong> du produit (les comparateurs qui tracent les places de marché françaises le donnent gratuitement) et repérer le prix le plus bas des six derniers mois.</li>
+      <li><strong>Comparer au prix hors promotion du jour</strong>, pas à la référence barrée de la fiche.</li>
+      <li><strong>Identifier le vendeur expéditeur</strong> : la mention affichée sur l'offre, pas la marque du produit.</li>
+      <li><strong>Vérifier la compatibilité maillée</strong> avec votre box actuelle — sinon vous achetez une fonction que vous n'utiliserez pas.</li>
+      <li><strong>Vérifier le nombre de ports Ethernet</strong> réellement présents si vous devez y brancher un téléviseur ou une console.</li>
+      <li><strong>Décider avant l'expiration, sans dépendre d'elle.</strong> Si le produit vaut son prix final, la fin du bon plan ne change rien ; sinon, l'urgence est le seul argument restant.</li>
+    </ul>
+  </section>
+
+  <section id="faq" class="switch dyn">
+    <h2>Questions</h2>
+    <details><summary>Est-ce que le « −39 % » est mensonger ?</summary><p>Non, au sens strict : le pourcentage est calculé sur la référence affichée par la fiche, et le calcul est exact. Ce qui est trompeur, c'est de lire ce pourcentage comme une mesure d'économie. La référence barrée est un choix de présentation du vendeur ; elle n'est pas publiée comme un relevé indépendant de l'historique du prix.</p></details>
+    <details><summary>Le débit 3,6 Gbit/s est-il un mensonge du fabricant ?</summary><p>Non plus. C'est le débit radio théorique cumulé des deux bandes, tel qu'il est défini par la norme et annoncé au catalogue : 2882 Mbit/s en 5 GHz et 688 Mbit/s en 2,4 GHz. Notre conseil : lisez-le comme une étiquette de classe, jamais comme le débit que vous obtiendrez dans votre appartement.</p></details>
+    <details><summary>Le deal est expiré — la page sert à quoi ?</summary><p>Le cas est fermé, la méthode reste. Un bon plan qui expire en vingt-quatre heures reviendra, sur le même modèle ou sur un autre : les trois vérifications de cette page ne dépendent d'aucun produit et d'aucune date.</p></details>
+    <details><summary>Pourquoi cette page est-elle sur un site de comparaison de logiciels ?</summary><p>Parce que la règle du site est la même partout : nous n'écrivons aucun prix que nous n'avons pas lu sur une page publique, et nous disons quand ce prix n'est pas vérifiable. Ce guide applique la règle à un objet physique.</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non. Aucun lien de cette page ne nous rapporte de commission à la date du 2 octobre 2026. Une candidature a été déposée au programme Partenaires Amazon France ; tant qu'elle n'est pas approuvée, il n'y a aucun lien affilié ici, et la <a href="../about/">page À propos</a> le précisera le jour où cela changera.</p></details>
+  </section>
+
+  <section id="honesty" class="switch dyn">
+    <h2>Comment cette page est faite</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié ici.</strong> Le dépositaire naturel de ce type de page est un programme de place de marché ; le nôtre n'est pas approuvé, donc il n'y a aucun lien, et nous l'écrivons plutôt que de l'espérer.</li>
+      <li><strong>Les trois prix viennent de sources publiques.</strong> 59,10 € et 96,60 € sont reproduits de la fiche du bon plan, 89,90 € de notre relevé du vendeur direct du 1<sup>er</sup> octobre 2026. Aucun autre montant n'est avancé.</li>
+      <li><strong>Aucune statistique de performance.</strong> Nous ne publions pas de débit mesuré, parce que nous ne l'avons pas mesuré. Le seul chiffre de débit de cette page est celui de la fiche technique du modèle.</li>
+      <li><strong>Aucun témoignage inventé.</strong> Cette page ne cite aucun avis client : nous n'en avons pas lu d'exploitable et daté sur ce modèle précis.</li>
+      <li><strong>Les images sont des banques libres</strong>, encadrées et créditées en pied de page. Elles illustrent le sujet, elles ne représentent pas le produit exact du bon plan.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch dyn">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Fiche publique du bon plan (titre, prix 59,10 €, référence barrée 96,60 €, vendeur annoncé, date de publication) — consultée le 1<sup>er</sup> octobre 2026, signalée expirée le 2 octobre 2026.</li>
+      <li>Fiche technique du constructeur pour le modèle visé par le bon plan — débits annoncés 2882 Mbit/s (5 GHz) et 688 Mbit/s (2,4 GHz), port Gigabit, gestion multi-liens, itinérance et maillage EasyMesh.</li>
+      <li>Relevé de notre veille commerciale du 1<sup>er</sup> octobre 2026 : prix hors promotion constaté chez le vendeur direct, 89,90 €.</li>
+      <li>Crédits images (banque libre) : routeur réseau — Deavmi, CC BY-SA 3.0, via Wikimedia Commons · câbles Ethernet — Kent Madsen, CC BY-SA 2.0, via Wikimedia Commons.</li>
+      <li>Guides liés : <a href="../">Honest Switch — comparatif honnête</a> · <a href="../renouvellement-abonnement/">Renouvellement automatique des abonnements</a> · <a href="../microsoft-365-hausse-prix/">Microsoft 365 : la hausse 2026</a></li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch dyn">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix et les conditions changent ; confirmez sur la page officielle avant de vous engager.</p>
+    <p>Mis à jour le 2 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
+(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
+/* barre de progression au scroll */
+(function(){
+  var bar = document.getElementById('progress');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function frame(){
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    var p = max > 0 ? (d.scrollTop / max) : 0;
+    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+  }
+  var queued = false;
+  window.addEventListener('scroll', function(){
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function(){ queued = false; frame(); });
+  }, {passive:true});
+  window.addEventListener('resize', frame, {passive:true});
+  frame();
+})();
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Répéteur WiFi : vérifier la promo — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Répéteur WiFi : vérifier la promo\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<style>
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style>
+</body>
+</html>

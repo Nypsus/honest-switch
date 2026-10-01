@@ -80,7 +80,7 @@ html.js .dyn.in{opacity:1;transform:none}
 .tblwrap tbody tr:hover{background:#f2f8f4}
 @media (prefers-reduced-motion: reduce){
   .hero-img .pulse{animation:none}
-  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  
   .chip:hover,.flow3 .step:hover{transform:none}
 }
 
@@ -116,6 +116,7 @@ html.js .dyn.in{opacity:1;transform:none}
 }
 </script>
 <script>document.documentElement.classList.add('js')</script>
+    <style>.dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}</style>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
@@ -140,13 +141,13 @@ html.js .dyn.in{opacity:1;transform:none}
     <p class="kicker">Abonnements professionnels &amp; sortie de service · avis publics lus le 1<sup>er</sup> oct. 2026 · aucune affiliation</p>
     <h1>Abonnement annuel terminé, devis non validé : <span class="hl">l'accès à votre compte se coupe</span>. Vos documents, non.</h1>
     <p class="lede">« Sellsy a bloqué l'accès à mon comte ce matin, je ne peux plus consulter les anciens documents […] Sellsy me menace de mise en demeure judiciaire !! Je n'ai à aucun moment validé le devis » — avis public du 17 novembre 2025, lisible par tout le monde. La réponse publique de l'éditeur, publiée le lendemain, dit tout le mécanisme en une phrase : <span class="hl">« Lorsque le renouvellement n'est pas confirmé, l'accès au compte se coupe automatiquement »</span>, et l'éditeur ajoute rester « à votre disposition pour vous aider à récupérer vos documents ». L'accès se ferme donc seul, les données restent, la facture peut arriver — et personne ne vous dit par quel bout reprendre la main. Cette page dit par quel bout : <span class="hl">ce que vous pouvez exiger, et par écrit</span>, les textes sur lesquels vous appuyer, l'ordre des opérations, et un courrier type prêt à envoyer.</p>
+
+    <figure class="photo"><img src="../img/blocage-acces-documents.jpg" alt="Ordinateur portable fermé, enchaîné avec un cadenas, posé sur des pavés" loading="lazy" width="1920" height="1440"><figcaption>Un accès qui se verrouille n'efface pas vos documents : il les met hors de votre portée. Photo : Santeri Viinamäki — CC BY-SA 4.0 (Wikimedia Commons).</figcaption></figure>
     <p class="chips">
       <span class="chip chip-good">Aucun lien affilié sur cette page — 1<sup>er</sup> oct. 2026</span>
       <span class="chip">Verbatims publics datés et sourcés</span>
       <span class="chip">Textes cités : code civil, code de commerce, RGPD art. 28</span>
     </p>
-
-    <figure class="photo"><img src="../img/blocage-acces-documents.jpg" alt="Ordinateur portable fermé, enchaîné avec un cadenas, posé sur des pavés" loading="lazy" width="1920" height="1440"><figcaption>Un accès qui se verrouille n'efface pas vos documents : il les met hors de votre portée. Photo : Santeri Viinamäki — CC BY-SA 4.0 (Wikimedia Commons).</figcaption></figure>
 
     <div class="callout">
       <h2>In brief — ce qui se joue en quatre lignes</h2>
@@ -201,6 +202,8 @@ html.js .dyn.in{opacity:1;transform:none}
   <section id="droits" class="dyn switch">
     <h2>Vos leviers : ce qu'il peut, ce qu'il ne peut pas seul</h2>
     <p>Aucun de ces textes n'ordonne à un éditeur de vous rendre vos données sur un simple e-mail. Chacun déplace en revanche la charge : ce n'est plus à vous de justifier votre demande, c'est à l'éditeur de justifier sa facture et de répondre sur la restitution.</p>
+
+    <figure class="photo dyn"><img src="../img/documents-apres-abonnement-2.jpg" alt="Documents administratifs à récupérer et classer au bureau" loading="lazy" width="1400" height="800"></figure>
     <div class="tblwrap">
       <table>
         <caption>Chaque réponse renvoie au texte cité intégralement dans la section « Les textes ». Reproduction à titre d'information, aucune interprétation ajoutée.</caption>

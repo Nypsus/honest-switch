@@ -185,3 +185,8 @@ details p { margin: 12px 16px 15px; color: #3d392f; }
 .photo img { display: block; width: 100%; height: auto; border-radius: 8px; }
 .photo figcaption { font-size: .8rem; color: #57523f; margin: 8px 4px 2px; text-align: center; }
 @media (max-width: 640px) { .tblwrap { border-radius: 10px; } .photo { padding: 6px; border-radius: 12px; } }
+
+/* Apparition en fondu des sections — verrou global (ne pas retirer) */
+.dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1)!important,transform .7s cubic-bezier(.2,.7,.3,1)!important}
+html.js .dyn{opacity:0!important;transform:translateY(22px)!important}
+html.js .dyn.in{opacity:1!important;transform:none!important}

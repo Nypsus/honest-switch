@@ -46,6 +46,14 @@
   .fig.dark h3{color:#7fd6ae}
   .fig.dark figcaption{color:#a9c4b8}
 
+  /* --- image d'en-tête (vraie image, pas un schéma) --- */
+  .heroimg{margin:24px 0 6px;border:1px solid rgba(14,123,82,.25);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 14px 30px rgba(14,123,82,.12)}
+  .heroimg img{display:block;width:100%;height:auto;will-change:transform}
+  .heroimg figcaption{padding:12px 16px 14px;font-size:.82rem;color:#57523f;line-height:1.5}
+
+  /* --- barre de progression au scroll --- */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+
   /* --- dynamique (survols, flèches animées, apparitions) --- */
   .dyn{transition:opacity .55s ease,transform .55s ease}
   html.js .dyn{opacity:0;transform:translateY(16px)}
@@ -96,6 +104,7 @@
 </head>
 <body>
 <script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
 <a class="skip" href="#main">Aller au contenu</a>
 
 <header class="masthead">
@@ -121,71 +130,11 @@
       <span class="chip">Conditions lues le 1<sup>er</sup> oct. 2026</span>
     </p>
 
-    <div class="fig dyn">
-      <h3>Le trajet d'une facture, en une image</h3>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="fe-ttl fe-desc">
-        <title id="fe-ttl">Une facture passe d'une entreprise à une plateforme agréée, puis au client</title>
-        <desc id="fe-desc">Trois blocs reliés par des flèches animées : votre facture, la plateforme agréée, votre client — avec les deux échéances 2026 et 2027 sous les blocs.</desc>
-        <defs>
-          <linearGradient id="febg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#eef6f1"/><stop offset="1" stop-color="#e0efe6"/>
-          </linearGradient>
-          <linearGradient id="fegrn" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#0e7b52"/><stop offset="1" stop-color="#0a5e3f"/>
-          </linearGradient>
-        </defs>
-        <rect width="760" height="300" rx="18" fill="url(#febg)"/>
-
-        <g class="flip">
-          <rect x="30" y="70" width="200" height="150" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="2"/>
-          <circle cx="60" cy="102" r="13" fill="url(#fegrn)"/>
-          <text x="60" y="107" font-size="14" fill="#fff" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">1</text>
-          <text x="82" y="100" font-size="13" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">Votre facture</text>
-          <text x="82" y="118" font-size="11" fill="#57523f" font-family="Georgia,serif">format structuré,</text>
-          <text x="46" y="142" font-size="11" fill="#57523f" font-family="Georgia,serif">mentions obligatoires,</text>
-          <text x="46" y="160" font-size="11" fill="#57523f" font-family="Georgia,serif">dont « TVA non</text>
-          <text x="46" y="178" font-size="11" fill="#57523f" font-family="Georgia,serif">applicable »</text>
-          <text x="46" y="204" font-size="10.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">vous l'émettez</text>
-        </g>
-
-        <path class="arrow" d="M238 145 H 282" stroke="#0e7b52" stroke-width="4" fill="none"/>
-        <polygon points="280,138 296,145 280,152" fill="#0e7b52"/>
-
-        <g class="flip">
-          <rect x="300" y="70" width="200" height="150" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="2"/>
-          <circle cx="330" cy="102" r="13" fill="#4c9a75"/>
-          <text x="330" y="107" font-size="14" fill="#fff" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">2</text>
-          <text x="352" y="100" font-size="13" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">Plateforme agréée</text>
-          <text x="316" y="124" font-size="11" fill="#57523f" font-family="Georgia,serif">émet, transmet,</text>
-          <text x="316" y="142" font-size="11" fill="#57523f" font-family="Georgia,serif">reçoit, puis déclare</text>
-          <text x="316" y="160" font-size="11" fill="#57523f" font-family="Georgia,serif">à l'administration</text>
-          <text x="316" y="186" font-size="10.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">figure sur la liste</text>
-          <text x="316" y="202" font-size="10.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">officielle des impôts</text>
-        </g>
-
-        <path class="arrow" d="M508 145 H 552" stroke="#0e7b52" stroke-width="4" fill="none"/>
-        <polygon points="550,138 566,145 550,152" fill="#0e7b52"/>
-
-        <g class="flip">
-          <rect x="570" y="70" width="160" height="150" rx="12" fill="#ffffff" stroke="#0e7b52" stroke-width="2"/>
-          <circle cx="600" cy="102" r="13" fill="url(#fegrn)"/>
-          <text x="600" y="107" font-size="14" fill="#fff" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">3</text>
-          <text x="622" y="100" font-size="13" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">Votre client</text>
-          <text x="586" y="124" font-size="11" fill="#57523f" font-family="Georgia,serif">reçoit sur sa</text>
-          <text x="586" y="142" font-size="11" fill="#57523f" font-family="Georgia,serif">propre plateforme</text>
-          <text x="586" y="168" font-size="10.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">il la reçoit</text>
-          <text x="586" y="184" font-size="10.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">au format</text>
-          <text x="586" y="200" font-size="10.5" fill="#0e7b52" font-family="Georgia,serif" font-weight="bold">électronique</text>
-        </g>
-
-        <circle class="mile" cx="130" cy="248" r="5" fill="#0e7b52"/>
-        <text x="146" y="252" font-size="12.5" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">1<tspan font-size="10" dy="-4">er</tspan><tspan dy="4"> sept. 2026 — recevoir</tspan></text>
-        <circle class="mile" cx="400" cy="248" r="5" fill="#4c9a75"/>
-        <text x="416" y="252" font-size="12.5" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">1<tspan font-size="10" dy="-4">er</tspan><tspan dy="4"> sept. 2027 — émettre (micro)</tspan></text>
-        <text x="30" y="284" font-size="11.5" fill="#57523f" font-family="Georgia,serif">Un PDF joint à un e-mail ne passe plus par ce trajet : c'est le point que l'administration répète.</text>
-      </svg>
-      <figcaption>Le seul contrôle qui compte avant de choisir : le bloc 2 doit être une plateforme qui figure réellement sur la liste publiée par impots.gouv.fr. Un outil de facturation peut être « compatible » et passer par une telle plateforme — nous expliquons plus bas comment le vérifier.</figcaption>
-    </div>
+    <noscript><style>html.js .dyn{opacity:1;transform:none}</style></noscript>
+    <figure class="heroimg">
+      <img src="hero.png" width="1200" height="520" alt="Facture au format structuré, plateforme agréée qui la reçoit et la transmet, et les deux échéances du 1er septembre 2026 et du 1er septembre 2027.">
+      <figcaption>Ce que la réforme change concrètement : votre facture part d'un format structuré, transite par une plateforme qui figure sur la liste officielle, et les deux échéances ne tombent pas en même temps — recevoir depuis le 1<sup>er</sup> septembre 2026, émettre au plus tard le 1<sup>er</sup> septembre 2027. Illustration Honest Switch, construite à partir des informations publiées par impots.gouv.fr.</figcaption>
+    </figure>
   </section>
 
   <section class="switch dyn">
@@ -564,6 +513,30 @@
   /* la première section est visible immédiatement */
   var hero = document.querySelector('.hero.dyn');
   if (hero) hero.classList.add('in');
+})();
+/* dynamisme au scroll : barre de progression + léger déplacement de l'image d'en-tête */
+(function(){
+  var bar = document.getElementById('progress');
+  var img = document.querySelector('.heroimg img');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function frame(){
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    var p = max > 0 ? (d.scrollTop / max) : 0;
+    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+    if (img && !reduce) {
+      var off = Math.min(d.scrollTop * 0.05, 90);
+      img.style.transform = 'translateY(' + off.toFixed(1) + 'px) scale(' + (1 + off / 4200).toFixed(4) + ')';
+    }
+  }
+  var queued = false;
+  window.addEventListener('scroll', function(){
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function(){ queued = false; frame(); });
+  }, {passive:true});
+  window.addEventListener('resize', frame, {passive:true});
+  frame();
 })();
 function sendReview(ev){
   var sc = document.getElementById("rscore").value;

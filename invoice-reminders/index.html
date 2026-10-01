@@ -50,7 +50,7 @@ html.js .dyn.in{opacity:1;transform:none}
 .tblwrap tbody tr:hover{background:#f2f8f4}
 @media (prefers-reduced-motion: reduce){
   .hero-img .pulse{animation:none}
-  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
   .chip:hover,.flow3 .step:hover{transform:none}
 }
 </style>
@@ -97,6 +97,8 @@ html.js .dyn.in{opacity:1;transform:none}
     <h1>Get paid faster — without the awkward emails.</h1>
     <p class="lede">Late invoices have one boring cause: nobody chased them. Following up is the task that keeps slipping down the list — manual chasing <span class="hl">burns hours a month</span>, and the longer an invoice sits, the less likely it is to be paid. Below: the tools that do the chasing (and what they charge), the free routes you probably already pay for, and a system that works.</p>
 
+    <figure class="photo"><img src="../img/invoice-reminders.jpg" alt="An invoice on a desk with an envelope" loading="lazy" width="1400" height="800"></figure>
+
     <svg class="hero-img" viewBox="0 0 760 260" role="img" aria-labelledby="ivr-ttl ivr-desc" xmlns="http://www.w3.org/2000/svg">
       <title id="ivr-ttl">Invoices get paid without the awkward emails</title>
       <desc id="ivr-desc">An invoice document, a clock and a three-step timeline: due date, reminder, paid.</desc>
@@ -117,7 +119,6 @@ html.js .dyn.in{opacity:1;transform:none}
       <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Prices checked 30 Sep 2026</span>
     </p>
-    <figure class="photo"><img src="../img/invoice-reminders.jpg" alt="An invoice on a desk with an envelope" loading="lazy" width="1400" height="800"></figure>
 
 
     <div class="callout">

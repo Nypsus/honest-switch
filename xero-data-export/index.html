@@ -52,7 +52,7 @@ html.js .dyn.in{opacity:1;transform:none}
 .tblwrap tbody tr:hover{background:#f2f8f4}
 @media (prefers-reduced-motion: reduce){
   .hero-img .pulse{animation:none}
-  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
   .chip:hover,.flow3 .step:hover{transform:none}
 }
 </style>
@@ -81,6 +81,8 @@ html.js .dyn.in{opacity:1;transform:none}
     <h1>Xero&rsquo;s US prices went up on 1 October 2026. Export your data before you switch.</h1>
     <p class="lede">The Xero increase is small in dollars ($2&ndash;$7 a month) but real in direction, and it has accountants re-shopping their books. If you move, the risk is not the switch &mdash; it&rsquo;s doing it without your data. Xero has no &ldquo;download everything&rdquo; button, and once you cancel, the organisation&rsquo;s data is archived and you lose the ability to log in and export. This page is the boring checklist that gets your data out first.</p>
 
+    <figure class="photo"><img src="../img/xero-data-export.jpg" alt="Paper files and folders ready to be archived" loading="lazy" width="1400" height="800"></figure>
+
     <svg class="hero-img" viewBox="0 0 760 260" role="img" aria-labelledby="xde-ttl xde-desc" xmlns="http://www.w3.org/2000/svg">
       <title id="xde-ttl">Export first, cancel last</title>
       <desc id="xde-desc">A box labelled Xero flows into a checklist, with a download arrow to cloud and local copies.</desc>
@@ -102,7 +104,6 @@ html.js .dyn.in{opacity:1;transform:none}
       <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Companion to <a href="../xero-price-increase/">the price-increase guide</a></span>
     </p>
-    <figure class="photo"><img src="../img/xero-data-export.jpg" alt="Paper files and folders ready to be archived" loading="lazy" width="1400" height="800"></figure>
 
   </section>
 

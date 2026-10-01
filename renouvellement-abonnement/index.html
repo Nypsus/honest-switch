@@ -77,7 +77,7 @@ html.js .dyn.in{opacity:1;transform:none}
 .tblwrap tbody tr:hover{background:#f2f8f4}
 @media (prefers-reduced-motion: reduce){
   .hero-img .pulse{animation:none}
-  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
   .chip:hover,.flow3 .step:hover{transform:none}
 }
 </style>
@@ -122,14 +122,13 @@ html.js .dyn.in{opacity:1;transform:none}
     <p class="kicker">Abonnements annuels · avis lus le 1 oct. 2026 · aucune affiliation</p>
     <h1>Un abonnement annuel ne se résilie pas le jour où vous le décidez. Il se résilie <span class="hl">avant une date que personne ne vous rappelle</span>.</h1>
     <p class="lede">Dans les avis publics d'utilisateurs français, la même phrase revient : le prélèvement est arrivé après la date limite, et « ce n'est pas annulable ». Ce n'est pas une question de bonne volonté de l'éditeur : c'est une mécanique de dates. Il y en a deux — la <span class="hl">date anniversaire</span>, où l'argent part, et la <span class="hl">date limite de résiliation</span>, calculée en retirant le préavis écrit dans les conditions. Cette page explique le mécanisme, cite les textes qui protègent réellement (et ceux qui ne protègent pas), et vous laisse calculer vos deux dates dans un outil qui ne sort pas de votre navigateur.</p>
+
+    <figure class="photo"><img src="../img/renouvellement-abonnement.jpg" alt="Classeur et documents administratifs : préparer la résiliation d'un abonnement annuel" loading="lazy" width="1400" height="800"></figure>
     <p class="chips">
       <span class="chip chip-good">Aucun lien affilié sur cette page — 1 oct. 2026</span>
       <span class="chip">Aucun formulaire envoyé à un tiers</span>
       <span class="chip">Cas documentés + textes officiels</span>
     </p>
-
-    
-    <figure class="photo"><img src="../img/renouvellement-abonnement.jpg" alt="Classeur et documents administratifs : préparer la résiliation d'un abonnement annuel" loading="lazy" width="1400" height="800"></figure>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="ra-ttl ra-desc" class="hero-img">
       <title id="ra-ttl">Deux dates décident d'un prélèvement : la date anniversaire et la date limite de résiliation</title>
       <desc id="ra-desc">Sur une ligne de temps, la date limite de résiliation se situe avant la date anniversaire ; le préavis écrit dans les conditions générales est la distance entre les deux. Après la date anniversaire, le prélèvement part et l'annulation devient un litige.</desc>

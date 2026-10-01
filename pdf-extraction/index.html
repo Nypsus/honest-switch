@@ -50,7 +50,7 @@ html.js .dyn.in{opacity:1;transform:none}
 .tblwrap tbody tr:hover{background:#f2f8f4}
 @media (prefers-reduced-motion: reduce){
   .hero-img .pulse{animation:none}
-  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
   .chip:hover,.flow3 .step:hover{transform:none}
 }
 </style>
@@ -97,6 +97,8 @@ html.js .dyn.in{opacity:1;transform:none}
     <h1>Stop retyping invoices from PDFs by hand.</h1>
     <p class="lede">If your team still retypes invoice data from PDFs and email attachments into accounting or ERP systems, you are paying twice: once for software, once in hours. Two technologies get mixed up here. <span class="hl">OCR</span> turns a page — scan or photo — into raw characters; it reads text, not meaning. <span class="hl">AI extraction</span> adds understanding: models locate the fields you actually need and return them as structured data you can push into a spreadsheet or ERP — how well depends on your documents, so test on your own files. Below: the tools, what they charge, and the free route we could stand behind.</p>
 
+    <figure class="photo"><img src="../img/pdf-extraction.jpg" alt="A stack of paper documents waiting to be processed" loading="lazy" width="1400" height="800"></figure>
+
     <svg class="hero-img" viewBox="0 0 760 260" role="img" aria-labelledby="pdx-ttl pdx-desc" xmlns="http://www.w3.org/2000/svg">
       <title id="pdx-ttl">From PDF to spreadsheet, without retyping</title>
       <desc id="pdx-desc">A PDF page flows through an arrow into a clean table of rows.</desc>
@@ -118,7 +120,6 @@ html.js .dyn.in{opacity:1;transform:none}
       <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Prices checked 30 Sep 2026</span>
     </p>
-    <figure class="photo"><img src="../img/pdf-extraction.jpg" alt="A stack of paper documents waiting to be processed" loading="lazy" width="1400" height="800"></figure>
 
 
     <div class="callout">

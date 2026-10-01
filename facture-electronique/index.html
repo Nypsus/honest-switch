@@ -78,7 +78,7 @@
   .flip{transition:transform .3s ease}
   .fig:hover .flip{transform:translateY(-3px)}
   @media (prefers-reduced-motion:reduce){
-    html.js .dyn{opacity:1;transform:none;transition:none}
+.dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
     .arrow,.mile{animation:none!important}
     .flow3 .step:hover,.quotebox:hover,.fig:hover{transform:none;box-shadow:none}
   }
@@ -121,15 +121,16 @@
 </header>
 
 <main id="main" class="wrap">
-  <section class="hero">
+  <section class="hero dyn">
     <p class="kicker">Indépendant · vérifié sur les pages officielles · consulté le 1 oct. 2026</p>
     <h1>Facturation électronique : ce qu'un auto-entrepreneur doit vérifier avant de choisir un outil « gratuit ».</h1>
     <p class="lede">Vous facturez des clients professionnels en France et vous cherchez un outil gratuit pour la réforme : vous êtes exactement dans le cas de milliers d'indépendants depuis l'entrée en vigueur du dispositif. Deux choses décident de la suite — <span class="hl">les échéances qui vous concernent réellement</span> (elles ne sont pas les mêmes pour tout le monde) et <span class="hl">le statut réel de l'outil</span> que vous choisissez. Cette page est la version sans jargon : ce que dit l'administration, comment contrôler un outil en deux minutes, et ce que nous avons lu sur les pages officielles des outils gratuits les plus cités le 1<sup>er</sup> octobre 2026.</p>
+
+    <figure class="photo"><img src="../img/facture-electronique.jpg" alt="Un poste de travail informatique dans un bureau" loading="lazy" width="1400" height="800"></figure>
     <p class="chips">
       <span class="chip chip-good">Aucun lien d'affiliation sur cette page — voir <a href="#honesty">comment ça marche</a></span>
       <span class="chip">Conditions lues le 1<sup>er</sup> oct. 2026</span>
     </p>
-    <figure class="photo"><img src="../img/facture-electronique.jpg" alt="Un poste de travail informatique dans un bureau" loading="lazy" width="1400" height="800"></figure>
 
 
     <noscript><style>html.js .dyn{opacity:1;transform:none}</style></noscript>

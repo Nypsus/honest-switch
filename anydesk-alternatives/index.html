@@ -50,7 +50,7 @@ html.js .dyn.in{opacity:1;transform:none}
 .tblwrap tbody tr:hover{background:#f2f8f4}
 @media (prefers-reduced-motion: reduce){
   .hero-img .pulse{animation:none}
-  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
   .chip:hover,.flow3 .step:hover{transform:none}
 }
 </style>
@@ -97,11 +97,12 @@ html.js .dyn.in{opacity:1;transform:none}
     <p class="kicker">Indépendant · vérifié sur les pages officielles · consulté le 1 oct. 2026</p>
     <h1>Vos licences AnyDesk ont changé de modèle. Vérifiez ce que ça coûte réellement avant de renouveler.</h1>
     <p class="lede">SSII, MSP, freelances du support informatique et PME qui dépannent plusieurs postes à distance : AnyDesk a modifié sa structure tarifaire — <span class="hl">hausse d'environ 25 %</span> selon un avis français vérifié — et basculé sur des <span class="hl">licences par connexion facturées annuellement</span>. Cette page est la version sans panique de ce débat : ce que les utilisateurs reprochent réellement, ce qu'il faut vérifier avant de changer, les outils dont nous avons lu les prix sur leurs propres pages aujourd'hui — et qui vous paie pour changer.</p>
+
+    <figure class="photo"><img src="../img/anydesk-alternatives.jpg" alt="Poste de travail avec ordinateur et documents" loading="lazy" width="1400" height="800"></figure>
     <p class="chips">
       <span class="chip chip-good">Parrainage Splashtop : demande d'adhésion envoyée le 1 oct. — pas encore de lien</span>
       <span class="chip">Prix vérifiés le 1 oct. 2026</span>
     </p>
-    <figure class="photo"><img src="../img/anydesk-alternatives.jpg" alt="Poste de travail avec ordinateur et documents" loading="lazy" width="1400" height="800"></figure>
 
 
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="anydesk-ttl anydesk-desc" class="hero-img" style="display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px">

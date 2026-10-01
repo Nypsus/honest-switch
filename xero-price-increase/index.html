@@ -50,7 +50,7 @@ html.js .dyn.in{opacity:1;transform:none}
 .tblwrap tbody tr:hover{background:#f2f8f4}
 @media (prefers-reduced-motion: reduce){
   .hero-img .pulse{animation:none}
-  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
   .chip:hover,.flow3 .step:hover{transform:none}
 }
 </style>
@@ -96,6 +96,8 @@ html.js .dyn.in{opacity:1;transform:none}
     <h1>Xero raised US prices on 1 October 2026. Check your actual bill before switching.</h1>
     <p class="lede">On 1 October 2026, Xero&rsquo;s US plans moved from <span class="hl">$25/$55/$90 to $27/$59/$97 a month</span>. For some businesses that&rsquo;s a shrug; for others on Established it&rsquo;s the <span class="hl">third annual increase in a row</span> — a legitimate reason to re-shop your books. This page is the boring version of that debate: what changed, what to check before you move, alternatives with prices we verified ourselves, and the catches nobody mentions.</p>
 
+    <figure class="photo"><img src="../img/xero-price-increase.jpg" alt="A calculator on a desk with financial notes" loading="lazy" width="1400" height="800"></figure>
+
     <svg class="hero-img" viewBox="0 0 760 260" role="img" aria-labelledby="xpi-ttl xpi-desc" xmlns="http://www.w3.org/2000/svg">
       <title id="xpi-ttl">Prices step up on 1 October 2026</title>
       <desc id="xpi-desc">A step line rises and a flag marks 1 October 2026; a magnifying glass checks the last point.</desc>
@@ -114,7 +116,6 @@ html.js .dyn.in{opacity:1;transform:none}
       <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Xero prices checked 1 Oct 2026</span>
     </p>
-    <figure class="photo"><img src="../img/xero-price-increase.jpg" alt="A calculator on a desk with financial notes" loading="lazy" width="1400" height="800"></figure>
 
 
     <div class="callout">

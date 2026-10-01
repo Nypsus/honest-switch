@@ -50,7 +50,7 @@ html.js .dyn.in{opacity:1;transform:none}
 .tblwrap tbody tr:hover{background:#f2f8f4}
 @media (prefers-reduced-motion: reduce){
   .hero-img .pulse{animation:none}
-  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
   .chip:hover,.flow3 .step:hover{transform:none}
 }
 </style>
@@ -96,6 +96,8 @@ html.js .dyn.in{opacity:1;transform:none}
     <h1>Your client calls deserve notes you trust. Pick the AI notetaker that fits them.</h1>
     <p class="lede">Consultants, coaches, recruiters and solo sales people record client calls on Zoom, Teams and Meet to get summaries and action items afterwards. Otter dominates the category — and the complaints about it are specific: <span class="hl">multi-speaker accuracy</span> when people talk over each other, language coverage, <span class="hl">a visible bot joining client calls</span>, and <span class="hl">minute limits on the free tier</span>. This page is the boring version of that debate: what people actually complain about, what to check before you switch, the tools whose prices we read on their own pages today, and who pays you to switch.</p>
 
+    <figure class="photo"><img src="../img/ai-notetakers.jpg" alt="A video call running on a laptop" loading="lazy" width="1400" height="800"></figure>
+
     <svg class="hero-img" viewBox="0 0 760 260" role="img" aria-labelledby="ant-ttl ant-desc" xmlns="http://www.w3.org/2000/svg">
       <title id="ant-ttl">A live call becomes structured notes and action items</title>
       <desc id="ant-desc">Three panels connected by arrows: a call being recorded, a structured summary, and a checklist of action items.</desc>
@@ -122,7 +124,6 @@ html.js .dyn.in{opacity:1;transform:none}
       <span class="chip chip-good">No affiliate links (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Prices checked 1 Oct 2026</span>
     </p>
-    <figure class="photo"><img src="../img/ai-notetakers.jpg" alt="A video call running on a laptop" loading="lazy" width="1400" height="800"></figure>
 
 
     <div class="callout">

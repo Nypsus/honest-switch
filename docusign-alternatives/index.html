@@ -68,7 +68,7 @@
   .flip{transition:transform .3s ease}
   .fig:hover .flip{transform:translateY(-3px)}
   @media (prefers-reduced-motion:reduce){
-    html.js .dyn{opacity:1;transform:none;transition:none}
+.dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
     .arrow,.mile,.bar{animation:none!important}
     .flow3 .step:hover,.quotebox:hover,.fig:hover{transform:none;box-shadow:none}
   }
@@ -110,15 +110,16 @@
 </header>
 
 <main id="main" class="wrap">
-  <section class="hero">
+  <section class="hero dyn">
     <p class="kicker">Freelancers &amp; small teams · prices read on the official pages · 1 Oct 2026</p>
     <h1>DocuSign alternatives: keep your contracts, cut the signature bill.</h1>
     <p class="lede">You send contracts, quotes or onboarding paperwork, and the signature tool has become a line item you have to justify. The question is not "which tool is cheapest" — it is <span class="hl">what you actually pay for today</span>, <span class="hl">what your counterparties will actually open</span>, and <span class="hl">what you can take with you if you leave</span>. This page is the short version: DocuSign's own published prices, the alternatives whose prices we read on their own pages on 1<sup>st</sup> October 2026, and the five checks to run before you cancel anything.</p>
+
+    <figure class="photo"><img src="../img/docusign-alternatives.jpg" alt="A document being signed with a pen" loading="lazy" width="1400" height="800"></figure>
     <p class="chips">
       <span class="chip chip-good">No affiliate links on this page — see <a href="#honesty">how we make money</a></span>
       <span class="chip">Prices read 1<sup>st</sup> Oct. 2026</span>
     </p>
-    <figure class="photo"><img src="../img/docusign-alternatives.jpg" alt="A document being signed with a pen" loading="lazy" width="1400" height="800"></figure>
 
 
     <div class="fig dyn">

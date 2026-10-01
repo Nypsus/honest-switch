@@ -71,7 +71,7 @@
   details{transition:background .25s ease}
   details:hover,details[open]{background:#f7faf8}
   @media (prefers-reduced-motion:reduce){
-    html.js .dyn{opacity:1;transform:none;transition:none}
+.dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
     .arrow,.mile{animation:none!important}
     .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
   }
@@ -120,11 +120,12 @@
     <p class="kicker">TPE / PME · prix relevés sur les pages officielles · consulté le 1<sup>er</sup> oct. 2026</p>
     <h1>Microsoft 365 augmente : ce qu'une TPE française doit vérifier avant sa date anniversaire.</h1>
     <p class="lede">Vous payez Microsoft 365 par utilisateur et vous avez lu qu'une hausse arrivait. Deux choses décident de votre facture, et aucune n'est un pourcentage général : <span class="hl">le jour où votre abonnement se renouvelle</span>, et <span class="hl">les licences que vous payez réellement</span>. Cette page ne reprend pas les chiffres d'un communiqué : elle publie les prix <em>affichés</em> sur la page tarifaire française de Microsoft le 1<sup>er</sup> octobre 2026, l'estimation chiffrée publiée par <em>Le Monde Informatique</em>, et les tarifs d'alternatives dont les éditeurs écrivent le prix noir sur blanc — y compris les cas où nous n'avons pas pu lire un prix, que nous signalons plutôt que d'inventer.</p>
+
+    <figure class="photo"><img src="../img/microsoft-365-hausse-prix.jpg" alt="Équipe de bureau travaillant sur ordinateurs" loading="lazy" width="1400" height="800"></figure>
     <p class="chips">
       <span class="chip chip-good">Aucun lien d'affiliation sur cette page — voir <a href="#honesty">comment ça marche</a></span>
       <span class="chip">Prix relevés le 1<sup>er</sup> oct. 2026</span>
     </p>
-    <figure class="photo"><img src="../img/microsoft-365-hausse-prix.jpg" alt="Équipe de bureau travaillant sur ordinateurs" loading="lazy" width="1400" height="800"></figure>
 
 
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="m3-ttl m3-desc" class="hero-img" style="display:block;width:100%;max-width:760px;height:auto;margin:6px auto 20px;border-radius:14px">

@@ -46,7 +46,7 @@ html.js .dyn.in{opacity:1;transform:none}
 .tblwrap tbody tr:hover{background:#f2f8f4}
 @media (prefers-reduced-motion: reduce){
   .hero-img .pulse{animation:none}
-  .dyn,html.js .dyn,html.js .dyn.in{opacity:1;transform:none;transition:none}
+  .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
   .chip:hover,.flow3 .step:hover{transform:none}
 }
 </style>
@@ -93,6 +93,8 @@ html.js .dyn.in{opacity:1;transform:none}
     <h1>HoneyBook raised prices for the first time ever.<br>Here&rsquo;s what to check before you jump.</h1>
     <p class="lede">On <strong>20 February 2026</strong>, HoneyBook CEO Oz Alon published a letter announcing the company&rsquo;s <span class="hl">first-ever price increase</span> — no amounts given. HoneyBook is where many solo pros keep their whole client workflow: proposals, contracts, invoices, payments, scheduling. That makes switching feel big. It is — so we compared the client-portal suites people actually move to, with <span class="hl">prices we verified on their own pages on 1 October 2026</span>, and the catches nobody mentions.</p>
 
+    <figure class="photo"><img src="../img/client-portals.jpg" alt="A small team working together on laptops in a bright office" loading="lazy" width="1400" height="800"></figure>
+
     <svg class="hero-img" viewBox="0 0 760 260" role="img" aria-labelledby="cpo-ttl cpo-desc" xmlns="http://www.w3.org/2000/svg">
       <title id="cpo-ttl">Proposal, contract and invoice, together in one portal</title>
       <desc id="cpo-desc">Three documents — a proposal, a contract and an invoice — each marked as handled in a client portal.</desc>
@@ -120,7 +122,6 @@ html.js .dyn.in{opacity:1;transform:none}
       <span class="chip chip-good">No affiliate links on this page (yet) — see <a href="#honesty">how this works</a></span>
       <span class="chip">Prices checked 1 Oct 2026</span>
     </p>
-    <figure class="photo"><img src="../img/client-portals.jpg" alt="A small team working together on laptops in a bright office" loading="lazy" width="1400" height="800"></figure>
 
 
     <div class="callout">

@@ -57,6 +57,11 @@ html.js .dyn.in{opacity:1;transform:none}
   .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
   .chip:hover,.flow3 .step:hover{transform:none}
 }
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
 </style>
 <script type="application/ld+json">
 {
@@ -100,9 +105,10 @@ html.js .dyn.in{opacity:1;transform:none}
   <section class="dyn hero">
     <p class="kicker">Facturation électronique · listes officielles relues le 1 oct. 2026 · aucune affiliation</p>
     <h1>On vous dit que l'outil est « agréé ». Voici comment le vérifier vous-même, sans croire ni l'éditeur ni un comparatif.</h1>
-    <p class="lede">Avant le 1<sup>er</sup> septembre 2027, chaque indépendant et chaque TPE devra pouvoir émettre ses factures sous format électronique. La question n'est donc plus « quel outil est le moins cher » mais <span class="hl">« cet outil est-il réellement autorisé à transmettre mes factures ? »</span>. L'administration publie la réponse : <span class="hl">149 opérateurs</span> satisfont à l'ensemble des conditions au 1<sup>er</sup> octobre 2026, et <span class="hl">14 dossiers</span> attendent leur immatriculation définitive. Cette page vous donne la procédure, les liens directs et les pièges — y compris celui du nom des fichiers officiels.</p>
 
     <figure class="photo"><img src="../img/verifier-plateforme-agreee.jpg" alt="Contrôle de documents et d'écrans pour vérifier l'authenticité d'une plateforme" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Avant le 1<sup>er</sup> septembre 2027, chaque indépendant et chaque TPE devra pouvoir émettre ses factures sous format électronique. La question n'est donc plus « quel outil est le moins cher » mais <span class="hl">« cet outil est-il réellement autorisé à transmettre mes factures ? »</span>. L'administration publie la réponse : <span class="hl">149 opérateurs</span> satisfont à l'ensemble des conditions au 1<sup>er</sup> octobre 2026, et <span class="hl">14 dossiers</span> attendent leur immatriculation définitive. Cette page vous donne la procédure, les liens directs et les pièges — y compris celui du nom des fichiers officiels.</p>
     <p class="chips">
       <span class="chip chip-good">Aucun lien affilié sur cette page — 1 oct. 2026</span>
       <span class="chip">Sources officielles uniquement</span>
@@ -296,13 +302,7 @@ html.js .dyn.in{opacity:1;transform:none}
       <form onsubmit="return sendReview(event)">
         <div style="margin:8px 0">
           <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
-          <select id="rscore" style="margin-left:6px">
-            <option value="5">★★★★★ 5</option>
-            <option value="4">★★★★ 4</option>
-            <option value="3">★★★ 3</option>
-            <option value="2">★★ 2</option>
-            <option value="1">★ 1</option>
-          </select>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
         </div>
         <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
         <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
@@ -342,6 +342,29 @@ function sendReview(ev){
   ev.preventDefault();
   return false;
 }
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
 </script>
 </body>
 </html>

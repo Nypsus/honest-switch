@@ -72,6 +72,11 @@
     .arrow,.mile,.bar{animation:none!important}
     .flow3 .step:hover,.quotebox:hover,.fig:hover{transform:none;box-shadow:none}
   }
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
 </style>
 <script type="application/ld+json">
 {
@@ -113,9 +118,10 @@
   <section class="hero dyn">
     <p class="kicker">Freelancers &amp; small teams · prices read on the official pages · 1 Oct 2026</p>
     <h1>DocuSign alternatives: keep your contracts, cut the signature bill.</h1>
-    <p class="lede">You send contracts, quotes or onboarding paperwork, and the signature tool has become a line item you have to justify. The question is not "which tool is cheapest" — it is <span class="hl">what you actually pay for today</span>, <span class="hl">what your counterparties will actually open</span>, and <span class="hl">what you can take with you if you leave</span>. This page is the short version: DocuSign's own published prices, the alternatives whose prices we read on their own pages on 1<sup>st</sup> October 2026, and the five checks to run before you cancel anything.</p>
 
     <figure class="photo"><img src="../img/docusign-alternatives.jpg" alt="A document being signed with a pen" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">You send contracts, quotes or onboarding paperwork, and the signature tool has become a line item you have to justify. The question is not "which tool is cheapest" — it is <span class="hl">what you actually pay for today</span>, <span class="hl">what your counterparties will actually open</span>, and <span class="hl">what you can take with you if you leave</span>. This page is the short version: DocuSign's own published prices, the alternatives whose prices we read on their own pages on 1<sup>st</sup> October 2026, and the five checks to run before you cancel anything.</p>
     <p class="chips">
       <span class="chip chip-good">No affiliate links on this page — see <a href="#honesty">how we make money</a></span>
       <span class="chip">Prices read 1<sup>st</sup> Oct. 2026</span>
@@ -434,13 +440,7 @@
       <form onsubmit="return sendReview(event)">
         <div style="margin:8px 0">
           <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Rating:</label>
-          <select id="rscore" style="margin-left:6px">
-            <option value="5">★★★★★ 5</option>
-            <option value="4">★★★★ 4</option>
-            <option value="3">★★★ 3</option>
-            <option value="2">★★ 2</option>
-            <option value="1">★ 1</option>
-          </select>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Rating" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 star">☆</button><button type="button" class="star" data-v="2" aria-label="2 stars">☆</button><button type="button" class="star" data-v="3" aria-label="3 stars">☆</button><button type="button" class="star" data-v="4" aria-label="4 stars">☆</button><button type="button" class="star" data-v="5" aria-label="5 stars">☆</button></div><input type="hidden" id="rscore" value="5">
         </div>
         <input type="email" id="remail" placeholder="you@email.com (so we can verify you are a real reader)" required style="width:100%;box-sizing:border-box">
         <textarea id="rtext" rows="3" placeholder="Your experience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
@@ -478,6 +478,29 @@ function sendReview(ev){
   ev.preventDefault();
   return false;
 }
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
 </script>
 </body>
 </html>

@@ -54,6 +54,11 @@ html.js .dyn.in{opacity:1;transform:none}
   .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
   .chip:hover,.flow3 .step:hover{transform:none}
 }
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
 </style>
 <script type="application/ld+json">
 {
@@ -97,9 +102,10 @@ html.js .dyn.in{opacity:1;transform:none}
   <section class="dyn hero">
     <p class="kicker">Location saisonnière · vérifié sur les pages officielles · consulté le 1 oct. 2026</p>
     <h1>Votre channel manager a augmenté ses prix deux fois. Vérifiez ce que vous payez réellement avant de renouveler.</h1>
-    <p class="lede">Hôtes Airbnb, propriétaires de meublés de tourisme, conciergeries et auto-entrepreneurs de la location saisonnière : Smoobu a augmenté ses tarifs <span class="hl">de plus de 50 % en janvier 2023</span> puis <span class="hl">de plus de 20 % en janvier 2025</span>, selon des avis français vérifiés publiés sur Capterra France. Cette page est la version calme de ce constat : ce que les hôtes reprochent réellement, ce qu'il faut vérifier avant de changer de channel manager, les outils dont nous avons lu les prix sur leurs propres pages aujourd'hui — et qui vous paie pour changer.</p>
 
     <figure class="photo"><img src="../img/smoobu-alternatives.jpg" alt="A modern hotel lounge and reception" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Hôtes Airbnb, propriétaires de meublés de tourisme, conciergeries et auto-entrepreneurs de la location saisonnière : Smoobu a augmenté ses tarifs <span class="hl">de plus de 50 % en janvier 2023</span> puis <span class="hl">de plus de 20 % en janvier 2025</span>, selon des avis français vérifiés publiés sur Capterra France. Cette page est la version calme de ce constat : ce que les hôtes reprochent réellement, ce qu'il faut vérifier avant de changer de channel manager, les outils dont nous avons lu les prix sur leurs propres pages aujourd'hui — et qui vous paie pour changer.</p>
     <p class="chips">
       <span class="chip chip-good">Aucun lien affilié au lancement — 1 oct. 2026</span>
       <span class="chip">Prix vérifiés le 1 oct. 2026</span>
@@ -403,13 +409,7 @@ html.js .dyn.in{opacity:1;transform:none}
       <form onsubmit="return sendReview(event)">
         <div style="margin:8px 0">
           <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
-          <select id="rscore" style="margin-left:6px">
-            <option value="5">★★★★★ 5</option>
-            <option value="4">★★★★ 4</option>
-            <option value="3">★★★ 3</option>
-            <option value="2">★★ 2</option>
-            <option value="1">★ 1</option>
-          </select>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
         </div>
         <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
         <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
@@ -448,6 +448,29 @@ function sendReview(ev){
   ev.preventDefault();
   return false;
 }
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
 </script>
 </body>
 </html>

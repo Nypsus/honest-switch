@@ -53,6 +53,16 @@ html.js .dyn.in{opacity:1;transform:none}
   .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
   .chip:hover,.flow3 .step:hover{transform:none}
 }
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+.hs-rev{border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:16px 0;background:#fff}
+.hs-rev b{display:block;margin-bottom:6px}
+.hs-rev input,.hs-rev textarea{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid rgba(0,0,0,.2);border-radius:8px;font:inherit;margin-top:8px}
+.hs-rev button[type=submit]{margin-top:10px;background:#0e7b52;color:#fff;border:none;border-radius:8px;padding:10px 16px;font-weight:700;cursor:pointer}
+.hs-rev .hint{font-size:.84rem;color:#57523f;margin-top:10px}
 </style>
 <script type="application/ld+json">
 {
@@ -94,9 +104,10 @@ html.js .dyn.in{opacity:1;transform:none}
   <section class="dyn hero">
     <p class="kicker">Independent · source-verified · checked 1 Oct 2026</p>
     <h1>Xero raised US prices on 1 October 2026. Check your actual bill before switching.</h1>
-    <p class="lede">On 1 October 2026, Xero&rsquo;s US plans moved from <span class="hl">$25/$55/$90 to $27/$59/$97 a month</span>. For some businesses that&rsquo;s a shrug; for others on Established it&rsquo;s the <span class="hl">third annual increase in a row</span> — a legitimate reason to re-shop your books. This page is the boring version of that debate: what changed, what to check before you move, alternatives with prices we verified ourselves, and the catches nobody mentions.</p>
 
     <figure class="photo"><img src="../img/xero-price-increase.jpg" alt="A calculator on a desk with financial notes" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">On 1 October 2026, Xero&rsquo;s US plans moved from <span class="hl">$25/$55/$90 to $27/$59/$97 a month</span>. For some businesses that&rsquo;s a shrug; for others on Established it&rsquo;s the <span class="hl">third annual increase in a row</span> — a legitimate reason to re-shop your books. This page is the boring version of that debate: what changed, what to check before you move, alternatives with prices we verified ourselves, and the catches nobody mentions.</p>
 
     <svg class="hero-img" viewBox="0 0 760 260" role="img" aria-labelledby="xpi-ttl xpi-desc" xmlns="http://www.w3.org/2000/svg">
       <title id="xpi-ttl">Prices step up on 1 October 2026</title>
@@ -285,6 +296,23 @@ html.js .dyn.in{opacity:1;transform:none}
     </ul>
   </section>
 
+
+  <section class="dyn">
+    <div class="hs-rev">
+      <b>Did this guide help you? Leave a review</b>
+      <p class="hint">Reviews are published after verification. Every negative review gets a public answer — that is how we improve.</p>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:#57523f;font-size:.85rem">Rating:</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Rating" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 star">☆</button><button type="button" class="star" data-v="2" aria-label="2 stars">☆</button><button type="button" class="star" data-v="3" aria-label="3 stars">☆</button><button type="button" class="star" data-v="4" aria-label="4 stars">☆</button><button type="button" class="star" data-v="5" aria-label="5 stars">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="you@email.com (so we can verify you are a real reader)" required>
+        <textarea id="rtext" rows="3" placeholder="Your experience…" required></textarea>
+        <button type="submit">Send my review</button>
+      </form>
+      <p class="hint" id="revok"></p>
+    </div>
+  </section>
 </main>
 
 <footer class="foot">
@@ -298,5 +326,42 @@ html.js .dyn.in{opacity:1;transform:none}
 (function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
 </script>
 
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<script>
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent(document.title + " — Honest Switch — client review (" + sc + "/5)");
+  var corps = encodeURIComponent("Honest Switch — client review\n\nRating : " + sc + "/5\nReader : " + em + "\n\n" + tx + "\n\n(vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML = "✓ Your mail app opens with a pre-filled message — hit send. We verify and publish.";
+  ev.preventDefault();
+  return false;
+}
+</script>
 </body>
 </html>

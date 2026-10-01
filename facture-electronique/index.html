@@ -124,16 +124,22 @@
   <section class="hero dyn">
     <p class="kicker">Indépendant · vérifié sur les pages officielles · consulté le 1 oct. 2026</p>
     <h1>Facturation électronique : ce qu'un auto-entrepreneur doit vérifier avant de choisir un outil « gratuit ».</h1>
-    <p class="lede">Vous facturez des clients professionnels en France et vous cherchez un outil gratuit pour la réforme : vous êtes exactement dans le cas de milliers d'indépendants depuis l'entrée en vigueur du dispositif. Deux choses décident de la suite — <span class="hl">les échéances qui vous concernent réellement</span> (elles ne sont pas les mêmes pour tout le monde) et <span class="hl">le statut réel de l'outil</span> que vous choisissez. Cette page est la version sans jargon : ce que dit l'administration, comment contrôler un outil en deux minutes, et ce que nous avons lu sur les pages officielles des outils gratuits les plus cités le 1<sup>er</sup> octobre 2026.</p>
 
     <figure class="photo"><img src="../img/facture-electronique.jpg" alt="Un poste de travail informatique dans un bureau" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Vous facturez des clients professionnels en France et vous cherchez un outil gratuit pour la réforme : vous êtes exactement dans le cas de milliers d'indépendants depuis l'entrée en vigueur du dispositif. Deux choses décident de la suite — <span class="hl">les échéances qui vous concernent réellement</span> (elles ne sont pas les mêmes pour tout le monde) et <span class="hl">le statut réel de l'outil</span> que vous choisissez. Cette page est la version sans jargon : ce que dit l'administration, comment contrôler un outil en deux minutes, et ce que nous avons lu sur les pages officielles des outils gratuits les plus cités le 1<sup>er</sup> octobre 2026.</p>
     <p class="chips">
       <span class="chip chip-good">Aucun lien d'affiliation sur cette page — voir <a href="#honesty">comment ça marche</a></span>
       <span class="chip">Conditions lues le 1<sup>er</sup> oct. 2026</span>
     </p>
 
 
-    <noscript><style>html.js .dyn{opacity:1;transform:none}</style></noscript>
+    <noscript><style>html.js .dyn{opacity:1;transform:none}.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style></noscript>
     <figure class="heroimg">
       <img src="hero.png" width="1200" height="520" alt="Facture au format structuré, plateforme agréée qui la reçoit et la transmet, et les deux échéances du 1er septembre 2026 et du 1er septembre 2027.">
       <figcaption>Ce que la réforme change concrètement : votre facture part d'un format structuré, transite par une plateforme qui figure sur la liste officielle, et les deux échéances ne tombent pas en même temps — recevoir depuis le 1<sup>er</sup> septembre 2026, émettre au plus tard le 1<sup>er</sup> septembre 2027. Illustration Honest Switch, construite à partir des informations publiées par impots.gouv.fr.</figcaption>
@@ -475,13 +481,7 @@
       <form onsubmit="return sendReview(event)">
         <div style="margin:8px 0">
           <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
-          <select id="rscore" style="margin-left:6px">
-            <option value="5">★★★★★ 5</option>
-            <option value="4">★★★★ 4</option>
-            <option value="3">★★★ 3</option>
-            <option value="2">★★ 2</option>
-            <option value="1">★ 1</option>
-          </select>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
         </div>
         <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
         <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
@@ -542,6 +542,29 @@ function sendReview(ev){
   ev.preventDefault();
   return false;
 }
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
 </script>
 </body>
 </html>

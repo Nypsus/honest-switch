@@ -75,6 +75,11 @@
     .arrow,.mile{animation:none!important}
     .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
   }
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
 </style>
 <script type="application/ld+json">
 {
@@ -119,9 +124,10 @@
   <section class="hero dyn">
     <p class="kicker">TPE / PME · prix relevés sur les pages officielles · consulté le 1<sup>er</sup> oct. 2026</p>
     <h1>Microsoft 365 augmente : ce qu'une TPE française doit vérifier avant sa date anniversaire.</h1>
-    <p class="lede">Vous payez Microsoft 365 par utilisateur et vous avez lu qu'une hausse arrivait. Deux choses décident de votre facture, et aucune n'est un pourcentage général : <span class="hl">le jour où votre abonnement se renouvelle</span>, et <span class="hl">les licences que vous payez réellement</span>. Cette page ne reprend pas les chiffres d'un communiqué : elle publie les prix <em>affichés</em> sur la page tarifaire française de Microsoft le 1<sup>er</sup> octobre 2026, l'estimation chiffrée publiée par <em>Le Monde Informatique</em>, et les tarifs d'alternatives dont les éditeurs écrivent le prix noir sur blanc — y compris les cas où nous n'avons pas pu lire un prix, que nous signalons plutôt que d'inventer.</p>
 
     <figure class="photo"><img src="../img/microsoft-365-hausse-prix.jpg" alt="Équipe de bureau travaillant sur ordinateurs" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Vous payez Microsoft 365 par utilisateur et vous avez lu qu'une hausse arrivait. Deux choses décident de votre facture, et aucune n'est un pourcentage général : <span class="hl">le jour où votre abonnement se renouvelle</span>, et <span class="hl">les licences que vous payez réellement</span>. Cette page ne reprend pas les chiffres d'un communiqué : elle publie les prix <em>affichés</em> sur la page tarifaire française de Microsoft le 1<sup>er</sup> octobre 2026, l'estimation chiffrée publiée par <em>Le Monde Informatique</em>, et les tarifs d'alternatives dont les éditeurs écrivent le prix noir sur blanc — y compris les cas où nous n'avons pas pu lire un prix, que nous signalons plutôt que d'inventer.</p>
     <p class="chips">
       <span class="chip chip-good">Aucun lien d'affiliation sur cette page — voir <a href="#honesty">comment ça marche</a></span>
       <span class="chip">Prix relevés le 1<sup>er</sup> oct. 2026</span>
@@ -489,13 +495,7 @@
       <form onsubmit="return sendReview(event)">
         <div style="margin:8px 0">
           <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
-          <select id="rscore" style="margin-left:6px">
-            <option value="5">★★★★★ 5</option>
-            <option value="4">★★★★ 4</option>
-            <option value="3">★★★ 3</option>
-            <option value="2">★★ 2</option>
-            <option value="1">★ 1</option>
-          </select>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
         </div>
         <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
         <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
@@ -531,6 +531,29 @@ function sendReview(ev){
   ev.preventDefault();
   return false;
 }
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
 </script>
 </body>
 </html>

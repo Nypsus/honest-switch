@@ -7,8 +7,8 @@ Usage: python tools/format_page.py <slug> [<slug> ...] [--all] [--root .]
 Actions:
  1. Supprime toute règle CSS de secours qui neutralise les animations
     (transition:none sur .dyn) et garantit le bloc .dyn standard.
- 2. Colle la figure photo principale JUSTE APRÈS le paragraphe d'accroche
-    (<p class="lede">...</p>), avant les .chips.
+ 2. Colle la figure photo principale JUSTE SOUS le <h1> (avant l'accroche) :
+    la photo doit être visible dès le premier écran mobile (titre → photo → texte).
  3. Ajoute la classe dyn aux <section> qui ne l'ont pas (apparition en fondu).
  4. Vérifie l'observateur d'apparition et la classe html.js (sinon avertit).
 
@@ -50,17 +50,18 @@ def normalize(path):
         t = t.replace('</head>', '    ' + DYN_BLOCK + '\n</head>', 1)
         report.append('bloc .dyn insere')
 
-    # 2. figure photo principale juste après l'accroche
-    mfig = re.search(r'\n?\s*<figure class="photo(?: dyn)?">.*?</figure>\n?', t, re.S)
-    mlede = re.search(r'<p class="lede">.*?</p>', t, re.S)
-    if mfig and mlede and (mfig.start() - mlede.end()) > 60:
+    # 2. figure photo juste sous le <h1> (visible des le 1er ecran mobile)
+    mfig = re.search(r'\n?\s*<figure[^>]*class="[^"]*\bphoto\b[^"]*"[^>]*>.*?</figure>\n?', t, re.S)
+    mh1 = re.search(r'<h1[^>]*>.*?</h1>', t, re.S)
+    if mfig and mh1 and mfig.start() > mh1.end() and (mfig.start() - mh1.end()) > 60:
         fig = mfig.group(0).strip('\n')
         fig = re.sub(r'^\s*', '', fig).rstrip()
         t = t.replace(mfig.group(0), '\n', 1)
-        m2 = re.search(r'(<p class="lede">.*?</p>)', t, re.S)
+        m2 = re.search(r'(<h1[^>]*>.*?</h1>)', t, re.S)
         if m2 is not None:
-            t = t[:m2.end(1)] + '\n\n    ' + fig + t[m2.end(1):]
-            report.append('figure deplacee apres l\'accroche')
+            t = t[:m2.end(1)] + '\n\n    ' + fig + '\n' + t[m2.end(1):]
+            report.append('figure deplacee sous le titre')
+        t = re.sub(r'(\r?\n){4,}', '\n\n', t)
 
     # 3. classe dyn sur les sections
     n_dyn = 0

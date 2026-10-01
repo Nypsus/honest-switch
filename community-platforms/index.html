@@ -49,6 +49,11 @@ html.js .dyn.in{opacity:1;transform:none}
   .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
   .chip:hover,.flow3 .step:hover{transform:none}
 }
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
 </style>
 <script type="application/ld+json">
 {
@@ -91,9 +96,10 @@ html.js .dyn.in{opacity:1;transform:none}
   <section class="dyn hero">
     <p class="kicker">Independent · source-verified · checked 1 Oct 2026</p>
     <h1>Coaches, trainers, community builders: which platform should your paid community live on?</h1>
-    <p class="lede">Creators keep asking the same question: <span class="hl">Skool or Circle?</span> — the platform r/CircleSoPlatform thread we start from compares the two in detail. But the real decision has four players, not two: <span class="hl">Skool, Circle, Mighty Networks and Kajabi</span> all sell the same promise — a home for your paid community, your courses and your members. Their prices, feature ceilings and payout programs differ a lot. We compared the four with prices read on the vendors&rsquo; own pages on <strong>1 October 2026</strong>, and the catches the marketing pages do not mention.</p>
 
     <figure class="photo"><img src="../img/community-platforms.jpg" alt="A community workspace with laptops and people" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Creators keep asking the same question: <span class="hl">Skool or Circle?</span> — the platform r/CircleSoPlatform thread we start from compares the two in detail. But the real decision has four players, not two: <span class="hl">Skool, Circle, Mighty Networks and Kajabi</span> all sell the same promise — a home for your paid community, your courses and your members. Their prices, feature ceilings and payout programs differ a lot. We compared the four with prices read on the vendors&rsquo; own pages on <strong>1 October 2026</strong>, and the catches the marketing pages do not mention.</p>
 
     <svg class="hero-img" viewBox="0 0 760 260" role="img" aria-labelledby="cmm-ttl cmm-desc" xmlns="http://www.w3.org/2000/svg">
       <title id="cmm-ttl">Members, courses and chat in one community home</title>
@@ -255,13 +261,7 @@ html.js .dyn.in{opacity:1;transform:none}
       <form onsubmit="return sendReview(event)">
         <div style="margin:8px 0">
           <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Rating:</label>
-          <select id="rscore" style="margin-left:6px">
-            <option value="5">★★★★★ 5</option>
-            <option value="4">★★★★ 4</option>
-            <option value="3">★★★ 3</option>
-            <option value="2">★★ 2</option>
-            <option value="1">★ 1</option>
-          </select>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Rating" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 star">☆</button><button type="button" class="star" data-v="2" aria-label="2 stars">☆</button><button type="button" class="star" data-v="3" aria-label="3 stars">☆</button><button type="button" class="star" data-v="4" aria-label="4 stars">☆</button><button type="button" class="star" data-v="5" aria-label="5 stars">☆</button></div><input type="hidden" id="rscore" value="5">
         </div>
         <input type="email" id="remail" placeholder="you@email.com (so we can verify you are a real reader)" required style="width:100%;box-sizing:border-box">
         <textarea id="rtext" rows="3" placeholder="Your experience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
@@ -300,6 +300,29 @@ function sendReview(ev){
   ev.preventDefault();
   return false;
 }
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
 </script>
 </body>
 </html>

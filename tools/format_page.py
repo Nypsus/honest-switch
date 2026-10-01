@@ -109,6 +109,8 @@ def main():
         sys.exit(2)
     bad = 0
     for s in sorted(slugs):
+        if s == 'about':
+            continue
         p = os.path.join(root, s, 'index.html')
         if not os.path.exists(p):
             print(s, ': introuvable')

@@ -36,6 +36,16 @@
   .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
   .flow3 .step span{font-size:.9rem}
 
+  /* --- orientation décision / action --- */
+  .case{border:1px solid rgba(14,123,82,.3);border-left:5px solid #0e7b52;border-radius:10px;padding:14px 16px;margin:14px 0;background:#f7faf8;line-height:1.55}
+  .case b{color:#0e7b52}
+  .case span.hl{color:#0e7b52;font-weight:700}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0 6px}
+  .cta a{display:inline-block;padding:11px 16px;border-radius:10px;background:#0e7b52;color:#fff;font-weight:700;text-decoration:none;font-size:.95rem;transition:transform .2s ease,box-shadow .2s ease}
+  .cta a:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(14,123,82,.25)}
+  .cta a.ghost{background:#fff;color:#0e7b52;border:1.5px solid #0e7b52}
+  .cta a.ghost:hover{background:#f2f7f4}
+
   /* --- illustrations & dynamique (même traitement que les autres guides) --- */
   .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
   .fig svg{display:block;width:100%;height:auto}
@@ -95,8 +105,10 @@
     <nav aria-label="Sections">
       <a href="#changement">Ce qui change</a>
       <a href="#prix">Les prix</a>
+      <a href="#cas">Votre cas</a>
       <a href="#anniversaire">Date anniversaire</a>
       <a href="#alternatives">Alternatives</a>
+      <a href="#action">Agir</a>
       <a href="#faq">FAQ</a>
       <a href="#honesty">Honnêteté</a>
     </nav>
@@ -153,6 +165,26 @@
       <text x="34" y="252" font-size="13" fill="#1a1a1a" font-family="Georgia,serif" font-weight="bold">Le plus coûteux n'est pas la hausse.</text>
       <text x="34" y="274" font-size="12.5" fill="#57523f" font-family="Georgia,serif">C'est de découvrir la nouvelle facture après la date de renouvellement, quand la résiliation n'est plus possible.</text>
     </svg>
+  </section>
+
+  <section id="cas" class="switch dyn">
+    <h2>Votre situation, et ce que vous faites maintenant</h2>
+    <p class="why">Trois cas couvrent presque toutes les TPE. Repérez le vôtre : c'est la date de renouvellement qui décide de ce qui est encore possible.</p>
+
+    <div class="case">
+      <b>1 · Mon renouvellement est déjà passé.</b> Vous payez le nouveau tarif jusqu'à la prochaine échéance. Le seul gain immédiat ne demande aucune migration : <span class="hl">retirer les licences qui ne servent plus</span>. Sortez votre facture annuelle, divisez par le nombre de licences facturées, comparez avec la liste des personnes réellement présentes.
+    </div>
+    <div class="case">
+      <b>2 · Mon renouvellement tombe dans moins de 30 jours.</b> C'est le moment de décider, pas de comparer. Deux questions : combien de licences sont réellement utiles, et votre activité tient-elle à une macro Excel ou à un complément Outlook ? Si la réponse au premier point suffit à faire baisser la facture, vous n'avez rien d'autre à faire cette semaine.
+    </div>
+    <div class="case">
+      <b>3 · Mon renouvellement est dans plus de trois mois.</b> Vous avez le temps de tester une migration pour de vrai — une boîte mail, un fichier à macros, un complément — pendant que votre abonnement actuel court encore. C'est la seule période où l'essai ne coûte rien.
+    </div>
+
+    <div class="cta">
+      <a href="#checklist">Les 5 vérifications avant l'échéance</a>
+      <a class="ghost" href="#alternatives">Voir les prix des alternatives</a>
+    </div>
   </section>
 
   <section class="switch dyn">
@@ -390,6 +422,22 @@
       <li><strong>Demandez le prix de la deuxième année avant de signer une alternative.</strong> Les remises de lancement (−50 % la première année chez Infomaniak, −30 % les trois premiers mois chez Google) ne sont pas le tarif de référence.</li>
       <li><strong>Chiffrez la migration avant de la promettre.</strong> Macros Excel, compléments Outlook, flux automatiques, historique de messagerie : si l'un de ces éléments tient votre activité, le coût de sortie dépasse souvent la hausse. Le bon calcul n'est pas « nouveau prix contre ancien prix », c'est « ancien prix contre nouveau prix plus coût de migration ».</li>
     </ol>
+  </section>
+
+  <section id="action" class="switch dyn">
+    <h2>Passer à l'action — trois gestes, dix minutes</h2>
+    <p class="why">Cette page ne sert à rien si elle reste ouverte dans un onglet. Voici les trois gestes qui font baisser la facture, dans l'ordre où ils coûtent le moins cher.</p>
+    <div class="flow3">
+      <div class="step"><b>1 · Compter vos licences</b><span>Ouvrez votre espace d'administration Microsoft 365 et comparez la liste des comptes à celle des personnes réellement présentes. Aucune migration, aucun risque, et c'est souvent là qu'est la baisse la plus rapide.</span></div>
+      <div class="step"><b>2 · Relire le prix affiché</b><span>La page tarifaire officielle de Microsoft France, celle que nous avons relevée le 1<sup>er</sup> oct. 2026 — à recontrôler le jour où vous décidez, pas aujourd'hui.</span></div>
+      <div class="step"><b>3 · Comparer une alternative chiffrée</b><span>Les tarifs d'Infomaniak kSuite, de Google Workspace et de Zoho Workplace, avec ce que vous perdez en face — dans le tableau de la section précédente.</span></div>
+    </div>
+    <div class="cta">
+      <a href="https://admin.microsoft.com/">Ouvrir mon espace d'administration</a>
+      <a class="ghost" href="https://www.microsoft.com/fr-fr/microsoft-365/business/microsoft-365-plans-and-pricing">Revoir les prix officiels</a>
+      <a class="ghost" href="#alternatives">Comparer les alternatives</a>
+    </div>
+    <p class="footnote">Aucun de ces liens ne nous rapporte quoi que ce soit : ce sont les pages des éditeurs, ou des raccourcis vers les sections de cette page.</p>
   </section>
 
   <section id="faq" class="switch dyn">

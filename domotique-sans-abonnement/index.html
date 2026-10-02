@@ -98,7 +98,7 @@
 </header>
 
 <main id="main" class="wrap">
-  <section class="hero dyn">
+  <section class="hero">
     <p class="kicker">Domotique locale · aucun lien affilié sur cette page · prix relevés le 2 oct. 2026</p>
     <h1>Domotique sans abonnement : une clé Zigbee à 18,99 € au lieu d'un hub par marque — et les cinq pièges du démarrage</h1>
 
@@ -111,7 +111,7 @@
     </p>
   </section>
 
-  <section id="bref" class="switch dyn">
+  <section id="bref" class="switch">
     <div class="callout">
       <h2>En bref</h2>
       <ul>
@@ -125,7 +125,7 @@
     </div>
   </section>
 
-  <section id="projet" class="switch dyn">
+  <section id="projet" class="switch">
     <h2>Une clé n'est pas un hub : ce qu'on achète exactement</h2>
     <p>Home Assistant est un logiciel libre et gratuit (<em>Apache-2.0</em>, 91 231 étoiles sur GitHub au 2 octobre 2026). Il tourne sur une machine que vous fournissez — mini-PC, NAS, Raspberry Pi, ou le boîtier officiel. Ce logiciel sait gérer la domotique, mais il lui manque une <strong>radio</strong> pour parler aux capteurs et aux ampoules : c'est le rôle de la clé.</p>
     <p>La clé contient une puce radio et un firmware qui en fait le <em>coordinateur</em> du réseau Zigbee. Elle remplace donc le hub propriétaire d'une marque par un seul boîtier qui parle à plusieurs marques. Trois choses restent à votre charge, et c'est là que les tutoriels deviennent silencieux :</p>
@@ -141,7 +141,7 @@
     <p>Autrement dit : acheter la clé est la partie facile. La faire fonctionner est la partie qu'on ne voit nulle part sur la fiche produit.</p>
   </section>
 
-  <section id="prix" class="switch dyn">
+  <section id="prix" class="switch">
     <h2>Les prix : ce qui est lu, où, et quand</h2>
     <p>Les montants ci-dessous ont été relevés le <strong>2 octobre 2026</strong>, à deux endroits : une page de résultats et de fiches d'un revendeur domotique français (prix affichés TTC), et la fiche produit de la boutique officielle Philips Hue en France. Nous ne mélangeons pas les deux colonnes : c'est écrit dans le tableau.</p>
     <div class="chartbox">
@@ -195,7 +195,7 @@
     <p>La lecture honnête de ce tableau n'est pas « la clé est moins chère ». La clé à <strong>18,99 €</strong> est une pièce, pas un système : elle suppose une machine qui tourne déjà chez vous. Le hub à <strong>79,99 €</strong> est un système complet — mais fermé sur sa marque. Vous ne payez pas la même chose : d'un côté l'<em>universalité et le contrôle local</em>, de l'autre le <em>confort d'un produit fini</em>. Et si vous n'avez aucune machine à consacrer, la box officielle à 179,00 € remet les compteurs à égalité avec un hub haut de gamme.</p>
   </section>
 
-  <section id="pieges" class="switch dyn">
+  <section id="pieges" class="switch">
     <h2>Les cinq pièges du démarrage</h2>
 
     <h3>1. La clé doit souvent être flashée — et le choix du firmware n'est pas évident</h3>
@@ -218,7 +218,7 @@
     </div>
     <p>La règle à retenir : <strong>une clé, un seul logiciel</strong>. Décidez de ZHA <em>ou</em> de Zigbee2MQTT avant d'appairer le premier appareil — changer d'avis après coup signifie tout réappairer.</p>
 
-    <figure class="photo dyn"><img src="../img/domotique-sans-abonnement-2.jpg" alt="Carte électronique radio Zigbee avec son antenne et des connecteurs posés à côté, sur fond blanc" loading="lazy" width="1400" height="800">
+    <figure class="photo"><img src="../img/domotique-sans-abonnement-2.jpg" alt="Carte électronique radio Zigbee avec son antenne et des connecteurs posés à côté, sur fond blanc" loading="lazy" width="1400" height="800">
       <figcaption>Une carte radio Zigbee (ici un module de prototypage, la même famille de puces que les clés USB) avec son antenne et ses connecteurs. Photo libre — Gabriel Cain Photography, CC BY-SA 3.0, via Wikimedia Commons.</figcaption>
     </figure>
 
@@ -247,7 +247,7 @@
     <p>Avant d'acheter, faites donc votre inventaire : quels appareils avez-vous (Zigbee ? Z-Wave ? Bluetooth ?), quel logiciel voulez-vous (ZHA ou Zigbee2MQTT), et la clé que vous visez est-elle listée comme compatible avec ce logiciel. Trois minutes de lecture valent mieux qu'un hub en double.</p>
   </section>
 
-  <section id="chemins" class="switch dyn">
+  <section id="chemins" class="switch">
     <h2>Trois chemins, selon ce que vous avez déjà</h2>
     <div class="flow3">
       <div class="step"><b>1 · Vous avez déjà une machine qui tourne</b><span>La clé seule suffit : 18,99 € chez le revendeur français, plus le logiciel gratuit. Le chemin le moins cher, et le plus exigeant — flash du firmware, rallonge USB, choix ZHA ou Zigbee2MQTT à faire avant tout.</span></div>
@@ -257,7 +257,7 @@
     <p>Aucun de ces chemins n'est « le bon » : ils ne répondent pas à la même question. Le seul achat regrettable est une clé choisie sans savoir sur quoi elle sera branchée ni avec quel logiciel elle parlera.</p>
   </section>
 
-  <section id="checklist" class="switch dyn">
+  <section id="checklist" class="switch">
     <h2>La checklist avant de commander</h2>
     <ul>
       <li><strong>Inventoriez vos appareils connectés</strong> : Zigbee, Z-Wave, Bluetooth ? Une clé Zigbee ne remplace que le premier — pour le reste, vous garderez un hub.</li>
@@ -270,7 +270,7 @@
     </ul>
   </section>
 
-  <section id="cta" class="switch dyn">
+  <section id="cta" class="switch">
     <div class="cta">
       <h2>Par où commencer, concrètement</h2>
       <p>Ces liens sont ceux des projets, des documentations et des vendeurs cités. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez les prix et les compatibilités à la source.</p>
@@ -283,7 +283,7 @@
     </div>
   </section>
 
-  <section id="faq" class="switch dyn">
+  <section id="faq" class="switch">
     <h2>Questions</h2>
     <details><summary>Une clé Zigbee à 18,99 € remplace-t-elle vraiment un hub ?</summary><p>Le hub oui, la machine non. La clé contient la radio, mais elle ne fait rien seule : il faut un ordinateur allumé en permanence et un logiciel gratuit (ZHA ou Zigbee2MQTT). Un hub propriétaire à 79,99 €, lui, fonctionne dès la sortie de la boîte — avec son propre écosystème.</p></details>
     <details><summary>Faut-il flasher la clé avant de s'en servir ?</summary><p>Souvent, oui. La documentation de Zigbee2MQTT écrit qu'un adaptateur doit recevoir un firmware « coordinateur » avant de pouvoir être utilisé (certains arrivent préflashés). Sur le forum francophone, la mise à jour d'une clé Sonoff ZBDongle-E est un sujet à part entière, avec plusieurs versions de firmware et un changement de pilote à faire au bon moment.</p></details>
@@ -293,7 +293,7 @@
     <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Les programmes que nous pourrions utiliser (Amazon Partenaires France, AliExpress) sont enregistrés chez nous comme candidats — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré mis à jour avec la date.</p></details>
   </section>
 
-  <section id="honesty" class="switch dyn">
+  <section id="honesty" class="switch">
     <h2>Comment cette page est faite</h2>
     <ul class="honest-list">
       <li><strong>Aucun lien affilié ici.</strong> Les programmes pertinents pour ce matériel (Amazon Partenaires France, AliExpress) sont enregistrés chez nous comme <em>candidats</em> : aucun compte créé, aucun lien posé. Si un lien affilié arrive un jour, il sera étiqueté « lien affilié — on est payé si vous souscrivez » à l'endroit où il apparaît, avec <code>rel="sponsored"</code>, et cet encadré sera mis à jour avec la date.</li>
@@ -305,7 +305,7 @@
     </ul>
   </section>
 
-  <section id="sources" class="switch dyn">
+  <section id="sources" class="switch">
     <h2>Sources</h2>
     <ul class="sources">
       <li>Documentation officielle Zigbee2MQTT, page « Supported Adapters » (firmware coordinateur obligatoire avant usage ; seuls zStack et EmberZNet prennent en charge la sauvegarde du coordinateur ; recommandation d'un adaptateur réseau pour éviter les problèmes) — lue le 2 octobre 2026.</li>
@@ -319,7 +319,7 @@
     </ul>
   </section>
 
-  <section id="avis" class="switch dyn">
+  <section id="avis" class="switch">
     <h2>Avis clients</h2>
     <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
     <div style="margin:14px 0">
@@ -350,43 +350,7 @@
 </footer>
 <script src="/honest-switch/fx.js" defer></script>
 <script src="/honest-switch/counter.js" defer></script>
-<script>
-/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
-(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
-/* barre de progression au scroll */
-(function(){
-  var bar = document.getElementById('progress');
-  function frame(){
-    var d = document.documentElement;
-    var max = d.scrollHeight - d.clientHeight;
-    var p = max > 0 ? (d.scrollTop / max) : 0;
-    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
-  }
-  var queued = false;
-  window.addEventListener('scroll', function(){
-    if (queued) return;
-    queued = true;
-    window.requestAnimationFrame(function(){ queued = false; frame(); });
-  }, {passive:true});
-  window.addEventListener('resize', frame, {passive:true});
-  frame();
-})();
-function sendReview(ev){
-  var sc = document.getElementById("rscore").value;
-  var em = document.getElementById("remail").value;
-  var tx = document.getElementById("rtext").value;
-  if (!em || !tx) return false;
-  var sujet = encodeURIComponent("Honest Switch — Domotique sans abonnement — Avis client (" + sc + "/5)");
-  var corps = encodeURIComponent(
-    "Avis Honest Switch — Domotique sans abonnement\n\nNote : " + sc + "/5\nClient : " + em +
-    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
-  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
-  document.getElementById("revok").innerHTML =
-    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
-  ev.preventDefault();
-  return false;
-}
-</script>
+
 <script>
 /* ---------- étoiles cliquables (avis clients) ---------- */
 (function(){

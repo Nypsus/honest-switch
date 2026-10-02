@@ -98,7 +98,7 @@
 </header>
 
 <main id="main" class="wrap">
-  <section class="hero dyn">
+  <section class="hero">
     <p class="kicker">KVM over IP · aucun lien affilié sur cette page · prix relevés le 2 oct. 2026</p>
     <h1>KVM over IP maison : prendre la main sur un PC ou un serveur à distance — BIOS compris — pour <span class="hl">≈130 €</span> de pièces, au lieu de <span class="hl">500 $ et plus</span></h1>
 
@@ -112,7 +112,7 @@
     </p>
   </section>
 
-  <section id="bref" class="switch dyn">
+  <section id="bref" class="switch">
     <div class="callout">
       <h2>En bref</h2>
       <ul>
@@ -125,7 +125,7 @@
     </div>
   </section>
 
-  <section id="projet" class="switch dyn">
+  <section id="projet" class="switch">
     <h2>De quoi on parle exactement</h2>
     <p>Un <strong>KVM over IP</strong> (de l'anglais <em>Keyboard, Video, Mouse</em>) est un appareil qui se branche entre vous et une machine : il capture sa sortie vidéo, émule son clavier et sa souris, et vous rend tout cela dans une page web. La différence avec un logiciel de prise en main à distance (VNC, RDP, TeamViewer) est décisive : le KVM se place <strong>hors du système d'exploitation</strong>. Vous voyez donc l'écran dès la mise sous tension, vous pouvez entrer dans le BIOS, lancer une réinstallation par le réseau ou réparer un démarrage cassé — ce qu'aucun logiciel ne permet si la machine est plantée avant d'avoir démarré.</p>
     <p>PiKVM est l'implémentation libre de référence. Elle existe en plusieurs formes, et le projet les distingue clairement sur sa page « DIY » :</p>
@@ -142,7 +142,7 @@
     <p>Autrement dit : le montage à bas coût fonctionne, mais il a des bords francs. On les liste plus bas, section « Ce que les guides oublient de dire ».</p>
   </section>
 
-  <section id="prix" class="switch dyn">
+  <section id="prix" class="switch">
     <h2>Les prix : ce qui est lu, où, et quand</h2>
     <p>Tous les montants en euros ci-dessous ont été relevés le <strong>2 octobre 2026</strong> sur les fiches produits de revendeurs français. Quand la fiche affichait les deux, le prix toutes taxes comprises est donné. Les montants en dollars proviennent des pages publiques des constructeurs, lus le même jour, et ne sont <strong>pas convertis</strong> en euros.</p>
     <div class="chartbox">
@@ -185,7 +185,7 @@
     <p>Deux lectures utiles. D'abord, <strong>le même boîtier n'a pas le même prix partout</strong> : le PiKVM V4 Plus se relève à 360,00 € chez l'un et 366,00 € chez l'autre, le même jour — et c'est la boutique la moins chère qui affiche une rupture de stock. Ensuite, <strong>le passage du bricolage au tout fait coûte environ le double</strong> : ≈130 € de pièces contre 264 à 366 € pour un boîtier monté d'usine avec Compute Module 4, contrôle ATX intégré et boîtier fini. Ce supplément achète du temps et du confort, pas une puissance de calcul différente.</p>
   </section>
 
-  <section id="commercial" class="switch dyn">
+  <section id="commercial" class="switch">
     <h2>De l'autre côté : ce que coûtent les KVM IP commerciaux</h2>
     <p>C'est le chiffre qui justifie l'exercice. Un KVM IP de marque, celui qu'on trouve dans les baies de serveurs des entreprises, se relève en dollars, sur les pages publiques des constructeurs, le 2 octobre 2026 :</p>
     <div class="fig">
@@ -231,10 +231,10 @@
     <p>Un montage PiKVM se situe entre <strong>80 $ et 130 $</strong> selon la carte utilisée (relevé de notre veille le 2 octobre 2026), et les alternatives clé-en-main libres démarrent bien plus bas : <span class="hl">BliKVM</span> vers 40 à 80 $ (dépôt 559 étoiles) et <span class="hl">JetKVM</span> annoncé 69 $ (dépôt 5 213 étoiles au 2 oct. 2026). Autrement dit, l'argument n'est pas « moins cher qu'un concurrent low-cost » — certains le sont davantage — mais « <strong>sans licence, sans compte constructeur, et sur du matériel que vous pouvez réparer vous-même</strong> ».</p>
   </section>
 
-  <section id="usages" class="switch dyn">
+  <section id="usages" class="switch">
     <h2>Ce que ça permet, concrètement</h2>
 
-    <figure class="photo dyn"><img src="../img/kvm-ip-maison-2.jpg" alt="Vue arrière d'une console KVM IBM montée en baie : ports série, VGA, PS/2 et blocs de ports Ethernet numérotés" loading="lazy" width="1400" height="800">
+    <figure class="photo"><img src="../img/kvm-ip-maison-2.jpg" alt="Vue arrière d'une console KVM IBM montée en baie : ports série, VGA, PS/2 et blocs de ports Ethernet numérotés" loading="lazy" width="1400" height="800">
       <figcaption>Une console KVM en baie, l'ancêtre du besoin : brancher un seul clavier/écran pour piloter plusieurs machines. Le PiKVM fait la même chose, mais par le réseau et sans matériel dédié. Photo libre — Jemimus, CC BY 2.0, via Wikimedia Commons.</figcaption>
     </figure>
 
@@ -275,7 +275,7 @@
     </div>
   </section>
 
-  <section id="limites" class="switch dyn">
+  <section id="limites" class="switch">
     <h2>Ce que les guides oublient de dire</h2>
     <ul>
       <li><strong>Le montage bon marché n'est pas « tout 1080p 60 images ».</strong> Le projet l'écrit lui-même : le DIY V2 plafonne à 1920x1080 à 50 Hz, sans son, et « certains BIOS exigeants qui veulent du 60 Hz » peuvent ne pas s'afficher. Pour la vidéo en 60 images et l'audio, il faut une carte V3 HAT ou un V4.</li>
@@ -288,7 +288,7 @@
     </ul>
   </section>
 
-  <section id="etapes" class="switch dyn">
+  <section id="etapes" class="switch">
     <h2>Trois étapes, dans cet ordre</h2>
     <div class="flow3">
       <div class="step"><b>1 · La machine à piloter</b><span>Vérifiez qu'elle a une sortie HDMI (ou DisplayPort vers HDMI) et un port USB libre pour le clavier émulé. C'est elle qui impose les câbles.</span></div>
@@ -298,7 +298,7 @@
     <p>Le seul mauvais achat vraiment fréquent : croire qu'un simple « bureau à distance » suffit, puis découvrir que la machine qu'on voulait dépanner ne démarre plus — c'est-à-dire au pire moment.</p>
   </section>
 
-  <section id="checklist" class="switch dyn">
+  <section id="checklist" class="switch">
     <h2>La checklist avant de choisir</h2>
     <ul>
       <li><strong>Vous voulez dépanner ou travailler ?</strong> Dépannage et BIOS : un montage DIY suffit. Usage quotidien exigeant, vidéo fluide et audio : visez un V4.</li>
@@ -311,7 +311,7 @@
     </ul>
   </section>
 
-  <section id="cta" class="switch dyn">
+  <section id="cta" class="switch">
     <div class="cta">
       <h2>Par où commencer, concrètement</h2>
       <p>Ces liens sont ceux du projet et des revendeurs cités. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez les prix, les montages et le logiciel à la source.</p>
@@ -325,7 +325,7 @@
     </div>
   </section>
 
-  <section id="faq" class="switch dyn">
+  <section id="faq" class="switch">
     <h2>Questions</h2>
     <details><summary>Combien coûte un KVM over IP maison en France ?</summary><p>En montage DIY, environ 129,90 € TTC de pièces relevées le 2 octobre 2026 chez un revendeur français (Raspberry Pi 4 Modèle B 3GB à 97,50 €, carte de capture HDMI vers USB à 12,00 €, alimentation USB-C à 9,60 €, micro-SD 16 Go à 10,80 €). En boîtier tout fait, un PiKVM V4 Mini pré-assemblé se relève à 264,00 € et un V4 Plus à 360,00 à 366,00 €.</p></details>
     <details><summary>Quelle différence avec un KVM IP commercial ?</summary><p>Le prix. Relevés en dollars le 2 octobre 2026 : Lantronix Spider dès 509,57 $, ATEN CN9850 vers 745 $, ATEN 8 ports entre 1 478 $ et 1 643 $. À côté, un montage PiKVM se situe entre 80 $ et 130 $, et les alternatives clé-en-main libres démarrent vers 40 à 80 $. S'ajoute la licence de gestion avancée des serveurs (iLO/iDRAC), relevée entre 200 $ et 400 $.</p></details>
@@ -334,7 +334,7 @@
     <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Le programme du matériel importé (AliExpress, pour les cartes BliKVM/JetKVM et les adaptateurs) et celui de Pimoroni (via Shopify Collabs) sont enregistrés comme candidats : aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré mis à jour.</p></details>
   </section>
 
-  <section id="honesty" class="switch dyn">
+  <section id="honesty" class="switch">
     <h2>Comment cette page est faite</h2>
     <ul class="honest-list">
       <li><strong>Aucun lien affilié ici.</strong> Les programmes du matériel importé (AliExpress) et de Pimoroni (Shopify Collabs) sont enregistrés comme candidats dans nos registres : aucun compte n'est créé, aucun lien n'est posé. Si un lien affilié arrive, il sera étiqueté « lien affilié » à l'endroit où il apparaît, avec <code>rel="sponsored"</code>, et cet encadré sera mis à jour avec la date.</li>
@@ -345,7 +345,7 @@
     </ul>
   </section>
 
-  <section id="sources" class="switch dyn">
+  <section id="sources" class="switch">
     <h2>Sources</h2>
     <ul class="sources">
       <li>Interfaces publiques GitHub, lues le 2 octobre 2026 : PiKVM (pikvm/pikvm) 10 368 étoiles, 573 forks, GPL-3.0, dernière poussée le 21 septembre 2026 ; JetKVM (jetkvm/kvm) 5 213 étoiles, 400 forks, GPL-2.0, dernière poussée le 30 septembre 2026 ; BliKVM (blikvm/blikvm) 559 étoiles, 50 forks, GPL-3.0.</li>
@@ -358,7 +358,7 @@
     </ul>
   </section>
 
-  <section id="avis" class="switch dyn">
+  <section id="avis" class="switch">
     <h2>Avis clients</h2>
     <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
     <div style="margin:14px 0">
@@ -389,43 +389,7 @@
 </footer>
 <script src="/honest-switch/fx.js" defer></script>
 <script src="/honest-switch/counter.js" defer></script>
-<script>
-/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
-(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
-/* barre de progression au scroll */
-(function(){
-  var bar = document.getElementById('progress');
-  function frame(){
-    var d = document.documentElement;
-    var max = d.scrollHeight - d.clientHeight;
-    var p = max > 0 ? (d.scrollTop / max) : 0;
-    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
-  }
-  var queued = false;
-  window.addEventListener('scroll', function(){
-    if (queued) return;
-    queued = true;
-    window.requestAnimationFrame(function(){ queued = false; frame(); });
-  }, {passive:true});
-  window.addEventListener('resize', frame, {passive:true});
-  frame();
-})();
-function sendReview(ev){
-  var sc = document.getElementById("rscore").value;
-  var em = document.getElementById("remail").value;
-  var tx = document.getElementById("rtext").value;
-  if (!em || !tx) return false;
-  var sujet = encodeURIComponent("Honest Switch — KVM over IP maison (PiKVM) — Avis client (" + sc + "/5)");
-  var corps = encodeURIComponent(
-    "Avis Honest Switch — KVM over IP maison (PiKVM)\n\nNote : " + sc + "/5\nClient : " + em +
-    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
-  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
-  document.getElementById("revok").innerHTML =
-    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
-  ev.preventDefault();
-  return false;
-}
-</script>
+
 <script>
 /* ---------- étoiles cliquables (avis clients) ---------- */
 (function(){

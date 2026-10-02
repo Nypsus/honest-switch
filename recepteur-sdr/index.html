@@ -98,7 +98,7 @@
 </header>
 
 <main id="main" class="wrap">
-  <section class="hero dyn">
+  <section class="hero">
     <p class="kicker">Récepteur radio logiciel · aucun lien affilié sur cette page · prix relevés le 2 oct. 2026</p>
     <h1>RTL-SDR : suivre les avions qui passent au-dessus de chez vous pour 29,50 € — et pourquoi les satellites météo NOAA que promettent les tutoriels n'émettent plus</h1>
 
@@ -112,7 +112,7 @@
     </p>
   </section>
 
-  <section id="bref" class="switch dyn">
+  <section id="bref" class="switch">
     <div class="callout">
       <h2>En bref</h2>
       <ul>
@@ -125,7 +125,7 @@
     </div>
   </section>
 
-  <section id="projet" class="switch dyn">
+  <section id="projet" class="switch">
     <h2>De quoi on parle exactement</h2>
     <p>Une clé RTL-SDR n'est pas un appareil de radioamateur : c'est une <strong>clé USB de réception TV numérique (DVB-T)</strong> dont la puce Realtek RTL2832U a été détournée. Le composant savait déjà transformer un signal radio en données numériques ; il a suffi d'écrire des pilotes libres pour lui faire recevoir n'importe quelle fréquence, au lieu des seules chaînes de télévision. C'est ce détournement qui a mis la radio logicielle à 30 €.</p>
     <div class="quotebox">
@@ -141,7 +141,7 @@
     <p>Ce que ça implique, et que peu de guides disent clairement : <strong>vous n'achetez pas un appareil, vous achetez un récepteur nu</strong>. La qualité de ce que vous entendrez dépendra surtout de l'antenne, du câble et de l'endroit où vous posez le tout — pas du prix de la clé.</p>
   </section>
 
-  <section id="prix" class="switch dyn">
+  <section id="prix" class="switch">
     <h2>Les prix : ce qui est lu, où, et quand</h2>
     <p>Les montants ci-dessous ont été relevés le <strong>2 octobre 2026</strong> sur les fiches produits, en euros, chez des revendeurs qui expédient depuis la France. Quand la fiche affichait le prix hors taxes et le prix toutes taxes comprises, les deux sont donnés ; quand seul le HT était affiché, c'est écrit. Nous ne convertissons aucune devise et nous n'arrondissons rien.</p>
     <div class="chartbox">
@@ -186,7 +186,7 @@
     <p>Deux lectures utiles. D'abord, <strong>la version officielle n'est pas toujours plus chère ailleurs</strong> : la même RTL-SDR Blog V3 se relève à 49,91 € TTC chez un revendeur et 47,90 € TTC chez un autre, le même jour — la boutique compte autant que le modèle. Ensuite, <strong>le prix affiché ne dit rien de la disponibilité</strong> : sur les six lignes du tableau, deux sont en rupture et une n'est plus produite.</p>
   </section>
 
-  <section id="usages" class="switch dyn">
+  <section id="usages" class="switch">
     <h2>Ce qu'on reçoit réellement, et ce qui a changé</h2>
     <p>Trois usages reviennent dans tous les guides. Deux sont intacts ; le troisième a perdu ses satellites.</p>
 
@@ -201,7 +201,7 @@
     </div>
     <p>Ce qui reste à 137 MHz : les satellites <strong>Meteor-M</strong>, dont le flux LRPT est décodé par SatDump (le relevé rtl-sdr.com documente une réception Meteor-M 2-3 sur 137,900 MHz). Un satellite météo se reçoit par passages de 10 à 15 minutes, uniquement quand il passe au-dessus de vous, avec une antenne adaptée — c'est un projet du soir, pas un service permanent.</p>
 
-    <figure class="photo dyn"><img src="../img/recepteur-sdr-2.jpg" alt="Antenne dipôle fabriquée maison pour 1090 MHz : câble coaxial fixé sur un support en bois et un tube PVC" loading="lazy" width="1400" height="800">
+    <figure class="photo"><img src="../img/recepteur-sdr-2.jpg" alt="Antenne dipôle fabriquée maison pour 1090 MHz : câble coaxial fixé sur un support en bois et un tube PVC" loading="lazy" width="1400" height="800">
       <figcaption>Une antenne dipôle 1 090 MHz fabriquée maison — c'est ce genre de montage, et non la clé, qui décide de ce que vous capterez. Photo libre — Happy-marmotte, CC BY-SA 3.0, via Wikimedia Commons.</figcaption>
     </figure>
 
@@ -238,7 +238,7 @@
     </div>
   </section>
 
-  <section id="limites" class="switch dyn">
+  <section id="limites" class="switch">
     <h2>Ce que les guides oublient de dire</h2>
     <ul>
       <li><strong>La V4 ne se produira plus — et la raison est racontée par le fabricant lui-même.</strong> Dans son annonce du 11 août 2026, rtl-sdr.com écrit : « the Blog V4 line of products was recently made end-of-life due to the exhaustion of the stockpile of Rafael R828D tuner chips that the V4 models require » (« la gamme V4 est passée en fin de vie à cause de l'épuisement du stock de puces R828D que les modèles V4 exigent »), et il précise que les derniers lots de puces trouvés chez des tiers <em>étaient contrefaits</em>. Autrement dit : acheter une « V4 » aujourd'hui dans une boutique qui n'est pas un revendeur identifié, c'est courir le risque d'une puce fausse.</li>
@@ -251,7 +251,7 @@
     </ul>
   </section>
 
-  <section id="etapes" class="switch dyn">
+  <section id="etapes" class="switch">
     <h2>Trois étapes, dans cet ordre</h2>
     <div class="flow3">
       <div class="step"><b>1 · La clé</b><span>29,50 € TTC pour une entrée de gamme en stock, 47,90 à 49,91 € TTC pour une version officielle avec TCXO et SMA. C'est le seul achat obligatoire — et le moins déterminant pour ce que vous capterez.</span></div>
@@ -261,7 +261,7 @@
     <p>Le seul mauvais achat vraiment fréquent n'est pas de prendre la clé la moins chère : c'est de commander une antenne incompatible, ou de croire qu'un tutoriel de 2019 décrit encore le ciel de 2026.</p>
   </section>
 
-  <section id="checklist" class="switch dyn">
+  <section id="checklist" class="switch">
     <h2>La checklist avant de commander</h2>
     <ul>
       <li><strong>Vérifiez le connecteur d'antenne</strong> du modèle exact : MCX femelle sur les clés d'entrée de gamme, SMA femelle sur les V3/V4 officielles. Prévoir l'adaptateur si besoin (relevé à 5,15 €).</li>
@@ -274,7 +274,7 @@
     </ul>
   </section>
 
-  <section id="cta" class="switch dyn">
+  <section id="cta" class="switch">
     <div class="cta">
       <h2>Par où commencer, concrètement</h2>
       <p>Ces liens sont ceux des projets et des revendeurs cités. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez les prix, les connecteurs et les logiciels à la source.</p>
@@ -289,7 +289,7 @@
     </div>
   </section>
 
-  <section id="faq" class="switch dyn">
+  <section id="faq" class="switch">
     <h2>Questions</h2>
     <details><summary>Peut-on encore recevoir les images des satellites météo NOAA ?</summary><p>Non. La page de tutoriel de référence porte une note « 2025 Update » : les satellites NOAA 15, 18 et 19 ont tous été retirés du service en août 2025, et il n'est plus possible de les recevoir. Les tutoriels qui promettent encore ces images sont périmés. Ce qui reste à 137 MHz, et que SatDump décode, ce sont les satellites Meteor-M (LRPT).</p></details>
     <details><summary>Quelle clé choisir : l'entrée de gamme ou la version officielle ?</summary><p>Pour écouter la FM et les bandes radioamateur, l'entrée de gamme en stock à 29,50 € TTC suffit — mais elle est en MCX et son quartz dérive. Pour l'ADS-B et les satellites, la TCXO des versions officielles (47,90 à 49,91 € TTC) évite de corriger la fréquence à chaque signal.</p></details>
@@ -298,7 +298,7 @@
     <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Le programme AliExpress (matériel importé) et Amazon Partenaires sont enregistrés chez nous comme candidats : aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré mis à jour.</p></details>
   </section>
 
-  <section id="honesty" class="switch dyn">
+  <section id="honesty" class="switch">
     <h2>Comment cette page est faite</h2>
     <ul class="honest-list">
       <li><strong>Aucun lien affilié ici.</strong> Le programme AliExpress et Amazon Partenaires sont enregistrés comme candidats dans nos registres : aucun compte n'est créé, aucun lien n'est posé. Si un lien affilié arrive, il sera étiqueté « lien affilié » à l'endroit où il apparaît, avec <code>rel="sponsored"</code>, et cet encadré sera mis à jour avec la date.</li>
@@ -309,7 +309,7 @@
     </ul>
   </section>
 
-  <section id="sources" class="switch dyn">
+  <section id="sources" class="switch">
     <h2>Sources</h2>
     <ul class="sources">
       <li>Interfaces publiques GitHub, lues le 2 octobre 2026 : SDR++ (AlexandreRouma/SDRPlusPlus) 6 384 étoiles, 893 forks, GPL-3.0, dernière poussée 5 juillet 2026, C++ ; SatDump (SatDump/SatDump) 2 273 étoiles, 296 forks, GPL-3.0, dernière poussée 30 septembre 2026, 193 tickets ouverts ; dump1090 (flightaware/dump1090) 1 145 étoiles, dernière poussée 14 août 2026.</li>
@@ -324,7 +324,7 @@
     </ul>
   </section>
 
-  <section id="avis" class="switch dyn">
+  <section id="avis" class="switch">
     <h2>Avis clients</h2>
     <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
     <div style="margin:14px 0">
@@ -355,43 +355,7 @@
 </footer>
 <script src="/honest-switch/fx.js" defer></script>
 <script src="/honest-switch/counter.js" defer></script>
-<script>
-/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
-(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
-/* barre de progression au scroll */
-(function(){
-  var bar = document.getElementById('progress');
-  function frame(){
-    var d = document.documentElement;
-    var max = d.scrollHeight - d.clientHeight;
-    var p = max > 0 ? (d.scrollTop / max) : 0;
-    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
-  }
-  var queued = false;
-  window.addEventListener('scroll', function(){
-    if (queued) return;
-    queued = true;
-    window.requestAnimationFrame(function(){ queued = false; frame(); });
-  }, {passive:true});
-  window.addEventListener('resize', frame, {passive:true});
-  frame();
-})();
-function sendReview(ev){
-  var sc = document.getElementById("rscore").value;
-  var em = document.getElementById("remail").value;
-  var tx = document.getElementById("rtext").value;
-  if (!em || !tx) return false;
-  var sujet = encodeURIComponent("Honest Switch — Récepteur SDR (RTL-SDR) — Avis client (" + sc + "/5)");
-  var corps = encodeURIComponent(
-    "Avis Honest Switch — Récepteur SDR (RTL-SDR)\n\nNote : " + sc + "/5\nClient : " + em +
-    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
-  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
-  document.getElementById("revok").innerHTML =
-    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
-  ev.preventDefault();
-  return false;
-}
-</script>
+
 <script>
 /* ---------- étoiles cliquables (avis clients) ---------- */
 (function(){

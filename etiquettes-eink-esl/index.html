@@ -98,7 +98,7 @@
 </header>
 
 <main id="main" class="wrap">
-  <section class="hero dyn">
+  <section class="hero">
     <p class="kicker">Domotique · aucun lien affilié sur cette page · sources relevées le 2 oct. 2026</p>
     <h1>Étiquettes de prix e-ink : leur redonner vie avec une carte à 20 €, et ce qu'il faut vérifier avant d'acheter</h1>
 
@@ -111,7 +111,7 @@
     </p>
   </section>
 
-  <section id="bref" class="switch dyn">
+  <section id="bref" class="switch">
     <div class="callout">
       <h2>En bref</h2>
       <ul>
@@ -124,7 +124,7 @@
     </div>
   </section>
 
-  <section id="cas" class="switch dyn">
+  <section id="cas" class="switch">
     <h2>De quoi on parle exactement</h2>
     <p>Une étiquette de prix électronique, c'est le petit écran d'encre électronique fixé au bord des rayons pour remplacer les étiquettes papier. Elle contient une radio, une batterie qui tient des années, et un firmware fermé écrit par son fabricant.</p>
     <p>OpenEPaperLink remplace ce firmware par un autre, ouvert, avec un protocole documenté. L'étiquette devient alors un afficheur sans fil que vous contrôlez : texte, icônes, QR codes, graphiques issus de vos propres capteurs.</p>
@@ -140,7 +140,7 @@
     </ul>
   </section>
 
-  <section id="prix" class="switch dyn">
+  <section id="prix" class="switch">
     <h2>Les prix : ce qui est chiffré, et ce qui ne l'est pas</h2>
     <p>Le projet publie une grille indicative pour les points d'accès — pas pour les étiquettes, qui ne sont pas vendues par le projet. Voici les deux tableaux, séparés, parce qu'ils n'ont pas la même solidité.</p>
 
@@ -206,11 +206,11 @@
     <p class="footnote">Source : page « Access Points » du site officiel du projet, lue le 2 octobre 2026, qui publie un barème d'effort (€ = ~10-20 €, €€ = ~40 €, €€€ = ~60 €). Les fourchettes sont celles du projet, pas un prix de vente ; elles dépendent des composants et du pays.</p>
   </section>
 
-  <section id="compat" class="switch dyn">
+  <section id="compat" class="switch">
     <h2>Le point qui décide : la compatibilité de votre étiquette</h2>
     <p>C'est ici que se perdent les achats. Une étiquette n'est pas « une étiquette » : derrière l'écran il y a une famille de puces, et le firmware à flasher dépend de cette famille. Le wiki du projet publie la liste des modèles vérifiés.</p>
 
-    <figure class="photo dyn"><img src="../img/etiquettes-eink-esl-2.jpg" alt="Rayon de supermarché avec des étiquettes de prix électroniques fixées au bord de chaque tablette" loading="lazy" width="1400" height="800"></figure>
+    <figure class="photo"><img src="../img/etiquettes-eink-esl-2.jpg" alt="Rayon de supermarché avec des étiquettes de prix électroniques fixées au bord de chaque tablette" loading="lazy" width="1400" height="800"></figure>
 
     <div class="tblwrap">
       <table>
@@ -232,7 +232,7 @@
     <p>Un cas particulier mérite d'être connu : certaines étiquettes Bluetooth ne passent pas par le point d'accès du tout. Elles se pilotent directement depuis Home Assistant via un adaptateur Bluetooth, avec un autre firmware. Le fabricant concerné, interrogé par un utilisateur, a répondu que ses étiquettes ne « supportaient pas » ce type d'usage — ce qui n'a pas empêché la communauté de le faire fonctionner, mais dit le niveau d'accompagnement attendu.</p>
   </section>
 
-  <section id="ap" class="switch dyn">
+  <section id="ap" class="switch">
     <h2>Choisir sa carte sans se tromper</h2>
     <p>Le piège le plus coûteux n'est pas la compatibilité de l'étiquette, c'est la vôtre. Le projet a publié une note qui invalide une grande partie des cartes achetées un peu vite.</p>
     <div class="quotebox">
@@ -274,7 +274,7 @@
     </div>
   </section>
 
-  <section id="limites" class="switch dyn">
+  <section id="limites" class="switch">
     <h2>Ce que les présentations oublient de dire</h2>
     <ul>
       <li><strong>La licence interdit l'usage commercial.</strong> Le projet est en Creative Commons BY-NC-SA 4.0 et son site écrit que l'usage est « uniquement non commercial ». Personne ne vous vendra de kit sous cette licence — et si quelqu'un le fait, la question de sa conformité se pose.</li>
@@ -295,7 +295,7 @@
     </div>
   </section>
 
-  <section id="etapes" class="switch dyn">
+  <section id="etapes" class="switch">
     <h2>La mise en route, en trois étapes</h2>
     <div class="flow3">
       <div class="step"><b>1 · Choisir et flasher le point d'accès</b><span>Une carte ESP32-S3 N16R8, flashée depuis la page d'installation du projet, puis connectée à votre Wi-Fi. Comptez la soirée si c'est votre premier montage.</span></div>
@@ -305,7 +305,7 @@
     <p>Ce qu'on y affiche ensuite relève de vous : relevé de température d'une pièce, prochaine poubelle, calendrier, consommation électrique, prix d'un produit dans une boutique. L'affichage se construit à partir de vos capteurs, pas d'un service tiers.</p>
   </section>
 
-  <section id="checklist" class="switch dyn">
+  <section id="checklist" class="switch">
     <h2>La checklist avant de commander</h2>
     <ul>
       <li><strong>Vérifier le modèle exact de l'étiquette</strong> dans la liste du wiki du projet — famille de puce comprise, pas seulement la taille de l'écran.</li>
@@ -318,7 +318,7 @@
     </ul>
   </section>
 
-  <section id="cta" class="switch dyn">
+  <section id="cta" class="switch">
     <div class="cta">
       <h2>Par où commencer, concrètement</h2>
       <p>Ces liens sont ceux du projet et de ses listes officielles. Aucun n'est un lien affilié.</p>
@@ -332,7 +332,7 @@
     </div>
   </section>
 
-  <section id="faq" class="switch dyn">
+  <section id="faq" class="switch">
     <h2>Questions</h2>
     <details><summary>Toutes les étiquettes de prix électroniques sont-elles compatibles ?</summary><p>Non. Le wiki classe les modèles vérifiés par famille de puce : ZBS (M2), nRF (M3), SiLabs EFR32xG22 (M3), et CC1110/CC1310 en SubGHz. Une étiquette absente de ces listes n'est pas forcément incompatible, mais elle n'est pas vérifiée — et le wiki prévient lui-même que ses informations sont déduites et parfois fausses.</p></details>
     <details><summary>Quel point d'accès acheter, et à quel prix ?</summary><p>Le projet chiffre trois niveaux : environ 10-20 €, environ 40 €, environ 60 €, du bricolage à la carte prête à l'emploi. Achetez une carte ESP32-S3 avec 16 Mo de flash et 8 Mo de RAM : la version 2.75 est la dernière à accepter les cartes ESP32-S2 ou les ESP32-S3 moins dotées.</p></details>
@@ -342,7 +342,7 @@
     <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non. Aucun lien de cette page ne nous rapporte de commission à la date du 2 octobre 2026. Le programme d'affiliation AliExpress est enregistré comme candidat dans nos registres — aucun compte n'est créé, aucun lien n'est posé. La <a href="../about/">page À propos</a> sera mise à jour le jour où cela changera.</p></details>
   </section>
 
-  <section id="honesty" class="switch dyn">
+  <section id="honesty" class="switch">
     <h2>Comment cette page est faite</h2>
     <ul class="honest-list">
       <li><strong>Aucun lien affilié ici.</strong> Le dépositaire naturel de ce type de page serait un programme de place de marché, puisque les étiquettes viennent d'import. Le nôtre est enregistré comme candidat, pas approuvé : donc aucun lien, et nous préférons l'écrire plutôt que de l'espérer.</li>
@@ -355,7 +355,7 @@
     </ul>
   </section>
 
-  <section id="sources" class="switch dyn">
+  <section id="sources" class="switch">
     <h2>Sources</h2>
     <ul class="sources">
       <li>Dépôt public OpenEPaperLink (README et licence) — lu le 2 octobre 2026 : description du projet, objectifs de consommation (~9 µA, latence de 40 s) et de débit (~5 ko/s), blocs de 4096 octets, avertissement d'absence de garantie, licence Creative Commons BY-NC-SA 4.0.</li>
@@ -370,7 +370,7 @@
     </ul>
   </section>
 
-  <section id="avis" class="switch dyn">
+  <section id="avis" class="switch">
     <h2>Avis clients</h2>
     <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
     <div style="margin:14px 0">
@@ -401,43 +401,7 @@
 </footer>
 <script src="/honest-switch/fx.js" defer></script>
 <script src="/honest-switch/counter.js" defer></script>
-<script>
-/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
-(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
-/* barre de progression au scroll */
-(function(){
-  var bar = document.getElementById('progress');
-  function frame(){
-    var d = document.documentElement;
-    var max = d.scrollHeight - d.clientHeight;
-    var p = max > 0 ? (d.scrollTop / max) : 0;
-    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
-  }
-  var queued = false;
-  window.addEventListener('scroll', function(){
-    if (queued) return;
-    queued = true;
-    window.requestAnimationFrame(function(){ queued = false; frame(); });
-  }, {passive:true});
-  window.addEventListener('resize', frame, {passive:true});
-  frame();
-})();
-function sendReview(ev){
-  var sc = document.getElementById("rscore").value;
-  var em = document.getElementById("remail").value;
-  var tx = document.getElementById("rtext").value;
-  if (!em || !tx) return false;
-  var sujet = encodeURIComponent("Honest Switch — Étiquettes e-ink ESL (OpenEPaperLink) — Avis client (" + sc + "/5)");
-  var corps = encodeURIComponent(
-    "Avis Honest Switch — Étiquettes e-ink ESL (OpenEPaperLink)\n\nNote : " + sc + "/5\nClient : " + em +
-    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
-  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
-  document.getElementById("revok").innerHTML =
-    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
-  ev.preventDefault();
-  return false;
-}
-</script>
+
 <script>
 /* ---------- étoiles cliquables (avis clients) ---------- */
 (function(){

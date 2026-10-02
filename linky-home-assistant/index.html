@@ -98,7 +98,7 @@
 </header>
 
 <main id="main" class="wrap">
-  <section class="hero dyn">
+  <section class="hero">
     <p class="kicker">Compteur Linky · aucun lien affilié sur cette page · sources relevées le 2 oct. 2026</p>
     <h1>Lire son compteur Linky dans Home Assistant : un module Zigbee à 59,99 €, un module USB à 24,90 € ou une carte ESP32 à 14,40 € — et les quatre pièges que les tutoriels taisent</h1>
 
@@ -111,7 +111,7 @@
     </p>
   </section>
 
-  <section id="bref" class="switch dyn">
+  <section id="bref" class="switch">
     <div class="callout">
       <h2>En bref</h2>
       <ul>
@@ -125,7 +125,7 @@
     </div>
   </section>
 
-  <section id="projet" class="switch dyn">
+  <section id="projet" class="switch">
     <h2>De quoi on parle exactement : la sortie TIC</h2>
     <p>Le Linky n'est pas un compteur communicant qu'on interroge par le réseau. Il expose une <strong>Télé-Information Client (TIC)</strong> : deux bornes (<em>I1</em> et <em>I2</em>) sous le cache du compteur, qui débitent en continu une trame de texte contenant les index de consommation par tarif, la puissance apparente, le courant et l'état du compteur. C'est une liaison série, pas une API.</p>
     <p>Il manque donc toujours la même pièce : quelque chose pour écouter ce port et le traduire en données exploitables par Home Assistant. D'où trois familles d'objets — un module du commerce alimenté par le compteur et intégré en Zigbee, un module filaire branché en USB près de la machine qui héberge Home Assistant, ou un montage à base de microcontrôleur.</p>
@@ -140,7 +140,7 @@
     </ul>
   </section>
 
-  <section id="prix" class="switch dyn">
+  <section id="prix" class="switch">
     <h2>Les prix : ce qui est lu, où, et quand</h2>
     <p>Les montants ci-dessous ont été relevés le <strong>2 octobre 2026</strong>, sur les pages de deux revendeurs : un distributeur domotique français (prix affichés TTC) et un revendeur français de cartes électroniques. Le dongle en dollars vient d'une boutique de créateurs et son prix est affiché en dollars : nous ne le convertissons pas.</p>
     <div class="chartbox">
@@ -195,7 +195,7 @@
     <p>La lecture honnête de ce tableau n'est pas « le DIY est moins cher ». La carte ESP32 à <strong>14,40 €</strong> n'est pas un produit fini : il faut y ajouter un optocoupleur, deux résistances et un boîtier — que nous n'avons pas chiffrés, donc que nous ne mettons dans aucun total. Un module USB du commerce à <strong>24,90 €</strong> est déjà assemblé, testé et documenté, mais il lui faut un câble jusqu'au compteur et une machine allumée à proximité. Le module Zigbee à <strong>59,99 €</strong> est le seul qui n'exige aucun câble et n'ajoute aucune consommation près du compteur, puisqu'il se nourrit sur ses bornes — c'est ce que vous payez en plus, et rien d'autre.</p>
   </section>
 
-  <section id="pieges" class="switch dyn">
+  <section id="pieges" class="switch">
     <h2>Les quatre pièges que les tutoriels taisent</h2>
 
     <h3>1. Le mode TIC décide si votre matériel fonctionne</h3>
@@ -222,7 +222,7 @@
       <span class="qsrc">Même fil, message du 27 juin 2025 : un module du commerce qui « remonte bien » mais avec un écart inexpliqué sur l'index heures pleines / heures creuses.</span>
     </div>
 
-    <figure class="photo dyn"><img src="../img/linky-home-assistant-2.jpg" alt="Six composants électroniques en boîtier DIP posés sur une plaque d'essai, dont des optocoupleurs" loading="lazy" width="1400" height="800">
+    <figure class="photo"><img src="../img/linky-home-assistant-2.jpg" alt="Six composants électroniques en boîtier DIP posés sur une plaque d'essai, dont des optocoupleurs" loading="lazy" width="1400" height="800">
       <figcaption>Des composants en boîtier DIP : c'est dans cette famille que se choisit l'optocoupleur d'un montage maison. Sur cette photo de référence, les composants sont posés côte à côte, non montés. Photo libre — Mister rf, CC BY-SA 4.0, via Wikimedia Commons.</figcaption>
     </figure>
 
@@ -247,7 +247,7 @@
     <p>Second obstacle, physique celui-là : dans un immeuble, le compteur est souvent au sous-sol. Un utilisateur le résume ainsi : « je suis en appartement et […] mon compteur se trouve à la cave au -1 et je suis au +2 », et les réponses du fil partent toutes du même constat — soit on tire un câble, soit on installe un point d'accès près du compteur, soit on renonce à la sortie TIC. Le prix affiché d'un module n'inclut jamais ce coût-là.</p>
   </section>
 
-  <section id="chemins" class="switch dyn">
+  <section id="chemins" class="switch">
     <h2>Trois routes, selon votre situation</h2>
     <div class="flow3">
       <div class="step"><b>1 · Module Zigbee (59,99 €)</b><span>À enficher derrière le cache du Linky, autoalimenté par le compteur, aucune soudure, aucun câble. Il faut en plus une passerelle Zigbee et Zigbee2MQTT ou ZHA. Le plus confortable — et celui où les retours de panne matérielle sont les plus nombreux.</span></div>
@@ -257,7 +257,7 @@
     <p>Aucune de ces trois routes n'est « la bonne » : elles ne vendent pas la même chose. La seule erreur coûteuse est d'acheter un module sans avoir vérifié le mode TIC du compteur — c'est le geste qui annule tous les autres.</p>
   </section>
 
-  <section id="checklist" class="switch dyn">
+  <section id="checklist" class="switch">
     <h2>La checklist avant de commander</h2>
     <ul>
       <li><strong>Lire le mode TIC sur le compteur</strong> (boutons + / −, page « MODE TIC ») : historique ou standard. De ce seul mot dépend le matériel qui fonctionnera, et notamment l'intégration officielle de Home Assistant.</li>
@@ -270,7 +270,7 @@
     </ul>
   </section>
 
-  <section id="cta" class="switch dyn">
+  <section id="cta" class="switch">
     <div class="cta">
       <h2>Par où commencer, concrètement</h2>
       <p>Ces liens sont ceux des projets et des vendeurs cités. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez les prix et les spécifications à la source.</p>
@@ -284,7 +284,7 @@
     </div>
   </section>
 
-  <section id="faq" class="switch dyn">
+  <section id="faq" class="switch">
     <h2>Questions</h2>
     <details><summary>Peut-on lire son Linky depuis Home Assistant sans rien acheter ?</summary><p>Pas en temps réel. La sortie TIC est un port physique : il faut un adaptateur branché sur les bornes I1 et I2. La seule voie sans matériel passe par les données publiées par Enedis, disponibles à J+1.</p></details>
     <details><summary>Pourquoi mon module ne remonte rien alors que le compteur est bien un Linky ?</summary><p>Trois causes reviennent dans les retours publics : le mode TIC ne correspond pas à ce qu'attend le logiciel ou le montage ; la valeur des résistances est mauvaise sur un montage maison en mode standard ; ou l'appareil est défectueux à la réception — un défaut matériel confirmé après échange est documenté publiquement pour deux unités neuves.</p></details>
@@ -293,7 +293,7 @@
     <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Les revendeurs cités n'ont pas de programme d'affiliation ; le programme AliExpress, pertinent pour les pièces importées, est enregistré chez nous comme candidat — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré mis à jour avec la date.</p></details>
   </section>
 
-  <section id="honesty" class="switch dyn">
+  <section id="honesty" class="switch">
     <h2>Comment cette page est faite</h2>
     <ul class="honest-list">
       <li><strong>Aucun lien affilié ici.</strong> Les revendeurs cités n'ont pas de programme d'affiliation : le distributeur domotique propose un compte professionnel, pas un programme d'affiliation. Le seul programme pertinent pour les pièces importées (cartes, composants) est le programme d'affiliation AliExpress, enregistré chez nous comme <em>candidat</em> — aucun compte créé, aucun lien posé. Si un lien affilié arrive un jour, il sera étiqueté « lien affilié » à l'endroit où il apparaît, avec <code>rel="sponsored"</code>, et cet encadré sera mis à jour avec la date.</li>
@@ -305,7 +305,7 @@
     </ul>
   </section>
 
-  <section id="sources" class="switch dyn">
+  <section id="sources" class="switch">
     <h2>Sources</h2>
     <ul class="sources">
       <li>Documentation officielle de l'intégration <em>Teleinfo</em> de Home Assistant (mode TIC historique obligatoire, monophasé uniquement, adaptateurs USB reconnus automatiquement) — lue le 2 octobre 2026.</li>
@@ -321,7 +321,7 @@
     </ul>
   </section>
 
-  <section id="avis" class="switch dyn">
+  <section id="avis" class="switch">
     <h2>Avis clients</h2>
     <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
     <div style="margin:14px 0">
@@ -352,43 +352,7 @@
 </footer>
 <script src="/honest-switch/fx.js" defer></script>
 <script src="/honest-switch/counter.js" defer></script>
-<script>
-/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
-(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
-/* barre de progression au scroll */
-(function(){
-  var bar = document.getElementById('progress');
-  function frame(){
-    var d = document.documentElement;
-    var max = d.scrollHeight - d.clientHeight;
-    var p = max > 0 ? (d.scrollTop / max) : 0;
-    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
-  }
-  var queued = false;
-  window.addEventListener('scroll', function(){
-    if (queued) return;
-    queued = true;
-    window.requestAnimationFrame(function(){ queued = false; frame(); });
-  }, {passive:true});
-  window.addEventListener('resize', frame, {passive:true});
-  frame();
-})();
-function sendReview(ev){
-  var sc = document.getElementById("rscore").value;
-  var em = document.getElementById("remail").value;
-  var tx = document.getElementById("rtext").value;
-  if (!em || !tx) return false;
-  var sujet = encodeURIComponent("Honest Switch — Compteur Linky dans Home Assistant — Avis client (" + sc + "/5)");
-  var corps = encodeURIComponent(
-    "Avis Honest Switch — Compteur Linky dans Home Assistant\n\nNote : " + sc + "/5\nClient : " + em +
-    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
-  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
-  document.getElementById("revok").innerHTML =
-    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
-  ev.preventDefault();
-  return false;
-}
-</script>
+
 <script>
 /* ---------- étoiles cliquables (avis clients) ---------- */
 (function(){

@@ -100,7 +100,7 @@
 </header>
 
 <main id="main" class="wrap">
-  <section class="hero dyn">
+  <section class="hero">
     <p class="kicker">Réseau libre · aucun lien affilié sur cette page · prix relevés le 2 oct. 2026</p>
     <h1>Routeur VPN de voyage : un appareil chiffre tout, sans abonnement — les prix réels et les pièges avant d'acheter</h1>
 
@@ -114,7 +114,7 @@
     </p>
   </section>
 
-  <section id="bref" class="switch dyn">
+  <section id="bref" class="switch">
     <div class="callout">
       <h2>En bref</h2>
       <ul>
@@ -127,7 +127,7 @@
     </div>
   </section>
 
-  <section id="objet" class="switch dyn">
+  <section id="objet" class="switch">
     <h2>Un routeur de voyage, ce n'est pas un « répéteur » de plus</h2>
     <p>Un répéteur classique se contente d'étendre un signal Wi-Fi. Un routeur de voyage fait autre chose : il reçoit le réseau d'un hôtel, d'un café ou d'une box, puis <strong>crée son propre réseau privé</strong> derrière lequel vivent vos appareils. C'est ce qui permet de chiffrer tout d'un coup : vous connectez une seule fois le tunnel, et les téléphones, tablettes et ordinateurs qui passent par ce routeur en profitent sans rien configurer.</p>
     <p>La documentation officielle du fabricant décrit précisément ce comportement dans son mode « Repeater » :</p>
@@ -143,7 +143,7 @@
     <p>Autrement dit : acheter le routeur est la partie facile. Le <em>servir</em> — portail captif de l'hôtel, IP publique côté maison, choix du tunnel — est la partie que personne ne met en avant.</p>
   </section>
 
-  <section id="prix" class="switch dyn">
+  <section id="prix" class="switch">
     <h2>Les prix : ce qui est lu, où, et quand</h2>
     <p>Les montants ci-dessous viennent de deux endroits, tenus séparés dans le tableau : la <strong>boutique européenne du fabricant</strong> (prix affichés TTC, relevés le 2 octobre 2026) et un <strong>comparateur de prix français</strong> (fourchettes de ses marchands, données datées par le comparateur lui-même). Nous ne les mélangeons pas.</p>
     <div class="chartbox">
@@ -185,7 +185,7 @@
     <p>La lecture honnête de ce tableau n'est pas « le fabricant est le moins cher ». Au contraire : sur un comparateur français, le Beryl AX partait de <strong>84,39 €</strong>, soit moins que les <strong>101,00 €</strong> de la boutique du fabricant — mais ces données-là datent du 6 septembre 2026, pas du 2 octobre, et la disponibilité change. Le prix dépend donc de <em>quand</em> vous regardez. La seule chose stable, c'est l'écart entre les modèles, et c'est ce que le graphique ci-dessus montre : le passage du Wi-Fi 5 (Opal) au Wi-Fi 6 (Beryl AX) fait plus que doubler le prix.</p>
   </section>
 
-  <section id="pieges" class="switch dyn">
+  <section id="pieges" class="switch">
     <h2>Les quatre pièges que la fiche produit ne dit pas</h2>
 
     <h3>1. Le Wi-Fi de l'hôtel est souvent derrière un portail captif</h3>
@@ -214,7 +214,7 @@
       <span class="qsrc">Docs officielles GL.iNet, tutoriel « Build your own WireGuard home server », lu le 2 octobre 2026. Traduction : « Si les deux méthodes ci-dessus ne fonctionnent pas (par exemple si votre réseau est derrière du CGNAT), vous pouvez essayer notre solution SD-WAN AstroWarp. » Autrement dit : chez un opérateur qui partage les adresses, le retour maison « classique » ne marche pas — et la solution proposée est un service du même fabricant, à vérifier séparément.</span>
     </div>
 
-    <figure class="photo dyn"><img src="../img/routeur-vpn-voyage-2.jpg" alt="Raspberry Pi posé sur un commutateur réseau, câbles Ethernet branchés, scène de réseau domestique" loading="lazy" width="1400" height="800">
+    <figure class="photo"><img src="../img/routeur-vpn-voyage-2.jpg" alt="Raspberry Pi posé sur un commutateur réseau, câbles Ethernet branchés, scène de réseau domestique" loading="lazy" width="1400" height="800">
       <figcaption>Un petit serveur (ici un Raspberry Pi) posé sur un commutateur réseau : c'est le genre de machine que le routeur de voyage sert à joindre à distance. Mais pour cela, il faut une IP publique côté maison — voir le piège 3. Photo libre — RAIL P, CC0, via Wikimedia Commons.</figcaption>
     </figure>
 
@@ -222,7 +222,7 @@
     <p>Le firmware libre est un vrai argument : il dure, il se répare, il se personnalise. Mais la version embarquée n'est pas la dernière d'OpenWrt, et le fabricant le dit. Sur la fiche du Beryl AX : « Runs on OpenWrt 21.02 (Kernel version 5.4) ». Autrement dit, vous achetez un routeur sous OpenWrt <em>21.02</em>, avec l'interface maison (firmware « 4.x ») par-dessus — et c'est cette interface que vous mettrez à jour pour bénéficier, par exemple, du réglage « portail captif » du piège 1. Ce n'est pas un défaut, c'est une information que les comparatifs omettent.</p>
   </section>
 
-  <section id="chemins" class="switch dyn">
+  <section id="chemins" class="switch">
     <h2>Trois chemins, selon ce que vous voulez faire</h2>
     <div class="flow3">
       <div class="step"><b>1 · Le moins cher — Opal</b><span>38,98 € TTC (boutique du fabricant, 2 oct. 2026). Wi-Fi 5 (AC1200), trois ports gigabit, VPN préinstallé. Suffisant pour sécuriser quelques appareils à l'hôtel et faire du « retour maison » basique. C'est le ticket d'entrée, pas le plus rapide en VPN.</span></div>
@@ -232,7 +232,7 @@
     <p>Aucun de ces trois n'est « le bon » : ils ne répondent pas à la même question. Le seul achat regrettable est un routeur choisi sans avoir vérifié <em>la vitesse VPN dont vous avez besoin</em> et <em>la présence d'une IP publique chez vous</em>. Un modèle haut de gamme branché derrière un opérateur en CGNAT ne ramènera pas votre NAS ; un modèle d'entrée de gamme avec un abonnement VPN lent donnera l'impression que « le routeur est mauvais ».</p>
   </section>
 
-  <section id="checklist" class="switch dyn">
+  <section id="checklist" class="switch">
     <h2>La checklist avant de commander</h2>
     <ul>
       <li><strong>Décidez d'abord d'où vient le tunnel.</strong> Fournisseur VPN commercial (abonnement, comme sur un téléphone) ou serveur maison (gratuit mais il faut une IP publique) ? Le routeur, seul, n'en fournit aucun.</li>
@@ -245,7 +245,7 @@
     </ul>
   </section>
 
-  <section id="cta" class="switch dyn">
+  <section id="cta" class="switch">
     <div class="cta">
       <h2>Par où commencer, concrètement</h2>
       <p>Ces liens sont ceux du fabricant, de sa documentation et du projet libre. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez les prix et les compatibilités à la source.</p>
@@ -259,7 +259,7 @@
     </div>
   </section>
 
-  <section id="faq" class="switch dyn">
+  <section id="faq" class="switch">
     <h2>Questions</h2>
     <details><summary>Un routeur de voyage chiffre-t-il vraiment tous mes appareils ?</summary><p>Oui, dès qu'ils passent par son Wi-Fi ou son port Ethernet. Le tunnel est établi une fois pour tout le réseau que le routeur crée (mode répéteur/WISP) : la documentation du fabricant parle d'« un sous-réseau » propre et d'un « pare-feu » entre vous et le réseau public. C'est tout l'intérêt face à la configuration appareil par appareil.</p></details>
     <details><summary>Faut-il payer un abonnement après l'achat ?</summary><p>Le routeur, non : c'est du matériel acheté une fois. Le tunnel, ça dépend de vous : soit un fournisseur VPN commercial (abonnement), soit votre propre serveur chez vous (gratuit, mais il faut une IP publique côté maison). Le routeur ne fournit pas de « VPN gratuit ».</p></details>
@@ -269,7 +269,7 @@
     <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Le programme du fabricant (jusqu'à 10 % via Awin) est enregistré chez nous comme candidat — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré mis à jour avec la date.</p></details>
   </section>
 
-  <section id="honesty" class="switch dyn">
+  <section id="honesty" class="switch">
     <h2>Comment cette page est faite</h2>
     <ul class="honest-list">
       <li><strong>Aucun lien affilié ici.</strong> Le programme d'affiliation du fabricant (GL.iNet, « jusqu'à 10 % sur les ventes éligibles », via le réseau Awin, avec une alternative Tradedoubler pour l'Europe) a été lu sur la page publique du fabricant le 2 octobre 2026. Il est enregistré chez nous comme <em>candidat</em> : aucun compte créé, aucun lien posé. Si un lien affilié arrive un jour, il sera étiqueté « lien affilié — on est payé si vous souscrivez » à l'endroit où il apparaît, avec <code>rel="sponsored"</code>, et cet encadré sera daté.</li>
@@ -281,7 +281,7 @@
     </ul>
   </section>
 
-  <section id="sources" class="switch dyn">
+  <section id="sources" class="switch">
     <h2>Sources</h2>
     <ul class="sources">
       <li>Page officielle du programme d'affiliation GL.iNet (« Earn up to 10% on eligible sales », réseau Awin — identifiant de marchand observé dans le code d'intégration Awin, plus une option Tradedoubler pour l'Europe) — lue le 2 octobre 2026.</li>
@@ -296,7 +296,7 @@
     </ul>
   </section>
 
-  <section id="avis" class="switch dyn">
+  <section id="avis" class="switch">
     <h2>Avis clients</h2>
     <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
     <div style="margin:14px 0">
@@ -327,43 +327,7 @@
 </footer>
 <script src="/honest-switch/fx.js" defer></script>
 <script src="/honest-switch/counter.js" defer></script>
-<script>
-/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
-(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
-/* barre de progression au scroll */
-(function(){
-  var bar = document.getElementById('progress');
-  function frame(){
-    var d = document.documentElement;
-    var max = d.scrollHeight - d.clientHeight;
-    var p = max > 0 ? (d.scrollTop / max) : 0;
-    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
-  }
-  var queued = false;
-  window.addEventListener('scroll', function(){
-    if (queued) return;
-    queued = true;
-    window.requestAnimationFrame(function(){ queued = false; frame(); });
-  }, {passive:true});
-  window.addEventListener('resize', frame, {passive:true});
-  frame();
-})();
-function sendReview(ev){
-  var sc = document.getElementById("rscore").value;
-  var em = document.getElementById("remail").value;
-  var tx = document.getElementById("rtext").value;
-  if (!em || !tx) return false;
-  var sujet = encodeURIComponent("Honest Switch — Routeur VPN de voyage — Avis client (" + sc + "/5)");
-  var corps = encodeURIComponent(
-    "Avis Honest Switch — Routeur VPN de voyage\n\nNote : " + sc + "/5\nClient : " + em +
-    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
-  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
-  document.getElementById("revok").innerHTML =
-    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
-  ev.preventDefault();
-  return false;
-}
-</script>
+
 <script>
 /* ---------- étoiles cliquables (avis clients) ---------- */
 (function(){

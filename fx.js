@@ -67,7 +67,8 @@
 
   function inView(el) {
     var r = el.getBoundingClientRect();
-    return r.top < window.innerHeight * 0.88 && r.bottom > 40;
+    // strictement dans la fenêtre visible : seule une petite bande d'entrée déclenche
+    return r.top < window.innerHeight * 0.85 && r.top > -r.height * 0.35;
   }
   function scan() { targets.forEach(function (el) { if (!el.classList.contains('fx-in') && inView(el)) show(el); }); }
 
@@ -76,7 +77,7 @@
       entries.forEach(function (e) {
         if (e.isIntersecting) { show(e.target); io.unobserve(e.target); }
       });
-    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.04 });
+    }, { root: null, rootMargin: '-12% 0px -8% 0px', threshold: 0 });
     targets.forEach(function (el) { if (firsts.indexOf(el) === -1) io.observe(el); });
   }
   var t = null;

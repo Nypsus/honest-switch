@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Éclairage LED adressable DIY : WLED sur un ESP32, un ruban à 12,62 € — Honest Switch</title>
+<meta name="description" content="WLED (firmware libre) transforme un ESP32 et un ruban WS2812B en éclairage adressable piloté en WiFi, sans cloud. Prix relevés le 2 octobre 2026 : ESP32 14,40 €, ruban 5 m 12,62 €, ruban connecté bas de gamme 10,99 €, Philips Hue Outdoor 132,02 €. Ce que les tutoriels ne disent pas.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/wled-led-addressable/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/wled-led-addressable/">
+<meta property="og:title" content="Éclairage LED adressable DIY : WLED sur un ESP32, un ruban à 12,62 € — Honest Switch">
+<meta property="og:description" content="Prix relevés le 2 octobre 2026, la vérité sur le prix face au bas de gamme, et les contraintes que les tutoriels oublient de dire.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .cta{border:1.5px solid rgba(14,123,82,.45);border-radius:12px;padding:16px 18px;margin:22px 0;background:#f7faf8}
+  .cta h2{margin:0 0 8px;font-size:1.05rem}
+  .cta ul{margin:8px 0 0;padding-left:18px}
+  .cta li{margin:6px 0}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  @media (prefers-reduced-motion:reduce){
+    .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
+    .arrow{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Un ruban à 11 € avec application et un montage WLED à 27 € font-ils la même chose ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non. Le ruban à application éclaire : chaque segment s'allume, mais toute la bande affiche une couleur à la fois dans la plupart des modèles bas de gamme, et le pilotage passe par l'application du fabricant. WLED pilote un ruban WS2812B où chaque LED est adressable individuellement, avec ses propres effets, sans compte et sans cloud : l'interface est un serveur web sur votre réseau local. La différence n'est pas la lumière produite, c'est ce qu'on peut en faire."}},
+    {"@type": "Question", "name": "Faut-il souder ou programmer pour installer WLED ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Il faut alimenter le ruban (5 V), relier trois fils (5 V, masse, données) et flasher le firmware sur l'ESP32 depuis un navigateur, par câble USB. Selon le montage, une soudure ou un connecteur JST suffit ; le projet fournit aussi des cartes pré-flashées vendues toutes faites. Aucune ligne de code n'est nécessaire pour l'usage courant."}},
+    {"@type": "Question", "name": "Quelle alimentation 5 V faut-il prévoir ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Nous ne donnons pas de prix : nous ne l'avons pas relevé. En revanche le fabricant du ruban que nous citons publie une consommation maximale de 9 A pour 150 LED, ce qui veut dire qu'une alimentation 5 V capable de fournir plusieurs ampères est nécessaire, et que l'injection de puissance compte sur une grande longueur. C'est le poste le plus souvent oublié du budget."}},
+    {"@type": "Question", "name": "Cette page contient-elle des liens affiliés ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non, aucun à ce jour. Le programme d'affiliation AliExpress est enregistré comme candidat dans nos registres : aucun compte n'est créé et aucun lien n'est posé. Si un lien affilié arrive, il sera étiqueté à l'endroit où il apparaît et cet encadré sera mis à jour avec la date."}},
+    {"@type": "Question", "name": "WLED peut-il être utilisé dans un commerce ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui. La licence du projet est l'European Union Public License 1.2, qui autorise l'usage commercial du logiciel. Le ruban et l'électronique que vous achetez n'ont, eux, aucune contrainte de licence : ce sont des composants standards."}}
+  ]
+}
+</script>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#projet">WLED</a>
+      <a href="#prix">Les prix</a>
+      <a href="#ecart">Le vrai écart</a>
+      <a href="#limites">Les contraintes</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero dyn">
+    <p class="kicker">Éclairage LED · aucun lien affilié sur cette page · sources relevées le 2 oct. 2026</p>
+    <h1>Éclairage LED adressable DIY : un ESP32 à 14,40 € et un ruban WS2812B à partir de 10,99 € pour piloter chaque LED, sans cloud — et ce que les tutoriels ne disent pas</h1>
+
+    <figure class="photo"><img src="../img/wled-led-addressable.jpg" alt="Gros plan sur un ruban LED adressable WS2812B : les puces LED et leurs connecteurs d'entrée et de sortie sur circuit souple" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">WLED est un firmware libre qui transforme un <span class="hl">ESP32 à 14,40 €</span> et un <span class="hl">ruban WS2812B à partir de 10,99 € les 5 m</span> en éclairage où chaque LED est pilotable individuellement, en WiFi, sans compte et sans nuage. Mais le discours habituel cache l'essentiel : un ruban connecté à application coûte le même prix et fait la même lumière. Ce que vous payez en plus, ce n'est pas la lumière — c'est le contrôle, et le montage.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip">Prix lus le 2 oct. 2026</span>
+    </p>
+  </section>
+
+  <section id="bref" class="switch dyn">
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><strong>Le projet est libre et massif.</strong> Le dépôt public wled/WLED comptait <span class="hl">18 737 étoiles</span> et <span class="hl">4 370 forks</span> le 2 octobre 2026, sous licence EUPL-1.2 — usage commercial permis.</li>
+        <li><strong>Deux pièces suffisent :</strong> un ESP32-WROOM-32 (<span class="hl">14,40 €</span> chez Kubii, vérifié le 2 oct. 2026) et un ruban adressable WS2812B de 5 m (<span class="hl">à partir de 10,99 € TTC</span> chez un revendeur domotique français, vérifié le 2 oct. 2026 ; 12,62 € chez Lextronic pour 150 LED) — soit <span class="hl">25,39 € à 27,02 €</span> de pièces, hors alimentation et hors port.</li>
+        <li><strong>La vérité de marché :</strong> le ruban n'est pas le poste qui creuse l'écart. Un ruban connecté à application et télécommande se relève autour de <span class="hl">10,99 € livré</span> (Amazon.fr, notre veille du 2 oct. 2026) — le même prix qu'un ruban adressable. Ce que vous payez en plus chez nous, c'est la carte, l'alimentation et votre soirée de montage.</li>
+        <li><strong>Ce que vous achetez en plus :</strong> l'adressabilité LED par LED, les effets, le contrôle local sans compte, et l'intégration domotique. Le même type d'éclairage en marque est à <span class="hl">132,02 € soldé</span> (référence à 239,99 €, notre veille du 2 oct. 2026) : c'est <em>là</em> que l'écart est réel.</li>
+        <li><strong>Ce qui n'est pas chiffré :</strong> le prix de l'alimentation 5 V. Nous ne l'avons pas relevé, donc nous ne l'estimons pas — mais le ruban cité est donné pour <span class="hl">9 A au maximum</span> par son distributeur.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projet" class="switch dyn">
+    <h2>De quoi on parle exactement</h2>
+    <p>Un « ruban adressable » n'est pas un ruban coloré. Sur un ruban classique, toute la bande affiche la même couleur à un instant donné. Sur un ruban adressable (ici un WS2812B), chaque puce contient son propre contrôleur : la LED n° 7 peut être rouge pendant que la n° 8 est bleue, et vous décidez de la couleur, de l'intensité et de l'animation de chacune.</p>
+    <p>Il manque une pièce pour commander tout ça : un microcontrôleur. WLED est le firmware libre qui s'installe dessus et transforme la carte en serveur web d'éclairage, sur votre réseau local.</p>
+    <div class="quotebox">
+      « Control WS2812B and many more types of digital RGB LEDs with an ESP32 over WiFi! »
+      <span class="qsrc">Description du dépôt public wled/WLED (GitHub), lue le 2 octobre 2026. Traduction : « Piloter des WS2812B et beaucoup d'autres types de LED RVB numériques avec un ESP32, en WiFi. »</span>
+    </div>
+    <p>Trois conséquences pratiques que personne ne met en avant :</p>
+    <ul>
+      <li><strong>Le montage fait partie du produit.</strong> Il faut alimenter le ruban en 5 V, relier trois fils et flasher la carte par USB. Rien de difficile, mais ce n'est pas un objet qu'on branche.</li>
+      <li><strong>L'alimentation est un poste à part.</strong> Le ruban de 5 m que nous citons est donné pour une consommation maximale de 9 A : une alimentation 5 V capable de débiter plusieurs ampères est nécessaire, et sur une grande longueur il faut réinjecter le courant.</li>
+      <li><strong>Aucun compte, aucun abonnement.</strong> L'interface est servie par la carte elle-même, sur votre réseau. C'est l'argument que le bas de gamme ne peut pas offrir, quel que soit son prix.</li>
+    </ul>
+  </section>
+
+  <section id="prix" class="switch dyn">
+    <h2>Les prix : ce qui est lu, où, et quand</h2>
+    <p>Les montants ci-dessous ont été relevés le <strong>2 octobre 2026</strong>. Les prix de la carte ESP32 et des rubans adressables ont été lus et vérifiés sur les pages de trois revendeurs français ; le prix du ruban connecté à application et celui du ruban de marque viennent de notre veille du même jour et sont signalés comme tels.</p>
+    <div class="chartbox">
+      <h3>Ce que coûte un éclairage LED de 5 m (€, prix relevé le 2 oct. 2026)</h3>
+      <svg viewBox="0 0 720 340" role="img" aria-label="Graphique à barres, prix relevés le 2 octobre 2026 : ruban adressable WS2812B 5 mètres 10,99 euros, ruban connecté à application 5 mètres 10,99 euros, ruban WS2812B 5 mètres 150 LED 12,62 euros, carte ESP32-WROOM-32 14,40 euros, montage WLED complet de 25,39 à 27,02 euros, ruban connecté de marque 5 mètres 132,02 euros">
+        <title>Prix des solutions d'éclairage LED comparées</title>
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12" fill="#57523f">
+          <text x="70" y="32">Ruban adressable WS2812B 5 m (revendeur domotique FR)</text>
+          <rect x="70" y="38" width="43" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="119" y="52" fill="#0e7b52" font-weight="700">à partir de 10,99 €</text>
+
+          <text x="70" y="82">Ruban connecté à application 5 m (Amazon.fr)</text>
+          <rect x="70" y="88" width="43" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="119" y="102" fill="#0e7b52" font-weight="700">10,99 €</text>
+
+          <text x="70" y="132">Ruban WS2812B 5 m / 150 LED (Lextronic)</text>
+          <rect x="70" y="138" width="50" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="126" y="152" fill="#0e7b52" font-weight="700">12,62 €</text>
+
+          <text x="70" y="182">Carte ESP32-WROOM-32 (Kubii)</text>
+          <rect x="70" y="188" width="57" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="133" y="202" fill="#0e7b52" font-weight="700">14,40 €</text>
+
+          <text x="70" y="232">Montage WLED complet (ESP32 + ruban 5 m)</text>
+          <rect x="70" y="238" width="106" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="182" y="252" fill="#0e7b52" font-weight="700">25,39 à 27,02 €</text>
+
+          <text x="70" y="282">Ruban connecté de marque, 5 m (notre veille)</text>
+          <rect x="70" y="288" width="520" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="596" y="302" fill="#0e7b52" font-weight="700">132,02 €</text>
+        </g>
+      </svg>
+      <p class="footnote">Barres proportionnelles aux montants ci-dessus, base à zéro. Les 25,39 à 27,02 € du montage WLED sont la somme de la carte et d'un ruban de 5 m : <strong>ni l'alimentation 5 V ni le port ne sont compris</strong> — nous n'avons pas relevé le prix de l'alimentation, donc il n'apparaît nulle part dans ce graphique. Le montant de marque correspond à un prix soldé relevé par notre veille le 2 oct. 2026, face à une référence affichée à 239,99 €.</p>
+    </div>
+    <table>
+      <thead><tr><th>Où</th><th>Quoi</th><th>Prix relevé le 2 oct. 2026</th><th>Ce que le prix ne comprend pas</th></tr></thead>
+      <tbody>
+        <tr><td>Kubii (FR)</td><td>Carte de développement ESP32-WROOM-32</td><td><strong>14,40 €</strong> TTC (12,00 € HT)</td><td>câble USB, alimentation</td></tr>
+        <tr><td>Domadoo (FR)</td><td>Ruban adressable WS2812B compatible WLED, 5 m, IP30 (SMLIGHT)</td><td><strong>à partir de 10,99 €</strong> TTC</td><td>alimentation 5 V, carte ESP32, montage</td></tr>
+        <tr><td>Lextronic (FR)</td><td>Ruban LED RGB WS2812B, 5 m, 150 LED, IP30</td><td><strong>12,62 €</strong> TTC (10,52 € HT)</td><td>alimentation 5 V, connecteurs</td></tr>
+        <tr><td>Lextronic (FR)</td><td>Même ruban en version IP67 (silicone)</td><td><strong>11,78 €</strong> TTC (9,82 € HT)</td><td>alimentation 5 V, connecteurs</td></tr>
+        <tr><td>Amazon.fr</td><td>Ruban connecté 5 m, 150 LED, 24 V, application et télécommande</td><td><strong>10,99 €</strong> livré <em>(relevé de veille)</em></td><td>rien après achat — mais pilotage par l'application du fabricant</td></tr>
+        <tr><td>Marque (via notre veille)</td><td>Ruban connecté Outdoor 5 m, écosystème propriétaire</td><td><strong>132,02 €</strong> soldé (référence 239,99 €) <em>(veille)</em></td><td>pont/afficheur selon la gamme</td></tr>
+      </tbody>
+    </table>
+    <p>Un point qui change la lecture du budget : le ruban adressable ne coûte pas plus cher que le ruban à application. Chez un revendeur domotique français, un ruban WS2812B de 5 m compatible WLED démarre <strong>à 10,99 € TTC</strong>, en stock, avec des variantes de densité (30, 60, 74, 96 ou 144 LED par mètre) et d'étanchéité (IP30, IP65, IP67) qui font monter le prix. Le poste qui creuse réellement l'écart avec le bas de gamme, ce n'est donc pas le ruban : c'est la carte ESP32 et le montage. Le stock annoncé sur la page de la carte était de <strong>120 unités</strong>, et le port chez ce distributeur est offert au-delà de 75 € en France (règle publiée) — un montage à une seule bande n'y arrive pas.</p>
+  </section>
+
+  <section id="ecart" class="switch dyn">
+    <h2>Le vrai écart n'est pas celui qu'on croit</h2>
+    <p>La présentation habituelle compare le montage DIY au ruban connecté de marque, et conclut à une économie spectaculaire. C'est exact — et incomplet. Si vous voulez seulement allumer une bande de couleur derrière un meuble, un ruban à 10,99 € livré fait le travail et le montage WLED est un mauvais calcul : plus cher, plus long, et il faut un câble, une alimentation et une demi-heure de configuration.</p>
+    <p>L'écart défendable est ailleurs : ce que le bas de gamme ne fait pas.</p>
+    <div class="fig">
+      <h3>Ce que 27 € achètent, et ce que 11 € n'achètent pas</h3>
+      <svg viewBox="0 0 720 180" role="img" aria-label="Schéma : d'un côté un ruban à application, couleur unique pour toute la bande et pilotage par l'application du fabricant ; de l'autre un ruban adressable piloté par WLED, couleur par LED et contrôle local sans compte">
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12.5">
+          <rect x="20" y="24" width="320" height="130" rx="10" fill="#f7faf8" stroke="#c9d8d0"></rect>
+          <text x="40" y="50" fill="#57523f" font-weight="700">Ruban à application (10,99 €)</text>
+          <rect x="40" y="66" width="60" height="14" rx="3" fill="#d94f4f"></rect>
+          <rect x="104" y="66" width="60" height="14" rx="3" fill="#d94f4f"></rect>
+          <rect x="168" y="66" width="60" height="14" rx="3" fill="#d94f4f"></rect>
+          <text x="40" y="102" fill="#57523f">Toute la bande : une couleur à la fois</text>
+          <text x="40" y="124" fill="#57523f">Pilotage : application du fabricant</text>
+          <text x="40" y="146" fill="#57523f">Compte et serveur du vendeur</text>
+
+          <rect x="380" y="24" width="320" height="130" rx="10" fill="#f2f7f4" stroke="#0e7b52"></rect>
+          <text x="400" y="50" fill="#0e7b52" font-weight="700">Ruban adressable + WLED (27,02 €)</text>
+          <rect x="400" y="66" width="18" height="14" rx="3" fill="#d94f4f"></rect>
+          <rect x="422" y="66" width="18" height="14" rx="3" fill="#e0a63c"></rect>
+          <rect x="444" y="66" width="18" height="14" rx="3" fill="#4fae6b"></rect>
+          <rect x="466" y="66" width="18" height="14" rx="3" fill="#3f8ed9"></rect>
+          <rect x="488" y="66" width="18" height="14" rx="3" fill="#8b5fd9"></rect>
+          <rect x="510" y="66" width="18" height="14" rx="3" fill="#d94f9e"></rect>
+          <text x="400" y="102" fill="#57523f">Chaque LED : sa propre couleur</text>
+          <text x="400" y="124" fill="#57523f">Pilotage : interface web, réseau local</text>
+          <text x="400" y="146" fill="#57523f">Aucun compte, aucun serveur tiers</text>
+        </g>
+      </svg>
+      <figcaption>Comparaison de capacités, pas de prix. Le montant du ruban à application et celui du montage WLED sont ceux du tableau ci-dessus, relevés le 2 octobre 2026.</figcaption>
+    </div>
+    <p>Le second écart est celui du haut de gamme : le même usage — un éclairage connecté de 5 m piloté depuis un téléphone ou une box domotique — se vend <strong>132,02 €</strong> soldé chez une marque, contre <strong>25,39 à 27,02 €</strong> de pièces ici. Ce que la marque vend en plus n'est pas imaginaire : application soignée, garantie, service client, intégrations certifiées, et surtout rien à assembler. C'est un achat, pas un projet.</p>
+    <div class="callout">
+      <h2>La différence, en une phrase</h2>
+      <p>Un ruban RVB bas de gamme a un contrôleur pour toute la bande : vous changez la couleur de l'ensemble, depuis l'application du fabricant. Un ruban adressable a un contrôleur dans chaque LED : WLED décide de la couleur, de l'intensité et de l'animation de chacune, depuis une interface servie par votre carte, sur votre réseau. Ce n'est pas la même catégorie de produit, même si les deux s'appellent « ruban LED ».</p>
+    </div>
+  </section>
+
+  <section id="limites" class="switch dyn">
+    <h2>Ce que les tutoriels oublient de dire</h2>
+
+    <figure class="photo dyn"><img src="../img/wled-led-addressable-2.jpg" alt="Carte de développement ESP32-WROOM-32 avec port micro-USB, module radio et deux rangées de broches" loading="lazy" width="1400" height="800">
+      <figcaption>La carte ESP32-WROOM-32 utilisée par WLED : un port micro-USB pour l'alimentation et le flashage, deux rangées de broches pour le ruban. Photo libre — Ubahnverleih, CC0, via Wikimedia Commons.</figcaption>
+    </figure>
+
+    <ul>
+      <li><strong>Le DIY n'est pas moins cher que le bas de gamme.</strong> Un ruban adressable et un ruban à application se relèvent au même prix ; ce qui s'ajoute chez nous, c'est la carte ESP32 et le montage. Si vous voulez une seule couleur, le montage WLED est le mauvais choix, et le dire fait partie du travail.</li>
+      <li><strong>L'alimentation 5 V n'est pas comprise</strong> et nous n'avons pas relevé son prix. Le ruban cité est donné pour 9 A au maximum : une alimentation faible débitera moins de lumière, et sur plusieurs mètres il faut réinjecter le courant en bout de bande.</li>
+      <li><strong>Il faut flasher la carte</strong> par câble USB depuis un navigateur compatible, et parfois installer un pilote de port série. Une fois fait, plus jamais : mais la première fois demande un ordinateur.</li>
+      <li><strong>Le port et les délais dépendent du vendeur.</strong> Pour un achat chez un distributeur français, la livraison est rapide et suivie ; pour une carte achetée à l'import, comptez des semaines et vérifiez qui prend en charge un retour.</li>
+      <li><strong>La garantie est celle du vendeur de la carte et du ruban</strong>, pas d'un éditeur. WLED est un projet communautaire : la documentation est excellente, mais en anglais et sans service client.</li>
+      <li><strong>Le prix du marché bouge vite.</strong> Un ruban connecté soldé peut descendre sous le prix de vos pièces : le bon réflexe est de comparer au moment de l'achat, pas de se fier à un guide daté — y compris celui-ci.</li>
+    </ul>
+  </section>
+
+  <section id="chemins" class="switch dyn">
+    <h2>Trois chemins, selon ce que vous voulez faire</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Le ruban à application</b><span>5 m, télécommande et application du fabricant, autour de 11 € livré. Le plus simple et le moins cher — si une seule couleur à la fois vous suffit.</span></div>
+      <div class="step"><b>2 · Le montage WLED</b><span>ESP32 + ruban WS2812B, 25,39 à 27,02 € de pièces hors alimentation. Chaque LED est adressable, tout est piloté en local, s'intègre à la domotique. Il faut monter, flasher et régler.</span></div>
+      <div class="step"><b>3 · L'éclairage de marque</b><span>Ruban connecté d'un grand écosystème, 132,02 € soldé au 2 oct. 2026. Rien à assembler, application et garantie — vous payez la tranquillité et l'intégration.</span></div>
+    </div>
+    <p>Aucun de ces trois chemins n'est « le bon » : ils ne vendent pas la même chose. Le seul choix vraiment coûteux est d'acheter un ruban bon marché en croyant qu'il se pilotera comme un ruban adressable.</p>
+  </section>
+
+  <section id="checklist" class="switch dyn">
+    <h2>La checklist avant de commander</h2>
+    <ul>
+      <li><strong>Vérifier que le ruban est bien « adressable »</strong> et non simplement « RVB » : cherchez WS2812B (ou SK6812) dans l'annonce. « RVB » seul ne dit rien de l'adressabilité.</li>
+      <li><strong>Compter la consommation :</strong> un ruban 5 m de 150 LED peut tirer jusqu'à 9 A à pleine intensité. Choisissez une alimentation 5 V en conséquence et prévoyez une injection de puissance sur les grandes longueurs.</li>
+      <li><strong>Choisir la bonne carte :</strong> un ESP32 convient pour les effets lourds et les longs rubans ; les ESP8266 bon marché suffisent pour un petit montage. Certaines cartes sont vendues pré-flashées avec WLED.</li>
+      <li><strong>Vérifier le type de ruban :</strong> 30 LED/m pour l'ambiance, 60 ou 144 LED/m pour du détail. L'indice de protection compte : IP30 pour l'intérieur, IP65/IP67 pour l'humidité.</li>
+      <li><strong>Prévoir les connecteurs :</strong> les rubans du commerce sont livrés avec un connecteur JST sur 3 fils, mais pas toujours l'adaptateur pour votre carte. C'est un achat de quelques euros qui bloque un montage.</li>
+      <li><strong>Estimer le montage :</strong> découpe du ruban, alimentation, flashage de la carte, réglage des effets. Une soirée pour la première fois, quelques minutes ensuite.</li>
+      <li><strong>Comparer avant de payer</strong> le total des pièces port compris avec un ruban connecté du moment — le bas de gamme est souvent soldé, et l'écart se resserre.</li>
+    </ul>
+  </section>
+
+  <section id="cta" class="switch dyn">
+    <div class="cta">
+      <h2>Par où commencer, concrètement</h2>
+      <p>Ces liens sont ceux des projets et des vendeurs cités. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez les prix et les spécifications à la source.</p>
+      <ul>
+        <li><strong>Comprendre le projet :</strong> <a href="https://github.com/wled/WLED" rel="nofollow noopener">dépôt public wled/WLED (GitHub)</a> et sa <a href="https://kno.wled.ge/" rel="nofollow noopener">documentation officielle</a> — installation, effets, intégrations.</li>
+        <li><strong>Voir la carte et son prix :</strong> <a href="https://www.kubii.com/fr/recherche?controller=search&amp;s=esp32+wroom" rel="nofollow noopener">carte ESP32-WROOM-32 chez Kubii</a> (14,40 € TTC le 2 octobre 2026).</li>
+        <li><strong>Voir le ruban et son prix :</strong> <a href="https://www.domadoo.fr/fr/esphome/7546-smlight-ruban-led-5m-ws2812b-compatible-wled-slwf-03-slwf-09-esphome.html" rel="nofollow noopener">ruban WS2812B compatible WLED chez Domadoo</a> (à partir de 10,99 € TTC le 2 octobre 2026, plusieurs densités) et <a href="https://www.lextronic.fr/ruban-led-rgb-ws2812b-30stripl5-77682.html" rel="nofollow noopener">ruban WS2812B 5 m / 150 LED chez Lextronic</a> (12,62 € TTC le 2 octobre 2026, version IP67 à 11,78 €).</li>
+        <li><strong>Vérifier l'usage commercial :</strong> la licence du projet est l'EUPL-1.2 — <a href="https://github.com/wled/WLED/blob/main/LICENSE" rel="nofollow noopener">texte de la licence</a>.</li>
+      </ul>
+      <p>Le réflexe qui évite le mauvais achat : lire d'abord la consommation du ruban, choisir l'alimentation en fonction, puis comparer le total port compris avec un ruban connecté du moment. Si votre besoin tient en une couleur fixe, achetez le ruban à 11 € et gardez votre soirée.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="switch dyn">
+    <h2>Questions</h2>
+    <details><summary>Un ruban à 11 € et un montage WLED à 27 € font-ils la même chose ?</summary><p>Non. Le ruban à application éclaire toute la bande d'une couleur à la fois et se pilote via l'application du fabricant ; un ruban adressable piloté par WLED donne une couleur et une animation par LED, sans compte ni cloud. Même lumière possible, contrôle très différent.</p></details>
+    <details><summary>Faut-il savoir programmer ?</summary><p>Non pour l'usage courant. On flashe le firmware depuis un navigateur, puis tout se règle dans l'interface web. Le projet fournit aussi des cartes déjà flashées.</p></details>
+    <details><summary>Quelle alimentation prévoir ?</summary><p>Nous ne donnons pas de prix, faute de l'avoir relevé. La contrainte, elle, est publiée : le ruban de 5 m cité est donné pour 9 A au maximum. Prévoyez une alimentation 5 V capable de tenir l'intensité réelle de votre usage, et une injection de puissance sur les longues bandes.</p></details>
+    <details><summary>WLED fonctionne-t-il sans internet ?</summary><p>Oui. La carte sert elle-même l'interface : tout passe par votre réseau local. Internet ne sert qu'aux mises à jour et à l'intégration à un service domotique distant, si vous le souhaitez.</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Le programme d'affiliation AliExpress est enregistré chez nous comme candidat — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré mis à jour.</p></details>
+  </section>
+
+  <section id="honesty" class="switch dyn">
+    <h2>Comment cette page est faite</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié ici.</strong> Le programme d'affiliation AliExpress est enregistré comme candidat dans nos registres : aucun compte n'est créé et aucun lien n'est posé. Si un lien affilié arrive, il sera étiqueté « lien affilié » à l'endroit où il apparaît, avec <code>rel="sponsored"</code>, et cet encadré sera mis à jour avec la date.</li>
+      <li><strong>Les prix sont ceux que nous avons lus nous-mêmes</strong>, sur les pages des vendeurs ou lors de notre veille, le 2 octobre 2026. Quand un montant vient de notre veille et non d'une relecture directe de la page vendeur, le tableau le signale.</li>
+      <li><strong>Ce que nous ne savons pas est écrit comme tel :</strong> le prix de l'alimentation 5 V n'est pas relevé, donc il n'est estimé nulle part ; le prix d'un ruban à application peut baisser seul, sans nous.</li>
+      <li><strong>Nous ne fabriquons aucun avis, aucun témoignage et aucune statistique.</strong> Les chiffres d'audience du projet (étoiles, forks) viennent de l'interface publique de GitHub, datés.</li>
+      <li><strong>Corrections :</strong> si un prix a changé ou si nous nous sommes trompés, écrivez-nous, nous corrigeons et nous datons la correction.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch dyn">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Dépôt public wled/WLED (description, licence EUPL-1.2, 18 737 étoiles, 4 370 forks, dernière poussée 30 sept. 2026) — lu le 2 octobre 2026 ; documentation kno.wled.ge.</li>
+      <li>Page produit « Carte de développement ESP32-WROOM-32 », Kubii (14,40 € TTC, 12,00 € HT, 120 en stock) — lue et vérifiée le 2 octobre 2026.</li>
+      <li>Page produit « Rubans LED 5M WS2812B compatible WLED », Domadoo, référence SMLIGHT (à partir de 10,99 € TTC, en stock, densités 30/60/74/96/144 LED par mètre, IP30/IP65/IP67) — lue et vérifiée le 2 octobre 2026.</li>
+      <li>Page produit « Ruban LED RGB WS2812B 30STRIPL5 — 5 m, 150 LED, IP30 », Lextronic (12,62 € TTC, 10,52 € HT, disponible, consommation maximale 9 A) — lue le 2 octobre 2026 ; version IP67 (E30STRIPL5) à 11,78 € TTC.</li>
+      <li>Relevé de veille du 2 octobre 2026 : ruban connecté 5 m / 150 LED avec application et télécommande, autour de 10,99 € livré sur Amazon.fr ; éclairage connecté de marque 5 m à 132,02 € soldé (référence 239,99 €). Ces deux montants proviennent de notre propre relevé, pas d'une relecture de la page vendeur le jour de la publication.</li>
+      <li>Photos : ruban LED adressable — John McMaster, CC BY 4.0 ; carte ESP32-WROOM-32 — Ubahnverleih, CC0, via Wikimedia Commons.</li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch dyn">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix et les conditions changent ; confirmez sur la source officielle avant de vous engager.</p>
+    <p>Mis à jour le 2 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
+(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
+/* barre de progression au scroll */
+(function(){
+  var bar = document.getElementById('progress');
+  function frame(){
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    var p = max > 0 ? (d.scrollTop / max) : 0;
+    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+  }
+  var queued = false;
+  window.addEventListener('scroll', function(){
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function(){ queued = false; frame(); });
+  }, {passive:true});
+  window.addEventListener('resize', frame, {passive:true});
+  frame();
+})();
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Éclairage LED adressable DIY (WLED) — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Éclairage LED adressable DIY (WLED)\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<style>
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style>
+</body>
+</html>

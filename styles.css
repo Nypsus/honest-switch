@@ -24,7 +24,7 @@ body {
   font: 16px/1.62 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 26px; }
 
 .skip {
   position: absolute; left: -9999px; top: 0;

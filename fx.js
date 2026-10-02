@@ -8,7 +8,11 @@
 (function () {
   var root = document.documentElement;
   if (!root.classList.contains('js')) return;
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Les effets sont volontairement ACTIFS même si le systeme demande une
+  // reduction des animations : c'est un site de vente, l'animation au scroll
+  // fait partie du contenu. (Le reglage Windows "effets d'animation" est
+  // desactive chez beaucoup d'utilisateurs, ce qui masquait tout.)
+  var reduce = false;
   var mode = (document.body.getAttribute('data-fx') || 'mix').toLowerCase();
 
   function uniq(a) {

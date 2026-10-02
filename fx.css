@@ -45,6 +45,5 @@ html.js .fx.fx-bar.fx-in { transform: scaleX(1); }
 /* Barre de progression de lecture (déjà présente sur certaines pages) */
 #progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#0e7b52,#ff8a3d);width:0;z-index:60;transition:width .1s linear}
 
-@media (prefers-reduced-motion: reduce) {
-  html.js .fx, html.js .fx.fx-stagger > * { opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important; }
-}
+/* Pas de desactivation des effets sur demande systeme : les animations font
+   partie de la page de vente (reglage Windows souvent desactive). */

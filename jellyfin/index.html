@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Serveur multimédia maison 100 % libre (Jellyfin) : zéro abonnement, zéro télémétrie — Honest Switch</title>
+<meta name="description" content="Jellyfin : serveur multimédia libre, sans abonnement ni télémétrie. Prix des mini-PC relevés le 2 oct. 2026 (dès 199 €) et les 4 pièges avant de se lancer.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/jellyfin/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/jellyfin/">
+<meta property="og:title" content="Serveur multimédia maison 100 % libre (Jellyfin) : zéro abonnement, zéro télémétrie">
+<meta property="og:description" content="Prix des mini-PC relevés le 2 octobre 2026, ce que Jellyfin fait (et ne fait pas), et les quatre pièges que les tutoriels sautent.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .cta{border:1.5px solid rgba(14,123,82,.45);border-radius:12px;padding:16px 18px;margin:22px 0;background:#f7faf8}
+  .cta h2{margin:0 0 8px;font-size:1.05rem}
+  .cta ul{margin:8px 0 0;padding-left:18px}
+  .cta li{margin:6px 0}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  @media (prefers-reduced-motion:reduce){
+    .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
+    .arrow{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Jellyfin est-il vraiment gratuit ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui. Jellyfin est publié sous licence libre GPL-2.0 et n'a ni abonnement, ni palier premium, ni télémétrie obligatoire — contrairement à Plex (Plex Pass) et Emby (Emby Premiere), qui réservent certaines fonctions à une offre payante. Le projet est porté par une fondation à but non lucratif ; vous payez éventuellement le matériel, jamais le logiciel."}},
+    {"@type": "Question", "name": "Quel matériel faut-il pour faire tourner un serveur Jellyfin ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Un petit ordinateur toujours allumé suffit : mini-PC Intel N100, NAS récent, vieux PC de bureau, voire un Raspberry Pi pour un usage léger. Les mini-PC N100 relevés le 2 octobre 2026 se situaient entre 199 € (barebone listé chez un revendeur informatique français) et 349 € (Beelink MINI-S12 Pro sur Amazon.fr, 16 Go / 512 Go). Ce que vous payez surtout, c'est la capacité de stockage et la puissance de transcodage."}},
+    {"@type": "Question", "name": "Peut-on lire ses vidéos hors de chez soi avec Jellyfin ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui, mais c'est la partie qui demande le plus de soin. Il faut exposer le serveur de façon sûre (accès distant chiffré, par exemple via un tunnel) et prévoir le débit de votre connexion montante. Beaucoup de tutoriels passent cette étape sous silence alors qu'elle est celle qui décide si ça marche vraiment en déplacement."}},
+    {"@type": "Question", "name": "Jellyfin remplace-t-il Netflix ou Disney+ ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non, et il ne faut pas l'attendre de lui. Jellyfin lit une médiathèque que vous possédez déjà (vos fichiers, vos disques). Il ne fournit aucun catalogue de contenus. En revanche, il remplace très bien le \"paywall\" d'un serveur multimédia comme Plex : vous ne payez plus pour débloquer la lecture de vos propres fichiers."}},
+    {"@type": "Question", "name": "Cette page contient-elle des liens affiliés ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non, aucun à ce jour. Des programmes d'affiliation matériel (Amazon Partenaires France, revendeurs de NAS) sont enregistrés chez nous comme candidats — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté « lien affilié — on est payé si vous souscrivez » à l'endroit où il apparaît, et cet encadré sera daté."}}
+  ]
+}
+</script>
+<link rel="stylesheet" href="/honest-switch/fx.css">
+</head>
+<body data-fx="slide">
+<script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#objet">Ce qu'on achète</a>
+      <a href="#prix">Les prix</a>
+      <a href="#pieges">Les 4 pièges</a>
+      <a href="#chemins">Trois modèles</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero dyn">
+    <p class="kicker">Logiciel libre · aucun lien affilié sur cette page · prix relevés le 2 oct. 2026</p>
+    <h1>Serveur multimédia maison : Jellyfin, sans abonnement ni télémétrie — les prix réels et les pièges</h1>
+
+    <figure class="photo"><img src="../img/jellyfin.jpg" alt="Petit ordinateur à carte unique posé sur une surface claire, des ports visibles sur le côté" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Beaucoup de gens paient un abonnement à un serveur multimédia pour lire les films qu'ils possèdent déjà. <span class="hl">Jellyfin</span> fait la même chose en logiciel libre, sans palier payant, sans télémétrie et sans serveurs centraux : le catalogue que vous lisez est le vôtre. Reste à savoir sur quelle machine le faire tourner — et là, les prix des mini-PC relevés le 2&nbsp;octobre&nbsp;2026 vont de <span class="hl">199&nbsp;€ à 349&nbsp;€</span>.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip">Prix lus le 2 oct. 2026</span>
+      <span class="chip">Licence libre GPL-2.0</span>
+    </p>
+  </section>
+
+  <section id="bref" class="switch dyn">
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><strong>Le logiciel est gratuit.</strong> Jellyfin est publié sous licence libre GPL-2.0 : ni abonnement, ni palier premium, ni télémétrie obligatoire. C'est la différence avec Plex (Plex Pass) et Emby (Emby Premiere), qui gardent des fonctions derrière une offre payante.</li>
+        <li><strong>La machine coûte entre 199 € et 349 €</strong> selon les mini-PC Intel N100 relevés le 2 oct. 2026 (barebone à <span class="hl">199&nbsp;€</span> chez un revendeur informatique français ; Beelink MINI-S12 Pro 16&nbsp;Go/512&nbsp;Go à <span class="hl">235,95&nbsp;€</span> et <span class="hl">349&nbsp;€</span>).</li>
+        <li><strong>Ce que Jellyfin fait :</strong> diffuser films, séries, musique, photos et TV en direct depuis <em>votre</em> médiathèque vers téléphones, TV et navigateurs, sur votre réseau et à distance.</li>
+        <li><strong>Ce qu'il ne fait pas :</strong> il n'apporte aucun catalogue de contenus. Si vous n'avez pas les fichiers, Jellyfin n'a rien à lire. Ce n'est pas un « Netflix gratuit ».</li>
+        <li><strong>Ce qui décide du budget final :</strong> le stockage (disques, sauvegarde) et la puissance de transcodage — deux postes que nous n'avons pas chiffrés et qui n'apparaissent donc dans aucun total ici.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="objet" class="switch dyn">
+    <h2>Un serveur multimédia, ce n'est pas un abonnement de plus</h2>
+    <p>Un serveur multimédia ne fait qu'une chose : il prend des fichiers vidéo et audio que <strong>vous possédez</strong> et les re-sert proprement vers vos appareils — avec jaquettes, résumés, reprise de lecture. Le « serveur » est donc un petit ordinateur chez vous, et le « client » est votre téléphone, votre TV ou votre navigateur.</p>
+    <p>La question n'est pas « quel logiciel », mais « combien je paie pour lire mes propres fichiers ». Les trois grandes familles se distinguent presque uniquement là-dessus :</p>
+    <div class="quotebox">
+      Jellyfin — <strong>libre</strong> (GPL-2.0), aucune offre payante, aucune télémétrie obligatoire.<br>
+      Plex — gratuit à l'entrée, mais <strong>Plex Pass</strong> pour certaines fonctions.<br>
+      Emby — gratuit à l'entrée, mais <strong>Emby Premiere</strong> pour certaines fonctions.
+      <span class="qsrc">Comparaison des modèles de financement de chacun des trois projets, constatés sur leurs propres pages le 1er–2 octobre 2026. Les trois lisent votre médiathèque ; seuls Plex et Emby appliquent un palier payant.</span>
+    </div>
+    <p>Autrement dit : Jellyfin ne « remplace » Plex que si ce que vous appréciez chez Plex est le streaming de vos fichiers. Il ne remplace ni Netflix, ni Disney+, ni Prime Video — il n'apporte aucun contenu. C'est le point que les tutoriels enthousiastes oublient de dire clairement.</p>
+  </section>
+
+  <section id="prix" class="switch dyn">
+    <h2>Les prix : ce qui est lu, où, et quand</h2>
+    <p>Les montants ci-dessous concernent la <strong>machine qui fait tourner Jellyfin</strong>. Nous avons pris le cas le plus courant — un mini-PC Intel N100, le format recommandé pour un serveur discret et sobre en énergie — et nous avons relevé les prix le 2 octobre 2026 chez trois vendeurs.</p>
+    <div class="chartbox">
+      <h3>Mini-PC pour serveur Jellyfin (€ TTC, relevés le 2 oct. 2026)</h3>
+      <svg viewBox="0 0 720 240" role="img" aria-label="Graphique à barres, prix relevés le 2 octobre 2026 : barebone N100 199 euros, Beelink Mini S12 Pro chez powerplanetonline 235,95 euros, Beelink Mini S12 Pro sur Amazon France 349 euros">
+        <title>Prix des mini-PC relevés le 2 octobre 2026</title>
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12" fill="#57523f">
+          <text x="70" y="30">Barebone N100 — revendeur informatique FR</text>
+          <rect x="70" y="36" width="296" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="374" y="50" fill="#0e7b52" font-weight="700">dès 199,00 €</text>
+
+          <text x="70" y="96">Beelink Mini S12 Pro 16/512 — powerplanetonline</text>
+          <rect x="70" y="102" width="352" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="430" y="116" fill="#0e7b52" font-weight="700">235,95 €</text>
+
+          <text x="70" y="162">Beelink MINI-S12 Pro — Amazon.fr (Amazon's Choice)</text>
+          <rect x="70" y="168" width="520" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="598" y="182" fill="#0e7b52" font-weight="700">349,00 €</text>
+        </g>
+      </svg>
+      <p class="footnote">Barres proportionnelles aux montants ci-dessus, base à zéro. Prix TTC affichés, relevés le 2 octobre 2026 par notre veille commerce. Ils n'incluent ni le stockage (disques) ni une éventuelle remise : le prix d'un mini-PC bouge souvent d'une semaine à l'autre, c'est pourquoi nous le datons.</p>
+    </div>
+    <table>
+      <thead><tr><th>Où</th><th>Quoi</th><th>Prix relevé le 2 oct. 2026</th><th>Ce que le prix ne comprend pas</th></tr></thead>
+      <tbody>
+        <tr><td>Revendeur informatique français (LDLC)</td><td>Barebone mini-PC Intel N100 (catégorie N-series), sans mémoire ni disque</td><td><strong>dès 199,00 €</strong> TTC</td><td>RAM, SSD, système — à ajouter soi-même</td></tr>
+        <tr><td>powerplanetonline.com</td><td>Beelink Mini S12 Pro — 16 Go RAM / 512 Go SSD (promo annoncée −26 %)</td><td><strong>235,95 €</strong> TTC <em>(livraison dès 9,86 €, garantie 3 ans)</em></td><td>le stockage de masse (disques externes), la sauvegarde</td></tr>
+        <tr><td>Amazon.fr</td><td>Beelink MINI-S12 Pro — listing « Amazon's Choice », 610 avis (4,5/5)</td><td><strong>349,00 €</strong></td><td>idem</td></tr>
+      </tbody>
+    </table>
+    <p>La lecture honnête de ce tableau : un même mini-PC peut coûter <strong>235,95 €</strong> chez un revendeur et <strong>349 €</strong> sur la place de marché le même jour, soit près de <strong>113 € d'écart</strong>. Le « Amazon's Choice » ne veut pas dire « au meilleur prix ». Comme toujours, comparez le jour de l'achat — et notez que le barebone le moins cher n'inclut ni mémoire ni disque : son prix réel est plus élevé que les 199 € affichés.</p>
+  </section>
+
+  <section id="pieges" class="switch dyn">
+    <h2>Les quatre pièges que les tutoriels sautent</h2>
+
+    <h3>1. Le transcodage est le vrai poste de dépense</h3>
+    <p>Quand le format du fichier ne correspond pas à ce que l'appareil sait lire, le serveur doit <em>transcoder</em> la vidéo à la volée — c'est-à-dire la convertir en direct, ce qui consomme énormément de CPU. Beaucoup de mini-PC d'entrée de gamme le font mal. La puce graphique intégrée des processeurs Intel récents sait accélérer cette étape, mais tous les modèles N100 ne l'exploitent pas de la même façon. Autrement dit : le critère n'est pas « combien de cœurs », c'est « le transcodage matériel est-il pris en charge ». Vérifiez ce point <em>avant</em> de commander, pas après.</p>
+
+    <h3>2. « Toujours allumé » a un prix qu'on ne voit pas</h3>
+    <p>Un serveur multimédia tourne en permanence. Un mini-PC Intel N100 consomme peu — c'est justement sa raison d'être — mais ce n'est pas zéro, et surtout : un disque externe qui tourne 24 h/24 s'use. Les tutoriels montrent le montage, pas la facture d'électricité ni la durée de vie des disques. Nous n'avons pas chiffré ces deux postes, donc ils n'apparaissent dans aucun total ici.</p>
+
+    <h3>3. L'accès à distance est la partie que personne ne montre</h3>
+    <p>Lire ses vidéos chez soi est facile. Les lire depuis l'extérieur est une autre histoire : il faut exposer le serveur de façon sûre, ce qui passe en général par un accès chiffré (tunnel) plutôt que par l'ouverture d'un port. C'est l'étape où beaucoup de débutants renoncent — ou, pire, exposent leur serveur sans protection. La bonne question avant d'acheter le matériel n'est donc pas « quelle puissance », mais « comment je veux y accéder dehors ».</p>
+
+    <figure class="photo"><img src="../img/jellyfin-2.jpg" alt="Téléviseur allumé dans un salon, posé sur un meuble bas entre deux lampadaires" loading="lazy" width="1400" height="800">
+      <figcaption>Le résultat visé : votre médiathèque servie sur la TV du salon. Mais le vrai travail se passe côté serveur — accès distant, transcodage, stockage. Photo libre — PattayaPatrol, CC BY-SA 4.0, via Wikimedia Commons.</figcaption>
+    </figure>
+
+    <h3>4. « Zéro télémétrie » ne veut pas dire « zéro configuration »</h3>
+    <p>Le discours du logiciel libre insiste sur la vie privée : pas de compte obligatoire, pas de serveurs centraux, pas de suivi. C'est exact, et c'est un vrai argument. Mais cela signifie aussi que <em>vous</em> êtes l'administrateur : mises à jour, sauvegardes, sécurité des accès, réparation si un disque lâche. Ce n'est pas une raison de ne pas le faire — c'est une raison de savoir dans quoi on s'engage.</p>
+  </section>
+
+  <section id="chemins" class="switch dyn">
+    <h2>Trois chemins, selon la machine que vous avez déjà</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Un mini-PC neuf (le plus simple)</b><span>Un N100 à ~199–349 € selon le vendeur. Silencieux, sobre, taillé pour tourner 24 h/24. Le chemin le plus direct si vous partez de zéro.</span></div>
+      <div class="step"><b>2 · Un NAS que vous avez déjà</b><span>Beaucoup de NAS récents font tourner des conteneurs, donc Jellyfin. Coût immédiat : zéro. Mais les modèles d'entrée de gamme — et les anciens — manquent de puissance pour transcoder. Vérifiez la compatibilité avant de compter dessus.</span></div>
+      <div class="step"><b>3 · Un vieux PC de bureau</b><span>Le moins cher au départ, le plus gourmand ensuite : plus bruyant, plus énergivore, souvent sans accélération matérielle récente. Bon pour essayer avant d'acheter mieux.</span></div>
+    </div>
+    <p>Aucun de ces trois n'est « le bon » : ils ne répondent pas à la même situation. Le seul achat regrettable est un mini-PC choisi sans avoir vérifié <em>le transcodage matériel</em> et <em>la façon dont vous accéderez au serveur depuis dehors</em>.</p>
+  </section>
+
+  <section id="checklist" class="switch dyn">
+    <h2>La checklist avant d'acheter</h2>
+    <ul>
+      <li><strong>Décidez d'abord comment vous lirez dehors.</strong> Réseau local seulement, ou accès distant chiffré ? Cette réponse conditionne la configuration, pas le prix.</li>
+      <li><strong>Vérifiez le transcodage matériel</strong> de la machine visée, pas seulement sa mémoire ou son nombre de cœurs : c'est lui qui décide si une vidéo passe ou saccade.</li>
+      <li><strong>Comptez le stockage à part.</strong> Le mini-PC ne suffit pas : vos fichiers vivent sur des disques. Nous n'avons pas chiffré ce poste, il n'est donc dans aucun total ici.</li>
+      <li><strong>Prévoyez une sauvegarde.</strong> Un disque unique qui lâche, c'est toute la médiathèque perdue — le logiciel ne s'en occupe pas à votre place.</li>
+      <li><strong>Comparez le prix le jour de l'achat.</strong> Le même mini-PC variait de 235,95 € à 349 € le 2 octobre 2026 selon le vendeur.</li>
+      <li><strong>Ne payez pas pour « débloquer » vos propres fichiers.</strong> C'est précisément ce que Jellyfin évite : le logiciel est libre et gratuit, le seul coût est le matériel.</li>
+    </ul>
+  </section>
+
+  <section id="cta" class="switch dyn">
+    <div class="cta">
+      <h2>Par où commencer, concrètement</h2>
+      <p>Ces liens sont ceux du projet libre et des sources. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez à la source.</p>
+      <ul>
+        <li><strong>Le projet :</strong> <a href="https://jellyfin.org/" rel="nofollow noopener">jellyfin.org</a> — téléchargements et documentation officielle.</li>
+        <li><strong>Le code :</strong> dépôt <a href="https://github.com/jellyfin/jellyfin" rel="nofollow noopener">jellyfin/jellyfin</a> sur GitHub (GPL-2.0).</li>
+        <li><strong>Le choix du matériel :</strong> la documentation du projet détaille le transcodage matériel — lisez-la avant de commander un mini-PC.</li>
+        <li><strong>Comparer les modèles :</strong> les prix exacts d'un mini-PC changent chaque semaine ; vérifiez chez plusieurs vendeurs le jour J.</li>
+      </ul>
+      <p>Le réflexe qui évite l'achat inutile : choisir d'abord <em>comment vous accéderez au serveur</em> et <em>ce que vous voulez transcoder</em>, et seulement ensuite comparer les machines.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="switch dyn">
+    <h2>Questions</h2>
+    <details><summary>Jellyfin est-il vraiment gratuit ?</summary><p>Oui. Licence libre GPL-2.0, aucun abonnement, aucun palier premium, pas de télémétrie obligatoire. Plex (Plex Pass) et Emby (Emby Premiere) réservent au contraire certaines fonctions à une offre payante.</p></details>
+    <details><summary>Quel matériel faut-il ?</summary><p>Un petit ordinateur toujours allumé. Les mini-PC Intel N100 relevés le 2 octobre 2026 allaient de 199 € à 349 €. Un NAS récent ou un vieux PC peuvent aussi convenir, selon la puissance de transcodage.</p></details>
+    <details><summary>Peut-on le regarder hors de chez soi ?</summary><p>Oui, mais c'est la partie délicate : il faut un accès distant chiffré et assez de débit montant. C'est ce point qui décide du confort en déplacement, pas la puissance brute de la machine.</p></details>
+    <details><summary>Est-ce un « Netflix gratuit » ?</summary><p>Non. Jellyfin ne fournit aucun catalogue : il lit les fichiers que vous possédez déjà. C'est son intérêt (vous ne payez pas pour lire vos propres fichiers) et sa limite (sans fichiers, il n'a rien à lire).</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Des programmes matériel (Amazon Partenaires France, revendeurs de NAS) sont enregistrés chez nous comme candidats — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré daté.</p></details>
+  </section>
+
+  <section id="honesty" class="switch dyn">
+    <h2>Comment cette page est faite</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié ici.</strong> Nous avons vérifié les programmes d'affiliation matériel (Amazon Partenaires France, revendeurs de NAS) : ils sont enregistrés chez nous comme <em>candidats</em> — aucun compte créé, aucun lien posé. Si un lien affilié arrive un jour, il sera étiqueté « lien affilié — on est payé si vous souscrivez » avec <code>rel="sponsored"</code>, et cet encadré sera daté.</li>
+      <li><strong>Les prix sont ceux relevés par notre veille le 2 octobre 2026</strong> chez trois vendeurs, prix TTC affichés. Ils bougent vite — c'est pourquoi chaque montant porte sa date.</li>
+      <li><strong>Ce que nous ne savons pas est écrit comme tel :</strong> le prix des disques et de la sauvegarde, la consommation électrique, et la commission nette d'un éventuel programme d'affiliation. Rien de tout cela n'apparaît dans un total.</li>
+      <li><strong>Les affirmations sur les logiciels</strong> (Jellyfin libre GPL-2.0 sans palier payant ; Plex Pass ; Emby Premiere) proviennent de leurs propres pages, lues les 1er–2 octobre 2026.</li>
+      <li><strong>Nous ne fabriquons aucun avis, aucun témoignage et aucune statistique.</strong> Le chiffre d'audience du projet (étoiles GitHub, commits) est ce que GitHub affiche publiquement, et il est daté.</li>
+      <li><strong>Corrections :</strong> si un prix a changé ou si nous nous sommes trompés, écrivez-nous, nous corrigeons et nous datons la correction.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch dyn">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Dépôt GitHub <em>jellyfin/jellyfin</em> — 57 675 étoiles, 30 090 commits, 5 576 forks, licence GPL-2.0 (consultés via l'API GitHub le 2 octobre 2026).</li>
+      <li>Site officiel du projet Jellyfin — modèle de financement (logiciel libre, aucun palier payant, aucune télémétrie imposée) — lu le 2 octobre 2026.</li>
+      <li>Pages officielles Plex (Plex Pass) et Emby (Emby Premiere) — existence d'une offre payante — lues les 1er–2 octobre 2026.</li>
+      <li>Prix des mini-PC relevés le 2 octobre 2026 : barebone Intel N100 dès 199 € (revendeur informatique français, catégorie N-series) ; Beelink Mini S12 Pro 16 Go / 512 Go à 235,95 € TTC (powerplanetonline.com, livraison dès 9,86 €, promo annoncée −26 %) ; Beelink MINI-S12 Pro à 349 € (Amazon.fr, mention « Amazon's Choice », 610 avis).</li>
+      <li>Photos : petit ordinateur à carte unique — Laserlicht, CC BY-SA 4.0 ; téléviseur dans un salon — PattayaPatrol, CC BY-SA 4.0. Toutes deux via Wikimedia Commons.</li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch dyn">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix et les conditions changent ; confirmez sur la source officielle avant de vous engager.</p>
+    <p>Mis à jour le 2 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/fx.js" defer></script>
+<script src="/honest-switch/counter.js" defer></script>
+
+<script>
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Jellyfin (serveur multimédia maison) — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Jellyfin (serveur multimédia maison)\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec le message pré-rempli — envoyez-le. Nous vérifions et publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<style>
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style>
+</body>
+</html>

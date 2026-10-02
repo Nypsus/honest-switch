@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Frigate — caméras sans abonnement : le NVR local face au coût de Ring Protect — Honest Switch</title>
+<meta name="description" content="Frigate (NVR local libre, licence MIT) : détection par IA chez vous, zéro abonnement. Coût de Ring Protect relevé le 2 oct. 2026 et les pièges du montage.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/frigate/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/frigate/">
+<meta property="og:title" content="Frigate — caméras sans abonnement : le NVR local face au coût de Ring Protect">
+<meta property="og:description" content="Le coût réel des abonnements caméras, ce que Frigate fait en local, et les pièges d'un NVR auto-hébergé.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .cta{border:1.5px solid rgba(14,123,82,.45);border-radius:12px;padding:16px 18px;margin:22px 0;background:#f7faf8}
+  .cta h2{margin:0 0 8px;font-size:1.05rem}
+  .cta ul{margin:8px 0 0;padding-left:18px}
+  .cta li{margin:6px 0}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  @media (prefers-reduced-motion:reduce){
+    .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
+    .arrow{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Frigate est-il vraiment gratuit ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Le logiciel principal, oui : Frigate est publié sous licence libre MIT et s'installe chez vous, sans abonnement. À distinguer d'un service optionnel du même projet, « Frigate+ » (abonnement à 50 $/an, relevé le 2 octobre 2026), qui fournit des modèles de détection affinés. Frigate fonctionne sans Frigate+ : c'est un extra, pas une obligation."}},
+    {"@type": "Question", "name": "Combien coûte un abonnement Ring comparé à un NVR local ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Chez Ring, l'offre d'entrée « Ring Protect Solo » était à 3,99 €/mois, soit 39,99 €/an PAR appareil (relevé le 2 octobre 2026 sur ring.com/fr), avec des options payantes en plus (reconnaissance IA à 4 €/mois par caméra, enregistrement continu à 3 €/mois). Multiplié par le nombre de caméras, l'abonnement grimpe vite. Un NVR local comme Frigate n'a pas d'abonnement : vous payez les caméras et la machine, une fois."}},
+    {"@type": "Question", "name": "Faut-il des caméras Reolink avec Frigate ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non, mais Reolink est le partenaire officiellement mis en avant par la documentation de Frigate (section « Reolink Cameras »). Frigate fonctionne avec de nombreuses caméras compatibles ONVIF/RTSP. Le choix de la marque conditionne surtout la qualité du flux et la facilité de configuration, pas le logiciel lui-même."}},
+    {"@type": "Question", "name": "Un NVR local est-il plus sûr qu'un service cloud ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Sur la vie privée, oui : la vidéo ne part pas chez un tiers. Sur la robustesse, non, pas automatiquement : un enregistreur chez vous peut être volé, endommagé ou voir son disque lâcher — c'est justement le scénario qu'un cloud couvre. La bonne pratique est de conserver au moins une copie des séquences importantes ailleurs qu'à côté de l'enregistreur."}},
+    {"@type": "Question", "name": "Cette page contient-elle des liens affiliés ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non, aucun à ce jour. Le programme d'affiliation Reolink (via Awin) est enregistré chez nous comme candidat — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté « lien affilié — on est payé si vous souscrivez » à l'endroit où il apparaît, et cet encadré sera daté."}}
+  ]
+}
+</script>
+<link rel="stylesheet" href="/honest-switch/fx.css">
+</head>
+<body data-fx="slide">
+<script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#objet">Ce qu'on achète</a>
+      <a href="#prix">Les prix</a>
+      <a href="#pieges">Les 4 pièges</a>
+      <a href="#chemins">Trois modèles</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero dyn">
+    <p class="kicker">Logiciel libre · aucun lien affilié sur cette page · prix relevés le 2 oct. 2026</p>
+    <h1>Caméras sans abonnement : Frigate garde la vidéo chez vous — ce que ça coûte vraiment face à Ring</h1>
+
+    <figure class="photo"><img src="../img/frigate.jpg" alt="Caméra de surveillance fixe montée sur un mur de brique, objectif orienté vers la gauche" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Les caméras connectées ont un piège : l'appareil ne coûte presque rien, mais <em>voir</em> ce qu'il filme devient un abonnement. Chez Ring, l'offre d'entrée est à <span class="hl">39,99&nbsp;€/an par appareil</span> (relevé le 2&nbsp;oct.&nbsp;2026), avec des options payantes par-dessus. <strong>Frigate</strong>, logiciel libre, enregistre et analyse la vidéo sur <em>votre</em> machine, sans abonnement. Reste à savoir ce que ce « sans abonnement » déplace comme dépense et comme responsabilité.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip">Prix lus le 2 oct. 2026</span>
+      <span class="chip">Licence libre MIT</span>
+    </p>
+  </section>
+
+  <section id="bref" class="switch dyn">
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><strong>Le logiciel est gratuit.</strong> Frigate est publié sous licence libre MIT : il tourne chez vous, sans abonnement. (Le projet propose aussi un service optionnel, « Frigate+ », à <span class="hl">50&nbsp;$/an</span> — un extra, pas une obligation.)</li>
+        <li><strong>L'abonnement Ring</strong> (relevé le 2 oct. 2026 sur ring.com/fr) : « Ring Protect Solo » à <span class="hl">3,99&nbsp;€/mois</span>, facturé <span class="hl">39,99&nbsp;€/an par appareil</span> — <em>par caméra</em>, pas par foyer. Options en plus : IA +4 €/mois/caméra, enregistrement continu +3 €/mois.</li>
+        <li><strong>Ce qu'il faut acheter à la place :</strong> des caméras compatibles (Reolink est le partenaire officiellement documenté par Frigate) et une petite machine pour enregistrer. Nous n'avons pas chiffré ces postes, donc ils n'apparaissent dans aucun total ici.</li>
+        <li><strong>Ce que fait Frigate :</strong> enregistrement continu, détection d'objets par IA (personne, voiture, animal…), recherche dans les séquences, alertes — le tout en local, sans que la vidéo quitte votre réseau.</li>
+        <li><strong>Ce qu'il ne fait pas :</strong> il ne remplace pas la redondance d'un cloud. Un enregistreur chez vous peut être volé ou perdre son disque — c'est le scénario qu'un service distant couvre.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="objet" class="switch dyn">
+    <h2>« Caméra connectée » ne veut pas dire « vidéo chez vous »</h2>
+    <p>Une caméra grand public envoie par défaut ses images vers un service distant, et c'est ce service qu'on paie. Un <strong>NVR</strong> (enregistreur vidéo réseau) fait l'inverse : il prend le flux des caméras et l'enregistre sur une machine locale. Frigate est un NVR logiciel : il tourne sur votre matériel, il analyse les images sur place (détection de personnes, véhicules), et il n'envoie rien à un tiers.</p>
+    <p>La question n'est donc pas « quelle caméra est la meilleure », mais « qui garde l'enregistrement, et qui paie pour le regarder » :</p>
+    <div class="quotebox">
+      <strong>Modèle par abonnement</strong> — la caméra est peu chère, l'accès à l'enregistrement est mensuel et facturé <em>par appareil</em>. Vous payez tant que vous voulez regarder.<br><br>
+      <strong>Modèle local</strong> — vous achetez les caméras et la machine, une fois. Aucun abonnement pour <em>regarder</em> vos propres enregistrements. En échange, l'installation, la sécurité et la sauvegarde sont à votre charge.
+      <span class="qsrc">Comparaison des deux modèles, établie le 2 octobre 2026. Les montants cités proviennent des pages publiques des fournisseurs ; les prix des caméras et de la machine ne sont pas chiffrés ici.</span>
+    </div>
+    <p>Autrement dit : Frigate n'est pas « gratuit », il est <strong>sans abonnement</strong>. Le paiement se déplace vers le matériel et vers le temps que vous passez à l'administrer.</p>
+  </section>
+
+  <section id="prix" class="switch dyn">
+    <h2>Les prix : l'abonnement qui grimpe avec le nombre de caméras</h2>
+    <p>Le point que les fiches produit n'affichent pas en grand : chez Ring, l'abonnement se paie <strong>par appareil</strong>. Une maison avec trois caméras ne paie pas une fois, mais trois fois. Voici le coût annuel de l'offre d'entrée, multiplié par le nombre de caméras (à partir du prix relevé sur ring.com/fr le 2 oct. 2026).</p>
+    <div class="chartbox">
+      <h3>Ring Protect Solo — coût annuel selon le nombre de caméras (€/an, base au 2 oct. 2026)</h3>
+      <svg viewBox="0 0 720 240" role="img" aria-label="Graphique à barres : Ring Protect Solo coûte 39,99 euros par an pour une caméra, 79,98 euros par an pour deux caméras, 119,97 euros par an pour trois caméras, d'après un prix de 3,99 euros par mois et par appareil relevé le 2 octobre 2026">
+        <title>Coût annuel de Ring Protect Solo selon le nombre de caméras</title>
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12" fill="#57523f">
+          <text x="70" y="30">1 caméra — 3,99 €/mois</text>
+          <rect x="70" y="36" width="173" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="251" y="50" fill="#0e7b52" font-weight="700">39,99 €/an</text>
+
+          <text x="70" y="96">2 caméras — 7,98 €/mois</text>
+          <rect x="70" y="102" width="347" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="425" y="116" fill="#0e7b52" font-weight="700">79,98 €/an</text>
+
+          <text x="70" y="162">3 caméras — 11,97 €/mois</text>
+          <rect x="70" y="168" width="520" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="598" y="182" fill="#0e7b52" font-weight="700">119,97 €/an</text>
+        </g>
+      </svg>
+      <p class="footnote">Barres proportionnelles aux montants ci-dessus, base à zéro. Prix de base relevé le 2 octobre 2026 sur ring.com/fr (« Ring Protect Solo », 3,99 €/mois), multiplié par le nombre de caméras puis par 12. Il ne comprend PAS les options payantes supplémentaires (reconnaissance IA, enregistrement continu) ni le prix des caméras elles-mêmes.</p>
+    </div>
+    <table>
+      <thead><tr><th>Où</th><th>Quoi</th><th>Prix relevé le 2 oct. 2026</th><th>Ce que le prix ne comprend pas</th></tr></thead>
+      <tbody>
+        <tr><td>ring.com/fr</td><td>Ring Protect Solo — offre d'entrée</td><td><strong>3,99 €</strong>/mois <em>(39,99 €/an)</em> <strong>par appareil</strong></td><td>les caméras ; les options IA et enregistrement continu</td></tr>
+        <tr><td>ring.com/fr</td><td>Option reconnaissance IA</td><td><strong>+4 €</strong>/mois par caméra</td><td>—</td></tr>
+        <tr><td>ring.com/fr</td><td>Option enregistrement continu</td><td><strong>+3 €</strong>/mois</td><td>—</td></tr>
+        <tr><td>frigate.video/plus</td><td>Frigate+ (service <em>optionnel</em> de modèles affinés)</td><td><strong>50 $</strong>/an</td><td>n'est pas requis pour utiliser Frigate</td></tr>
+      </tbody>
+    </table>
+    <p>La lecture honnête : le « sans abonnement » de Frigate est réel pour <em>regarder</em> ses enregistrements, mais il ne signifie pas « coût zéro ». Vous achetez des caméras et une machine, et Frigate+ (50 $/an) reste un extra facultatif. Ce que vous économisez, c'est la mensualité <em>par caméra</em> — et c'est elle qui grimpe dès que le nombre d'appareils augmente.</p>
+  </section>
+
+  <section id="pieges" class="switch dyn">
+    <h2>Les quatre pièges d'un NVR local</h2>
+
+    <h3>1. La détection par IA demande de la puissance</h3>
+    <p>Frigate ne se contente pas d'enregistrer : il analyse les images pour distinguer une personne d'un chat ou d'une branche qui bouge. Cette analyse consomme des ressources, et sur une petite machine elle peut saturer. C'est ce qui décide si votre installation est fluide ou si elle « rate » les détections. Les tutoriels montrent l'interface ; ils parlent rarement du matériel d'analyse qu'elle exige.</p>
+
+    <h3>2. La marque des caméras change tout à la configuration</h3>
+    <p>Frigate fonctionne avec des caméras compatibles ONVIF/RTSP, mais la documentation officielle consacre une section entière à <strong>Reolink</strong> — c'est le partenaire mis en avant, avec des réglages éprouvés. Choisir une caméra hors de ce qui est documenté, c'est accepter de chercher soi-même les bons paramètres. Le logiciel est libre ; la compatibilité, elle, se mérite.</p>
+
+    <h3>3. Le local n'est pas « plus sûr » automatiquement</h3>
+    <p>C'est l'illusion symétrique de celle du cloud. Garder la vidéo chez soi protège la <em>vie privée</em> — les images ne partent pas chez un tiers. Mais un enregistreur posé dans la maison est exactement ce qu'un cambrioleur emporte : il contient les preuves de son passage. Il faut donc conserver certaines séquences ailleurs, ce qu'un abonnement cloud faisait pour vous.</p>
+
+    <figure class="photo"><img src="../img/frigate-2.jpg" alt="Installation de plusieurs caméras de surveillance fixées à une façade" loading="lazy" width="1400" height="800">
+      <figcaption>Un parc de caméras se compte en appareils — et chez les offres par abonnement, la facture aussi. C'est là que le calcul bascule. Photo libre — CC BY 4.0, via Wikimedia Commons.</figcaption>
+    </figure>
+
+    <h3>4. L'accès à distance est la partie que personne ne montre</h3>
+    <p>Consulter ses caméras depuis chez soi est simple. Depuis l'extérieur, c'est une autre affaire : il faut exposer le serveur de façon sûre, ce qui passe en général par un accès chiffré plutôt que par l'ouverture d'un port sur Internet. C'est précisément l'étape où une installation mal protégée devient une caméra publique. Réglez ce point avant de brancher la première caméra.</p>
+  </section>
+
+  <section id="chemins" class="switch dyn">
+    <h2>Trois chemins, selon votre situation</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Un NVR local (le plus complet)</b><span>Caméras compatibles + une machine qui enregistre et analyse. Zéro abonnement pour regarder. À choisir si vous voulez la maîtrise totale et que vous savez administrer un serveur.</span></div>
+      <div class="step"><b>2 · Local + un peu de cloud</b><span>Frigate pour l'enregistrement et la détection, et une sauvegarde d'une partie des séquences hors du logement. Le meilleur des deux, mais deux choses à gérer au lieu d'une.</span></div>
+      <div class="step"><b>3 · Rester sur l'abonnement (et assumer)</b><span>Si l'installation et la sécurité ne vous tentent pas, payer 39,99 €/an par caméra reste défendable : le service est maintenu pour vous. « Libre » ne veut pas dire « mieux pour tout le monde ».</span></div>
+    </div>
+    <p>Aucun de ces trois n'est « le bon » : ils ne répondent pas à la même situation. Le seul choix regrettable est d'installer un NVR local <em>sans sauvegarde externe des séquences importantes</em> — c'est le moyen de perdre ses preuves au moment précis où elles serviraient.</p>
+  </section>
+
+  <section id="checklist" class="switch dyn">
+    <h2>La checklist avant d'installer</h2>
+    <ul>
+      <li><strong>Comptez par caméra, pas par foyer.</strong> L'abonnement d'entrée chez Ring est facturé par appareil : 39,99 €/an × le nombre de caméras.</li>
+      <li><strong>Vérifiez la puissance d'analyse.</strong> La détection par IA est le poste le plus exigeant ; dimensionnez la machine pour ça, pas seulement pour l'enregistrement.</li>
+      <li><strong>Restez sur des caméras documentées.</strong> Reolink est le partenaire mis en avant par la documentation de Frigate ; hors de cette liste, comptez du temps de réglage.</li>
+      <li><strong>Prévoyez une sauvegarde hors du logement</strong> pour les séquences qui comptent : un enregistreur local peut être volé.</li>
+      <li><strong>Réglez l'accès distant</strong> avant de brancher : consultation locale seulement, ou accès chiffré depuis l'extérieur ?</li>
+      <li><strong>Sachez que Frigate+ est optionnel.</strong> Le logiciel fonctionne sans l'abonnement de 50 $/an ; n'ajoutez-le que si vous voulez des modèles affinés.</li>
+    </ul>
+  </section>
+
+  <section id="cta" class="switch dyn">
+    <div class="cta">
+      <h2>Par où commencer, concrètement</h2>
+      <p>Ces liens sont ceux du projet et des sources. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez à la source.</p>
+      <ul>
+        <li><strong>Le projet :</strong> <a href="https://frigate.video/" rel="nofollow noopener">frigate.video</a> — présentation et documentation officielles.</li>
+        <li><strong>Le code :</strong> dépôt <a href="https://github.com/blakeblackshear/frigate" rel="nofollow noopener">blakeblackshear/frigate</a> sur GitHub (MIT).</li>
+        <li><strong>Les caméras compatibles :</strong> la <a href="https://docs.frigate.video/configuration/camera_specific/" rel="nofollow noopener">documentation « Cameras »</a> détaille les marques prises en charge, dont Reolink.</li>
+        <li><strong>Le service optionnel :</strong> <a href="https://frigate.video/plus/" rel="nofollow noopener">Frigate+</a>, si vous voulez des modèles affinés.</li>
+      </ul>
+      <p>Le réflexe qui évite la mauvaise surprise : régler d'abord <em>l'accès distant</em> et <em>la sauvegarde des séquences importantes</em>, et seulement ensuite comparer les caméras et les machines.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="switch dyn">
+    <h2>Questions</h2>
+    <details><summary>Frigate est-il vraiment gratuit ?</summary><p>Le logiciel principal oui, sous licence MIT. Le projet propose aussi un service optionnel, Frigate+ (50 $/an relevé le 2 octobre 2026), pour des modèles affinés — mais Frigate fonctionne sans lui.</p></details>
+    <details><summary>Combien coûte Ring comparé à un NVR local ?</summary><p>Chez Ring (relevé le 2 octobre 2026) : 3,99 €/mois, soit 39,99 €/an <em>par appareil</em>, plus les options (IA +4 €/mois/caméra, enregistrement continu +3 €/mois). Un NVR local n'a pas d'abonnement : vous payez caméras et machine, une fois.</p></details>
+    <details><summary>Faut-il des caméras Reolink ?</summary><p>Non, mais Reolink est le partenaire officiellement documenté par Frigate. D'autres marques compatibles ONVIF/RTSP fonctionnent, avec parfois plus de réglages à faire soi-même.</p></details>
+    <details><summary>Un NVR local est-il plus sûr ?</summary><p>Pour la vie privée, oui. Pour la robustesse, non, pas automatiquement : un enregistreur chez vous peut être volé ou perdre son disque. Gardez une copie des séquences importantes ailleurs.</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Le programme d'affiliation Reolink (via Awin) est enregistré chez nous comme candidat — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré daté.</p></details>
+  </section>
+
+  <section id="honesty" class="switch dyn">
+    <h2>Comment cette page est faite</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié ici.</strong> Le programme d'affiliation de Reolink (via le réseau Awin, commission échelonnée et cookie de 30 jours) a été relevé le 2 octobre 2026. Il est enregistré chez nous comme <em>candidat</em> : aucun compte créé, aucun lien posé. Si un lien affilié arrive un jour, il sera étiqueté « lien affilié — on est payé si vous souscrivez » avec <code>rel="sponsored"</code>, et cet encadré sera daté.</li>
+      <li><strong>Les prix Ring</strong> (3,99 €/mois par appareil, options à 4 € et 3 €/mois) ont été relevés sur ring.com/fr le 2 octobre 2026. Le prix de Frigate+ (50 $/an) provient de la page officielle du projet (frigate.video/plus), relevée le même jour.</li>
+      <li><strong>Ce que nous ne savons pas est écrit comme tel :</strong> le prix des caméras, le prix de la machine d'analyse, et la commission nette d'un éventuel programme d'affiliation. Rien de tout cela n'apparaît dans un total.</li>
+      <li><strong>Les affirmations sur le logiciel</strong> (Frigate libre MIT, Reolink mis en avant par la documentation officielle) proviennent du dépôt et de la documentation du projet, consultés le 2 octobre 2026.</li>
+      <li><strong>Nous ne fabriquons aucun avis, aucun témoignage et aucune statistique.</strong></li>
+      <li><strong>Corrections :</strong> si un prix a changé ou si nous nous sommes trompés, écrivez-nous, nous corrigeons et nous datons la correction.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch dyn">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Dépôt GitHub <em>blakeblackshear/frigate</em> — 36 324 étoiles, licence MIT, dernier envoi le 2 octobre 2026 (consultés via l'API GitHub le 2 octobre 2026).</li>
+      <li>Documentation officielle Frigate — section « Cameras », dont les pages dédiées à Reolink (caméras prises en charge) — lue le 2 octobre 2026.</li>
+      <li>Page des offres Ring (ring.com/fr) : « Ring Protect Solo » à 3,99 €/mois ; option reconnaissance IA +4 €/mois par caméra ; option enregistrement continu +3 €/mois — relevés le 2 octobre 2026.</li>
+      <li>Page officielle Frigate+ (frigate.video/plus) : abonnement 50 $/an, 12 modèles affinés — relevée le 2 octobre 2026.</li>
+      <li>Programme d'affiliation Reolink (réseau Awin, commission échelonnée, cookie 30 jours) — relevé comme candidat le 2 octobre 2026, aucun compte créé.</li>
+      <li>Photos : caméra fixe sur mur de brique — Raysonho, CC0 ; installation de caméras — CC BY 4.0. Toutes deux via Wikimedia Commons.</li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch dyn">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix et les conditions changent ; confirmez sur la source officielle avant de vous engager.</p>
+    <p>Mis à jour le 2 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/fx.js" defer></script>
+<script src="/honest-switch/counter.js" defer></script>
+
+<script>
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Frigate (caméras sans abonnement) — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Frigate (caméras sans abonnement)\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec le message pré-rempli — envoyez-le. Nous vérifions et publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<style>
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style>
+</body>
+</html>

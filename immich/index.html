@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Immich — vos photos en privé, zéro abonnement : le NAS face au coût réel d'iCloud — Honest Switch</title>
+<meta name="description" content="Immich (logiciel libre AGPL-3.0) pour sauvegarder ses photos sans abonnement : prix d'un NAS relevés le 2 oct. 2026 (194,99 €) et coût annuel réel d'iCloud.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/immich/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/immich/">
+<meta property="og:title" content="Immich — vos photos en privé, zéro abonnement : le NAS face au coût réel d'iCloud">
+<meta property="og:description" content="Le coût annuel d'iCloud, le prix d'un NAS relevé le 2 octobre 2026, et les pièges d'un serveur photo auto-hébergé.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .cta{border:1.5px solid rgba(14,123,82,.45);border-radius:12px;padding:16px 18px;margin:22px 0;background:#f7faf8}
+  .cta h2{margin:0 0 8px;font-size:1.05rem}
+  .cta ul{margin:8px 0 0;padding-left:18px}
+  .cta li{margin:6px 0}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  @media (prefers-reduced-motion:reduce){
+    .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
+    .arrow{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Immich est-il vraiment gratuit ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui. Immich est publié sous licence libre AGPL-3.0 : le logiciel est gratuit, sans abonnement ni palier premium. Ce que vous payez, c'est le matériel qui l'héberge (un serveur ou un NAS) et les disques. Immich fonctionne sur votre propre machine, vos photos ne partent pas chez un tiers."}},
+    {"@type": "Question", "name": "Combien coûte iCloud comparé à un serveur photo maison ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Chez Apple, l'offre 50 Go est à 0,99 €/mois, l'offre 200 Go à 2,99 €/mois et l'offre 2 To à 9,99 €/mois (prix relevés le 2 octobre 2026 sur apple.com/fr), soit environ 11,88 €, 35,88 € et 119,88 € par an. Un NAS d'entrée de gamme relevé le même jour était à 194,99 € TTC, achat unique — auquel s'ajoutent les disques. Le bon calcul n'est pas « moins cher tout de suite » mais « au bout de combien d'années »."}},
+    {"@type": "Question", "name": "Immich remplace-t-il Google Photos ou iCloud ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Pour la sauvegarde, la recherche par date ou personne et les albums partagés, oui, il occupe la même place : il sauvegarde automatiquement la galerie du téléphone et re-sert les photos depuis votre serveur. Ce qu'il ne remplace pas : la simplicité d'un service clé en main, son support, et son infrastructure redondante. Chez Immich, l'administrateur, c'est vous."}},
+    {"@type": "Question", "name": "Peut-on perdre ses photos avec un serveur maison ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui, si l'on ne fait pas de sauvegarde. Un serveur auto-hébergé n'est pas magiquement plus sûr : un disque qui lâche, une erreur de manipulation ou un vol peuvent tout emporter. La règle reste de garder au moins deux copies, dont une hors du logement. Le logiciel ne sauvegarde pas vos données à votre place."}},
+    {"@type": "Question", "name": "Cette page contient-elle des liens affiliés ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non, aucun à ce jour. Des programmes d'affiliation matériel (Amazon Partenaires France, fabricants de NAS) sont enregistrés chez nous comme candidats — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté « lien affilié — on est payé si vous souscrivez » à l'endroit où il apparaît, et cet encadré sera daté."}}
+  ]
+}
+</script>
+<link rel="stylesheet" href="/honest-switch/fx.css">
+</head>
+<body data-fx="slide">
+<script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#objet">Ce qu'on achète</a>
+      <a href="#prix">Les prix</a>
+      <a href="#pieges">Les 4 pièges</a>
+      <a href="#chemins">Trois modèles</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero dyn">
+    <p class="kicker">Logiciel libre · aucun lien affilié sur cette page · prix relevés le 2 oct. 2026</p>
+    <h1>Vos photos en privé, sans abonnement : Immich face au coût réel d'iCloud et de Google Photos</h1>
+
+    <figure class="photo"><img src="../img/immich.jpg" alt="Boîtier de stockage réseau posé dans un meuble, câble Ethernet et alimentation branchés à l'arrière" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">La sauvegarde de vos photos est devenue un abonnement : chez Apple, l'offre 2&nbsp;To coûte <span class="hl">9,99&nbsp;€/mois</span>, soit près de <span class="hl">120&nbsp;€ par an</span> (relevé le 2&nbsp;oct.&nbsp;2026). <strong>Immich</strong>, logiciel libre, fait le même travail sur <em>votre</em> machine. Reste à savoir combien coûte cette machine — un NAS d'entrée de gamme était à <span class="hl">194,99&nbsp;€</span> le même jour — et ce que vous renoncez à acheter en échange.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip">Prix lus le 2 oct. 2026</span>
+      <span class="chip">Licence libre AGPL-3.0</span>
+    </p>
+  </section>
+
+  <section id="bref" class="switch dyn">
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><strong>Le logiciel est gratuit.</strong> Immich est publié sous licence libre AGPL-3.0, sans abonnement ni palier premium. Vos photos restent sur votre machine.</li>
+        <li><strong>Le coût de l'abonnement chez Apple</strong> (relevé le 2 oct. 2026 sur apple.com/fr) : <span class="hl">0,99&nbsp;€/mois</span> (50 Go), <span class="hl">2,99&nbsp;€/mois</span> (200 Go), <span class="hl">9,99&nbsp;€/mois</span> (2 To) — soit <span class="hl">119,88&nbsp;€/an</span> au palier 2&nbsp;To.</li>
+        <li><strong>Le coût de la machine</strong> : un NAS 2 baies d'entrée de gamme relevé le 2 oct. 2026 à <span class="hl">194,99&nbsp;€</span> TTC (UGREEN NASync DH2300), achat unique — <em>disques non compris</em>.</li>
+        <li><strong>Ce que fait Immich :</strong> sauvegarde automatique de la galerie du téléphone, reconnaissance faciale, recherche, albums partagés — tout depuis chez vous.</li>
+        <li><strong>Ce qui décide du budget final :</strong> les disques et la sauvegarde. Nous n'avons pas chiffré ces deux postes, donc ils n'apparaissent dans aucun total ici.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="objet" class="switch dyn">
+    <h2>« Zéro abonnement », ça veut dire quoi exactement</h2>
+    <p>Immich fait la même chose que Google Photos ou iCloud Photos : il sauvegarde automatiquement les photos et vidéos de votre téléphone, il les range, il reconnaît les visages, il permet de chercher et de partager des albums. La différence n'est pas la fonction — c'est <strong>où vivent les fichiers</strong>. Avec Immich, ils sont sur un serveur chez vous.</p>
+    <p>Cette bascule a deux conséquences qu'il faut regarder en face :</p>
+    <div class="quotebox">
+      <strong>Ce que vous gagnez</strong> — pas d'abonnement mensuel, pas de quota qui se remplit, vos photos ne quittent pas votre logement.<br><br>
+      <strong>Ce que vous prenez en charge</strong> — les disques, la sauvegarde, la sécurité des accès, les mises à jour. Chez un service comme iCloud ou Google Photos, cette partie est faite pour vous ; ici, c'est vous l'administrateur.
+      <span class="qsrc">Comparaison du modèle d'Immich (auto-hébergement) avec celui des services clés en main, établie le 2 octobre 2026. Aucun chiffre de performance inventé : ce sont deux façons différentes de rendre le même service.</span>
+    </div>
+    <p>Autrement dit : Immich n'est pas « gratuit », il est <strong>sans abonnement</strong>. Le paiement se déplace de la mensualité vers le matériel — et vers le temps que vous passez à l'administrer.</p>
+  </section>
+
+  <section id="prix" class="switch dyn">
+    <h2>Les prix : l'abonnement d'un côté, la machine de l'autre</h2>
+    <p>Il y a deux façons de lire ce choix, et nous les séparons. À gauche, le <strong>coût annuel de l'abonnement Apple</strong> (relevé sur apple.com/fr le 2 oct. 2026). À droite, le <strong>prix d'un NAS d'entrée de gamme</strong> relevé le même jour — un achat unique, auquel s'ajoutent les disques.</p>
+    <div class="chartbox">
+      <h3>Coût annuel d'iCloud selon le palier (€/an, relevé le 2 oct. 2026)</h3>
+      <svg viewBox="0 0 720 240" role="img" aria-label="Graphique à barres, coût annuel iCloud relevé le 2 octobre 2026 : 50 Go 11,88 euros par an, 200 Go 35,88 euros par an, 2 To 119,88 euros par an">
+        <title>Coût annuel d'iCloud par palier</title>
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12" fill="#57523f">
+          <text x="70" y="30">iCloud 50 Go — 0,99 €/mois</text>
+          <rect x="70" y="36" width="52" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="130" y="50" fill="#0e7b52" font-weight="700">11,88 €/an</text>
+
+          <text x="70" y="96">iCloud 200 Go — 2,99 €/mois</text>
+          <rect x="70" y="102" width="156" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="234" y="116" fill="#0e7b52" font-weight="700">35,88 €/an</text>
+
+          <text x="70" y="162">iCloud 2 To — 9,99 €/mois</text>
+          <rect x="70" y="168" width="520" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="598" y="182" fill="#0e7b52" font-weight="700">119,88 €/an</text>
+        </g>
+      </svg>
+      <p class="footnote">Barres proportionnelles aux montants ci-dessus, base à zéro. Prix mensuels relevés sur apple.com/fr le 2 octobre 2026, ramenés au coût annuel (×12). Le NAS (194,99 € TTC, achat unique) n'apparaît pas dans ce graphique car il n'est pas un montant annuel : les deux lignes ne sont pas de même nature.</p>
+    </div>
+    <table>
+      <thead><tr><th>Où</th><th>Quoi</th><th>Prix relevé le 2 oct. 2026</th><th>Ce que le prix ne comprend pas</th></tr></thead>
+      <tbody>
+        <tr><td>apple.com/fr</td><td>iCloud+ 50 Go</td><td><strong>0,99 €</strong>/mois <em>(≈ 11,88 €/an)</em></td><td>—</td></tr>
+        <tr><td>apple.com/fr</td><td>iCloud+ 200 Go</td><td><strong>2,99 €</strong>/mois <em>(≈ 35,88 €/an)</em></td><td>—</td></tr>
+        <tr><td>apple.com/fr</td><td>iCloud+ 2 To</td><td><strong>9,99 €</strong>/mois <em>(≈ 119,88 €/an)</em></td><td>—</td></tr>
+        <tr><td>ai-fr.ugreen.com</td><td>NAS UGREEN NASync DH2300 — 2 baies (badge presse « Meilleur NAS 2025-2026 »)</td><td><strong>194,99 €</strong> TTC <em>(achat unique)</em></td><td>les disques, la sauvegarde, l'électricité</td></tr>
+      </tbody>
+    </table>
+    <p>La lecture honnête : comparer 194,99 € à 9,99 €/mois ne dit rien tant qu'on ne fixe pas un horizon. Au palier 2 To d'Apple, l'abonnement atteint <strong>119,88 €/an</strong> ; additionné sur plusieurs années, il dépasse le prix d'un NAS d'entrée de gamme — mais ce dernier n'inclut <em>pas</em> les disques, et il ne « s'auto-sauvegarde » pas. Un calcul sérieux compare le matériel <em>plus les disques</em> au coût cumulé de l'abonnement sur la durée où vous comptez garder vos photos.</p>
+  </section>
+
+  <section id="pieges" class="switch dyn">
+    <h2>Les quatre pièges d'un serveur photo maison</h2>
+
+    <h3>1. Un serveur auto-hébergé n'est pas « plus sûr » tout seul</h3>
+    <p>C'est l'illusion la plus répandue. Mettre ses photos chez soi ne les protège pas magiquement : un disque qui lâche, une erreur de manipulation, un incendie ou un vol peuvent tout emporter. Ce qui protège, c'est une <strong>sauvegarde</strong> — idéalement plusieurs copies, dont une hors du logement. Le logiciel livre la sauvegarde de votre téléphone vers le serveur ; la sauvegarde du serveur lui-même, c'est à vous de la mettre en place.</p>
+
+    <h3>2. Les disques coûtent souvent plus cher que le boîtier</h3>
+    <p>Le NAS relevé à 194,99 € est <em>nu</em> : sans disques, il ne stocke rien. Et pour des photos, mieux vaut au moins deux disques (redondance) qu'un seul. Ce poste n'est pas dans notre total, parce que nous ne l'avons pas chiffré — mais il pèse lourd dans le budget réel. Ne l'oubliez pas en comparant au prix de l'abonnement.</p>
+
+    <h3>3. L'accès depuis l'extérieur est la partie délicate</h3>
+    <p>Consulter ses photos chez soi est facile. Depuis l'extérieur — en voyage, ou depuis la 4G — il faut exposer le serveur de façon sûre, ce qui passe en général par un accès chiffré plutôt que par l'ouverture d'un port. C'est l'étape où les débutants renoncent, ou, pire, exposent leurs données sans protection. Décidez de ce point avant d'acheter le matériel.</p>
+
+    <figure class="photo"><img src="../img/immich-2.jpg" alt="Boîtier NAS ouvert, cage de disques et ventilateur visibles, posé sur une surface claire" loading="lazy" width="1400" height="800">
+      <figcaption>L'intérieur d'un NAS : la cage à disques, le ventilateur, les emplacements. Le boîtier n'est que la moitié de la dépense — l'autre moitié, ce sont les disques. Photo libre — Korrupt, CC BY 4.0, via Wikimedia Commons.</figcaption>
+    </figure>
+
+    <h3>4. « Les mises à jour, c'est automatique » — non</h3>
+    <p>Un service clef en main se met à jour pour vous. Un serveur auto-hébergé, non : c'est vous qui appliquez les correctifs, qui surveillez l'espace disque, qui réparez quand ça casse. Immich est très actif (version publiée fin septembre 2026, dépôt mis à jour le jour même de notre relevé), donc les évolutions arrivent vite — mais c'est à vous de les installer.</p>
+  </section>
+
+  <section id="chemins" class="switch dyn">
+    <h2>Trois chemins, selon ce que vous avez déjà</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Un NAS neuf (le plus simple)</b><span>Un 2 baies d'entrée relevé à 194,99 € (2 oct. 2026), disques à ajouter. Il tourne 24 h/24, sobre, silencieux. Le chemin le plus direct pour une sauvegarde photo automatique.</span></div>
+      <div class="step"><b>2 · Un mini-PC que vous avez déjà</b><span>Immich tourne aussi sur un petit ordinateur. Coût immédiat : zéro si vous en avez un. Mais il faudra lui ajouter du stockage, et il faut aimer administrer une machine en ligne de commande.</span></div>
+      <div class="step"><b>3 · Rester sur l'abonnement (et assumer)</b><span>Si l'idée de tout administrer ne vous plaît pas, payer 9,99 €/mois chez Apple reste un choix parfaitement défendable. « Libre » ne veut pas dire « mieux pour tout le monde ».</span></div>
+    </div>
+    <p>Aucun de ces trois n'est « le bon » : ils ne répondent pas à la même situation. Le seul mauvais choix est de basculer en auto-hébergé <em>sans sauvegarde</em> — c'est le moyen le plus rapide de perdre ses photos tout en croyant les avoir sécurisées.</p>
+  </section>
+
+  <section id="checklist" class="switch dyn">
+    <h2>La checklist avant de vous lancer</h2>
+    <ul>
+      <li><strong>Décidez de la sauvegarde avant tout le reste.</strong> Où est la deuxième copie, et la troisième ? Un serveur unique n'est pas une sauvegarde.</li>
+      <li><strong>Comptez les disques séparément du boîtier.</strong> Le NAS à 194,99 € est nu ; prévoyez au moins deux disques pour la redondance.</li>
+      <li><strong>Réglez la question de l'accès distant</strong> avant d'acheter : consultation locale seulement, ou accès chiffré depuis l'extérieur ?</li>
+      <li><strong>Vérifiez la compatibilité.</strong> Tous les NAS ne font pas tourner Immich (conteneurs Docker) ; renseignez-vous sur le modèle précis.</li>
+      <li><strong>Fixez un horizon de comparaison.</strong> Abonnement 2 To à 119,88 €/an contre matériel + disques : sur combien d'années ? Le bon chiffre dépend de votre réponse.</li>
+      <li><strong>Ne déduisez pas « privé = sûr ».</strong> La confidentialité, oui ; la sécurité des données, c'est la sauvegarde qui la donne.</li>
+    </ul>
+  </section>
+
+  <section id="cta" class="switch dyn">
+    <div class="cta">
+      <h2>Par où commencer, concrètement</h2>
+      <p>Ces liens sont ceux du projet et des sources. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez à la source.</p>
+      <ul>
+        <li><strong>Le projet :</strong> <a href="https://immich.app/" rel="nofollow noopener">immich.app</a> — documentation et installation officielles.</li>
+        <li><strong>Le code :</strong> dépôt <a href="https://github.com/immich-app/immich" rel="nofollow noopener">immich-app/immich</a> sur GitHub (AGPL-3.0).</li>
+        <li><strong>Le coût de référence :</strong> la <a href="https://www.apple.com/fr/icloud/" rel="nofollow noopener">page iCloud d'Apple</a>, pour vérifier le prix du jour (il bouge).</li>
+        <li><strong>Le matériel :</strong> comparez le prix d'un NAS et de ses disques chez plusieurs vendeurs le jour J.</li>
+      </ul>
+      <p>Le réflexe qui évite la mauvaise surprise : régler d'abord <em>la sauvegarde</em> et <em>l'accès distant</em>, et seulement ensuite comparer les machines et les abonnements.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="switch dyn">
+    <h2>Questions</h2>
+    <details><summary>Immich est-il vraiment gratuit ?</summary><p>Oui, licence libre AGPL-3.0 : pas d'abonnement, pas de palier premium. Vous payez le matériel (serveur ou NAS) et les disques, pas le logiciel.</p></details>
+    <details><summary>Combien coûte iCloud comparé à un serveur maison ?</summary><p>Chez Apple (relevé le 2 octobre 2026) : 0,99 €/mois pour 50 Go, 2,99 €/mois pour 200 Go, 9,99 €/mois pour 2 To — soit jusqu'à 119,88 €/an. Un NAS d'entrée relevé le même jour : 194,99 € TTC, achat unique, disques non compris.</p></details>
+    <details><summary>Immich remplace-t-il Google Photos ?</summary><p>Pour la sauvegarde, la recherche et les albums, oui. Mais l'infrastructure redondante et le support d'un grand service, non : chez Immich, l'administrateur, c'est vous.</p></details>
+    <details><summary>Risque-t-on de perdre ses photos ?</summary><p>Uniquement si l'on ne sauvegarde pas. Le disque qui lâche, l'erreur, le vol peuvent tout emporter. Gardez au moins deux copies, dont une hors du logement.</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Des programmes matériel (Amazon Partenaires France, fabricants de NAS) sont enregistrés chez nous comme candidats — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré daté.</p></details>
+  </section>
+
+  <section id="honesty" class="switch dyn">
+    <h2>Comment cette page est faite</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié ici.</strong> Les programmes d'affiliation matériel (Amazon Partenaires France, fabricants de NAS) sont enregistrés chez nous comme <em>candidats</em> — aucun compte créé, aucun lien posé. Si un lien affilié arrive un jour, il sera étiqueté « lien affilié — on est payé si vous souscrivez » avec <code>rel="sponsored"</code>, et cet encadré sera daté.</li>
+      <li><strong>Les prix iCloud</strong> ont été relevés sur apple.com/fr le 2 octobre 2026 (0,99 €, 2,99 €, 9,99 €/mois) et ramenés au coût annuel. <strong>Le prix du NAS</strong> (194,99 € TTC) provient du relevé de notre veille le même jour. Chaque montant porte sa date.</li>
+      <li><strong>Ce que nous ne savons pas est écrit comme tel :</strong> le prix des disques et de la sauvegarde hors site, la consommation électrique, et la commission nette d'un éventuel programme d'affiliation. Rien de tout cela n'apparaît dans un total.</li>
+      <li><strong>Les affirmations sur le logiciel</strong> (Immich libre AGPL-3.0, version publiée fin septembre 2026, dépôt très actif) proviennent du dépôt officiel, consulté le 2 octobre 2026.</li>
+      <li><strong>Nous ne fabriquons aucun avis, aucun témoignage et aucune statistique.</strong></li>
+      <li><strong>Corrections :</strong> si un prix a changé ou si nous nous sommes trompés, écrivez-nous, nous corrigeons et nous datons la correction.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch dyn">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Dépôt GitHub <em>immich-app/immich</em> — 115 445 étoiles, licence AGPL-3.0, dernier commit le 2 octobre 2026 (08:45 UTC), version v3.3.0-rc.1 publiée le 30 septembre 2026 (consultés via l'API GitHub le 2 octobre 2026).</li>
+      <li>Page iCloud d'Apple (apple.com/fr) : 50 Go 0,99 €/mois ; 200 Go 2,99 €/mois ; 2 To 9,99 €/mois — relevés le 2 octobre 2026.</li>
+      <li>NAS UGREEN NASync DH2300 (2 baies) — 194,99 € TTC, badge presse « Meilleur NAS 2025-2026 » affiché sur la fiche (ai-fr.ugreen.com), relevé le 2 octobre 2026.</li>
+      <li>Photos : boîtier de stockage réseau — Hämmerle S, CC BY-SA 2.5 ; NAS ouvert (cage à disques) — Korrupt, CC BY 4.0. Toutes deux via Wikimedia Commons.</li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch dyn">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix et les conditions changent ; confirmez sur la source officielle avant de vous engager.</p>
+    <p>Mis à jour le 2 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/fx.js" defer></script>
+<script src="/honest-switch/counter.js" defer></script>
+
+<script>
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Immich (photos sans abonnement) — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Immich (photos sans abonnement)\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec le message pré-rempli — envoyez-le. Nous vérifions et publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<style>
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style>
+</body>
+</html>

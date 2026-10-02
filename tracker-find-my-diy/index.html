@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Tracker « Localiser » maison à partir d'un ESP32 : ce que ça coûte vraiment — Honest Switch</title>
+<meta name="description" content="Un AirTag coûte 35 € l'unité ; une carte ESP32 se trouve à 14,40 € chez un revendeur français. Écart réel, mais il paie autre chose que le prix : pas de puce UWB, firmware expérimental, mise en place technique. Prix relevés le 2 octobre 2026.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/tracker-find-my-diy/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/tracker-find-my-diy/">
+<meta property="og:title" content="Tracker « Localiser » maison à partir d'un ESP32 : ce que ça coûte vraiment — Honest Switch">
+<meta property="og:description" content="Les prix relevés le 2 octobre 2026 : AirTag 35 € l'unité, 29,75 € en pack de 4, carte ESP32 à 14,40 € chez un revendeur français. Ce que le DIY ajoute et ce qu'il retire.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  @media (prefers-reduced-motion:reduce){
+    .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
+    .arrow{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Un tracker maison coûte-t-il moins cher qu'un AirTag ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Sur le seul matériel, oui : le 2 octobre 2026, Apple affiche 35,00 € le pack de 1 et 119,00 € le pack de 4 (soit 29,75 € l'unité), tandis qu'une carte de développement ESP32-WROOM-32 est affichée à 14,40 € chez un revendeur français. Mais la carte seule ne suffit pas : il faut une pile, un boîtier, du temps de mise en place, et le firmware n'a pas les fonctions d'un AirTag."}},
+    {"@type": "Question", "name": "Quelles fonctions d'un AirTag le montage maison n'a-t-il pas ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Le projet OpenHaystack ne repose pas sur la puce UWB : il n'y a donc pas de « Localisation précise » avec flèche et distance. Le firmware est décrit par ses auteurs comme expérimental, non testé et incomplet."}},
+    {"@type": "Question", "name": "Faut-il un Mac ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Plus obligatoirement : le projet historique OpenHaystack demande macOS 11 et un plugin pour Apple Mail, tandis que Macless-Haystack s'installe avec Docker et n'exige plus de Mac. Il demande en revanche un identifiant Apple avec double authentification par SMS."}},
+    {"@type": "Question", "name": "Y a-t-il un abonnement ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non, et l'AirTag non plus n'en demande pas : le réseau Localiser d'Apple est gratuit pour les deux. L'économie du montage maison porte sur le prix du matériel et sur la possibilité d'en fabriquer plusieurs, pas sur un abonnement évité."}},
+    {"@type": "Question", "name": "Cette page contient-elle des liens affiliés ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non. À la date du 2 octobre 2026, aucun lien de cette page ne nous rapporte de commission. Le programme d'affiliation AliExpress est enregistré comme candidat, mais aucun compte n'est créé et aucun lien n'est posé."}}
+  ]
+}
+</script>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#prix">Les prix</a>
+      <a href="#gains">Gains et pertes</a>
+      <a href="#etapes">Les étapes</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#faq">FAQ</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero dyn">
+    <p class="kicker">Makers · aucun lien affilié sur cette page · prix relevés le 2 oct. 2026</p>
+    <h1>Tracker « Localiser » maison : ce qu'un ESP32 remplace vraiment, et à quel prix</h1>
+
+    <figure class="photo"><img src="../img/tracker-find-my-diy.jpg" alt="Module ESP32-WROOM-32 avec son blindage métallique et ses pads dorés" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Un projet universitaire permet de fabriquer ses propres balises suivies par le réseau Localiser d'Apple, avec une carte à quelques euros. Le 2 octobre 2026, l'écart est réel et mesurable : <span class="hl">35,00 €</span> le pack de 1 AirTag chez Apple, <span class="hl">14,40 €</span> la carte ESP32-WROOM-32 chez un revendeur français. Mais ce que vous économisez en argent, vous le payez en fonctions et en temps de mise en place — et les tutos oublient généralement de le dire.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip">Projets libres OpenHaystack et Macless-Haystack</span>
+    </p>
+  </section>
+
+  <section id="bref" class="switch dyn">
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><strong>Le matériel est moins cher, oui.</strong> 14,40 € la carte de développement ESP32-WROOM-32 chez un revendeur français, contre 35,00 € l'AirTag seul — et 29,75 € l'unité si vous prenez le pack de 4.</li>
+        <li><strong>Vous n'achetez pas un AirTag moins cher.</strong> Le montage n'a pas de puce UWB : pas de « Localisation précise » avec distance et direction. Le firmware libre se présente lui-même comme expérimental.</li>
+        <li><strong>L'abonnement n'est pas l'argument.</strong> Apple ne facture aucun abonnement pour Localiser, ni sur l'AirTag ni sur un accessoire tiers. L'économie porte sur le prix du matériel.</li>
+        <li><strong>La mise en place est technique.</strong> Docker, Python, un identifiant Apple avec double authentification <em>par SMS</em>, un flashage de firmware — comptez une soirée, pas dix minutes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="cas" class="switch dyn">
+    <h2>D'où vient ce montage</h2>
+    <p>Le point de départ est un travail de recherche de l'université technique de Darmstadt : OpenHaystack. Le projet permet de créer ses propres balises Bluetooth repérées par le réseau Localiser d'Apple, et il documente au passage comment ce réseau fonctionne. Un second projet, Macless-Haystack, a supprimé la contrainte historique — il n'exige plus de Mac et s'installe via Docker, avec un firmware pour ESP32.</p>
+    <div class="quotebox">
+      « OpenHaystack is experimental software. The code is untested and incomplete. » — <em>« OpenHaystack est un logiciel expérimental. Le code n'est pas testé et il est incomplet. »</em> Les auteurs ajoutent que les balises équipées de leur firmware diffusent une clé publique fixe et sont, de ce fait, repérables par d'autres appareils à proximité.
+      <span class="qsrc">Avertissement et note de bas de page des auteurs d'OpenHaystack, README du dépôt public (lu le 2 octobre 2026). Traduction ajoutée par nous.</span>
+    </div>
+    <p>Nous documentons ce dossier parce que notre veille commerciale y a vu une différence de prix exploitable — et parce que cette différence mérite d'être écrite honnêtement : la carte est moins chère, mais ce n'est pas le même objet. Le reste de cette page est fait de prix relevés sur les pages publiques et de contraintes lues dans la documentation des projets.</p>
+  </section>
+
+  <section id="prix" class="switch dyn">
+    <h2>Les prix, relevés le 2 octobre 2026</h2>
+
+    <div class="chartbox">
+      <svg viewBox="0 0 700 250" role="img" aria-labelledby="ch1t ch1d" xmlns="http://www.w3.org/2000/svg">
+        <title id="ch1t">Trois prix publics relevés le 2 octobre 2026</title>
+        <desc id="ch1d">AirTag seul chez Apple : 35,00 euros. AirTag en pack de 4, ramené à l'unité : 29,75 euros. Carte de développement ESP32-WROOM-32 chez un revendeur français : 14,40 euros. Barres proportionnelles à ces montants, base à zéro.</desc>
+        <line x1="46" y1="196" x2="670" y2="196" stroke="#cfe3d8" stroke-width="2"/>
+        <g font-family="Georgia,serif">
+          <rect x="96" y="56" width="100" height="140" rx="6" fill="#1f6b4c"/>
+          <text x="146" y="46" font-size="14" fill="#1f6b4c" text-anchor="middle" font-weight="bold">35,00 €</text>
+          <text x="146" y="216" font-size="12" fill="#1a1a1a" text-anchor="middle">AirTag, pack de 1</text>
+          <text x="146" y="232" font-size="11" fill="#57523f" text-anchor="middle">prix affiché par Apple FR</text>
+
+          <rect x="292" y="77" width="100" height="119" rx="6" fill="#2f7d5c"/>
+          <text x="342" y="67" font-size="14" fill="#2f7d5c" text-anchor="middle" font-weight="bold">29,75 €</text>
+          <text x="342" y="216" font-size="12" fill="#1a1a1a" text-anchor="middle">AirTag, pack de 4</text>
+          <text x="342" y="232" font-size="11" fill="#57523f" text-anchor="middle">prix unitaire calculé (119 € / 4)</text>
+
+          <rect x="488" y="138" width="100" height="58" rx="6" fill="#7fb99b"/>
+          <text x="538" y="128" font-size="14" fill="#3f7f61" text-anchor="middle" font-weight="bold">14,40 €</text>
+          <text x="538" y="216" font-size="12" fill="#1a1a1a" text-anchor="middle">Carte ESP32-WROOM-32</text>
+          <text x="538" y="232" font-size="11" fill="#57523f" text-anchor="middle">revendeur français, relevé du 2 oct.</text>
+        </g>
+      </svg>
+      <p class="footnote" style="margin:10px 0 0">Barres proportionnelles, base à zéro. Les trois montants sont ceux qui étaient affichés par les vendeurs le 2 octobre 2026 ; le prix unitaire du pack de 4 est une division du prix affiché (119,00 € ÷ 4), pas un prix publié comme tel. La carte ESP32 est le seul poste de dépense que nous comparons ici : pile, boîtier et port ne sont pas chiffrés faute de prix affiché publiquement.</p>
+    </div>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Ce que vous achetez</th><th>Prix affiché</th><th>Vu où, le 2 oct. 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Apple AirTag, pack de 1</td><td><strong>35,00 €</strong></td><td>page produit Apple FR</td></tr>
+          <tr><td>Apple AirTag, pack de 4</td><td><strong>119,00 €</strong> (29,75 € l'unité)</td><td>page produit Apple FR</td></tr>
+          <tr><td>Carte de développement ESP32-WROOM-32</td><td><strong>14,40 €</strong></td><td>catalogue d'un revendeur français</td></tr>
+          <tr><td>Cartes ESP32 voisines (bi-mode Wi-Fi, ESP32-S3 industrielle)</td><td><strong>11,70 €</strong> et <strong>20,20 €</strong></td><td>même catalogue</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Ce que cette page ne chiffre pas, volontairement : la <strong>pile</strong>, la <strong>coque</strong> (l'impression 3D suppose d'avoir l'imprimante), le <strong>port</strong> et la <strong>TVA</strong> selon le vendeur, et l'<strong>autonomie réelle</strong> du montage — nous ne l'avons pas mesurée. Notre veille a par ailleurs relevé, chez des revendeurs d'import, des cartes à 5-10 $ l'unité ; nous ne les affichons pas comme prix de référence : ces pages de vente ne sont pas consultables publiquement sans compte, donc nous ne pouvons pas les citer comme une lecture vérifiable.</p>
+  </section>
+
+  <section id="gains" class="switch dyn">
+    <h2>Ce que le montage ajoute, et ce qu'il retire</h2>
+    <h3>Ce qu'il ajoute</h3>
+    <ul>
+      <li><strong>Un coût unitaire plus bas quand il vous en faut plusieurs</strong> — c'est le cas visé par les projets : vélo, valise, clés, outil de chantier. À trois balises, l'écart avec le pack de 4 n'est plus le même qu'à une seule.</li>
+      <li><strong>Du matériel ouvert et réparable</strong>, sur une carte que vous choisissez. Le même firmware tourne sur ESP32 comme sur des puces NRF5x, et les projets compatibles se sont multipliés depuis.</li>
+      <li><strong>La compréhension du réseau.</strong> En installant le serveur, vous voyez par où passent les rapports de position et ce qu'Apple centralise : utile même si vous finissez par acheter un AirTag.</li>
+    </ul>
+    <h3>Ce qu'il retire</h3>
+    <ul>
+      <li><strong>La « Localisation précise ».</strong> Elle repose sur une puce UWB que ce montage n'a pas : vous obtenez une position, pas une flèche avec une distance.</li>
+      <li><strong>La fiabilité d'un produit fini.</strong> Le firmware libre est publié comme expérimental et incomplet, et il diffuse une clé fixe : d'autres appareils à proximité peuvent repérer votre balise.</li>
+      <li><strong>Une mise en route en dix minutes.</strong> Il faut Docker, Python, un identifiant Apple dont la double authentification passe <em>par SMS</em>, et un flashage de firmware. Le confort de configuration d'un AirTag se paie quelque part.</li>
+    </ul>
+
+    <figure class="photo dyn"><img src="../img/tracker-find-my-diy-2.jpg" alt="Vélo de ville stationné contre une rambarde, avec son panier à l'avant" loading="lazy" width="1400" height="800"></figure>
+
+    <div class="flow3">
+      <div class="step"><b>1 · Choisir la carte</b><span>ESP32 ou puce compatible, plus la pile et le boîtier. C'est le seul poste de dépense que nous chiffrons ici.</span></div>
+      <div class="step"><b>2 · Générer les clés et flasher</b><span>Le script de génération de clés, puis le firmware adapté à votre carte, avec votre clé.</span></div>
+      <div class="step"><b>3 · Installer le serveur</b><span>Docker + identifiant Apple (2FA par SMS), puis suivi des balises depuis l'interface du projet.</span></div>
+    </div>
+  </section>
+
+  <section id="checklist" class="switch dyn">
+    <h2>La checklist avant de commander</h2>
+    <ul>
+      <li><strong>Compter le nombre de balises dont vous avez besoin.</strong> C'est le seul argument de coût solide : une seule balise DIY vaut rarement la soirée de mise en place.</li>
+      <li><strong>Vérifier le type de carte</strong> acceptée par le firmware que vous allez utiliser (ESP32 ou NRF5x), et pas seulement le prix du module.</li>
+      <li><strong>Vérifier la pile et le boîtier</strong> avant de commander la carte : c'est là que le budget réel se complète.</li>
+      <li><strong>Vérifier que vous avez un identifiant Apple avec double authentification par SMS</strong> — les autres seconds facteurs ne sont pas reconnus par le projet sans Mac.</li>
+      <li><strong>Accepter l'avertissement de confidentialité</strong> des auteurs : clé publique fixe, balise repérable par d'autres appareils à proximité. À éviter sur les objets sensibles.</li>
+      <li><strong>Comparer au pack le moins cher</strong>, pas au prix unitaire seul : le pack de 4 AirTag affiché le 2 octobre 2026 revient à 29,75 € l'unité.</li>
+      <li><strong>Décider pour qui c'est fait.</strong> Bricoleur avec une soirée devant lui : oui. Quelqu'un qui veut poser une balise et l'oublier : non.</li>
+    </ul>
+  </section>
+
+  <section id="faq" class="switch dyn">
+    <h2>Questions</h2>
+    <details><summary>Le tracker maison coûte-t-il vraiment moins cher ?</summary><p>Sur le matériel, oui : carte à 14,40 € contre 35,00 € l'AirTag seul (et 29,75 € l'unité en pack de 4), prix relevés le 2 octobre 2026. Mais la carte ne suffit pas — pile, boîtier, port et temps de mise en place s'ajoutent, et nous ne les chiffrons pas sur cette page faute de prix publics affichés.</p></details>
+    <details><summary>Est-ce que ça marche comme un AirTag ?</summary><p>Pour être repéré par le réseau Localiser d'Apple, oui : les rapports de position remontent. Pour tout le reste, non : pas de puce UWB donc pas de « Localisation précise » avec distance et direction, pas de sonnerie intégrée comparable, et un firmware que ses auteurs qualifient d'expérimental et d'incomplet.</p></details>
+    <details><summary>Faut-il un Mac ?</summary><p>Plus obligatoirement. Le projet d'origine demande macOS 11 et un plugin pour Apple Mail, avec la désactivation temporaire de Gatekeeper. Macless-Haystack a supprimé cette contrainte : Docker, Python et un identifiant Apple avec 2FA par SMS suffisent.</p></details>
+    <details><summary>Y a-t-il un abonnement à payer ?</summary><p>Non — et l'AirTag non plus n'en demande pas. Le réseau Localiser est gratuit pour les deux. Si un article présente le montage maison comme « le tracker sans abonnement », sachez que l'argument ne distingue rien.</p></details>
+    <details><summary>Puis-je le mettre sur mon vélo ?</summary><p>C'est l'usage le plus cité, et il faut le dire franchement : un tracker caché ne remplace pas un bon antivol, et le firmware expérimental diffuse une clé fixe, donc une balise repérable. Considérez-le comme un complément, pas comme une protection.</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non. Aucun lien de cette page ne nous rapporte de commission à la date du 2 octobre 2026. Le programme d'affiliation AliExpress est enregistré comme candidat dans nos registres, aucun compte n'est créé, aucun lien n'est posé. La <a href="../about/">page À propos</a> sera mise à jour le jour où cela changera.</p></details>
+  </section>
+
+  <section id="honesty" class="switch dyn">
+    <h2>Comment cette page est faite</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié ici.</strong> Le dépositaire naturel de ce type de page est un programme de place de marché (les cartes viennent d'import). Le nôtre est enregistré comme candidat, pas approuvé : donc aucun lien, et nous l'écrivons plutôt que de l'espérer.</li>
+      <li><strong>Les prix sont ceux affichés par les vendeurs.</strong> 35,00 € et 119,00 € sont lus sur la page produit d'Apple France, 14,40 € / 11,70 € / 20,20 € sur le catalogue d'un revendeur français, le 2 octobre 2026. Le 29,75 € est une division du pack, signalée comme telle.</li>
+      <li><strong>Les contraintes viennent de la documentation des projets.</strong> Avertissement d'expérimentation, clé publique fixe, prérequis Docker/Python, 2FA par SMS : lus dans les README publics des deux dépôts, pas dans un article de seconde main.</li>
+      <li><strong>Aucune autonomie annoncée.</strong> Nous ne publions pas de durée de pile : nous ne l'avons pas mesurée, et c'est justement la donnée qui manque le plus dans les présentations du montage.</li>
+      <li><strong>Aucun témoignage inventé.</strong> Cette page ne cite aucun avis client, faute d'avis public et daté que nous aurions pu vérifier.</li>
+      <li><strong>Les images sont des banques libres</strong> (CC0), encadrées et créditées en pied de page. Le module photographié n'est pas celui du montage décrit.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch dyn">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Dépôt public OpenHaystack (seemoo-lab, TU Darmstadt) — README consulté le 2 octobre 2026 : principe des balises suivies par le réseau Localiser, prérequis macOS 11 et plugin Apple Mail, avertissement « experimental software », clé publique fixe, absence de lien avec Apple.</li>
+      <li>Dépôt public Macless-Haystack — README consulté le 2 octobre 2026 : fonctionnement sans Mac, prérequis Docker / Python / identifiant Apple avec 2FA par SMS uniquement, firmwares ESP32 et NRF5x, compatibilité avec d'autres appareils compatibles OpenHaystack.</li>
+      <li>Page produit Apple France « Acheter un AirTag » (consultée le 2 octobre 2026) : 35,00 € le pack de 1, 119,00 € le pack de 4.</li>
+      <li>Catalogue d'un revendeur français consulté le 2 octobre 2026 (page de recherche « ESP32 ») : carte de développement ESP32-WROOM-32 14,40 €, carte bi-mode Wi-Fi 11,70 €, carte industrielle ESP32-S3 20,20 €.</li>
+      <li>Notre veille retail du 2 octobre 2026 : sourcing de cartes ESP32 chez des revendeurs d'import (5-10 $ l'unité, MOQ 1) — non reproduit comme prix de référence, ces pages n'étant pas consultables sans compte.</li>
+      <li>Crédits images (banque libre) : module ESP32-WROOM-32 — Ubahnverleih, CC0, via Wikimedia Commons · vélo de ville — Clem Onojeghuo, CC0, via Wikimedia Commons.</li>
+      <li>Guides liés : <a href="../cadre-oiseaux-eink/">Cadre e-ink à oiseaux : la liste de courses réelle</a> · <a href="../convertir-en-factur-x/">Facture électronique : convertir en Factur-X</a> · <a href="../">Honest Switch — comparatif honnête</a></li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch dyn">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix et les conditions changent ; confirmez sur la page officielle avant de vous engager.</p>
+    <p>Mis à jour le 2 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
+(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
+/* barre de progression au scroll */
+(function(){
+  var bar = document.getElementById('progress');
+  function frame(){
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    var p = max > 0 ? (d.scrollTop / max) : 0;
+    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+  }
+  var queued = false;
+  window.addEventListener('scroll', function(){
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function(){ queued = false; frame(); });
+  }, {passive:true});
+  window.addEventListener('resize', frame, {passive:true});
+  frame();
+})();
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Tracker Localiser maison (ESP32) — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Tracker Localiser maison (ESP32)\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<style>
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style>
+</body>
+</html>

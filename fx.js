@@ -1,30 +1,23 @@
 /* ============================================================
    Honest Switch — effets au scroll (variés par page)
    Signature : <body data-fx="fade|slide|zoom|clip|mix">
-   Approche simple et robuste : montrer une section dès que son
-   haut entre dans les 90% bas de la fenêtre. Un rAF-throttle
-   remplace tout debounce. Respecte prefers-reduced-motion.
+   Moteur : IntersectionObserver (le navigateur declenche lui-meme,
+   au lieu d'un listener 'scroll' qui peut etre manque) + filet de
+   securite par position pour les sauts d'ancre.
+   Les effets sont volontairement ACTIFS meme si le systeme demande
+   une reduction des animations : c'est une page de vente.
    ============================================================ */
 (function () {
   var root = document.documentElement;
   if (!root.classList.contains('js')) return;
-  // Les effets sont volontairement ACTIFS même si le systeme demande une
-  // reduction des animations : c'est un site de vente, l'animation au scroll
-  // fait partie du contenu. (Le reglage Windows "effets d'animation" est
-  // desactive chez beaucoup d'utilisateurs, ce qui masquait tout.)
-  var reduce = false;
+
   var mode = (document.body.getAttribute('data-fx') || 'mix').toLowerCase();
 
   function uniq(a) {
-    var s = [], o = [];
-    for (var i = 0; i < a.length; i++) { if (a[i] && s.indexOf(a[i]) === -1) { s.push(a[i]); o.push(a[i]); } }
+    var o = [];
+    for (var i = 0; i < a.length; i++) { if (a[i] && o.indexOf(a[i]) === -1) o.push(a[i]); }
     return o;
   }
-
-  var hero = document.querySelector('.hero');
-  var secs = uniq(Array.prototype.filter.call(document.querySelectorAll('section'), function (s) {
-    return s !== hero && !s.closest('.hero');
-  }));
 
   function variantFor(i) {
     if (mode === 'fade')  return 'fx-up';
@@ -35,8 +28,13 @@
     return pool[i % pool.length];
   }
 
+  var hero = document.querySelector('.hero');
+  var secs = Array.prototype.filter.call(document.querySelectorAll('section'), function (s) {
+    return s !== hero && !s.closest('.hero');
+  });
+
   var targets = [];
-  for (var k = 0; k < secs.length; k++) { secs[k].classList.add('fx', variantFor(k)); targets.push(secs[k]); }
+  secs.forEach(function (s, i) { s.classList.add('fx', variantFor(i)); targets.push(s); });
   Array.prototype.slice.call(document.querySelectorAll('.photo, figure.photo')).forEach(function (el) {
     el.classList.add('fx', 'fx-zoom'); targets.push(el);
   });
@@ -48,53 +46,77 @@
   });
   targets = uniq(targets);
 
-  if (reduce) {
-    targets.forEach(function (el) { el.classList.add('fx-in'); });
-    return;
+  function reveal(el) {
+    if (!el || el.classList.contains('fx-in')) return;
+    el.classList.add('fx-in');
+    // mise en conformite directe : meme si la feuille de style est en cache
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    el.style.clipPath = 'none';
+    el.style.webkitClipPath = 'none';
+    var kids = el.querySelectorAll(':scope > ul > li, :scope > ol > li, :scope > .card, :scope > * > li');
+    if (kids.length > 1) {
+      Array.prototype.forEach.call(kids, function (k, j) {
+        k.style.transition = 'opacity .5s ease ' + (j * 65) + 'ms, transform .5s ease ' + (j * 65) + 'ms';
+        k.style.opacity = '1';
+        k.style.transform = 'none';
+      });
+    }
   }
 
-  var pending = targets;
-  function reveal(el) { if (!el.classList.contains('fx-in')) el.classList.add('fx-in'); }
-
-  // premier écran : ce qui est déjà visible à l'ouverture est montré sans animation
+  // Premier ecran : montre sans animation ce qui est deja visible a l'ouverture.
   var vh = window.innerHeight || document.documentElement.clientHeight;
-  pending = pending.filter(function (el) {
+  var pending = [];
+  targets.forEach(function (el) {
     var r = el.getBoundingClientRect();
-    if (r.top < vh * 0.92 && r.bottom > 0) {
+    if (r.top < vh * 0.9 && r.bottom > 0) {
       el.style.transition = 'none';
       reveal(el);
       window.requestAnimationFrame(function () { el.style.transition = ''; });
-      return false;
+    } else {
+      pending.push(el);
     }
-    return true;
   });
 
-  var ticking = false;
-  function frame() {
-    ticking = false;
+  if (!('IntersectionObserver' in window)) {
+    var tick0 = function () {
+      var h = window.innerHeight || document.documentElement.clientHeight;
+      pending = pending.filter(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < h * 0.92 && r.bottom > -h * 0.5) { reveal(el); return false; }
+        return true;
+      });
+    };
+    window.addEventListener('scroll', tick0, { passive: true });
+    window.addEventListener('resize', tick0, { passive: true });
+    tick0();
+    return;
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { reveal(en.target); io.unobserve(en.target); }
+    });
+  }, { rootMargin: '0px 0px -6% 0px', threshold: 0.01 });
+
+  pending.forEach(function (el) { io.observe(el); });
+
+  // Filet de securite : element deja passe au-dessus (saut d'ancre, retour arriere).
+  var guard = function () {
+    if (!pending.length) return;
     var h = window.innerHeight || document.documentElement.clientHeight;
-    var rest = [];
-    for (var i = 0; i < pending.length; i++) {
-      var el = pending[i];
+    pending = pending.filter(function (el) {
       var r = el.getBoundingClientRect();
-      if (r.top < h * 0.92 && r.bottom > -h * 0.6) {
-        reveal(el);
-      } else {
-        rest.push(el);
-      }
-    }
-    pending = rest;
+      if (r.top < h * 0.95 && r.bottom > -h) { reveal(el); io.unobserve(el); return false; }
+      return true;
+    });
     if (!pending.length) {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
+      window.removeEventListener('scroll', guard);
+      window.removeEventListener('resize', guard);
     }
-  }
-  function onScroll() {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(frame);
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  frame();
+  };
+  window.addEventListener('scroll', guard, { passive: true });
+  window.addEventListener('resize', guard, { passive: true });
+  window.addEventListener('load', guard);
+  guard();
 })();

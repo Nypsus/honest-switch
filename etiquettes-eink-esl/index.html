@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Étiquettes de prix e-ink : leur redonner vie avec un ESP32 (OpenEPaperLink) — Honest Switch</title>
+<meta name="description" content="Les étiquettes de prix électroniques se revendent ou dorment dans les cartons. Un firmware libre en fait des afficheurs sans fil pilotés par Home Assistant. Ce qu'il faut vérifier avant d'acheter : compatibilité, point d'accès, licence non commerciale, prix relevés en décembre 2024.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/etiquettes-eink-esl/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/etiquettes-eink-esl/">
+<meta property="og:title" content="Étiquettes de prix e-ink : leur redonner vie avec un ESP32 (OpenEPaperLink) — Honest Switch">
+<meta property="og:description" content="Compatibilité des étiquettes, choix du point d'accès, licence non commerciale du projet, prix observés. Ce qu'il faut vérifier avant d'en acheter une.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .cta{border:1.5px solid rgba(14,123,82,.45);border-radius:12px;padding:16px 18px;margin:22px 0;background:#f7faf8}
+  .cta h2{margin:0 0 8px;font-size:1.05rem}
+  .cta ul{margin:8px 0 0;padding-left:18px}
+  .cta li{margin:6px 0}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  @media (prefers-reduced-motion:reduce){
+    .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
+    .arrow{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Toutes les étiquettes de prix électroniques fonctionnent-elles avec OpenEPaperLink ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non. Le wiki du projet liste les modèles vérifiés, classés par famille de puce : ZBS (M2), nRF (M3), SiLabs EFR32xG22 (M3) et CC1110/CC1310 en SubGHz. Une étiquette absente de ces listes n'est pas forcément incompatible, mais elle n'est pas vérifiée — et « pas vérifiée » veut dire risque d'achat à perte."}},
+    {"@type": "Question", "name": "Quel point d'accès faut-il acheter ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Le site officiel chiffre trois niveaux : environ 10-20 €, environ 40 €, environ 60 €, du bricolage à la carte prête à l'emploi (LilyGo T-Panel S3). Le piège documenté : la version 2.75 est la dernière à prendre en charge les points d'accès ESP32-S2 ou ESP32-S3 avec moins de 16 Mo de flash et 8 Mo de RAM. Achetez un ESP32-S3 N16R8."}},
+    {"@type": "Question", "name": "Peut-on vendre un kit d'étiquettes équipé de ce firmware ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non. Le projet est publié sous licence Creative Commons BY-NC-SA 4.0, dont la clause NonCommercial exclut l'usage à but lucratif, et son site l'écrit explicitement. Le montage personnel est permis ; la revente d'un produit qui embarque ce firmware ne l'est pas."}},
+    {"@type": "Question", "name": "Combien coûte une étiquette e-ink ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Il n'existe pas de grille publique : ces étiquettes sont vendues par lots sur des places de marché d'import. Le seul relevé public daté que nous ayons retrouvé est celui d'un membre du forum Home Assistant, en Espagne en décembre 2024 : 2,1 pouces à 22,40 € (13,99 € en promotion), 2,9 pouces à 26,76 €, 4,2 pouces à 60,63 €, 7,5 pouces à 144,76 €, 10,2 pouces à 311,27 € — hors port et hors TVA."}},
+    {"@type": "Question", "name": "Cette page contient-elle des liens affiliés ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non. À la date du 2 octobre 2026, aucun lien de cette page ne nous rapporte de commission. Le programme d'affiliation AliExpress est enregistré comme candidat dans nos registres : aucun compte n'est créé et aucun lien n'est posé."}}
+  ]
+}
+</script>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#cas">Le projet</a>
+      <a href="#prix">Les prix</a>
+      <a href="#compat">Compatibilité</a>
+      <a href="#ap">Point d'accès</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero dyn">
+    <p class="kicker">Domotique · aucun lien affilié sur cette page · sources relevées le 2 oct. 2026</p>
+    <h1>Étiquettes de prix e-ink : leur redonner vie avec une carte à 20 €, et ce qu'il faut vérifier avant d'acheter</h1>
+
+    <figure class="photo"><img src="../img/etiquettes-eink-esl.jpg" alt="Étiquette de prix électronique à encre électronique, fixée sur le bord d'un rayon de magasin" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Les étiquettes de prix électroniques finissent par milliers dans les cartons quand un magasin change de système. Un projet libre, OpenEPaperLink, remplace leur firmware d'origine pour en faire des afficheurs sans fil à batterie, pilotés depuis Home Assistant. La promesse est réelle, le chemin est plus étroit qu'il n'y paraît : <span class="hl">toutes les étiquettes ne sont pas compatibles</span>, la <span class="hl">licence du projet interdit l'usage commercial</span>, et il faut un point d'accès — pas seulement l'étiquette.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip">Projet OpenEPaperLink, firmware 2.70</span>
+    </p>
+  </section>
+
+  <section id="bref" class="switch dyn">
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><strong>Le projet est vivant, pas un dépôt abandonné.</strong> 1 847 étoiles sur GitHub, 185 forks, dernière poussée de code le 20 septembre 2026 ; l'intégration Home Assistant en compte 329.</li>
+        <li><strong>La licence change tout.</strong> Le firmware est publié en <span class="hl">CC BY-NC-SA 4.0</span>, clause NonCommercial comprise — le site officiel parle d'un usage « uniquement non commercial ». Montage personnel : oui. Revente d'un kit : non.</li>
+        <li><strong>Il faut une carte, pas juste l'étiquette.</strong> Points d'accès chiffrés par le projet lui-même : <span class="hl">~10-20 €</span> en bricolage, <span class="hl">~40 €</span> en intermédiaire, <span class="hl">~60 €</span> pour la carte prête à l'emploi.</li>
+        <li><strong>Aucune grille de prix publique pour les étiquettes.</strong> Elles se vendent par lots sur des places de marché d'import ; les seuls prix publics datés que nous ayons retrouvés datent de décembre 2024 et sont affichés plus bas, avec leur date.</li>
+        <li><strong>Le vrai risque n'est pas le prix, c'est la compatibilité.</strong> Une étiquette absente de la liste du wiki n'est pas « sûrement compatible » — elle est non vérifiée.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="cas" class="switch dyn">
+    <h2>De quoi on parle exactement</h2>
+    <p>Une étiquette de prix électronique, c'est le petit écran d'encre électronique fixé au bord des rayons pour remplacer les étiquettes papier. Elle contient une radio, une batterie qui tient des années, et un firmware fermé écrit par son fabricant.</p>
+    <p>OpenEPaperLink remplace ce firmware par un autre, ouvert, avec un protocole documenté. L'étiquette devient alors un afficheur sans fil que vous contrôlez : texte, icônes, QR codes, graphiques issus de vos propres capteurs.</p>
+    <div class="quotebox">
+      « Alternative firmware and protocol for the multiple Electronic Shelf Labels. It can be used to set up E-Paper tags and supply them with content. »
+      <span class="qsrc">Première ligne du README du dépôt public OpenEPaperLink (lu le 2 octobre 2026). Traduction : « Firmware et protocole alternatifs pour les étiquettes de prix électroniques. Ils servent à mettre en place des étiquettes e-paper et à leur envoyer du contenu. »</span>
+    </div>
+    <p>Trois choses valent la peine d'être dites tout de suite, parce qu'elles décident si ce projet est fait pour vous.</p>
+    <ul>
+      <li><strong>C'est un projet de bricoleur, pas un produit.</strong> Il faut flasher l'étiquette avec un outil dédié, parfois en soudant sur une carte minuscule.</li>
+      <li><strong>Il n'y a aucune garantie, et les auteurs le disent eux-mêmes</strong> — la citation est plus bas, elle est sans ambiguïté.</li>
+      <li><strong>L'usage commercial est exclu par la licence.</strong> C'est précisément pour cette raison que nous n'imaginons pas de kit à vendre ici, et que cette page est un guide, pas une boutique.</li>
+    </ul>
+  </section>
+
+  <section id="prix" class="switch dyn">
+    <h2>Les prix : ce qui est chiffré, et ce qui ne l'est pas</h2>
+    <p>Le projet publie une grille indicative pour les points d'accès — pas pour les étiquettes, qui ne sont pas vendues par le projet. Voici les deux tableaux, séparés, parce qu'ils n'ont pas la même solidité.</p>
+
+    <div class="chartbox">
+      <svg viewBox="0 0 700 250" role="img" aria-labelledby="ch1t ch1d" xmlns="http://www.w3.org/2000/svg">
+        <title id="ch1t">Prix normaux affichés pour quatre tailles d'étiquettes, décembre 2024</title>
+        <desc id="ch1d">Étiquette 2,1 pouces : 22,40 euros. 2,9 pouces : 26,76 euros. 4,2 pouces : 60,63 euros. 7,5 pouces : 144,76 euros. Barres proportionnelles à ces montants, base à zéro.</desc>
+        <line x1="46" y1="196" x2="670" y2="196" stroke="#cfe3d8" stroke-width="2"/>
+        <g font-family="Georgia,serif">
+          <rect x="76" y="174" width="96" height="22" rx="6" fill="#8fc3a9"/>
+          <text x="124" y="164" font-size="14" fill="#3f7f61" text-anchor="middle" font-weight="bold">22,40 €</text>
+          <text x="124" y="216" font-size="12" fill="#1a1a1a" text-anchor="middle">2,1 pouces</text>
+          <text x="124" y="232" font-size="11" fill="#57523f" text-anchor="middle">13,99 € en promotion</text>
+
+          <rect x="222" y="170" width="96" height="26" rx="6" fill="#7fb99b"/>
+          <text x="270" y="160" font-size="14" fill="#3f7f61" text-anchor="middle" font-weight="bold">26,76 €</text>
+          <text x="270" y="216" font-size="12" fill="#1a1a1a" text-anchor="middle">2,9 pouces</text>
+          <text x="270" y="232" font-size="11" fill="#57523f" text-anchor="middle">16,59 € en promotion</text>
+
+          <rect x="368" y="138" width="96" height="58" rx="6" fill="#4c9a75"/>
+          <text x="416" y="128" font-size="14" fill="#1f6b4c" text-anchor="middle" font-weight="bold">60,63 €</text>
+          <text x="416" y="216" font-size="12" fill="#1a1a1a" text-anchor="middle">4,2 pouces</text>
+          <text x="416" y="232" font-size="11" fill="#57523f" text-anchor="middle">37,59 € en promotion</text>
+
+          <rect x="514" y="56" width="96" height="140" rx="6" fill="#1f6b4c"/>
+          <text x="562" y="46" font-size="14" fill="#1f6b4c" text-anchor="middle" font-weight="bold">144,76 €</text>
+          <text x="562" y="216" font-size="12" fill="#1a1a1a" text-anchor="middle">7,5 pouces</text>
+          <text x="562" y="232" font-size="11" fill="#57523f" text-anchor="middle">90,99 € en promotion</text>
+        </g>
+      </svg>
+      <p class="footnote" style="margin:10px 0 0">Barres proportionnelles aux prix normaux lus, base à zéro. Ces montants ne viennent pas du fabricant et ne sont pas une grille : ils ont été relevés le 6 décembre 2024 par un membre du forum Home Assistant, en Espagne, sur la boutique du vendeur d'étiquettes sur une place de marché d'import. Nous les publions avec leur date parce qu'ils sont les seuls chiffres vérifiables que nous ayons trouvés — pas parce qu'ils sont ceux d'aujourd'hui. Un cinquième format, 10,2 pouces, était affiché à 311,27 € (192,99 € en promotion) : hors barres, l'échelle écraserait les autres.</p>
+    </div>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Étiquette (e-ink, noir/rouge/blanc)</th><th>Prix normal affiché</th><th>Prix en promotion</th></tr></thead>
+        <tbody>
+          <tr><td>2,1 pouces</td><td><strong>22,40 €</strong></td><td>13,99 €</td></tr>
+          <tr><td>2,9 pouces</td><td><strong>26,76 €</strong></td><td>16,59 €</td></tr>
+          <tr><td>4,2 pouces</td><td><strong>60,63 €</strong></td><td>37,59 €</td></tr>
+          <tr><td>7,5 pouces</td><td><strong>144,76 €</strong></td><td>90,99 €</td></tr>
+          <tr><td>10,2 pouces</td><td><strong>311,27 €</strong></td><td>192,99 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="footnote">Relevé du 6 décembre 2024, boutique d'un vendeur d'étiquettes sur une place de marché d'import, consultation depuis l'Espagne, rapporté publiquement sur le forum Home Assistant. Hors port et hors TVA. Nous n'avons pas pu vérifier de prix 2026 : les pages de vente de ces lots ne sont pas consultables sans compte, donc nous ne les citons pas.</p>
+
+    <p>Le second tableau est plus solide, parce qu'il est publié par le projet lui-même. Ce sont les fourchettes indicatives de ses points d'accès.</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Point d'accès</th><th>Fourchette indiquée par le projet</th><th>Ce que ça demande</th></tr></thead>
+        <tbody>
+          <tr><td>Spaghetti AP</td><td><strong>~10-20 €</strong></td><td>montage à partir de composants standards</td></tr>
+          <tr><td>Yellow AP</td><td><strong>~10-20 €</strong></td><td>circuit compact, écran TFT intégré, montage plus délicat</td></tr>
+          <tr><td>BLE Only AP</td><td><strong>~10-20 €</strong></td><td>une carte ESP32-S3 du commerce — mais <em>étiquettes Bluetooth uniquement</em></td></tr>
+          <tr><td>4inch AP</td><td><strong>~40 €</strong></td><td>bâti autour d'un module d'écran 4 pouces</td></tr>
+          <tr><td>LilyGo T-Panel S3</td><td><strong>~60 €</strong></td><td>produit du commerce, prêt à l'emploi, écran 4 pouces</td></tr>
+          <tr><td>Mini AP v4 (par Nic)</td><td><strong>non publié</strong></td><td>écran TFT et flasheur d'étiquettes intégrés</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="footnote">Source : page « Access Points » du site officiel du projet, lue le 2 octobre 2026, qui publie un barème d'effort (€ = ~10-20 €, €€ = ~40 €, €€€ = ~60 €). Les fourchettes sont celles du projet, pas un prix de vente ; elles dépendent des composants et du pays.</p>
+  </section>
+
+  <section id="compat" class="switch dyn">
+    <h2>Le point qui décide : la compatibilité de votre étiquette</h2>
+    <p>C'est ici que se perdent les achats. Une étiquette n'est pas « une étiquette » : derrière l'écran il y a une famille de puces, et le firmware à flasher dépend de cette famille. Le wiki du projet publie la liste des modèles vérifiés.</p>
+
+    <figure class="photo dyn"><img src="../img/etiquettes-eink-esl-2.jpg" alt="Rayon de supermarché avec des étiquettes de prix électroniques fixées au bord de chaque tablette" loading="lazy" width="1400" height="800"></figure>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Famille de puce</th><th>Exemples de modèles vérifiés</th><th>Radio</th></tr></thead>
+        <tbody>
+          <tr><td><strong>ZBS</strong> (M2)</td><td>1,54″ ST-GR16000 · 2,7″ ST-GR27000 · 2,9″ ST-GR29000 · 4,2″ ST-GR42 · afficheurs à segments Solum SLT-EM007 (UK), SLT-EM104 et SLT-ES104 (DE)</td><td>802.15.4</td></tr>
+          <tr><td><strong>nRF</strong> (M3)</td><td>1,3″ EL013H2WRD (crochet) · 2,2″ EL022H3WRA · 2,9″ EL029H3WRA</td><td>802.15.4</td></tr>
+          <tr><td><strong>SiLabs EFR32xG22</strong> (M3)</td><td>1,6″ · 2,2″ · 2,6″ Newton Pro · 2,9″ (dont version congélateur) · 4,2″ · 4,3″ · 7,5″ · 11,6″</td><td>802.15.4</td></tr>
+          <tr><td><strong>CC1110 / CC1310</strong></td><td>2,9″ EL029D2WRA · gamme Chroma 2,1″ / 2,9″ / 4,2″ / 7,4″</td><td>SubGHz 868/915 MHz</td></tr>
+          <tr><td><strong>Autres</strong></td><td>2,9″ EL029GSWRN · 2,9″ Opticon BWRY EE-293RY · 4,2″ TG-GR42 · 7,4″ ST-GM7500N · 7,5″ ST-GR750BN · 13,3″ EL133C2WRN</td><td>selon le modèle</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Deux conséquences pratiques. D'abord, la radio doit correspondre au point d'accès : une étiquette SubGHz ne parle pas à un point d'accès qui ne fait que le 802.15.4. Ensuite, une étiquette absente de ces listes n'est pas forcément incompatible — mais personne ne l'a vérifiée à votre place, et le wiki prévient lui-même que ses informations sont déduites, parfois fausses.</p>
+    <div class="quotebox">
+      « Since there is very little information out there, this is the best we can do. We probably got some stuff wrong… »
+      <span class="qsrc">Avertissement en tête du wiki du projet (lu le 2 octobre 2026). Traduction : « Comme il existe très peu d'informations, c'est le mieux que nous puissions faire. Nous avons probablement fait des erreurs. »</span>
+    </div>
+    <p>Un cas particulier mérite d'être connu : certaines étiquettes Bluetooth ne passent pas par le point d'accès du tout. Elles se pilotent directement depuis Home Assistant via un adaptateur Bluetooth, avec un autre firmware. Le fabricant concerné, interrogé par un utilisateur, a répondu que ses étiquettes ne « supportaient pas » ce type d'usage — ce qui n'a pas empêché la communauté de le faire fonctionner, mais dit le niveau d'accompagnement attendu.</p>
+  </section>
+
+  <section id="ap" class="switch dyn">
+    <h2>Choisir sa carte sans se tromper</h2>
+    <p>Le piège le plus coûteux n'est pas la compatibilité de l'étiquette, c'est la vôtre. Le projet a publié une note qui invalide une grande partie des cartes achetées un peu vite.</p>
+    <div class="quotebox">
+      « Release 2.75 was the last release that supported ESP32-S2 based APs or ESP32-S3 APs with less than 16MB flash and 8MB RAM. »
+      <span class="qsrc">Note de la page « Access Points » du site officiel du projet (lue le 2 octobre 2026). Traduction : « La version 2.75 a été la dernière à prendre en charge les points d'accès à base d'ESP32-S2, ou d'ESP32-S3 avec moins de 16 Mo de flash et 8 Mo de RAM. »</span>
+    </div>
+    <p>Autrement dit : achetez une carte ESP32-S3 avec <strong>16 Mo de flash et 8 Mo de RAM</strong> (la référence dite « N16R8 »), et pas la carte la moins chère du tiroir. Les cartes ESP32-S2 ne sont plus prises en charge du tout.</p>
+
+    <div class="fig">
+      <h3>Trois cas, une carte chacun</h3>
+      <svg viewBox="0 0 700 150" role="img" aria-labelledby="f2t f2d" xmlns="http://www.w3.org/2000/svg">
+        <title id="f2t">Trois configurations possibles selon l'étiquette possédée</title>
+        <desc id="f2d">Si l'étiquette est en 802.15.4 ou SubGHz, il faut un point d'accès complet bâti sur ESP32-S3. Si l'étiquette est Bluetooth, une simple carte ESP32-S3 N16R8 suffit. Si vous n'avez encore aucune étiquette, le choix de la carte précède l'achat des étiquettes.</desc>
+        <g font-family="Georgia,serif" font-size="12">
+          <rect x="10" y="20" width="200" height="110" rx="10" fill="#f7faf8" stroke="#cfe3d8"/>
+          <text x="110" y="44" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f6b4c">Étiquette 802.15.4 / SubGHz</text>
+          <text x="110" y="68" text-anchor="middle" fill="#1a1a1a">point d'accès complet</text>
+          <text x="110" y="86" text-anchor="middle" fill="#1a1a1a">ESP32-S3 N16R8</text>
+          <text x="110" y="110" text-anchor="middle" fill="#57523f">~10-20 € en bricolage</text>
+
+          <g class="arrow" stroke="#4c9a75" stroke-width="3" fill="none"><line x1="216" y1="75" x2="242" y2="75"/><path d="M242 75 l-10 -6 v12 z" stroke="none" fill="#4c9a75"/></g>
+
+          <rect x="250" y="20" width="200" height="110" rx="10" fill="#f7faf8" stroke="#cfe3d8"/>
+          <text x="350" y="44" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f6b4c">Étiquette Bluetooth</text>
+          <text x="350" y="68" text-anchor="middle" fill="#1a1a1a">pas de point d'accès</text>
+          <text x="350" y="86" text-anchor="middle" fill="#1a1a1a">carte ESP32-S3 N16R8</text>
+          <text x="350" y="110" text-anchor="middle" fill="#57523f">ou adaptateur Bluetooth</text>
+
+          <g class="arrow" stroke="#4c9a75" stroke-width="3" fill="none"><line x1="456" y1="75" x2="482" y2="75"/><path d="M482 75 l-10 -6 v12 z" stroke="none" fill="#4c9a75"/></g>
+
+          <rect x="490" y="20" width="200" height="110" rx="10" fill="#f7faf8" stroke="#cfe3d8"/>
+          <text x="590" y="44" text-anchor="middle" font-size="13" font-weight="bold" fill="#1f6b4c">Aucune étiquette encore</text>
+          <text x="590" y="68" text-anchor="middle" fill="#1a1a1a">choisir d'abord la famille</text>
+          <text x="590" y="86" text-anchor="middle" fill="#1a1a1a">puis acheter les modèles</text>
+          <text x="590" y="110" text-anchor="middle" fill="#57523f">listés comme vérifiés</text>
+        </g>
+      </svg>
+      <figcaption>Schéma de notre lecture du wiki et de la page officielle. La carte se choisit avant les étiquettes, jamais l'inverse : c'est elle qui détermine quels modèles vous pourrez piloter.</figcaption>
+    </div>
+  </section>
+
+  <section id="limites" class="switch dyn">
+    <h2>Ce que les présentations oublient de dire</h2>
+    <ul>
+      <li><strong>La licence interdit l'usage commercial.</strong> Le projet est en Creative Commons BY-NC-SA 4.0 et son site écrit que l'usage est « uniquement non commercial ». Personne ne vous vendra de kit sous cette licence — et si quelqu'un le fait, la question de sa conformité se pose.</li>
+      <li><strong>Il faut flasher l'étiquette, physiquement.</strong> Cela suppose un outil de programmation dédié et, souvent, un support de contact. Le wiki parle de cartes « minuscules et fragiles » : « une goutte de colle chaude suffit à les déformer sérieusement » et à endommager les composants soudés.</li>
+      <li><strong>Il n'y a aucune garantie, à aucun niveau.</strong> Le projet l'écrit noir sur blanc et nous préférons le citer tel quel plutôt que de le reformuler.</li>
+      <li><strong>La batterie n'est pas annoncée pour vous.</strong> La consommation d'une étiquette dépend de sa fréquence de contact avec le point d'accès, donc de votre configuration. Nous n'avons pas mesuré d'autonomie et n'en publions aucune.</li>
+      <li><strong>Le projet est en cours de changement de nom côté Home Assistant.</strong> L'intégration est renommée et les étiquettes Bluetooth d'une marque précise n'y sont plus prises en charge. Lisez le dépôt de l'intégration avant d'acheter si vous partez d'un parc existant.</li>
+      <li><strong>Le port et la TVA ne sont pas publiés</strong> sur les places de marché d'import où ces étiquettes se vendent. Toute comparaison de prix avec une étiquette achetée en Europe doit en tenir compte.</li>
+    </ul>
+    <div class="quotebox">
+      « There is no warranty whatsoever. Nothing. Not implied or otherwise suggested. This code isn't fit for anything. »
+      <span class="qsrc">Section « Hints and excuses » du README du dépôt public (lu le 2 octobre 2026). Traduction : « Il n'y a aucune garantie. Aucune. Ni implicite ni d'aucune autre sorte. Ce code n'est bon à rien. »</span>
+    </div>
+    <p>Un dernier mot sur la demande, parce qu'elle est réelle mais datée. Le seul verbatim public que nous ayons retrouvé sur les prix de ces étiquettes est une phrase de 2024, sur le forum Home Assistant.</p>
+    <div class="quotebox">
+      « The prices for the 2,9″ exceed the 25 EUR meanwhile and I can't order the 7.5″. »
+      <span class="qsrc">Message public d'un membre du forum Home Assistant, 27 novembre 2024. Traduction : « Les prix du 2,9 pouces dépassent les 25 € maintenant, et je ne peux pas commander le 7,5 pouces. »</span>
+    </div>
+  </section>
+
+  <section id="etapes" class="switch dyn">
+    <h2>La mise en route, en trois étapes</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Choisir et flasher le point d'accès</b><span>Une carte ESP32-S3 N16R8, flashée depuis la page d'installation du projet, puis connectée à votre Wi-Fi. Comptez la soirée si c'est votre premier montage.</span></div>
+      <div class="step"><b>2 · Flasher l'étiquette</b><span>Outil de programmation du projet, contacts sur la carte, choix du firmware correspondant à la famille de puce. C'est l'étape qui casse du matériel.</span></div>
+      <div class="step"><b>3 · Intégrer à Home Assistant</b><span>L'intégration du projet expose chaque étiquette comme un appareil : température, batterie, signal, dernière communication, et un service pour dessiner du contenu.</span></div>
+    </div>
+    <p>Ce qu'on y affiche ensuite relève de vous : relevé de température d'une pièce, prochaine poubelle, calendrier, consommation électrique, prix d'un produit dans une boutique. L'affichage se construit à partir de vos capteurs, pas d'un service tiers.</p>
+  </section>
+
+  <section id="checklist" class="switch dyn">
+    <h2>La checklist avant de commander</h2>
+    <ul>
+      <li><strong>Vérifier le modèle exact de l'étiquette</strong> dans la liste du wiki du projet — famille de puce comprise, pas seulement la taille de l'écran.</li>
+      <li><strong>Vérifier la radio</strong> dont vous avez besoin : 802.15.4, Bluetooth, ou SubGHz 868 MHz. Elle détermine le point d'accès.</li>
+      <li><strong>Acheter un ESP32-S3 N16R8</strong> (16 Mo de flash, 8 Mo de RAM). Une carte ESP32-S2 ne fonctionnera plus avec les versions actuelles.</li>
+      <li><strong>Prévoir le matériel de flashage</strong> en même temps que l'étiquette : sans lui, l'étiquette reste inutilisable.</li>
+      <li><strong>Accepter que l'étiquette peut être perdue.</strong> Le projet décrit des cartes fragiles et donne lui-même zéro garantie. N'engagez pas un lot coûteux au premier essai.</li>
+      <li><strong>Relire la licence</strong> si l'usage envisagé n'est pas strictement personnel : la clause non commerciale est explicite.</li>
+      <li><strong>Comparer au prix total</strong>, port et TVA compris, avant de conclure qu'acheter à l'import est moins cher qu'un afficheur du commerce.</li>
+    </ul>
+  </section>
+
+  <section id="cta" class="switch dyn">
+    <div class="cta">
+      <h2>Par où commencer, concrètement</h2>
+      <p>Ces liens sont ceux du projet et de ses listes officielles. Aucun n'est un lien affilié.</p>
+      <ul>
+        <li><strong>Installer le firmware sur votre carte</strong> → <a href="https://install.openepaperlink.org/" rel="noopener">la page d'installation officielle du projet</a>.</li>
+        <li><strong>Choisir votre point d'accès</strong> → <a href="https://openepaperlink.org/aps" rel="noopener">les options de points d'accès, avec le barème d'effort</a>.</li>
+        <li><strong>Vérifier qu'une étiquette est compatible</strong> → <a href="https://github.com/OpenEPaperLink/OpenEPaperLink/wiki" rel="noopener">le wiki et sa liste de modèles vérifiés</a>.</li>
+        <li><strong>Piloter depuis Home Assistant</strong> → <a href="https://github.com/OpenEPaperLink/Home_Assistant_Integration" rel="noopener">le dépôt de l'intégration</a>.</li>
+      </ul>
+      <p class="footnote" style="margin-top:10px">Notre recommandation, si vous partez de zéro : commencez par <em>une</em> étiquette d'occasion ou d'entrée de gamme et une carte ESP32-S3 N16R8, validez la chaîne complète, et seulement ensuite achetez un lot. C'est la seule façon de ne pas transformer un projet de week-end en carton de matériel incompatible.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="switch dyn">
+    <h2>Questions</h2>
+    <details><summary>Toutes les étiquettes de prix électroniques sont-elles compatibles ?</summary><p>Non. Le wiki classe les modèles vérifiés par famille de puce : ZBS (M2), nRF (M3), SiLabs EFR32xG22 (M3), et CC1110/CC1310 en SubGHz. Une étiquette absente de ces listes n'est pas forcément incompatible, mais elle n'est pas vérifiée — et le wiki prévient lui-même que ses informations sont déduites et parfois fausses.</p></details>
+    <details><summary>Quel point d'accès acheter, et à quel prix ?</summary><p>Le projet chiffre trois niveaux : environ 10-20 €, environ 40 €, environ 60 €, du bricolage à la carte prête à l'emploi. Achetez une carte ESP32-S3 avec 16 Mo de flash et 8 Mo de RAM : la version 2.75 est la dernière à accepter les cartes ESP32-S2 ou les ESP32-S3 moins dotées.</p></details>
+    <details><summary>Peut-on revendre un kit équipé de ce firmware ?</summary><p>Non. La licence est Creative Commons BY-NC-SA 4.0, clause NonCommercial comprise, et le site du projet écrit que l'usage est « uniquement non commercial ». Le montage personnel est permis ; la revente d'un produit embarquant ce firmware ne l'est pas.</p></details>
+    <details><summary>Combien coûte une étiquette ?</summary><p>Il n'existe pas de grille publique. Le seul relevé public daté que nous ayons retrouvé vient d'un membre du forum Home Assistant, en Espagne, le 6 décembre 2024 : 22,40 € (13,99 € en promotion) pour du 2,1 pouces, 26,76 € pour du 2,9 pouces, 60,63 € pour du 4,2 pouces, 144,76 € pour du 7,5 pouces, 311,27 € pour du 10,2 pouces — hors port et hors TVA.</p></details>
+    <details><summary>Faut-il Home Assistant ?</summary><p>Non, mais c'est le chemin le plus documenté. Le projet fournit son propre point d'accès et une interface web ; l'intégration Home Assistant ajoute les capteurs (température, batterie, signal), les déclencheurs de bouton et le service de dessin. Ce sont deux usages du même matériel.</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non. Aucun lien de cette page ne nous rapporte de commission à la date du 2 octobre 2026. Le programme d'affiliation AliExpress est enregistré comme candidat dans nos registres — aucun compte n'est créé, aucun lien n'est posé. La <a href="../about/">page À propos</a> sera mise à jour le jour où cela changera.</p></details>
+  </section>
+
+  <section id="honesty" class="switch dyn">
+    <h2>Comment cette page est faite</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié ici.</strong> Le dépositaire naturel de ce type de page serait un programme de place de marché, puisque les étiquettes viennent d'import. Le nôtre est enregistré comme candidat, pas approuvé : donc aucun lien, et nous préférons l'écrire plutôt que de l'espérer.</li>
+      <li><strong>Les fourchettes de points d'accès viennent du projet.</strong> Les trois niveaux (~10-20 €, ~40 €, ~60 €) sont lus sur la page « Access Points » du site officiel, le 2 octobre 2026, avec la dépense d'assemblage associée.</li>
+      <li><strong>Les prix d'étiquettes sont datés et attribués.</strong> Ils proviennent d'un relevé public de décembre 2024 sur une place de marché d'import, consulté depuis l'Espagne, et nous ne les présentons pas comme les prix d'aujourd'hui. Aucun prix 2026 n'a pu être vérifié : les pages de vente de ces lots ne sont pas consultables sans compte, et nous ne les inventons pas.</li>
+      <li><strong>Les contraintes viennent du dépôt, du wiki et de la page officielle</strong>, pas d'articles de seconde main : licence, note de version sur les cartes, avertissement d'absence de garantie, fragilité des cartes.</li>
+      <li><strong>Les verbatims sont publics et attribués</strong> (forum Home Assistant, novembre et décembre 2024), reproduits avec leur date et traduits par nous.</li>
+      <li><strong>Aucune autonomie annoncée.</strong> Nous ne publions aucune durée de batterie : elle dépend de la configuration et nous ne l'avons pas mesurée.</li>
+      <li><strong>Les images sont des banques libres</strong>, encadrées, créditées et liées dans les sources. Les étiquettes photographiées ne sont pas des modèles que nous avons testés.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch dyn">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Dépôt public OpenEPaperLink (README et licence) — lu le 2 octobre 2026 : description du projet, objectifs de consommation (~9 µA, latence de 40 s) et de débit (~5 ko/s), blocs de 4096 octets, avertissement d'absence de garantie, licence Creative Commons BY-NC-SA 4.0.</li>
+      <li>Wiki du projet (page d'accueil) — lu le 2 octobre 2026 : liste des modèles d'étiquettes vérifiés par famille de puce (ZBS/M2, nRF/M3, SiLabs EFR32xG22, CC1110/CC1310 SubGHz), avertissement sur la fiabilité des informations, note de version 2.75 sur les points d'accès, protocoles radio pris en charge.</li>
+      <li>Site officiel du projet, page « Access Points » — lue le 2 octobre 2026 : liste des points d'accès, barème d'effort et de prix (€ ~10-20 €, €€ ~40 €, €€€ ~60 €), exigence de 16 Mo de flash et 8 Mo de RAM.</li>
+      <li>Site officiel du projet, page d'accueil — lue le 2 octobre 2026 : version 2.70 du firmware, mention de licence non commerciale, principes techniques (blocs de 4 Ko, 42 paquets par bloc, vérification par MD5, stockage EEPROM).</li>
+      <li>Intégration Home Assistant du projet — dépôt et README lus le 2 octobre 2026 : prérequis matériels selon le mode (point d'accès ou Bluetooth), firmware à flasher pour les étiquettes Bluetooth, service de dessin de contenu, changement de nom de l'intégration, sort des étiquettes d'une marque précise.</li>
+      <li>Forum Home Assistant, fil public sur les étiquettes e-ink en Bluetooth — lu le 2 octobre 2026 : relevé de prix daté du 6 décembre 2024 (2,1″ 22,40 € / 13,99 € ; 2,9″ 26,76 € / 16,59 € ; 4,2″ 60,63 € / 37,59 € ; 7,5″ 144,76 € / 90,99 € ; 10,2″ 311,27 € / 192,99 €), verbatim du 27 novembre 2024 sur la barre des 25 €, réponse du service client du fabricant d'étiquettes Bluetooth.</li>
+      <li>Programme d'affiliation AliExpress (Portals) — statut dans nos registres au 2 octobre 2026 : candidat, aucun compte créé, aucun lien posé. Barème public : commission par catégorie, le matériel électronique étant situé par les comparateurs de programmes dans la fourchette basse.</li>
+      <li>Crédits images (banque libre) : étiquette de prix e-ink dans un supermarché — Maksym Kozlenko, CC BY-SA 4.0 · rayon d'épices avec étiquettes électroniques — CC BY 4.0, via Wikimedia Commons.</li>
+      <li>Guides liés : <a href="../tracker-find-my-diy/">Tracker « Localiser » maison à partir d'un ESP32</a> · <a href="../cadre-oiseaux-eink/">Cadre e-ink à oiseaux : la liste de courses réelle</a> · <a href="../">Honest Switch — comparatif honnête</a></li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch dyn">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix et les conditions changent ; confirmez sur la source officielle avant de vous engager.</p>
+    <p>Mis à jour le 2 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
+(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
+/* barre de progression au scroll */
+(function(){
+  var bar = document.getElementById('progress');
+  function frame(){
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    var p = max > 0 ? (d.scrollTop / max) : 0;
+    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+  }
+  var queued = false;
+  window.addEventListener('scroll', function(){
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function(){ queued = false; frame(); });
+  }, {passive:true});
+  window.addEventListener('resize', frame, {passive:true});
+  frame();
+})();
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Étiquettes e-ink ESL (OpenEPaperLink) — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Étiquettes e-ink ESL (OpenEPaperLink)\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<style>
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Meshtastic : un réseau LoRa hors-ligne — une carte à 22,95 €, un appareil prêt à l'emploi à 47,99 € — Honest Switch</title>
+<meta name="description" content="Meshtastic (firmware libre GPL-3.0) transforme une carte LoRa en réseau de messagerie chiffré sans internet. Prix relevés le 2 octobre 2026 : carte Heltec EU868 22,95 €, tracker T1000-E 47,99 €, répéteur solaire 107,00 €. Ce que les guides DIY ne disent pas.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/meshtastic/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/meshtastic/">
+<meta property="og:title" content="Meshtastic : un réseau LoRa hors-ligne — une carte à 22,95 €, un appareil prêt à l'emploi à 47,99 € — Honest Switch">
+<meta property="og:description" content="Prix relevés le 2 octobre 2026, ce que le montage DIY économise vraiment, et les contraintes que les guides oublient de dire.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .cta{border:1.5px solid rgba(14,123,82,.45);border-radius:12px;padding:16px 18px;margin:22px 0;background:#f7faf8}
+  .cta h2{margin:0 0 8px;font-size:1.05rem}
+  .cta ul{margin:8px 0 0;padding-left:18px}
+  .cta li{margin:6px 0}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  @media (prefers-reduced-motion:reduce){
+    .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
+    .arrow{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Meshtastic fonctionne-t-il sans internet ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui, c'est son principe. Meshtastic est un réseau maillé radio : les appareils se relaient entre eux par ondes LoRa, sans tour cellulaire, sans WiFi et sans internet. Le projet le résume lui-même : un réseau maillé décentralisé, sans infrastructure. La portée annoncée est de plusieurs kilomètres en terrain dégagé, mais elle dépend du relief et de l'antenne — nous ne la mesurons pas ici."}},
+    {"@type": "Question", "name": "Faut-il programmer pour utiliser Meshtastic ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non pour l'usage courant. On flashe le firmware sur une carte compatible, puis tout se règle depuis l'application iOS, Android ou le client web. Le projet fournit un flasher en ligne. Les cartes achetées prêtes à l'emploi sont, elles, déjà installées."}},
+    {"@type": "Question", "name": "Quelle différence entre une carte à 22,95 € et un appareil à 47,99 € ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "La carte de développement est un circuit nu : il lui manque l'antenne, la batterie et le boîtier. Un appareil prêt à l'emploi comme le tracker T1000-E, relevé à 47,99 € le 2 octobre 2026, intègre déjà ces éléments, un GPS et une étanchéité IP. Le montage DIY est réel mais son écart avec un appareil fini se resserre dès qu'on ajoute l'antenne (9,95 €), la batterie (13,95 €) et le boîtier."}},
+    {"@type": "Question", "name": "Cette page contient-elle des liens affiliés ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non, aucun à ce jour. Le programme d'affiliation AliExpress est enregistré comme candidat dans nos registres : aucun compte n'est créé et aucun lien n'est posé. Si un lien affilié arrive, il sera étiqueté à l'endroit où il apparaît et cet encadré sera mis à jour avec la date."}},
+    {"@type": "Question", "name": "Le même appareil est-il vendu à deux prix ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui. Le tracker SenseCAP T1000-E (EU868) a été relevé à 47,99 € chez un revendeur européen et à 53,55 € chez un autre, le même jour. Le fabricant RAK, lui, vend directement en dollars. Comparer avant d'acheter fait donc partie de l'achat."}}
+  ]
+}
+</script>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#projet">Meshtastic</a>
+      <a href="#prix">Les prix</a>
+      <a href="#ecart">Le vrai écart</a>
+      <a href="#limites">Les contraintes</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero dyn">
+    <p class="kicker">Réseau maillé hors-ligne · aucun lien affilié sur cette page · sources relevées le 2 oct. 2026</p>
+    <h1>Meshtastic : une carte LoRa à 22,95 € pour communiquer sans réseau — et pourquoi l'appareil prêt à l'emploi à 47,99 € n'est pas toujours le mauvais calcul</h1>
+
+    <figure class="photo"><img src="../img/meshtastic.jpg" alt="Nœud Meshtastic : carte LoRa bleue avec écran OLED affichant EU_868 et meshtastic.org, antenne et câble USB branchés" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Meshtastic est un firmware libre (GPL-3.0) qui transforme une <span class="hl">carte LoRa à 22,95 €</span> et votre téléphone en réseau de messagerie chiffré, <span class="hl">sans tour cellulaire, sans WiFi et sans internet</span>. Le projet est massif : 8 366 étoiles sur GitHub, 26 régions LoRa, 39 langues. Mais le discours DIY cache un détail : la carte n'est pas un appareil. Un tracker prêt à l'emploi se relève à <span class="hl">47,99 €</span>, et le <em>même</em> modèle coûte <span class="hl">53,55 €</span> chez un autre revendeur le même jour.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip">Prix lus le 2 oct. 2026</span>
+    </p>
+  </section>
+
+  <section id="bref" class="switch dyn">
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><strong>Le projet est libre et massif.</strong> Le dépôt public meshtastic/firmware comptait <span class="hl">8 366 étoiles</span>, <span class="hl">2 786 forks</span> et <span class="hl">473 contributeurs</span> le 2 octobre 2026, sous licence <span class="hl">GPL-3.0</span> ; le site officiel annonce <span class="hl">26 régions LoRa</span> et <span class="hl">39 langues</span>.</li>
+        <li><strong>Le point d'entrée est une carte.</strong> La carte de développement la moins chère que nous ayons relevée — Heltec WiFi LoRa 32 V3, version EU868 — est à <span class="hl">22,95 €</span> chez un revendeur européen, le 2 oct. 2026.</li>
+        <li><strong>Un appareil fini coûte plus du double.</strong> Le tracker SenseCAP T1000-E (EU868), boîtier, antenne, batterie et GPS inclus, est relevé à <span class="hl">47,99 €</span> chez un revendeur et <span class="hl">53,55 €</span> chez un autre le même jour — soit <span class="hl">5,56 €</span> d'écart pour le même produit.</li>
+        <li><strong>Le « 22,95 € » n'est pas complet :</strong> il faut ajouter l'antenne 868 MHz (<span class="hl">9,95 €</span>), une batterie (<span class="hl">13,95 €</span>) et un boîtier — nous ne chiffrons pas le boîtier, faute de l'avoir relevé.</li>
+        <li><strong>Étendre la portée coûte plus cher que le point d'accès :</strong> un répéteur solaire se relève à <span class="hl">107,00 €</span> (WisMesh Repeater Mini) et <span class="hl">119,00 €</span> (SenseCAP Solar Node P1-Pro)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projet" class="switch dyn">
+    <h2>De quoi on parle exactement</h2>
+    <p>Meshtastic n'est pas une application : c'est un <strong>firmware</strong> qu'on installe sur une carte radio bon marché équipée d'une puce LoRa. Une fois installé, la carte devient un nœud d'un réseau maillé : chaque appareil relaie les messages des autres, sans opérateur ni point d'accès. Le téléphone sert d'écran et de clavier, par Bluetooth ou par le client web.</p>
+    <div class="quotebox">
+      « An open source, off-grid, decentralized mesh network built to run on affordable, low-power devices. No cell towers. No internet. Just pure peer-to-peer connectivity. »
+      <span class="qsrc">Page d'accueil publique meshtastic.org, lue le 2 octobre 2026. Traduction : « Un réseau maillé décentralisé, hors réseau, open source, conçu pour tourner sur des appareils abordables et sobres. Pas de tours cellulaires. Pas d'internet. Juste de la connexion de pair à pair. »</span>
+    </div>
+    <p>Le projet revendique aussi le chiffrement <strong>AES-256</strong> des messages et une portée de <strong>plusieurs kilomètres</strong> — ce sont ses chiffres, annoncés par lui, pas une mesure faite ici. Trois conséquences pratiques que les guides oublient de dire :</p>
+    <ul>
+      <li><strong>La carte n'est pas un appareil.</strong> Une carte de développement arrive nue : ni antenne, ni batterie, ni boîtier. C'est ce qui explique l'écart avec un tracker prêt à l'emploi, qui intègre tout.</li>
+      <li><strong>Il faut flasher le firmware.</strong> Le projet fournit un flasher en ligne et la carte se programme par câble USB. Rien de difficile, mais la première installation demande un ordinateur.</li>
+      <li><strong>La documentation est excellente, mais en anglais</strong> et portée par une communauté : c'est un projet libre, pas un service client.</li>
+    </ul>
+  </section>
+
+  <section id="prix" class="switch dyn">
+    <h2>Les prix : ce qui est lu, où, et quand</h2>
+    <p>Les montants ci-dessous ont été relevés le <strong>2 octobre 2026</strong> sur les fiches produits des revendeurs. Les prix en euros viennent de deux boutiques européennes (Hexaspot, Paradisetronic) ; les prix en dollars viennent de la boutique du fabricant RAK, dont la devise affichée est le dollar (vérifié le 2 oct. 2026). Nous ne convertissons pas d'une devise à l'autre, et nous n'inventons rien.</p>
+    <div class="chartbox">
+      <h3>Ce que coûte un point d'entrée Meshtastic (€, prix relevés le 2 oct. 2026)</h3>
+      <svg viewBox="0 0 720 400" role="img" aria-label="Graphique à barres, prix relevés le 2 octobre 2026 : carte Heltec WiFi LoRa 32 V3 EU868 22,95 euros ; kit de démarrage WisMesh RAK3312 28,75 euros ; carte plus antenne 868 MHz 32,90 euros ; tracker SenseCAP T1000-E chez un revendeur européen 47,99 euros ; même tracker chez un autre revendeur 53,55 euros ; répéteur solaire WisMesh Repeater Mini 107,00 euros ; station WisMesh sur Raspberry Pi 181,00 euros">
+        <title>Prix des points d'entrée Meshtastic comparés</title>
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12" fill="#57523f">
+          <text x="70" y="32">Carte Heltec WiFi LoRa 32 V3 (EU868)</text>
+          <rect x="70" y="38" width="66" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="142" y="52" fill="#0e7b52" font-weight="700">22,95 €</text>
+
+          <text x="70" y="82">Kit de démarrage WisMesh RAK3312 (EU868)</text>
+          <rect x="70" y="88" width="82" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="158" y="102" fill="#0e7b52" font-weight="700">28,75 €</text>
+
+          <text x="70" y="132">Carte + antenne 868 MHz (22,95 + 9,95)</text>
+          <rect x="70" y="138" width="94" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="170" y="152" fill="#0e7b52" font-weight="700">32,90 €</text>
+
+          <text x="70" y="182">Tracker SenseCAP T1000-E (revendeur A)</text>
+          <rect x="70" y="188" width="138" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="214" y="202" fill="#0e7b52" font-weight="700">47,99 €</text>
+
+          <text x="70" y="232">Même tracker T1000-E (revendeur B)</text>
+          <rect x="70" y="238" width="154" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="230" y="252" fill="#0e7b52" font-weight="700">53,55 €</text>
+
+          <text x="70" y="282">Répéteur solaire WisMesh Repeater Mini</text>
+          <rect x="70" y="288" width="307" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="383" y="302" fill="#0e7b52" font-weight="700">107,00 €</text>
+
+          <text x="70" y="332">Station WisMesh sur Raspberry Pi</text>
+          <rect x="70" y="338" width="520" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="596" y="352" fill="#0e7b52" font-weight="700">181,00 €</text>
+        </g>
+      </svg>
+      <p class="footnote">Barres proportionnelles aux montants ci-dessus, base à zéro. Les deux lignes « carte + antenne » et « kit de démarrage » sont des ensembles que nous avons additionnés ou relevés tels quels, jamais des estimations : la ligne carte + antenne est la somme de la carte Heltec (22,95 €) et de l'antenne 868 MHz (9,95 €) relevées le même jour chez le même revendeur. Les prix de la boutique RAK, en dollars, n'apparaissent pas dans ce graphique en euros : ils figurent dans le tableau.</p>
+    </div>
+    <table>
+      <thead><tr><th>Où</th><th>Quoi</th><th>Prix relevé le 2 oct. 2026</th><th>Ce que le prix ne comprend pas</th></tr></thead>
+      <tbody>
+        <tr><td>Hexaspot (EU, €)</td><td>Carte Heltec WiFi LoRa 32 V3, ESP32-S3 + SX1262, EU868</td><td><strong>22,95 €</strong></td><td>antenne, batterie, boîtier, câble</td></tr>
+        <tr><td>Hexaspot (EU, €)</td><td>Antenne Meshtastic/LoRa 2,6 dBi (EU868)</td><td><strong>9,95 €</strong></td><td>pigtail selon la carte</td></tr>
+        <tr><td>Hexaspot (EU, €)</td><td>Batterie Li-Po Heltec 3 000 mAh</td><td><strong>13,95 €</strong></td><td>boîtier</td></tr>
+        <tr><td>Hexaspot (EU, €)</td><td>Kit de démarrage WisMesh RAK3312 (EU868)</td><td><strong>28,75 €</strong></td><td>boîtier selon l'usage</td></tr>
+        <tr><td>Hexaspot (EU, €)</td><td>Tracker SenseCAP Card T1000-E pour Meshtastic (EU868)</td><td><strong>47,99 €</strong></td><td>rien à assembler — appareil fini</td></tr>
+        <tr><td>Paradisetronic (EU, €)</td><td>Même tracker Seeed SenseCAP T1000-E</td><td><strong>53,55 €</strong></td><td>même produit, autre boutique</td></tr>
+        <tr><td>Hexaspot (EU, €)</td><td>Répéteur solaire WisMesh Repeater Mini (IP67)</td><td><strong>à partir de 99,95 €</strong> (107,00 € en V1)</td><td>mât, fixation non comprise</td></tr>
+        <tr><td>Hexaspot (EU, €)</td><td>Station WisMesh basée Raspberry Pi (EU868)</td><td><strong>181,00 €</strong> (189,00 € en 1 W)</td><td>alimentation selon la version</td></tr>
+        <tr><td>RAK (boutique, $)</td><td>WisMesh Tag — tracker GPS de poche</td><td><strong>39,00 $</strong></td><td>devise USD, port et taxes d'import à prévoir</td></tr>
+        <tr><td>RAK (boutique, $)</td><td>WisMesh Pocket V2 — appareil prêt à l'emploi</td><td><strong>89,97 $</strong></td><td>devise USD, port et taxes d'import à prévoir</td></tr>
+        <tr><td>RAK (boutique, $)</td><td>WisMesh Station (Raspberry Pi, Meshtastic)</td><td><strong>169,99 $</strong> (175,99 $ en 1 W)</td><td>devise USD, port et taxes d'import à prévoir</td></tr>
+      </tbody>
+    </table>
+    <p>Un point qui change la lecture du budget : <strong>le même appareil fini se relève à deux prix selon la boutique</strong>. Le tracker SenseCAP T1000-E (EU868) vaut <strong>47,99 €</strong> chez un revendeur européen et <strong>53,55 €</strong> chez un autre, le même jour — soit 5,56 € d'écart pour un produit identique. Et chez le fabricant RAK, qui vend en dollars, un tracker équivalent part à <strong>39,00 $</strong>. Comparer les boutiques avant de commander est donc aussi rentable que de choisir le montage le moins cher.</p>
+  </section>
+
+  <section id="ecart" class="switch dyn">
+    <h2>Le vrai écart n'est pas celui qu'on croit</h2>
+    <p>La présentation habituelle compare la carte DIY au produit fini, et conclut à une économie spectaculaire. C'est exact — et incomplet. La carte à 22,95 € n'a ni antenne, ni batterie, ni boîtier : une fois ces trois postes ajoutés (9,95 € + 13,95 € + un boîtier que nous ne chiffrons pas), l'écart avec un tracker fini à 47,99 € se resserre nettement.</p>
+    <p>Ce que le DIY apporte en échange, ce n'est pas le prix : c'est le contrôle.</p>
+    <div class="fig">
+      <h3>Ce que 22,95 € achètent, et ce qu'un appareil fini ajoute</h3>
+      <svg viewBox="0 0 720 180" role="img" aria-label="Schéma : à gauche la carte de développement nue, sans antenne, batterie ni boîtier, à assembler ; à droite l'appareil prêt à l'emploi, avec antenne, batterie, boîtier et GPS inclus">
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12.5">
+          <rect x="20" y="24" width="320" height="130" rx="10" fill="#f7faf8" stroke="#c9d8d0"></rect>
+          <text x="40" y="50" fill="#57523f" font-weight="700">Carte DIY (22,95 €)</text>
+          <text x="40" y="76" fill="#57523f">✓ la radio et le processeur</text>
+          <text x="40" y="98" fill="#57523f">✗ antenne, batterie, boîtier</text>
+          <text x="40" y="120" fill="#57523f">✗ aucun GPS sur cette carte</text>
+          <text x="40" y="142" fill="#57523f">⟳ à flasher, à monter</text>
+
+          <rect x="380" y="24" width="320" height="130" rx="10" fill="#f2f7f4" stroke="#0e7b52"></rect>
+          <text x="400" y="50" fill="#0e7b52" font-weight="700">Appareil fini (47,99 €)</text>
+          <text x="400" y="76" fill="#57523f">✓ prêt à l'emploi, déjà flashé</text>
+          <text x="400" y="98" fill="#57523f">✓ antenne, batterie, boîtier inclus</text>
+          <text x="400" y="120" fill="#57523f">✓ GPS et indice d'étanchéité IP</text>
+          <text x="400" y="142" fill="#57523f">⟳ rien à assembler</text>
+        </g>
+      </svg>
+      <figcaption>Comparaison de contenu, pas de prix. Les montants cités sont ceux du tableau ci-dessus, relevés le 2 octobre 2026 ; les caractéristiques (GPS, étanchéité, firmware préinstallé) sont celles annoncées sur les fiches produit des revendeurs.</figcaption>
+    </div>
+    <p>Le second écart est celui du haut de gamme : étendre un réseau — un répéteur solaire à <strong>107,00 à 119,00 €</strong>, une station à <strong>181,00 €</strong> — coûte plus cher que le point d'accès lui-même. C'est logique (un répéteur, c'est une carte, un panneau solaire, une batterie et un boîtier étanche), mais aucun guide ne le dit aussi directement.</p>
+    <div class="callout">
+      <h2>La différence, en une phrase</h2>
+      <p>Une carte à 22,95 € est un composant : vous la montez, vous la flashez, vous achetez le reste. Un tracker à 47,99 € est un objet : vous l'allumez. Ce n'est pas le même achat, même si les deux font partie du même réseau.</p>
+    </div>
+  </section>
+
+  <section id="limites" class="switch dyn">
+    <h2>Ce que les guides oublient de dire</h2>
+
+    <figure class="photo dyn"><img src="../img/meshtastic-2.jpg" alt="Nœud Meshtastic monté dans un boîtier étanche, avec antenne 868 MHz sur mât, câble coaxial et passage de câble" loading="lazy" width="1400" height="800">
+      <figcaption>Un nœud Meshtastic installé en extérieur : boîtier, antenne sur mât et câble coaxial — c'est ce montage complet, pas la seule carte, qui fait un nœud opérationnel. Photo libre — -stk, CC BY-SA 4.0, via Wikimedia Commons.</figcaption>
+    </figure>
+
+    <ul>
+      <li><strong>Toutes les cartes ne se valent pas.</strong> La documentation officielle recommande explicitement les puces Semtech <strong>SX126x ou LR11xx</strong> plutôt que les anciennes : « We strongly recommend choosing devices equipped with the newer Semtech SX126x or LR11xx series », écrit le projet. Une carte bon marché à ancienne puce fonctionne, mais elle est déconseillée par le projet lui-même.</li>
+      <li><strong>Le prix affiché n'est pas le prix payé.</strong> La boutique du fabricant RAK facture en <strong>dollars</strong> : port et taxes d'import s'ajoutent. Deux revendeurs européens vendent le même tracker à 47,99 € et 53,55 €. Le total dépend donc de la boutique autant que du modèle.</li>
+      <li><strong>La portée « plusieurs kilomètres » est une annonce du projet</strong>, pas une mesure. Elle dépend du relief, des obstacles et de l'antenne — un nœud au fond d'une vallée portera beaucoup moins qu'un nœud en crête.</li>
+      <li><strong>Compter le boîtier et l'alimentation.</strong> Un nœud extérieur (comme celui de la photo) demande un boîtier étanche et souvent un panneau solaire : nous avons chiffré le répéteur solaire (107,00 à 119,00 €) mais pas le boîtier d'un nœud DIY — nous ne l'avons pas relevé, donc nous ne l'estimons pas.</li>
+      <li><strong>Le firmware est un projet communautaire.</strong> Documentation en anglais, mises à jour fréquentes, pas de service client : c'est le prix de la liberté du projet GPL-3.0.</li>
+      <li><strong>Ce n'est pas un réseau de téléphonie.</strong> Meshtastic transporte de courts messages et des positions, pas des appels ni de la vidéo : un réseau maillé LoRa a un débit très faible, c'est ce qui lui permet de tenir sur une batterie.</li>
+    </ul>
+  </section>
+
+  <section id="chemins" class="switch dyn">
+    <h2>Trois chemins, selon ce que vous voulez faire</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · La carte à monter</b><span>Carte LoRa 22,95 € + antenne 9,95 € + batterie 13,95 €. Le moins cher et le plus souple, mais tout est à assembler et à flasher, et le boîtier reste à votre charge.</span></div>
+      <div class="step"><b>2 · L'appareil prêt à l'emploi</b><span>Tracker fini à 47,99 € (ou 53,55 € selon la boutique) : antenne, batterie, boîtier, GPS et étanchéité inclus, déjà flashé. Rien à assembler — c'est le choix des débutants.</span></div>
+      <div class="step"><b>3 · Étendre le réseau</b><span>Répéteur solaire 107,00 à 119,00 € ou station à 181,00 € : utile seulement si vous voulez couvrir une zone. C'est le poste le plus cher, et il ne sert à rien sans un premier nœud.</span></div>
+    </div>
+    <p>Aucun de ces trois chemins n'est « le bon ». Le seul achat vraiment coûteux est de commander une carte en croyant recevoir un appareil prêt à l'emploi — ou l'inverse.</p>
+  </section>
+
+  <section id="checklist" class="switch dyn">
+    <h2>La checklist avant de commander</h2>
+    <ul>
+      <li><strong>Vérifier la bande :</strong> en Europe, cherchez la mention <strong>EU868</strong>. Un appareil annoncé en 915 MHz est destiné à d'autres régions et ne convient pas ici.</li>
+      <li><strong>Vérifier la puce radio :</strong> la documentation du projet recommande les <strong>SX126x / LR11xx</strong>. Une carte qui ne précise pas sa puce est un risque.</li>
+      <li><strong>Choisir carte ou appareil :</strong> assembler (22,95 € + antenne + batterie + boîtier) ou acheter fini (47,99 €). Le second évite toute la partie soudure, alimentation et étanchéité.</li>
+      <li><strong>Comparer les boutiques :</strong> le même tracker se relève à 47,99 € et 53,55 €. Vérifiez aussi le port et, hors UE, les taxes d'import.</li>
+      <li><strong>Penser à l'antenne :</strong> elle n'est jamais incluse avec une carte nue. Celle du revendeur est relevée à 9,95 €.</li>
+      <li><strong>Prévoir le boîtier et l'alimentation</strong> si le nœud doit tenir dehors — c'est le poste le plus souvent oublié, et nous ne l'avons pas chiffré.</li>
+      <li><strong>Vérifier le canal avant d'acheter en groupe :</strong> tous les nœuds d'un même réseau doivent utiliser la même bande et les mêmes réglages régionaux.</li>
+    </ul>
+  </section>
+
+  <section id="cta" class="switch dyn">
+    <div class="cta">
+      <h2>Par où commencer, concrètement</h2>
+      <p>Ces liens sont ceux du projet et des revendeurs cités. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez les prix et les spécifications à la source.</p>
+      <ul>
+        <li><strong>Comprendre le projet :</strong> <a href="https://meshtastic.org/" rel="nofollow noopener">meshtastic.org</a> et sa <a href="https://meshtastic.org/docs/hardware/devices/" rel="nofollow noopener">liste des cartes supportées</a> — dont les deux appareils cités ici.</li>
+        <li><strong>Installer le firmware :</strong> <a href="https://meshtastic.org/docs/getting-started/" rel="nofollow noopener">guide de démarrage</a> et flasher en ligne, depuis un navigateur.</li>
+        <li><strong>Voir une carte et son prix :</strong> <a href="https://hexaspot.com/products/heltec-wifi-lora-32-v3" rel="nofollow noopener">Heltec WiFi LoRa 32 V3 chez Hexaspot</a> (22,95 € le 2 oct. 2026) et le <a href="https://hexaspot.com/products/sensecap-card-tracker-t1000-e-for-meshtastic-eu868" rel="nofollow noopener">tracker T1000-E</a> (47,99 €).</li>
+        <li><strong>Voir le même tracker ailleurs :</strong> <a href="https://paradisetronic.com/en/products/seeed-114993369" rel="nofollow noopener">T1000-E chez Paradisetronic</a> (53,55 € le 2 oct. 2026) — et <a href="https://store.rakwireless.com/collections/meshtastic" rel="nofollow noopener">la boutique RAK</a>, en dollars, pour la gamme WisMesh.</li>
+        <li><strong>Vérifier la licence :</strong> le projet est en <a href="https://github.com/meshtastic/firmware/blob/master/LICENSE" rel="nofollow noopener">GPL-3.0</a>.</li>
+      </ul>
+      <p>Le réflexe qui évite le mauvais achat : décidez d'abord si vous voulez <em>assembler</em> ou <em>utiliser</em>. Si vous voulez un appareil qui marche ce soir, achetez-le fini ; si vous voulez comprendre et économiser sur la durée, partez de la carte — mais comptez l'antenne, la batterie et le boîtier.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="switch dyn">
+    <h2>Questions</h2>
+    <details><summary>Meshtastic fonctionne-t-il sans internet ?</summary><p>Oui, c'est son principe : les appareils se relaient entre eux par radio LoRa, sans tour cellulaire, WiFi ni internet. La page d'accueil du projet le résume ainsi. La portée annoncée (plusieurs kilomètres) dépend du relief et de l'antenne.</p></details>
+    <details><summary>Faut-il savoir programmer ?</summary><p>Non pour l'usage courant. On flashe le firmware une fois, puis on règle tout depuis l'application iOS, Android ou le client web. Les appareils prêts à l'emploi arrivent déjà flashés.</p></details>
+    <details><summary>Une carte à 22,95 € suffit-elle pour communiquer ?</summary><p>Il faut au minimum la carte (22,95 €), une antenne (9,95 €) et une alimentation ou batterie (13,95 €). Pour un nœud extérieur, ajoutez un boîtier étanche — que nous ne chiffrons pas, faute de l'avoir relevé.</p></details>
+    <details><summary>Pourquoi le même appareil est-il vendu 47,99 € et 53,55 € ?</summary><p>Parce que ce sont deux boutiques distinctes, avec leurs frais et leur port. Nous avons relevé les deux prix le 2 octobre 2026 : comparer la boutique fait partie de l'achat.</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Le programme d'affiliation AliExpress (cartes et matériel importé) est enregistré chez nous comme candidat — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré mis à jour.</p></details>
+  </section>
+
+  <section id="honesty" class="switch dyn">
+    <h2>Comment cette page est faite</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié ici.</strong> Le programme d'affiliation AliExpress est enregistré comme candidat dans nos registres : aucun compte n'est créé et aucun lien n'est posé. Si un lien affilié arrive, il sera étiqueté « lien affilié » à l'endroit où il apparaît, avec <code>rel="sponsored"</code>, et cet encadré sera mis à jour avec la date.</li>
+      <li><strong>Les prix sont ceux que nous avons lus nous-mêmes</strong> sur les fiches produits des revendeurs, le 2 octobre 2026. Nous ne convertissons pas les dollars en euros et nous ne mélangeons pas les deux devises dans le graphique.</li>
+      <li><strong>Ce que nous ne savons pas est écrit comme tel :</strong> le prix d'un boîtier étanche pour un nœud DIY n'est pas relevé, donc il n'est estimé nulle part ; la portée réelle selon le terrain n'est pas mesurée.</li>
+      <li><strong>Nous ne fabriquons aucun avis, aucun témoignage et aucune statistique.</strong> Les chiffres du projet (étoiles, forks, contributeurs) viennent de l'interface publique de GitHub, datés ; les régions et langues viennent du site officiel.</li>
+      <li><strong>Corrections :</strong> si un prix a changé ou si nous nous sommes trompés, écrivez-nous, nous corrigeons et nous datons la correction.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch dyn">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Dépôt public meshtastic/firmware (GPL-3.0, 8 366 étoiles, 2 786 forks, 473 contributeurs, 454 tickets ouverts, dernière poussée 2 oct. 2026, langage C++) — lu via l'API GitHub le 2 octobre 2026.</li>
+      <li>Site officiel meshtastic.org : devise du projet (« réseau maillé décentralisé, hors réseau »), chiffrement AES-256, portée de plusieurs kilomètres annoncée, 26 régions LoRa, 39 langues — lu le 2 octobre 2026.</li>
+      <li>Documentation « Supported Hardware Overview » (meshtastic.org/docs/hardware/devices) : recommandation des puces Semtech SX126x / LR11xx — lue le 2 octobre 2026.</li>
+      <li>Boutique Hexaspot (revendeur européen, prix en euros) : carte Heltec WiFi LoRa 32 V3 EU868 22,95 € ; antenne 868 MHz 9,95 € ; batterie Heltec 3 000 mAh 13,95 € ; kit WisMesh RAK3312 28,75 € ; tracker SenseCAP T1000-E EU868 47,99 € ; répéteur solaire WisMesh Repeater Mini à partir de 99,95 € (107,00 € en V1) ; station WisMesh Raspberry Pi 181,00 € — relevés le 2 octobre 2026.</li>
+      <li>Boutique Paradisetronic (revendeur européen, prix en euros) : tracker Seeed SenseCAP T1000-E à 53,55 € — relevé le 2 octobre 2026.</li>
+      <li>Boutique du fabricant RAK (store.rakwireless.com, devise USD confirmée sur la page) : WisMesh Tag 39,00 $ ; WisMesh Pocket V2 89,97 $ ; WisMesh Station 169,99 $ (175,99 $ en version 1 W) — relevés le 2 octobre 2026.</li>
+      <li>Photos : nœud Meshtastic avec écran OLED et nœud extérieur sur mât — toutes deux de -stk, CC BY-SA 4.0, via Wikimedia Commons.</li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch dyn">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix et les conditions changent ; confirmez sur la source officielle avant de vous engager.</p>
+    <p>Mis à jour le 2 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
+(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
+/* barre de progression au scroll */
+(function(){
+  var bar = document.getElementById('progress');
+  function frame(){
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    var p = max > 0 ? (d.scrollTop / max) : 0;
+    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+  }
+  var queued = false;
+  window.addEventListener('scroll', function(){
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function(){ queued = false; frame(); });
+  }, {passive:true});
+  window.addEventListener('resize', frame, {passive:true});
+  frame();
+})();
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Meshtastic (réseau LoRa hors-ligne) — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Meshtastic (réseau LoRa hors-ligne)\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<style>
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style>
+</body>
+</html>

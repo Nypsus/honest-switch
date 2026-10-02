@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>KVM over IP maison (PiKVM) : piloter un PC à distance pour ≈130 €, et ce que les comparatifs oublient — Honest Switch</title>
+<meta name="description" content="Prendre la main sur un PC ou un serveur à distance (BIOS compris) : montage PiKVM ≈130 € TTC relevé le 2 oct. 2026, boîtier tout fait 264-366 € en France, KVM IP commercial dès 509,57 $.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/kvm-ip-maison/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/kvm-ip-maison/">
+<meta property="og:title" content="KVM over IP maison (PiKVM) : piloter un PC à distance pour ≈130 €">
+<meta property="og:description" content="Prix relevés le 2 octobre 2026 chez un revendeur français : montage PiKVM ≈130 €, boîtier tout fait 264-366 €, KVM IP commercial dès 509,57 $. Les trois limites que les guides taisent.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .cta{border:1.5px solid rgba(14,123,82,.45);border-radius:12px;padding:16px 18px;margin:22px 0;background:#f7faf8}
+  .cta h2{margin:0 0 8px;font-size:1.05rem}
+  .cta ul{margin:8px 0 0;padding-left:18px}
+  .cta li{margin:6px 0}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  @media (prefers-reduced-motion:reduce){
+    .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
+    .arrow{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Combien coûte un KVM over IP maison en France ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "En montage DIY, environ 129,90 € TTC de pièces relevées le 2 octobre 2026 chez un revendeur français (Raspberry Pi 4 Modèle B 3GB à 97,50 €, carte d'acquisition vidéo HDMI vers USB à 12,00 €, alimentation officielle USB-C 15,3 W à 9,60 €, carte micro-SD 16 Go à 10,80 €). En boîtier tout fait, un PiKVM V4 Mini pré-assemblé se relève à 264,00 € et un V4 Plus à 360,00 à 366,00 €."}},
+    {"@type": "Question", "name": "Quelle différence avec un KVM IP commercial ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Le prix. Relevés le 2 octobre 2026 en dollars : Lantronix Spider dès 509,57 $, un ATEN CN9850 vers 745 $, un ATEN 8 ports entre 1 478 $ et 1 643 $. À côté, un montage PiKVM se situe entre 80 $ et 130 $ selon la carte, et les alternatives clé-en-main libres commencent vers 40 à 80 $. La licence de gestion avancée des serveurs (iLO/iDRAC) se relève par ailleurs entre 200 $ et 400 $."}},
+    {"@type": "Question", "name": "Peut-on vraiment atteindre le BIOS et redémarrer la machine à distance ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui, c'est tout l'intérêt d'un KVM over IP par rapport à un simple bureau à distance : la capture vidéo se branche sur la sortie HDMI de la machine et le clavier/souris sont émulés en USB, donc vous voyez et pilotez la machine avant que le système d'exploitation ne soit chargé, y compris dans le BIOS/UEFI. Le contrôle du bouton d'allumage (ATX) passe par des fils sur la carte mère : sur le montage DIY c'est à câbler soi-même, sur les versions V3/V4 pré-assemblées il est intégré."}},
+    {"@type": "Question", "name": "Quelles sont les limites du montage DIY ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Le projet l'écrit lui-même : le montage DIY PiKVM V2 est limité à 1920x1080 à 50 Hz, sans son, et quelques BIOS réglés sur 60 Hz peuvent ne pas s'afficher. Les fonctions confort (montage d'une image ISO, watchdog matériel, console série, module ATX fiable) demandent soit la carte V3 HAT, soit un PiKVM V4. Le DIY V1, lui, passe par un Raspberry Pi Pico pour émuler clavier et souris."}},
+    {"@type": "Question", "name": "Cette page contient-elle des liens affiliés ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non, aucun à ce jour. Les programmes du matériel importé (AliExpress, pour les cartes BliKVM/JetKVM et les adaptateurs) et de Pimoroni (via Shopify Collabs, pour le HAT PiKVM) sont enregistrés chez nous comme candidats : aucun compte n'est ouvert et aucun lien n'est posé. Si un lien affilié arrive, il sera étiqueté à l'endroit où il apparaît et cet encadré sera mis à jour avec la date."}}
+  ]
+}
+</script>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#projet">Le matériel</a>
+      <a href="#prix">Les prix</a>
+      <a href="#commercial">Le commercial</a>
+      <a href="#limites">Les pièges</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero dyn">
+    <p class="kicker">KVM over IP · aucun lien affilié sur cette page · prix relevés le 2 oct. 2026</p>
+    <h1>KVM over IP maison : prendre la main sur un PC ou un serveur à distance — BIOS compris — pour <span class="hl">≈130 €</span> de pièces, au lieu de <span class="hl">500 $ et plus</span></h1>
+
+    <figure class="photo"><img src="../img/kvm-ip-maison.jpg" alt="Carte Raspberry Pi 4 Model B vue de dessus : connecteur GPIO 40 broches, ports USB, Ethernet et deux sorties micro-HDMI" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Un <strong>Raspberry Pi</strong>, une <strong>carte de capture HDMI vers USB</strong> et quelques câbles : voilà de quoi voir et piloter une machine distante comme si vous étiez devant — écran, clavier, souris, montage d'une clé USB virtuelle, bouton d'allumage — <span class="hl">y compris avant que le système ne démarre</span>. Le projet libre PiKVM fait ça pour <span class="hl">≈130 € TTC</span> de pièces relevées le 2 octobre 2026 chez un revendeur français. Un boîtier tout fait monte à 264-366 €. Un KVM IP commercial démarre à 509,57 $. Ce que les comparatifs taisent : la limite de rafraîchissement du bricolage, la facture des licences constructeur, et le fait que les modèles les moins chers ne sont pas des PiKVM.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip">Prix lus le 2 oct. 2026</span>
+      <span class="chip">PiKVM : 10 368 étoiles GitHub, GPL-3.0</span>
+    </p>
+  </section>
+
+  <section id="bref" class="switch dyn">
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><strong>Le besoin réel :</strong> reprendre la main sur un PC ou un serveur qui ne répond plus — écran figé, système à réinstaller, BIOS à corriger — depuis un autre poste, sans être sur place. Un « bureau à distance » classique ne le fait pas : il faut que le système soit déjà démarré.</li>
+        <li><strong>La solution libre :</strong> <span class="hl">PiKVM</span> (dépôt public <span class="hl">10 368 étoiles</span>, <span class="hl">GPL-3.0</span>, dernier développement le <span class="hl">21 septembre 2026</span>, 573 forks) transforme un Raspberry Pi en KVM over IP.</li>
+        <li><strong>Le montage DIY, en euros :</strong> <span class="hl">≈129,90 € TTC</span> chez un revendeur français le 2 oct. 2026 — Pi 4 Modèle B 3GB <strong>97,50 €</strong> + carte de capture HDMI vers USB <strong>12,00 €</strong> + alimentation USB-C <strong>9,60 €</strong> + carte micro-SD 16 Go <strong>10,80 €</strong>.</li>
+        <li><strong>Le clé-en-main, en France, le même jour :</strong> PiKVM V4 Mini pré-assemblé <strong>264,00 €</strong> et PiKVM V4 Plus pré-assemblé <strong>360,00 à 366,00 €</strong> selon la boutique — dont une en <span class="hl">rupture de stock</span>.</li>
+        <li><strong>Le commercial, en dollars :</strong> Lantronix Spider <span class="hl">dès 509,57 $</span>, ATEN CN9850 vers 745 $, un ATEN 8 ports entre 1 478 $ et 1 643 $. L'écart de véhicule est là, pas dans la performance brute.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projet" class="switch dyn">
+    <h2>De quoi on parle exactement</h2>
+    <p>Un <strong>KVM over IP</strong> (de l'anglais <em>Keyboard, Video, Mouse</em>) est un appareil qui se branche entre vous et une machine : il capture sa sortie vidéo, émule son clavier et sa souris, et vous rend tout cela dans une page web. La différence avec un logiciel de prise en main à distance (VNC, RDP, TeamViewer) est décisive : le KVM se place <strong>hors du système d'exploitation</strong>. Vous voyez donc l'écran dès la mise sous tension, vous pouvez entrer dans le BIOS, lancer une réinstallation par le réseau ou réparer un démarrage cassé — ce qu'aucun logiciel ne permet si la machine est plantée avant d'avoir démarré.</p>
+    <p>PiKVM est l'implémentation libre de référence. Elle existe en plusieurs formes, et le projet les distingue clairement sur sa page « DIY » :</p>
+    <ul>
+      <li><strong>DIY V1</strong> — pour un vieux Raspberry Pi 3 ou 2 : un Raspberry Pi Pico sert à émuler clavier et souris. Plus de pièces et de temps, mais une seconde vie pour du matériel ancien.</li>
+      <li><strong>DIY V2</strong> — la voie conseillée aujourd'hui : un <strong>Raspberry Pi 4 (ou un Zero 2 W)</strong>, un périphérique de capture vidéo et quelques composants. C'est ce montage qui donne le prix le plus bas.</li>
+      <li><strong>V3 HAT</strong> — une extension qui branche un Pi 4 et apporte le confort : watchdog matériel, console série, module ATX fiable, écran d'adresse IP.</li>
+      <li><strong>V4 / V4 Plus / V4 Mini</strong> — les versions finies, avec Compute Module 4 intégré, montées d'usine.</li>
+    </ul>
+    <div class="quotebox">
+      « All you'll need is a Raspberry Pi 4 or Zero 2 W, a video capture device, a few electronic parts, and some free time for DIY. […] the video is limited by 1920x1080@50Hz what might not be suitable for some weird BIOSes that want 60Hz, and no audio. »
+      <span class="qsrc">Page « DIY » du projet PiKVM (pikvm.org), lue le 2 octobre 2026. Traduction : « Il vous suffit d'un Raspberry Pi 4 ou d'un Zero 2 W, d'un périphérique de capture vidéo, de quelques composants électroniques et d'un peu de temps libre. […] la vidéo est limitée à 1920x1080 à 50 Hz, ce qui peut ne pas convenir à certains BIOS exigeants qui veulent du 60 Hz, et le son n'est pas géré. »</span>
+    </div>
+    <p>Autrement dit : le montage à bas coût fonctionne, mais il a des bords francs. On les liste plus bas, section « Ce que les guides oublient de dire ».</p>
+  </section>
+
+  <section id="prix" class="switch dyn">
+    <h2>Les prix : ce qui est lu, où, et quand</h2>
+    <p>Tous les montants en euros ci-dessous ont été relevés le <strong>2 octobre 2026</strong> sur les fiches produits de revendeurs français. Quand la fiche affichait les deux, le prix toutes taxes comprises est donné. Les montants en dollars proviennent des pages publiques des constructeurs, lus le même jour, et ne sont <strong>pas convertis</strong> en euros.</p>
+    <div class="chartbox">
+      <h3>Les quatre routes, en euros TTC (relevé le 2 oct. 2026)</h3>
+      <svg viewBox="0 0 720 250" role="img" aria-label="Graphique à barres, prix TTC relevés le 2 octobre 2026 chez des revendeurs français : montage DIY PiKVM 129,90 euros ; PiKVM V4 Mini pré-assemblé 264,00 euros ; PiKVM V4 Plus pré-assemblé chez MonRaspberry 360,00 euros ; PiKVM V4 Plus pré-assemblé chez Kubii 366,00 euros">
+        <title>Prix TTC des routes KVM over IP relevés le 2 octobre 2026</title>
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12" fill="#57523f">
+          <text x="70" y="32">Montage DIY (Pi 4 3GB + capture + alim + µSD)</text>
+          <rect x="70" y="38" width="199" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="277" y="52" fill="#0e7b52" font-weight="700">129,90 €</text>
+
+          <text x="70" y="82">PiKVM V4 Mini pré-assemblé (Kubii)</text>
+          <rect x="70" y="88" width="404" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="482" y="102" fill="#0e7b52" font-weight="700">264,00 €</text>
+
+          <text x="70" y="132">PiKVM V4 Plus pré-assemblé (MonRaspberry)</text>
+          <rect x="70" y="138" width="551" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="629" y="152" fill="#0e7b52" font-weight="700">360,00 €</text>
+
+          <text x="70" y="182">PiKVM V4 Plus pré-assemblé (Kubii)</text>
+          <rect x="70" y="188" width="560" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="638" y="202" fill="#0e7b52" font-weight="700">366,00 €</text>
+        </g>
+      </svg>
+      <p class="footnote">Barres proportionnelles aux montants ci-dessus, base à zéro. Les quatre montants sont des prix relevés sur les fiches le 2 octobre 2026, en euros, chez des revendeurs français. Le montage DIY est la somme des quatre pièces listées plus bas (97,50 + 12,00 + 9,60 + 10,80 €) ; il n'inclut pas les câbles et les fils du bouton d'allumage, non chiffrés.</p>
+    </div>
+    <table>
+      <thead><tr><th>Route</th><th>Ce que c'est</th><th>Prix relevé le 2 oct. 2026</th><th>Où</th></tr></thead>
+      <tbody>
+        <tr><td>Montage DIY</td><td>Pi 4 Modèle B 3GB + carte de capture HDMI→USB + alimentation USB-C + micro-SD 16 Go</td><td><strong>≈129,90 € TTC</strong> (somme des pièces)</td><td>Kubii (FR)</td></tr>
+        <tr><td>Kit pré-assemblé</td><td>PiKVM V4 Mini pré-assemblé avec Compute Module 4 2 Go, x2 USB, 1 HDMI</td><td><strong>264,00 €</strong></td><td>Kubii (FR)</td></tr>
+        <tr><td>Kit pré-assemblé</td><td>PiKVM V4 Plus pré-assemblé avec Compute Module 4 2 Go</td><td><strong>360,00 €</strong> — <span class="hl">rupture de stock</span></td><td>MonRaspberry (FR)</td></tr>
+        <tr><td>Kit pré-assemblé</td><td>PiKVM V4 Plus pré-assemblé avec Compute Module 4 2 Go</td><td><strong>366,00 €</strong></td><td>Kubii (FR)</td></tr>
+        <tr><td>Pièce DIY</td><td>Raspberry Pi 4 Modèle B 3GB</td><td><strong>97,50 € TTC</strong></td><td>Kubii (FR)</td></tr>
+        <tr><td>Pièce DIY</td><td>Carte d'acquisition vidéo HDMI vers USB (entrée 4K 30 Hz / sortie 1080p 30 Hz)</td><td><strong>12,00 €</strong></td><td>Kubii (FR)</td></tr>
+        <tr><td>Pièce DIY</td><td>Alimentation officielle USB-C 15,3 W</td><td><strong>9,60 €</strong></td><td>Kubii (FR)</td></tr>
+        <tr><td>Pièce DIY</td><td>Carte micro-SD 16 Go pré-installée (Noobs)</td><td><strong>10,80 €</strong></td><td>Kubii (FR)</td></tr>
+      </tbody>
+    </table>
+    <p>Deux lectures utiles. D'abord, <strong>le même boîtier n'a pas le même prix partout</strong> : le PiKVM V4 Plus se relève à 360,00 € chez l'un et 366,00 € chez l'autre, le même jour — et c'est la boutique la moins chère qui affiche une rupture de stock. Ensuite, <strong>le passage du bricolage au tout fait coûte environ le double</strong> : ≈130 € de pièces contre 264 à 366 € pour un boîtier monté d'usine avec Compute Module 4, contrôle ATX intégré et boîtier fini. Ce supplément achète du temps et du confort, pas une puissance de calcul différente.</p>
+  </section>
+
+  <section id="commercial" class="switch dyn">
+    <h2>De l'autre côté : ce que coûtent les KVM IP commerciaux</h2>
+    <p>C'est le chiffre qui justifie l'exercice. Un KVM IP de marque, celui qu'on trouve dans les baies de serveurs des entreprises, se relève en dollars, sur les pages publiques des constructeurs, le 2 octobre 2026 :</p>
+    <div class="fig">
+      <h3>Les trois routes, côte à côte</h3>
+      <svg viewBox="0 0 720 190" role="img" aria-label="Trois cartes : montage DIY PiKVM environ 130 euros TTC ; boîtier PiKVM pré-assemblé 264 à 366 euros ; KVM IP commercial dès 509,57 dollars">
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12.5">
+          <rect x="20" y="20" width="216" height="146" rx="10" fill="#f2f7f4" stroke="#0e7b52"></rect>
+          <text x="38" y="46" fill="#0e7b52" font-weight="700">Montage DIY</text>
+          <text x="38" y="72" fill="#57523f">Pi 4 + capture HDMI</text>
+          <text x="38" y="94" fill="#57523f">≈130 € TTC</text>
+          <text x="38" y="116" fill="#57523f">1080p 50 Hz max</text>
+          <text x="38" y="138" fill="#57523f">ATX à câbler</text>
+          <text x="38" y="158" fill="#57523f">Source : Kubii, 02/10</text>
+
+          <rect x="252" y="20" width="216" height="146" rx="10" fill="#f7faf8" stroke="#c9d8d0"></rect>
+          <text x="270" y="46" fill="#0e7b52" font-weight="700">Pré-assemblé PiKVM</text>
+          <text x="270" y="72" fill="#57523f">V4 Mini / V4 Plus (CM4)</text>
+          <text x="270" y="94" fill="#57523f">264 à 366 €</text>
+          <text x="270" y="116" fill="#57523f">1080p 60 fps, audio</text>
+          <text x="270" y="138" fill="#57523f">ATX + watchdog intégrés</text>
+          <text x="270" y="158" fill="#57523f">Source : Kubii / MonRaspberry</text>
+
+          <rect x="484" y="20" width="216" height="146" rx="10" fill="#fff" stroke="#c9d8d0"></rect>
+          <text x="502" y="46" fill="#57523f" font-weight="700">KVM IP commercial</text>
+          <text x="502" y="72" fill="#57523f">Lantronix / ATEN</text>
+          <text x="502" y="94" fill="#57523f">dès 509,57 $</text>
+          <text x="502" y="116" fill="#57523f">8 ports : 1 478 à 1 643 $</text>
+          <text x="502" y="138" fill="#57523f">Licence de gestion en sus</text>
+          <text x="502" y="158" fill="#57523f">Source : buy.lantronix.com</text>
+        </g>
+      </svg>
+      <figcaption>Les prix en dollars sont ceux des pages publiques des constructeurs, lus le 2 octobre 2026 ; ils ne sont pas convertis en euros. Les prix en euros viennent des fiches des revendeurs français.</figcaption>
+    </div>
+    <table>
+      <thead><tr><th>Matériel</th><th>Prix relevé le 2 oct. 2026</th><th>Nature</th></tr></thead>
+      <tbody>
+        <tr><td>Lantronix Spider (KVM IP 1 port, marque)</td><td><strong>509,57 $</strong></td><td>Matériel, page du constructeur</td></tr>
+        <tr><td>ATEN CN9850</td><td><strong>≈745 $</strong></td><td>Relevé de notre veille le même jour</td></tr>
+        <tr><td>ATEN KN1108VA (8 ports)</td><td><strong>1 478 $ à 1 643 $</strong></td><td>Relevé de notre veille le même jour</td></tr>
+        <tr><td>Licence de gestion avancée iLO / iDRAC</td><td><strong>200 $ à 400 $</strong></td><td>Relevé de notre veille le même jour</td></tr>
+      </tbody>
+    </table>
+    <p>Un montage PiKVM se situe entre <strong>80 $ et 130 $</strong> selon la carte utilisée (relevé de notre veille le 2 octobre 2026), et les alternatives clé-en-main libres démarrent bien plus bas : <span class="hl">BliKVM</span> vers 40 à 80 $ (dépôt 559 étoiles) et <span class="hl">JetKVM</span> annoncé 69 $ (dépôt 5 213 étoiles au 2 oct. 2026). Autrement dit, l'argument n'est pas « moins cher qu'un concurrent low-cost » — certains le sont davantage — mais « <strong>sans licence, sans compte constructeur, et sur du matériel que vous pouvez réparer vous-même</strong> ».</p>
+  </section>
+
+  <section id="usages" class="switch dyn">
+    <h2>Ce que ça permet, concrètement</h2>
+
+    <figure class="photo dyn"><img src="../img/kvm-ip-maison-2.jpg" alt="Vue arrière d'une console KVM IBM montée en baie : ports série, VGA, PS/2 et blocs de ports Ethernet numérotés" loading="lazy" width="1400" height="800">
+      <figcaption>Une console KVM en baie, l'ancêtre du besoin : brancher un seul clavier/écran pour piloter plusieurs machines. Le PiKVM fait la même chose, mais par le réseau et sans matériel dédié. Photo libre — Jemimus, CC BY 2.0, via Wikimedia Commons.</figcaption>
+    </figure>
+
+    <h3>1 · Dépanner une machine qui ne démarre plus</h3>
+    <p>C'est le cas qui justifie l'achat. Système corrompu, écran de BIOS, mise à jour qui a mal tourné, réinstallation à distance : un bureau à distance est inutilisable si le système ne se lance pas, alors que le PiKVM voit l'écran dès la mise sous tension. Le montage du projet permet même de <strong>monter une image ISO comme si vous branchiez une clé USB</strong> — ce que la documentation officielle appelle l'émulation de lecteur amovible.</p>
+
+    <h3>2 · Gérer un serveur, un NAS ou un labo maison</h3>
+    <p>Pour une machine rangée dans un placard ou un garage, le PiKVM évite le voyage physique à chaque incident. C'est l'usage qui a fait la réputation du projet dans les communautés de serveurs personnels et de gestion à distance.</p>
+
+    <h3>3 · Donner une seconde vie à du matériel</h3>
+    <p>La voie « DIY V1 » du projet vise explicitement les vieux Raspberry Pi 3 et 2 : un Pico pour l'USB et la machine redevient utile. C'est le montage le moins cher si le Raspberry Pi traîne déjà dans un tiroir.</p>
+
+    <div class="fig">
+      <h3>Le flux, en une image</h3>
+      <svg viewBox="0 0 720 150" role="img" aria-label="Schéma : la machine cible envoie son HDMI vers la carte de capture du Raspberry Pi ; le Pi émulé envoie clavier et souris par USB vers la machine cible ; vous pilotez le Pi depuis un navigateur par le réseau">
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12.5">
+          <rect x="20" y="34" width="170" height="82" rx="10" fill="#f2f7f4" stroke="#0e7b52"></rect>
+          <text x="40" y="70" fill="#0e7b52" font-weight="700">Machine cible</text>
+          <text x="40" y="94" fill="#57523f">PC · serveur · NAS</text>
+
+          <rect x="270" y="34" width="180" height="82" rx="10" fill="#f7faf8" stroke="#0e7b52"></rect>
+          <text x="290" y="64" fill="#0e7b52" font-weight="700">Raspberry + capture</text>
+          <text x="290" y="86" fill="#57523f">firmware PiKVM</text>
+          <text x="290" y="106" fill="#57523f">HDMI in · USB out</text>
+
+          <rect x="530" y="34" width="170" height="82" rx="10" fill="#fff" stroke="#c9d8d0"></rect>
+          <text x="550" y="70" fill="#57523f" font-weight="700">Vous, à distance</text>
+          <text x="550" y="94" fill="#57523f">navigateur web</text>
+
+          <line x1="190" y1="75" x2="268" y2="75" stroke="#0e7b52" stroke-width="2" class="arrow"></line>
+          <text x="196" y="68" fill="#57523f" font-size="11">vidéo HDMI</text>
+          <line x1="450" y1="75" x2="528" y2="75" stroke="#0e7b52" stroke-width="2" class="arrow"></line>
+          <text x="452" y="68" fill="#57523f" font-size="11">réseau</text>
+          <text x="196" y="132" fill="#57523f" font-size="11">← clavier / souris USB émulés</text>
+        </g>
+      </svg>
+      <figcaption>La capture vidéo va de la machine cible vers le Pi ; le clavier et la souris, émulés par le Pi, reviennent en USB vers la machine cible. Le tout se pilote depuis un simple navigateur.</figcaption>
+    </div>
+  </section>
+
+  <section id="limites" class="switch dyn">
+    <h2>Ce que les guides oublient de dire</h2>
+    <ul>
+      <li><strong>Le montage bon marché n'est pas « tout 1080p 60 images ».</strong> Le projet l'écrit lui-même : le DIY V2 plafonne à 1920x1080 à 50 Hz, sans son, et « certains BIOS exigeants qui veulent du 60 Hz » peuvent ne pas s'afficher. Pour la vidéo en 60 images et l'audio, il faut une carte V3 HAT ou un V4.</li>
+      <li><strong>Le bouton d'allumage ne vient pas tout seul.</strong> Sur le DIY, l'ATX (allumer, éteindre, réinitialiser à distance) est à câbler sur la carte mère — le projet le marque « DIY » dans son propre tableau comparatif. Les versions V4 ont un module ATX intégré et un watchdog matériel.</li>
+      <li><strong>La qualité de la carte de capture change tout.</strong> Une carte d'entrée de gamme relevée à 12,00 € est donnée pour une entrée 4K à 30 Hz et une sortie 1080p à 30 Hz : ça suffit pour dépanner, pas pour du travail graphique fluide. Les cartes de meilleure facture coûtent plus cher et ne se trouvent pas dans la même fiche.</li>
+      <li><strong>Tout ne se contrôle pas : la protection de contenu.</strong> Les sources HDMI chiffrées (HDCP) — lecteur Blu-ray, certaines box — peuvent refuser de s'afficher sur une capture générique. Prévoyez-le pour un usage média, pas pour du dépannage serveur.</li>
+      <li><strong>Le Wi-Fi est en option, pas de série.</strong> Sur les V4, la fiche du revendeur précise qu'il faut <em>ajouter</em> une antenne externe sur le port dédié pour le Wi-Fi ; sinon c'est le câble Ethernet.</li>
+      <li><strong>Les clones existent, et ils sont plus connus qu'on ne croit.</strong> BliKVM (matériel libre, dépôt 559 étoiles) et JetKVM (dépôt 5 213 étoiles, GPL-2.0 au 2 oct. 2026) sont deux alternatives clé-en-main, souvent moins chères qu'un PiKVM V4. Ce ne sont pas des PiKVM : logiciels et matériels différents, à comparer avant d'acheter.</li>
+      <li><strong>« Rupture » veut dire rupture.</strong> Le PiKVM V4 Plus le moins cher relevé est en rupture de stock le jour même ; le second est à 6,00 € de plus. Vérifiez la disponibilité, pas seulement le prix affiché.</li>
+    </ul>
+  </section>
+
+  <section id="etapes" class="switch dyn">
+    <h2>Trois étapes, dans cet ordre</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · La machine à piloter</b><span>Vérifiez qu'elle a une sortie HDMI (ou DisplayPort vers HDMI) et un port USB libre pour le clavier émulé. C'est elle qui impose les câbles.</span></div>
+      <div class="step"><b>2 · Le montage</b><span>Un Raspberry Pi + une carte de capture HDMI vers USB + une alimentation et une carte micro-SD (≈130 € de pièces en France). La voie la plus simple reste le montage DIY V2 du projet.</span></div>
+      <div class="step"><b>3 · Le logiciel</b><span>Le firmware PiKVM est libre et gratuit, sans compte ni abonnement. On le pilote depuis un navigateur. Le contrôle du bouton d'allumage (ATX) est une étape de câblage séparée.</span></div>
+    </div>
+    <p>Le seul mauvais achat vraiment fréquent : croire qu'un simple « bureau à distance » suffit, puis découvrir que la machine qu'on voulait dépanner ne démarre plus — c'est-à-dire au pire moment.</p>
+  </section>
+
+  <section id="checklist" class="switch dyn">
+    <h2>La checklist avant de choisir</h2>
+    <ul>
+      <li><strong>Vous voulez dépanner ou travailler ?</strong> Dépannage et BIOS : un montage DIY suffit. Usage quotidien exigeant, vidéo fluide et audio : visez un V4.</li>
+      <li><strong>Vérifiez la sortie de la machine cible :</strong> HDMI de préférence, sinon prévoyez un adaptateur DisplayPort ou VGA vers HDMI.</li>
+      <li><strong>Prévoyez le contrôle de l'alimentation</strong> si vous voulez allumer/éteindre à distance (fils ATX) : à câbler sur le DIY, intégré sur les V4.</li>
+      <li><strong>Contrôlez la résolution et la fréquence</strong> dont vous avez besoin : le DIY V2 s'arrête à 1080p 50 Hz, sans son.</li>
+      <li><strong>Regardez la disponibilité réelle</strong>, pas le prix barré : l'offre la moins chère relevée était en rupture le jour même.</li>
+      <li><strong>Si vous comparez, comparez le bon produit :</strong> BliKVM et JetKVM sont des alternatives clé-en-main, pas des PiKVM — mêmes usages, logiciels différents.</li>
+      <li><strong>Sur un simple besoin d'accès au bureau,</strong> un logiciel gratuit fait déjà le travail : le KVM over IP se justifie quand il faut voir avant le démarrage du système.</li>
+    </ul>
+  </section>
+
+  <section id="cta" class="switch dyn">
+    <div class="cta">
+      <h2>Par où commencer, concrètement</h2>
+      <p>Ces liens sont ceux du projet et des revendeurs cités. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez les prix, les montages et le logiciel à la source.</p>
+      <ul>
+        <li><strong>Le projet :</strong> <a href="https://pikvm.org/diy/" rel="nofollow noopener">pikvm.org — page « DIY »</a> (les montages V1, V2 et V3 HAT) et son <a href="https://github.com/pikvm/pikvm" rel="nofollow noopener">dépôt public (GPL-3.0)</a>.</li>
+        <li><strong>Les alternatives clé-en-main :</strong> <a href="https://github.com/jetkvm/kvm" rel="nofollow noopener">JetKVM</a> et <a href="https://github.com/blikvm/blikvm" rel="nofollow noopener">BliKVM</a> — deux projets distincts de PiKVM.</li>
+        <li><strong>Voir un boîtier et son prix :</strong> la fiche du <a href="https://www.kubii.com/fr/cartes-embarquees/4105-pikvm-v4-plus-pre-assemble-avec-cm4-605926258261.html" rel="nofollow noopener">PiKVM V4 Plus chez Kubii</a> (366,00 € le 2 oct. 2026) et celle du <a href="https://monraspberry.com/produit/pikvm-v4-plus/" rel="nofollow noopener">même V4 Plus chez MonRaspberry</a> (360,00 €, en rupture).</li>
+        <li><strong>Voir les pièces du montage :</strong> la <a href="https://www.kubii.com/fr/cables-adaptateurs-video/3430-adaptateur-usb-vers-hdmi-7892021062319.html" rel="nofollow noopener">carte de capture HDMI vers USB</a> (12,00 €) et un <a href="https://www.kubii.com/fr/cartes-nano-ordinateurs/5067-raspberry-pi-4-modele-b-3gb-5056561802282.html" rel="nofollow noopener">Raspberry Pi 4</a> chez le même revendeur.</li>
+      </ul>
+      <p>Le réflexe qui évite le mauvais achat : décidez d'abord <em>ce que vous devez voir</em> — l'écran d'un système planté, ou juste un bureau qui tourne déjà.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="switch dyn">
+    <h2>Questions</h2>
+    <details><summary>Combien coûte un KVM over IP maison en France ?</summary><p>En montage DIY, environ 129,90 € TTC de pièces relevées le 2 octobre 2026 chez un revendeur français (Raspberry Pi 4 Modèle B 3GB à 97,50 €, carte de capture HDMI vers USB à 12,00 €, alimentation USB-C à 9,60 €, micro-SD 16 Go à 10,80 €). En boîtier tout fait, un PiKVM V4 Mini pré-assemblé se relève à 264,00 € et un V4 Plus à 360,00 à 366,00 €.</p></details>
+    <details><summary>Quelle différence avec un KVM IP commercial ?</summary><p>Le prix. Relevés en dollars le 2 octobre 2026 : Lantronix Spider dès 509,57 $, ATEN CN9850 vers 745 $, ATEN 8 ports entre 1 478 $ et 1 643 $. À côté, un montage PiKVM se situe entre 80 $ et 130 $, et les alternatives clé-en-main libres démarrent vers 40 à 80 $. S'ajoute la licence de gestion avancée des serveurs (iLO/iDRAC), relevée entre 200 $ et 400 $.</p></details>
+    <details><summary>Peut-on vraiment atteindre le BIOS et redémarrer à distance ?</summary><p>Oui, c'est la raison d'être d'un KVM over IP : la capture vidéo se branche sur la sortie HDMI et le clavier/souris sont émulés en USB, donc vous voyez et pilotez la machine avant le chargement du système, BIOS/UEFI compris. Le contrôle du bouton d'allumage (ATX) passe par des fils sur la carte mère : à câbler sur le DIY, intégré sur les V4.</p></details>
+    <details><summary>Faut-il un abonnement ou un compte ?</summary><p>Non. Le firmware PiKVM est libre et gratuit, il se pilote depuis un navigateur sur votre réseau, sans compte ni abonnement. Le son et la vidéo en 60 images demandent du matériel plus complet (V3 HAT ou V4).</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Le programme du matériel importé (AliExpress, pour les cartes BliKVM/JetKVM et les adaptateurs) et celui de Pimoroni (via Shopify Collabs) sont enregistrés comme candidats : aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré mis à jour.</p></details>
+  </section>
+
+  <section id="honesty" class="switch dyn">
+    <h2>Comment cette page est faite</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié ici.</strong> Les programmes du matériel importé (AliExpress) et de Pimoroni (Shopify Collabs) sont enregistrés comme candidats dans nos registres : aucun compte n'est créé, aucun lien n'est posé. Si un lien affilié arrive, il sera étiqueté « lien affilié » à l'endroit où il apparaît, avec <code>rel="sponsored"</code>, et cet encadré sera mis à jour avec la date.</li>
+      <li><strong>Les prix en euros sont ceux que nous avons lus nous-mêmes</strong> sur les fiches des revendeurs français, le 2 octobre 2026. Les prix en dollars viennent des pages publiques des constructeurs, le même jour : ils sont donnés en dollars et <strong>ne sont pas convertis</strong>.</li>
+      <li><strong>Ce que nous ne savons pas est écrit comme tel :</strong> les frais de port livrés ne sont pas relevés ; la commission éventuelle d'un programme d'affiliation n'est pas connue (aucun compte ouvert) ; et le coût des câbles et des fils du contrôle ATX n'est pas chiffré dans le « ≈130 € ».</li>
+      <li><strong>Nous ne fabriquons aucun avis, aucun témoignage et aucune statistique.</strong> Les chiffres des projets (étoiles, licences, dates de développement) viennent de l'interface publique de GitHub, datés du 2 octobre 2026. La limite de rafraîchissement du montage DIY est citée mot pour mot depuis la page du projet.</li>
+      <li><strong>Corrections :</strong> si un prix a changé ou si nous nous sommes trompés, écrivez-nous, nous corrigeons et nous datons la correction.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch dyn">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Interfaces publiques GitHub, lues le 2 octobre 2026 : PiKVM (pikvm/pikvm) 10 368 étoiles, 573 forks, GPL-3.0, dernière poussée le 21 septembre 2026 ; JetKVM (jetkvm/kvm) 5 213 étoiles, 400 forks, GPL-2.0, dernière poussée le 30 septembre 2026 ; BliKVM (blikvm/blikvm) 559 étoiles, 50 forks, GPL-3.0.</li>
+      <li>pikvm.org, page « DIY », lue le 2 octobre 2026 : montages DIY V1 (Raspberry Pi 3/2 + Pico), DIY V2 (Raspberry Pi 4 ou Zero 2 W + périphérique de capture vidéo), V3 HAT, tableau comparatif des fonctions, et mention explicite de la limite « 1920x1080@50Hz […] no audio » du DIY V2.</li>
+      <li>Kubii (revendeur français, prix en euros, fiches lues le 2 octobre 2026) : PiKVM V4 Plus pré-assemblé avec CM4 2 Go 366,00 € ; PiKVM V4 Mini pré-assemblé avec CM4 2 Go 264,00 € ; Raspberry Pi 4 Modèle B 3GB 97,50 € TTC ; carte d'acquisition vidéo HDMI vers USB (4K 30 Hz / 1080p 30 Hz) 12,00 € ; alimentation officielle USB-C 15,3 W 9,60 € ; carte micro-SD Noobs 16 Go 10,80 € ; Raspberry Pi PoE+ HAT 24,30 €.</li>
+      <li>MonRaspberry (revendeur français, fiche lue le 2 octobre 2026) : PiKVM V4 Plus avec CM4 à 360,00 €, disponibilité « en rupture de stock ».</li>
+      <li>buy.lantronix.com, page « Lantronix Spider », lue le 2 octobre 2026 : prix catalogue relevés 509,57 $, 509,69 $ et 529,38 $ selon la variante.</li>
+      <li>Relevés de notre propre veille, datés du 2 octobre 2026 (fourchettes en dollars, non converties) : ATEN CN9850 ≈745 $ ; ATEN KN1108VA 8 ports 1 478–1 643 $ ; licences iLO/iDRAC 200–400 $ ; montage PiKVM DIY 80–130 $ selon la carte ; BliKVM 40–80 $ ; JetKVM 69 $.</li>
+      <li>Photos : carte Raspberry Pi 4 Model B vue de dessus — Laserlicht, CC BY-SA 4.0 ; console KVM IBM en baie — Jemimus, CC BY 2.0. Toutes deux via Wikimedia Commons.</li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch dyn">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix et les conditions changent ; confirmez sur la source officielle avant de vous engager.</p>
+    <p>Mis à jour le 2 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
+(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
+/* barre de progression au scroll */
+(function(){
+  var bar = document.getElementById('progress');
+  function frame(){
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    var p = max > 0 ? (d.scrollTop / max) : 0;
+    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+  }
+  var queued = false;
+  window.addEventListener('scroll', function(){
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function(){ queued = false; frame(); });
+  }, {passive:true});
+  window.addEventListener('resize', frame, {passive:true});
+  frame();
+})();
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — KVM over IP maison (PiKVM) — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — KVM over IP maison (PiKVM)\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<style>
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style>
+</body>
+</html>

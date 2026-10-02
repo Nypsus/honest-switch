@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Compteur Linky dans Home Assistant : quel matériel (59,99 € ou 14,40 €) et les 4 pièges du mode TIC — Honest Switch</title>
+<meta name="description" content="Lire son compteur Linky dans Home Assistant : les trois routes possibles, les prix relevés le 2 octobre 2026 chez deux revendeurs français (module Zigbee 59,99 €, module USB 24,90 €, carte ESP32 14,40 €) et les quatre pièges que les tutoriels taisent — mode TIC historique ou standard, plafond de mémoire, pannes matérielles, données Enedis à J+1.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/linky-home-assistant/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/linky-home-assistant/">
+<meta property="og:title" content="Compteur Linky dans Home Assistant : quel matériel et les 4 pièges du mode TIC — Honest Switch">
+<meta property="og:description" content="Prix relevés le 2 octobre 2026 chez des revendeurs français, et ce que la documentation officielle dit vraiment du mode TIC.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .cta{border:1.5px solid rgba(14,123,82,.45);border-radius:12px;padding:16px 18px;margin:22px 0;background:#f7faf8}
+  .cta h2{margin:0 0 8px;font-size:1.05rem}
+  .cta ul{margin:8px 0 0;padding-left:18px}
+  .cta li{margin:6px 0}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  @media (prefers-reduced-motion:reduce){
+    .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
+    .arrow{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Peut-on lire son compteur Linky depuis Home Assistant sans rien acheter ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non, pas en temps réel. Home Assistant lit la sortie TIC du compteur, qui est un port physique : il faut un adaptateur branché sur les bornes I1 et I2 du Linky — un module du commerce (24,90 € à 69,00 € selon le modèle, prix relevés le 2 octobre 2026 chez un revendeur français), ou un montage à base de carte ESP32 (14,40 € de carte, plus les composants). La seule voie sans matériel passe par l'API d'Enedis, qui ne publie les données qu'à J+1 et non en temps réel."}},
+    {"@type": "Question", "name": "Pourquoi mon module ne remonte rien alors que le compteur est bien un Linky ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Trois causes reviennent dans les retours publics : le mode TIC du compteur (historique ou standard) ne correspond pas à celui attendu par le logiciel ou le montage ; la valeur des résistances d'entrée est mauvaise dans un montage fait soi-même en mode standard ; ou l'appareil est défectueux à la réception. Sur le forum francophone Home Assistant, deux utilisateurs rapportent des modules Zigbee V2 neufs qui ne remontaient rien du tout, avec un défaut matériel confirmé après échange."}},
+    {"@type": "Question", "name": "Historique ou standard : quel mode TIC choisir ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "L'intégration Teleinfo officielle de Home Assistant ne prend en charge que le mode historique (1200 bauds) et le monophasé : si votre compteur est en standard, la documentation officielle indique de demander à Enedis la bascule inverse. L'ESPHome, lui, accepte les deux modes mais à des vitesses différentes (1200 bauds en historique, 9600 en standard) et, en standard triphasé, la trame dépasse la taille de tampon par défaut du composant. Le mode standard apporte plus de valeurs (et la production photovoltaïque) ; le mode historique est le terrain le plus sûr."}},
+    {"@type": "Question", "name": "Cette page contient-elle des liens affiliés ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non, aucun à ce jour. Aucun compte n'est ouvert et aucun lien n'est posé : les liens cités sont ceux des projets et des vendeurs, pour que vous vérifiiez les prix à la source. Si un lien affilié arrive, il sera étiqueté à l'endroit où il apparaît et cet encadré sera mis à jour avec la date."}},
+    {"@type": "Question", "name": "Le module Zigbee est-il plus simple que le montage ESP32 ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui pour la mécanique : il s'enfiche derrière le cache du Linky et s'alimente sur les bornes du compteur, il n'y a ni soudure ni alimentation à prévoir. Non sur le reste : il faut une passerelle Zigbee, un logiciel (Zigbee2MQTT ou ZHA), et les retours publics montrent des appareils défectueux à la réception et un plantage possible du réseau Zigbee au passage en mode standard. Le montage ESP32 coûte moins cher en pièces mais vous prenez en charge le montage et les réglages."}}
+  ]
+}
+</script>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#projet">Le TIC</a>
+      <a href="#prix">Les prix</a>
+      <a href="#pieges">Les 4 pièges</a>
+      <a href="#chemins">Trois routes</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero dyn">
+    <p class="kicker">Compteur Linky · aucun lien affilié sur cette page · sources relevées le 2 oct. 2026</p>
+    <h1>Lire son compteur Linky dans Home Assistant : un module Zigbee à 59,99 €, un module USB à 24,90 € ou une carte ESP32 à 14,40 € — et les quatre pièges que les tutoriels taisent</h1>
+
+    <figure class="photo"><img src="../img/linky-home-assistant.jpg" alt="Compteur Linky vert encadré dans un coffret électrique ouvert, à côté du disjoncteur" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Home Assistant ne lit pas un compteur Linky par radio : il lit sa <span class="hl">sortie TIC</span>, un port physique sous le cache du compteur. Trois routes existent, de <span class="hl">14,40 € la carte ESP32</span> à <span class="hl">59,99 € le module Zigbee autoalimenté</span> — mais aucune ne fonctionne si le mode TIC du compteur a été basculé en <em>standard</em>, et presque aucun tutoriel ne commence par là.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip">Prix lus le 2 oct. 2026</span>
+    </p>
+  </section>
+
+  <section id="bref" class="switch dyn">
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><strong>Trois routes, trois budgets.</strong> Module Zigbee à enficher dans le Linky (<span class="hl">59,99 € TTC</span>, en stock, revendeur domotique français, relevé le 2 oct. 2026), interface USB filaire (<span class="hl">24,90 €</span> et <span class="hl">26,40 € TTC</span> chez le même revendeur), ou montage maison : une carte ESP32 à <span class="hl">14,40 €</span> (Kubii, relevé le 2 oct. 2026) plus un optocoupleur et deux résistances que nous n'avons pas chiffrés.</li>
+        <li><strong>Le mode TIC décide de tout, et il n'est pas toujours choisissable.</strong> L'intégration Teleinfo officielle de Home Assistant n'accepte que le <em>mode historique</em> et le monophasé ; sa documentation conseille, si le compteur est en standard, de demander à Enedis la bascule inverse. Certains appareils du commerce, eux, exigent le standard (un utilisateur du forum francophone le rapporte parce qu'une autre marque le lui impose).</li>
+        <li><strong>Le standard fait grossir la trame.</strong> Un Linky triphasé en mode standard produit 53 étiquettes pour plus de 1 300 octets : au-delà du tampon de 1024 octets du composant ESPHome, le montage ne décode plus rien et n'affiche qu'un avertissement. C'est un plafond documenté, pas une légende.</li>
+        <li><strong>Le matériel neuf peut être en panne.</strong> Deux récits publics distincts rapportent un module Zigbee V2 qui ne remontait aucune valeur, avec un défaut matériel confirmé par échange — l'un des deux a même fini par faire tomber le réseau Zigbee entier au passage en mode standard.</li>
+        <li><strong>La voie « sans matériel » n'est pas du temps réel.</strong> Les données publiées par Enedis via son API arrivent à J+1 ; pour du suivi instantané, il faut la sortie TIC du compteur.</li>
+        <li><strong>Ce qui n'est pas chiffré :</strong> l'optocoupleur, les résistances et le boîtier du montage maison. Nous ne les avons pas relevés, donc ils n'apparaissent dans aucun total de cette page.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projet" class="switch dyn">
+    <h2>De quoi on parle exactement : la sortie TIC</h2>
+    <p>Le Linky n'est pas un compteur communicant qu'on interroge par le réseau. Il expose une <strong>Télé-Information Client (TIC)</strong> : deux bornes (<em>I1</em> et <em>I2</em>) sous le cache du compteur, qui débitent en continu une trame de texte contenant les index de consommation par tarif, la puissance apparente, le courant et l'état du compteur. C'est une liaison série, pas une API.</p>
+    <p>Il manque donc toujours la même pièce : quelque chose pour écouter ce port et le traduire en données exploitables par Home Assistant. D'où trois familles d'objets — un module du commerce alimenté par le compteur et intégré en Zigbee, un module filaire branché en USB près de la machine qui héberge Home Assistant, ou un montage à base de microcontrôleur.</p>
+    <div class="quotebox">
+      « As the communication with the Teleinformation is done using UART, you need to have an UART bus in your configuration with the rx_pin connected to the output of the optocoupler component. Additionally, you need to set the baud rate to 9600bps if counter is configured to work in standard mode or 1200bps in historical mode. »
+      <span class="qsrc">Documentation officielle du composant <em>teleinfo</em> d'ESPHome, lue le 2 octobre 2026. Traduction : « La communication TIC se fait en UART : il faut un bus UART avec la broche de réception reliée à la sortie du montage à optocoupleur, et régler 9 600 bauds en mode standard ou 1 200 bauds en mode historique. »</span>
+    </div>
+    <p>Deux conséquences pratiques que personne ne met en avant :</p>
+    <ul>
+      <li><strong>La vitesse change avec le mode,</strong> donc le firmware ou le montage doit correspondre au mode réellement actif sur votre compteur — c'est la première chose à vérifier, en pressant les boutons du Linky jusqu'à la page « MODE TIC ».</li>
+      <li><strong>Le montage n'est pas un simple fil.</strong> Le port TIC n'alimente pas votre électronique et n'accepte pas d'être relié directement : les tutoriels publics insistent tous sur un étage à optocoupleur. Nous ne chiffrons pas ce poste, faute de l'avoir relevé.</li>
+    </ul>
+  </section>
+
+  <section id="prix" class="switch dyn">
+    <h2>Les prix : ce qui est lu, où, et quand</h2>
+    <p>Les montants ci-dessous ont été relevés le <strong>2 octobre 2026</strong>, sur les pages de deux revendeurs : un distributeur domotique français (prix affichés TTC) et un revendeur français de cartes électroniques. Le dongle en dollars vient d'une boutique de créateurs et son prix est affiché en dollars : nous ne le convertissons pas.</p>
+    <div class="chartbox">
+      <h3>Ce que coûte une lecture du Linky (€, prix relevés le 2 oct. 2026)</h3>
+      <svg viewBox="0 0 720 420" role="img" aria-label="Graphique à barres, prix relevés le 2 octobre 2026 : carte ESP32-WROOM-32 14,40 euros, interface téléinformation USB pour un compteur 24,90 euros, module Téléinfo USB 26,40 euros, compteur TIC sur rail DIN 30,00 euros, module TIC vers Zigbee 3.0 avec antenne 59,99 euros, interface téléinformation WIFI 65,50 euros, capteur de consommation Zigbee pour compteur Linky 69,00 euros">
+        <title>Prix des solutions pour lire un compteur Linky</title>
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12" fill="#57523f">
+          <text x="70" y="30">Carte ESP32-WROOM-32 (Kubii, FR)</text>
+          <rect x="70" y="36" width="109" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="185" y="50" fill="#0e7b52" font-weight="700">14,40 €</text>
+
+          <text x="70" y="86">Interface TIC USB, 1 compteur (CARTELECTRONIC)</text>
+          <rect x="70" y="92" width="188" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="264" y="106" fill="#0e7b52" font-weight="700">24,90 €</text>
+
+          <text x="70" y="142">Module Téléinfo USB (GCE)</text>
+          <rect x="70" y="148" width="199" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="275" y="162" fill="#0e7b52" font-weight="700">26,40 €</text>
+
+          <text x="70" y="198">Compteur TIC sur rail DIN (LiXee TIC-DIN v2)</text>
+          <rect x="70" y="204" width="226" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="302" y="218" fill="#0e7b52" font-weight="700">30,00 €</text>
+
+          <text x="70" y="254">Module TIC vers Zigbee 3.0 + antenne (LiXee ZLinky V2)</text>
+          <rect x="70" y="260" width="452" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="528" y="274" fill="#0e7b52" font-weight="700">59,99 €</text>
+
+          <text x="70" y="310">Interface téléinformation WIFI (CARTELECTRONIC)</text>
+          <rect x="70" y="316" width="494" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="570" y="330" fill="#0e7b52" font-weight="700">65,50 €</text>
+
+          <text x="70" y="366">Capteur de consommation Zigbee Linky (SOMFY)</text>
+          <rect x="70" y="372" width="520" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="596" y="386" fill="#0e7b52" font-weight="700">69,00 €</text>
+        </g>
+      </svg>
+      <p class="footnote">Barres proportionnelles aux montants ci-dessus, base à zéro. Tous ces prix sont TTC et viennent d'une même page de résultats d'un revendeur domotique français (sauf la carte ESP32, chez un revendeur de cartes), relevés le 2 octobre 2026. Le dongle à 12,50 $ et le montage maison ne figurent pas dans ce graphique : le premier n'est pas affiché en euros, le second comprend des composants que nous n'avons pas chiffrés.</p>
+    </div>
+    <table>
+      <thead><tr><th>Où</th><th>Quoi</th><th>Prix relevé le 2 oct. 2026</th><th>Ce que le prix ne comprend pas</th></tr></thead>
+      <tbody>
+        <tr><td>Kubii (FR)</td><td>Carte de développement ESP32-WROOM-32</td><td><strong>14,40 €</strong></td><td>optocoupleur, résistances, boîtier, câble USB, alimentation</td></tr>
+        <tr><td>Domadoo (FR)</td><td>CARTELECTRONIC — interface téléinformation USB pour 1 compteur (USBTICLCV2)</td><td><strong>24,90 €</strong> TTC <em>(derniers articles)</em></td><td>le câble jusqu'au compteur, un port USB libre près du compteur</td></tr>
+        <tr><td>Domadoo (FR)</td><td>GCE — module Téléinfo USB (MOD-USB-TELEINFO)</td><td><strong>26,40 €</strong> TTC <em>(sur commande)</em></td><td>le câble, un port USB libre, pas de délai garanti</td></tr>
+        <tr><td>Domadoo (FR)</td><td>LiXee — compteur TIC sur rail DIN (LIXEE-TIC-DINV2)</td><td><strong>30,00 €</strong> TTC <em>(en stock)</em></td><td>le rail, l'alimentation, la liaison série vers la box</td></tr>
+        <tr><td>Domadoo (FR)</td><td>LiXee — module TIC vers Zigbee 3.0 pour Linky, V2 avec antenne (ZLINKY-TIC-V2-ANT)</td><td><strong>59,99 €</strong> TTC <em>(en stock, plus de 20 unités)</em></td><td>rien après achat : autoalimenté par le compteur — mais il faut une passerelle Zigbee</td></tr>
+        <tr><td>Domadoo (FR)</td><td>CARTELECTRONIC — interface téléinformation WIFI (WIFITIC)</td><td><strong>65,50 €</strong> TTC <em>(sur commande)</em></td><td>alimentation, couverture WiFi jusqu'au compteur</td></tr>
+        <tr><td>Domadoo (FR)</td><td>SOMFY — capteur de consommation Zigbee pour compteur Linky (9029425)</td><td><strong>69,00 €</strong> TTC <em>(en stock)</em></td><td>le distributeur précise qu'il faut une box TaHoma et un port TIC à 3 broches</td></tr>
+        <tr><td>Tindie (créateur)</td><td>Dongle « Wemos Teleinfo » (montage assemblé, projet ouvert)</td><td><strong>12,50 $</strong> affichés (USD)</td><td>port, taxes éventuelles à l'import, alimentation ; prix non converti par nos soins</td></tr>
+      </tbody>
+    </table>
+    <p>La lecture honnête de ce tableau n'est pas « le DIY est moins cher ». La carte ESP32 à <strong>14,40 €</strong> n'est pas un produit fini : il faut y ajouter un optocoupleur, deux résistances et un boîtier — que nous n'avons pas chiffrés, donc que nous ne mettons dans aucun total. Un module USB du commerce à <strong>24,90 €</strong> est déjà assemblé, testé et documenté, mais il lui faut un câble jusqu'au compteur et une machine allumée à proximité. Le module Zigbee à <strong>59,99 €</strong> est le seul qui n'exige aucun câble et n'ajoute aucune consommation près du compteur, puisqu'il se nourrit sur ses bornes — c'est ce que vous payez en plus, et rien d'autre.</p>
+  </section>
+
+  <section id="pieges" class="switch dyn">
+    <h2>Les quatre pièges que les tutoriels taisent</h2>
+
+    <h3>1. Le mode TIC décide si votre matériel fonctionne</h3>
+    <p>C'est le point qui met en échec le plus de montages, et il est écrit noir sur blanc dans la documentation officielle de Home Assistant : l'intégration Teleinfo ne prend en charge que le <em>mode historique</em>, sur du <em>monophasé</em>. Si votre compteur est déjà en mode standard — ce qui arrive quand un opérateur ou un fournisseur le bascule, ou quand un autre appareil du foyer l'exige — la voie officielle ne fonctionne plus.</p>
+    <div class="quotebox">
+      « A Linky meter (or compatible electronic meter) with the TIC output enabled and set to historique mode. The newer standard mode is not supported. If your meter is in standard mode, you can ask Enedis to switch it back to historique mode. »
+      <span class="qsrc">Documentation officielle de l'intégration <em>Teleinfo</em> de Home Assistant, section « Prerequisites », lue le 2 octobre 2026. Traduction : « Un compteur Linky dont la sortie TIC est activée et réglée en mode historique. Le mode standard, plus récent, n'est pas pris en charge. Si votre compteur est en standard, vous pouvez demander à Enedis de le remettre en historique. »</span>
+    </div>
+    <p>Attention à l'inverse : le standard a ses partisans, parce qu'il apporte des valeurs que l'historique ne donne pas. Un utilisateur du forum francophone explique avoir été obligé de passer en standard pour lire sa production photovoltaïque en instantané avec un autre appareil :</p>
+    <div class="quotebox">
+      « Par ailleurs avec ecojoko je suis obligée d'être en mode standart, c'est plus précis et jai enfin la lecture des PV comme ecojoko me l'a précisé »
+      <span class="qsrc">Forum Home Assistant Communauté Francophone, fil « Linky TIC Historique vs Standard », message du 7 décembre 2023. Orthographe d'origine.</span>
+    </div>
+    <p>Autrement dit : le mode n'est pas un détail technique, c'est un arbitrage entre vos appareils. Vérifiez-le <em>avant</em> d'acheter, sur la page « MODE TIC » du compteur.</p>
+
+    <h3>2. En mode standard, le montage maison devient capricieux — et pas qu'un peu</h3>
+    <p>Deux faits mesurables, tous deux publics. D'abord la taille de la trame : un Linky triphasé en mode standard émet 53 étiquettes et plus de 1 300 octets, quand le composant ESPHome prévoyait un tampon de 1 024 octets. Résultat dans les journaux : « Internal buffer full », et aucune valeur exploitée. Ensuite les résistances du montage à optocoupleur, dont les valeurs « généralement préconisées » ne fonctionnent pas toujours :</p>
+    <div class="quotebox">
+      « En mode standard, la valeur des résistances est importante… et ce qui est généralement préconisé (2K côté led et 10K côté transistor) ne fonctionne que rarement. Chez moi ça fonctionne avec une résistance de 2K7 côté LED de l'optocoupleur, et une de 4K7 côté émetteur. »
+      <span class="qsrc">Forum Home Assistant Communauté Francophone, fil « Aide sur info TIC compteur Linky avec esp32 », message du 10 juin 2025 (utilisateur Forhorse).</span>
+    </div>
+    <div class="quotebox">
+      « j'ai acheté un module wemos teleinfo […] et ça me remonte bien les index consommation du linky mais quand je mets mon index HPHC pourtant en kwh, j'ai un delta entre ce que l'api linky me remonte (à J+1) et le module wemos : ça ne me met que 1kwh »
+      <span class="qsrc">Même fil, message du 27 juin 2025 : un module du commerce qui « remonte bien » mais avec un écart inexpliqué sur l'index heures pleines / heures creuses.</span>
+    </div>
+
+    <figure class="photo dyn"><img src="../img/linky-home-assistant-2.jpg" alt="Six composants électroniques en boîtier DIP posés sur une plaque d'essai, dont des optocoupleurs" loading="lazy" width="1400" height="800">
+      <figcaption>Des composants en boîtier DIP : c'est dans cette famille que se choisit l'optocoupleur d'un montage maison. Sur cette photo de référence, les composants sont posés côte à côte, non montés. Photo libre — Mister rf, CC BY-SA 4.0, via Wikimedia Commons.</figcaption>
+    </figure>
+
+    <h3>3. Un appareil neuf peut être en panne, et le diagnostic prend des jours</h3>
+    <p>Les retours publics sur le module Zigbee V2 le plus répandu ne sont pas des cas isolés : au moins deux utilisateurs différents rapportent, à quelques heures d'intervalle, un module neuf qui ne remonte <em>rien</em>, malgré une réinstallation complète, un firmware à jour et tous les réglages essayés.</p>
+    <div class="quotebox">
+      « il ne détecte pas mon abonnement, il ne remonte que quelques valeurs qui ne sont pas bonnes et il me dit que j'ai le Firmware V1, alors qu'il est en V14… On dirait effectivement que ça vient du fait que c'est un V2… »
+      <span class="qsrc">Forum Home Assistant Communauté Francophone, fil « Remontée info d'un compteur Linky », message du 1er novembre 2024.</span>
+    </div>
+    <div class="quotebox">
+      « c'etait un pb hardware…nouveau Lixee V2 reçu ce jour et 100% opérationnel, demande de bascule LINKY mode standard faite ce jour chez ES. Pb réglé dans mon cas ! »
+      <span class="qsrc">Même fil, message du 22 novembre 2024 : le diagnostic final était matériel, réglé par un échange. Dans le même fil, un autre utilisateur signale que son module a fini par faire tomber tout son réseau Zigbee en le passant en mode standard, et qu'il l'avait acheté chez un revendeur français.</span>
+    </div>
+    <p>La conséquence pratique est simple : achetez chez un vendeur dont le retour est facile, et n'engagez pas des soirées de réglage avant d'avoir testé un échange matériel. Ce n'est pas une critique d'un fabricant — c'est ce que disent les fils publics, et ça fait partie du budget.</p>
+
+    <h3>4. La voie sans matériel n'est pas du temps réel — et le compteur n'est pas toujours accessible</h3>
+    <p>Il existe une route gratuite : interroger les données publiées par Enedis. Elle a un défaut structurel, rappelé par les utilisateurs eux-mêmes :</p>
+    <div class="quotebox">
+      « les données d'enedis ne sont publiées que toutes les 24h, c'est pas ce qu'il y a de mieux selon les besoins. »
+      <span class="qsrc">Forum Home Assistant Communauté Francophone, fil « Remontée info d'un compteur Linky », message du 31 octobre 2024.</span>
+    </div>
+    <p>Second obstacle, physique celui-là : dans un immeuble, le compteur est souvent au sous-sol. Un utilisateur le résume ainsi : « je suis en appartement et […] mon compteur se trouve à la cave au -1 et je suis au +2 », et les réponses du fil partent toutes du même constat — soit on tire un câble, soit on installe un point d'accès près du compteur, soit on renonce à la sortie TIC. Le prix affiché d'un module n'inclut jamais ce coût-là.</p>
+  </section>
+
+  <section id="chemins" class="switch dyn">
+    <h2>Trois routes, selon votre situation</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Module Zigbee (59,99 €)</b><span>À enficher derrière le cache du Linky, autoalimenté par le compteur, aucune soudure, aucun câble. Il faut en plus une passerelle Zigbee et Zigbee2MQTT ou ZHA. Le plus confortable — et celui où les retours de panne matérielle sont les plus nombreux.</span></div>
+      <div class="step"><b>2 · Module USB filaire (24,90 à 26,40 €)</b><span>Déjà assemblé, reconnu par l'intégration officielle de Home Assistant, mais il faut tirer un câble du compteur à la machine, et rester en mode historique monophasé. Le meilleur rapport prix / simplicité si le Linky est proche.</span></div>
+      <div class="step"><b>3 · Montage ESP32 (14,40 € + composants non chiffrés)</b><span>ESP32, optocoupleur, résistances, boîtier, firmware ESPHome. Le moins cher en pièces, le plus exigeant : valeurs de résistances à ajuster, mode à respecter, tampon mémoire à vérifier en triphasé standard.</span></div>
+    </div>
+    <p>Aucune de ces trois routes n'est « la bonne » : elles ne vendent pas la même chose. La seule erreur coûteuse est d'acheter un module sans avoir vérifié le mode TIC du compteur — c'est le geste qui annule tous les autres.</p>
+  </section>
+
+  <section id="checklist" class="switch dyn">
+    <h2>La checklist avant de commander</h2>
+    <ul>
+      <li><strong>Lire le mode TIC sur le compteur</strong> (boutons + / −, page « MODE TIC ») : historique ou standard. De ce seul mot dépend le matériel qui fonctionnera, et notamment l'intégration officielle de Home Assistant.</li>
+      <li><strong>Vérifier le type de Linky</strong> : le revendeur du module Zigbee le plus courant précise noir sur blanc qu'il n'est pas compatible avec les Linky ISKRA ITRON et LANDYS GYR ayant un port USB, parce qu'il n'y a que deux broches pour la téléinformation.</li>
+      <li><strong>Compter l'accessibilité du compteur</strong> : sous-sol, gaine, distance. Un module sans fil vaut souvent plus cher qu'un module USB uniquement parce qu'il évite un câble que vous ne pouvez pas tirer.</li>
+      <li><strong>Prévoir la passerelle Zigbee</strong> si vous prenez un module radio : sans coordinateur Zigbee, il ne sert à rien. C'est un poste que les prix de cette page ne comprennent pas.</li>
+      <li><strong>Sur un montage maison, choisir l'optocoupleur et les résistances en fonction du mode</strong> — et savoir que les valeurs recommandées ne fonctionnent pas toujours en standard, d'après les retours publics.</li>
+      <li><strong>En triphasé standard, vérifier le tampon mémoire</strong> du composant que vous utilisez : au-delà de 1 024 octets de trame, la lecture échoue silencieusement ou presque.</li>
+      <li><strong>Acheter là où le retour est simple.</strong> Les fils publics montrent que des unités neuves arrivent en panne : le vendeur compte autant que le prix. Et comparez le total port compris au moment de l'achat, pas sur un guide daté — y compris celui-ci.</li>
+    </ul>
+  </section>
+
+  <section id="cta" class="switch dyn">
+    <div class="cta">
+      <h2>Par où commencer, concrètement</h2>
+      <p>Ces liens sont ceux des projets et des vendeurs cités. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez les prix et les spécifications à la source.</p>
+      <ul>
+        <li><strong>Comprendre la voie officielle :</strong> <a href="https://www.home-assistant.io/integrations/teleinfo/" rel="nofollow noopener">documentation de l'intégration Teleinfo de Home Assistant</a> (mode historique, monophasé, adaptateurs USB reconnus automatiquement).</li>
+        <li><strong>Comprendre la voie ESPHome :</strong> <a href="https://esphome.io/components/sensor/teleinfo/" rel="nofollow noopener">composant <em>teleinfo</em> d'ESPHome</a> — vitesses 1 200 / 9 600 bauds et paramètre <code>historical_mode</code>.</li>
+        <li><strong>Comprendre le protocole :</strong> la documentation publique d'Enedis sur les trames TIC est citée dans les fils du forum francophone (<a href="https://www.enedis.fr/media/2035/download" rel="nofollow noopener">document Enedis</a>) — c'est elle qui liste les étiquettes disponibles selon le mode.</li>
+        <li><strong>Voir les prix cités :</strong> <a href="https://www.domadoo.fr/fr/recherche?controller=search&amp;s=teleinfo" rel="nofollow noopener">interface téléinformation chez Domadoo</a> (24,90 € à 69,00 € TTC le 2 octobre 2026) et <a href="https://www.kubii.com/fr/recherche?controller=search&amp;s=esp32+wroom" rel="nofollow noopener">carte ESP32-WROOM-32 chez Kubii</a> (14,40 € le 2 octobre 2026).</li>
+      </ul>
+      <p>Le réflexe qui évite le mauvais achat : lire le mode TIC du compteur, vérifier le modèle exact du Linky, choisir la route en fonction de l'accessibilité — et seulement ensuite regarder le prix.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="switch dyn">
+    <h2>Questions</h2>
+    <details><summary>Peut-on lire son Linky depuis Home Assistant sans rien acheter ?</summary><p>Pas en temps réel. La sortie TIC est un port physique : il faut un adaptateur branché sur les bornes I1 et I2. La seule voie sans matériel passe par les données publiées par Enedis, disponibles à J+1.</p></details>
+    <details><summary>Pourquoi mon module ne remonte rien alors que le compteur est bien un Linky ?</summary><p>Trois causes reviennent dans les retours publics : le mode TIC ne correspond pas à ce qu'attend le logiciel ou le montage ; la valeur des résistances est mauvaise sur un montage maison en mode standard ; ou l'appareil est défectueux à la réception — un défaut matériel confirmé après échange est documenté publiquement pour deux unités neuves.</p></details>
+    <details><summary>Historique ou standard : que choisir ?</summary><p>Le mode historique est le terrain le plus sûr : c'est le seul que prend en charge l'intégration officielle de Home Assistant, en monophasé. Le standard donne plus de valeurs (dont la production photovoltaïque) et impose 9 600 bauds, une trame plus grosse et, en triphasé, un tampon mémoire plus large que le défaut. Changez de mode en connaissance de cause : la bascule se demande à Enedis.</p></details>
+    <details><summary>Le module Zigbee est-il plus simple que le montage ESP32 ?</summary><p>Plus simple à installer, oui : il s'enfiche dans le compteur et s'alimente dessus, sans soudure ni câble. Mais il exige une passerelle Zigbee, et les retours publics mentionnent des pannes matérielles et un réseau Zigbee qui peut tomber au passage en mode standard. Le montage ESP32 coûte moins cher en pièces et vous laisse la main sur tout — y compris sur les réglages.</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Aucun compte n'est ouvert et aucun lien n'est posé. Si cela change, le lien sera étiqueté et cet encadré mis à jour avec la date.</p></details>
+  </section>
+
+  <section id="honesty" class="switch dyn">
+    <h2>Comment cette page est faite</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié ici.</strong> Aucun programme d'affiliation n'est ouvert pour les revendeurs cités — le distributeur domotique propose un compte professionnel, pas un programme d'affiliation. Si un lien affilié arrive un jour, il sera étiqueté « lien affilié » à l'endroit où il apparaît, avec <code>rel="sponsored"</code>, et cet encadré sera mis à jour avec la date.</li>
+      <li><strong>Les prix sont ceux que nous avons lus nous-mêmes</strong>, le 2 octobre 2026, sur les pages du revendeur domotique et du revendeur de cartes. Le dongle de créateur est affiché en dollars : nous ne l'avons pas converti en euros, précisément pour ne pas fabriquer un chiffre.</li>
+      <li><strong>Ce que nous ne savons pas est écrit comme tel :</strong> le prix de l'optocoupleur, des résistances et du boîtier du montage maison n'a pas été relevé, donc il n'apparaît dans aucun total ; nous ne donnons pas non plus de prix de passerelle Zigbee.</li>
+      <li><strong>Les avis cités sont publics et datés</strong>, avec le fil, la date et, quand il est connu, le pseudo de leur auteur. Ils sont reproduits tels quels, orthographe comprise, et ne sont pas des témoignages de clients de cette page.</li>
+      <li><strong>Nous ne fabriquons aucun avis, aucun témoignage et aucune statistique.</strong> Les limites techniques citées viennent des documentations officielles de Home Assistant et d'ESPHome, et d'un rapport de bug public du projet ESPHome.</li>
+      <li><strong>Corrections :</strong> si un prix a changé ou si nous nous sommes trompés, écrivez-nous, nous corrigeons et nous datons la correction.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch dyn">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Documentation officielle de l'intégration <em>Teleinfo</em> de Home Assistant (mode TIC historique obligatoire, monophasé uniquement, adaptateurs USB reconnus automatiquement) — lue le 2 octobre 2026.</li>
+      <li>Documentation officielle du composant <em>teleinfo</em> d'ESPHome (1 200 bauds en historique, 9 600 en standard, paramètre <code>historical_mode</code>, pont à optocoupleur) — lue le 2 octobre 2026.</li>
+      <li>Rapport de bug public du projet ESPHome (n° 2060) : en mode standard, un Linky triphasé produit 53 étiquettes et plus de 1 300 octets, au-delà du tampon de 1 024 octets du composant — lu le 2 octobre 2026.</li>
+      <li>Forum Home Assistant Communauté Francophone, fil « Aide sur info TIC compteur Linky avec esp32 » (messages des 10 et 27 juin 2025) : valeurs de résistances en mode standard, écart d'index constaté sur un module du commerce — lu le 2 octobre 2026.</li>
+      <li>Forum Home Assistant Communauté Francophone, fil « Remontée info d'un compteur Linky » (messages des 31 octobre, 1er, 22 et 23 novembre 2024) : données Enedis à J+1, compteur au sous-sol, deux modules Zigbee V2 en défaut matériel, réseau Zigbee tombé au passage en mode standard — lu le 2 octobre 2026.</li>
+      <li>Forum Home Assistant Communauté Francophone, fil « Linky TIC Historique vs Standard » (7 décembre 2023) : obligation de passer en standard pour lire la production photovoltaïque, renvoi au document Enedis — lu le 2 octobre 2026.</li>
+      <li>Page de résultats « téléinformation » et page produit du module TIC vers Zigbee 3.0 V2 (référence ZLINKY-TIC-V2-ANT), revendeur domotique français : 24,90 € / 26,40 € / 30,00 € / 59,99 € / 65,50 € / 69,00 € TTC, disponibilités et avertissement de compatibilité ISKRA ITRON / LANDYS GYR — lues le 2 octobre 2026.</li>
+      <li>Page de résultats « esp32 wroom », Kubii (FR) : carte ESP32-WROOM-32 à 14,40 € — lue le 2 octobre 2026.</li>
+      <li>Page produit du dongle « Wemos Teleinfo », Tindie : 12,50 $ affichés (USD) — lue le 2 octobre 2026.</li>
+      <li>Photos : compteur Linky dans son coffret — CC0, via Wikimedia Commons ; composants en boîtier DIP — Mister rf, CC BY-SA 4.0, via Wikimedia Commons.</li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch dyn">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix et les conditions changent ; confirmez sur la source officielle avant de vous engager.</p>
+    <p>Mis à jour le 2 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
+(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
+/* barre de progression au scroll */
+(function(){
+  var bar = document.getElementById('progress');
+  function frame(){
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    var p = max > 0 ? (d.scrollTop / max) : 0;
+    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+  }
+  var queued = false;
+  window.addEventListener('scroll', function(){
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function(){ queued = false; frame(); });
+  }, {passive:true});
+  window.addEventListener('resize', frame, {passive:true});
+  frame();
+})();
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Compteur Linky dans Home Assistant — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Compteur Linky dans Home Assistant\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<style>
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style>
+</body>
+</html>

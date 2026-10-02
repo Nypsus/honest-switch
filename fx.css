@@ -1,0 +1,50 @@
+
+/* ============================================================
+   EFFETS DE SCROLL — Honest Switch (variés, un style par page)
+   Chaque page reçoit une "signature" différente : fade, slide,
+   zoom, clip (rideau), stagger (tableaux/listes), counter (prix).
+   Actif uniquement si html.js (JS disponible) et respecte
+   prefers-reduced-motion.
+   ============================================================ */
+html.js .fx { opacity: 0; will-change: opacity, transform; }
+html.js .fx-in { opacity: 1 !important; }
+
+/* 1. Fondu + montée (le plus doux) */
+html.js .fx.fx-up   { transform: translateY(28px); transition: opacity .75s cubic-bezier(.2,.7,.3,1), transform .75s cubic-bezier(.2,.7,.3,1); }
+html.js .fx.fx-up.fx-in   { transform: none; }
+
+/* 2. Glissement latéral */
+html.js .fx.fx-left { transform: translateX(-34px); transition: opacity .8s ease, transform .8s cubic-bezier(.16,.84,.44,1); }
+html.js .fx.fx-left.fx-in { transform: none; }
+html.js .fx.fx-right{ transform: translateX(34px); transition: opacity .8s ease, transform .8s cubic-bezier(.16,.84,.44,1); }
+html.js .fx.fx-right.fx-in{ transform: none; }
+
+/* 3. Zoom doux (photos, cartes produit) */
+html.js .fx.fx-zoom { transform: scale(.94); transition: opacity .7s ease, transform .9s cubic-bezier(.2,.9,.3,1); }
+html.js .fx.fx-zoom.fx-in { transform: scale(1); }
+
+/* 4. Rideau (clip) — pour les blocs encadrés / encadrés honnêteté */
+html.js .fx.fx-clip { clip-path: inset(0 0 100% 0); opacity: 1; transition: clip-path .85s cubic-bezier(.65,0,.35,1); }
+html.js .fx.fx-clip.fx-in { clip-path: inset(0 0 0 0); }
+
+/* 5. Apparition en cascade (lignes de tableau, listes, cartes) */
+html.js .fx.fx-stagger > * { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+html.js .fx.fx-stagger.fx-in > * { opacity: 1; transform: none; }
+html.js .fx.fx-stagger.fx-in > *:nth-child(1){ transition-delay:.02s }
+html.js .fx.fx-stagger.fx-in > *:nth-child(2){ transition-delay:.08s }
+html.js .fx.fx-stagger.fx-in > *:nth-child(3){ transition-delay:.14s }
+html.js .fx.fx-stagger.fx-in > *:nth-child(4){ transition-delay:.20s }
+html.js .fx.fx-stagger.fx-in > *:nth-child(5){ transition-delay:.26s }
+html.js .fx.fx-stagger.fx-in > *:nth-child(6){ transition-delay:.32s }
+html.js .fx.fx-stagger.fx-in > *:nth-child(n+7){ transition-delay:.38s }
+
+/* 6. Barre de prix qui se remplit (comparatifs) */
+html.js .fx.fx-bar { transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(.2,.8,.2,1); }
+html.js .fx.fx-bar.fx-in { transform: scaleX(1); }
+
+/* Barre de progression de lecture (déjà présente sur certaines pages) */
+#progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#0e7b52,#ff8a3d);width:0;z-index:60;transition:width .1s linear}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .fx, html.js .fx.fx-stagger > * { opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important; }
+}

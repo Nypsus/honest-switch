@@ -67,8 +67,8 @@
 
   function inView(el) {
     var r = el.getBoundingClientRect();
-    // strictement dans la fenêtre visible : seule une petite bande d'entrée déclenche
-    return r.top < window.innerHeight * 0.85 && r.top > -r.height * 0.35;
+    // révélée si elle entre par le bas, OU si elle est déjà passée au-dessus (cas d'un saut de scroll)
+    return r.top < window.innerHeight * 0.85 && r.bottom > 0;
   }
   function scan() { targets.forEach(function (el) { if (!el.classList.contains('fx-in') && inView(el)) show(el); }); }
 

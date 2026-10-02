@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Domotique sans abonnement : une clé Zigbee à 18,99 € plutôt qu'un hub par marque (et les 5 pièges du démarrage) — Honest Switch</title>
+<meta name="description" content="Domotique sans abonnement : le vrai prix d'une clé Zigbee (18,99 €) face aux hubs par marque (79,99 €), la machine à prévoir et les cinq pièges du démarrage.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/domotique-sans-abonnement/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/domotique-sans-abonnement/">
+<meta property="og:title" content="Domotique sans abonnement : une clé Zigbee à 18,99 € au lieu d'un hub par marque — Honest Switch">
+<meta property="og:description" content="Prix relevés le 2 octobre 2026 chez un revendeur français et sur la boutique officielle Philips Hue, et les cinq pièges du démarrage.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .cta{border:1.5px solid rgba(14,123,82,.45);border-radius:12px;padding:16px 18px;margin:22px 0;background:#f7faf8}
+  .cta h2{margin:0 0 8px;font-size:1.05rem}
+  .cta ul{margin:8px 0 0;padding-left:18px}
+  .cta li{margin:6px 0}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  @media (prefers-reduced-motion:reduce){
+    .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
+    .arrow{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Une clé Zigbee à 18,99 € remplace-t-elle vraiment un hub ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Elle remplace le hub, pas la machine. La clé contient la radio qui parle Zigbee (18,99 € TTC chez un revendeur français, relevé le 2 octobre 2026), mais elle ne fait rien seule : il faut un ordinateur allumé en permanence (mini-PC, NAS, Raspberry Pi — ou la box officielle Home Assistant Green, 179,00 € TTC le même jour) et un logiciel gratuit (ZHA ou Zigbee2MQTT). Un hub propriétaire à 79,99 €, lui, fonctionne dès la sortie de la boîte, mais avec son propre écosystème."}},
+    {"@type": "Question", "name": "Faut-il flasher la clé avant de s'en servir ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Souvent, oui. La documentation de Zigbee2MQTT écrit qu'un adaptateur doit recevoir un firmware « coordinateur » avant de pouvoir être utilisé (certains arrivent préflashés). Sur le forum francophone, la mise à jour du firmware d'une clé Sonoff ZBDongle-E est un sujet à part entière, avec plusieurs versions possibles et un changement de pilote (« ezsp » vers « ember ») à faire au bon moment."}},
+    {"@type": "Question", "name": "Peut-on installer ZHA et Zigbee2MQTT en même temps ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Pas sur la même clé. Les deux se disputent le port série et le réseau Zigbee : sur le forum francophone, la réponse la plus fréquente à « Zigbee2MQTT refuse de démarrer » est un conflit avec ZHA resté actif. Il faut choisir l'un des deux, et désactiver l'autre avant de relancer."}},
+    {"@type": "Question", "name": "Pourquoi brancher la clé sur une rallonge USB ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Parce qu'un boîtier et un port USB 3.0 rayonnent dans la bande des 2,4 GHz, celle du Zigbee. Les guides d'installation recommandent une rallonge USB pour écarter la clé de la machine, et la documentation de Zigbee2MQTT conseille carrément un adaptateur réseau (Ethernet) quand la machine est mal placée (baie, cave). Une rallonge coûte quelques euros ; nous ne l'avons pas chiffrée."}},
+    {"@type": "Question", "name": "La clé Zigbee gère-t-elle tous les protocoles sans fil ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non. Une clé Zigbee ne parle que Zigbee — 2,4 GHz. Elle ne couvre ni le Z-Wave (autre fréquence, autre écosystème), ni le Bluetooth. Certaines clés récentes ajoutent Thread, le protocole de Matter : c'est écrit sur la fiche. Vérifiez ce que vous avez déjà (Zigbee, Z-Wave, Bluetooth) avant d'acheter, sinon vous garderez un hub en plus."}}
+  ]
+}
+</script>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#projet">Ce qu'on achète</a>
+      <a href="#prix">Les prix</a>
+      <a href="#pieges">Les 5 pièges</a>
+      <a href="#chemins">Trois chemins</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero dyn">
+    <p class="kicker">Domotique locale · aucun lien affilié sur cette page · prix relevés le 2 oct. 2026</p>
+    <h1>Domotique sans abonnement : une clé Zigbee à 18,99 € au lieu d'un hub par marque — et les cinq pièges du démarrage</h1>
+
+    <figure class="photo"><img src="../img/domotique-sans-abonnement.jpg" alt="Plusieurs cartes Raspberry Pi et un petit clavier posés sur un fond blanc" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Un hub par marque, c'est un compte cloud, une application et un boîtier de plus. Une <span class="hl">clé Zigbee USB à 18,99 € TTC</span> (relevée le 2 oct. 2026 chez un revendeur français) parle à la quasi-totalité des marques Zigbee — IKEA, Aqara, Sonoff, Tuya — à travers Home Assistant, en local. Mais elle ne fait rien seule, et <span class="hl">elle ne s'utilise pas toujours sans la flasher</span> : voilà ce que les tutoriels passent sous silence.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip">Prix lus le 2 oct. 2026</span>
+    </p>
+  </section>
+
+  <section id="bref" class="switch dyn">
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><strong>La clé coûte moins de 20 €, le reste coûte plus cher.</strong> Chez un revendeur français, la clé SONOFF ZBDongle-E est à <span class="hl">18,99 € TTC</span>, la ZBDongle-P à <span class="hl">18,99 € TTC</span>, la Dongle-LMG21 à <span class="hl">19,99 € TTC</span> et la Dongle-M (Ethernet/PoE) à <span class="hl">39,99 € TTC</span> — relevés le 2 oct. 2026. Mais aucune ne fonctionne sans une machine allumée en permanence.</li>
+        <li><strong>Le hub d'en face est plus cher, pas bête.</strong> Le Hue Bridge est affiché <span class="hl">79,99 €</span> et le Hue Bridge Pro <span class="hl">149,99 €</span> sur la boutique officielle Philips Hue (relevés le 2 oct. 2026). Il marche dès la sortie de la boîte — avec son écosystème, pas avec les autres marques.</li>
+        <li><strong>La box officielle, elle, est vendue à part.</strong> Home Assistant Green, le boîtier tout-fait de Nabu Casa, est à <span class="hl">179,00 € TTC</span> chez le revendeur français — et la clé Zigbee n'est pas dedans.</li>
+        <li><strong>La clé doit souvent être flashée avant de servir.</strong> La documentation de Zigbee2MQTT l'écrit noir sur blanc : un adaptateur doit recevoir un <em>firmware coordinateur</em> (certains arrivent préflashés). C'est le premier mur pour un débutant.</li>
+        <li><strong>ZHA et Zigbee2MQTT ne partagent pas la même clé.</strong> Sur le forum francophone, la réponse la plus fréquente à « ça refuse de démarrer » est un conflit entre les deux logiciels.</li>
+        <li><strong>Ce qui n'est pas chiffré :</strong> la rallonge USB, l'alimentation, la machine hôte et le temps de configuration. Nous ne les mettons dans aucun total de cette page.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projet" class="switch dyn">
+    <h2>Une clé n'est pas un hub : ce qu'on achète exactement</h2>
+    <p>Home Assistant est un logiciel libre et gratuit (<em>Apache-2.0</em>, 91 231 étoiles sur GitHub au 2 octobre 2026). Il tourne sur une machine que vous fournissez — mini-PC, NAS, Raspberry Pi, ou le boîtier officiel. Ce logiciel sait gérer la domotique, mais il lui manque une <strong>radio</strong> pour parler aux capteurs et aux ampoules : c'est le rôle de la clé.</p>
+    <p>La clé contient une puce radio et un firmware qui en fait le <em>coordinateur</em> du réseau Zigbee. Elle remplace donc le hub propriétaire d'une marque par un seul boîtier qui parle à plusieurs marques. Trois choses restent à votre charge, et c'est là que les tutoriels deviennent silencieux :</p>
+    <ul>
+      <li><strong>La machine.</strong> La clé n'a ni écran ni intelligence : sans ordinateur allumé 24 h/24 faisant tourner Home Assistant, elle ne sert à rien.</li>
+      <li><strong>Le logiciel.</strong> Deux voies existent, et il faut choisir : <em>ZHA</em> (Zigbee Home Automation), l'intégration intégrée à Home Assistant, ou <em>Zigbee2MQTT</em>, un pont séparé. Elles ne cohabitent pas sur la même clé.</li>
+      <li><strong>Le firmware.</strong> Beaucoup de clés arrivent avec un firmware inadapté ou ancien. La documentation de Zigbee2MQTT commence par cette phrase, que presque personne ne lit avant d'acheter :</li>
+    </ul>
+    <div class="quotebox">
+      « Note that before an adapter can be used with Zigbee2MQTT it has to be flashed with a coordinator firmware (some adapters come preflashed). »
+      <span class="qsrc">Documentation officielle de Zigbee2MQTT, page « Supported Adapters », lue le 2 octobre 2026. Traduction : « Avant de pouvoir être utilisé avec Zigbee2MQTT, un adaptateur doit être flashé avec un firmware coordinateur (certains adaptateurs sont livrés préflashés). »</span>
+    </div>
+    <p>Autrement dit : acheter la clé est la partie facile. La faire fonctionner est la partie qu'on ne voit nulle part sur la fiche produit.</p>
+  </section>
+
+  <section id="prix" class="switch dyn">
+    <h2>Les prix : ce qui est lu, où, et quand</h2>
+    <p>Les montants ci-dessous ont été relevés le <strong>2 octobre 2026</strong>, à deux endroits : une page de résultats et de fiches d'un revendeur domotique français (prix affichés TTC), et la fiche produit de la boutique officielle Philips Hue en France. Nous ne mélangeons pas les deux colonnes : c'est écrit dans le tableau.</p>
+    <div class="chartbox">
+      <h3>Le ticket d'entrée de la domotique locale (€, prix relevés le 2 oct. 2026)</h3>
+      <svg viewBox="0 0 720 420" role="img" aria-label="Graphique à barres, prix relevés le 2 octobre 2026 : clé SONOFF ZBDongle-E 18,99 euros, clé ZBDongle-P 18,99 euros, clé Dongle-LMG21 19,99 euros, clé SONOFF Dongle-M Ethernet PoE 39,99 euros, hub Philips Hue Bridge 79,99 euros, hub Philips Hue Bridge Pro 149,99 euros, box Nabu Casa Home Assistant Green 179,00 euros">
+        <title>Prix des clés Zigbee et des hubs propriétaires</title>
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12" fill="#57523f">
+          <text x="70" y="30">Clé SONOFF ZBDongle-E (Domadoo, FR)</text>
+          <rect x="70" y="36" width="55" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="133" y="50" fill="#0e7b52" font-weight="700">18,99 €</text>
+
+          <text x="70" y="86">Clé SONOFF ZBDongle-P (Domadoo, FR)</text>
+          <rect x="70" y="92" width="55" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="133" y="106" fill="#0e7b52" font-weight="700">18,99 €</text>
+
+          <text x="70" y="142">Clé SONOFF Dongle-LMG21 (Domadoo, FR)</text>
+          <rect x="70" y="148" width="58" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="136" y="162" fill="#0e7b52" font-weight="700">19,99 €</text>
+
+          <text x="70" y="198">Clé SONOFF Dongle-M (Ethernet/PoE, Domadoo)</text>
+          <rect x="70" y="204" width="116" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="194" y="218" fill="#0e7b52" font-weight="700">39,99 €</text>
+
+          <text x="70" y="254">Hub Philips Hue Bridge (boutique Hue FR)</text>
+          <rect x="70" y="260" width="232" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="310" y="274" fill="#0e7b52" font-weight="700">79,99 €</text>
+
+          <text x="70" y="310">Hub Philips Hue Bridge Pro (boutique Hue FR)</text>
+          <rect x="70" y="316" width="436" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="514" y="330" fill="#0e7b52" font-weight="700">149,99 €</text>
+
+          <text x="70" y="366">Box NABU CASA Home Assistant Green (Domadoo)</text>
+          <rect x="70" y="372" width="520" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="598" y="386" fill="#0e7b52" font-weight="700">179,00 €</text>
+        </g>
+      </svg>
+      <p class="footnote">Barres proportionnelles aux montants ci-dessus, base à zéro. Les quatre clés et la box viennent d'un revendeur domotique français (prix TTC affichés) ; les deux hubs viennent de la boutique officielle Philips Hue en France. Aucun de ces prix ne comprend la machine hôte (sauf la box, qui l'est) ni la rallonge USB : nous ne les avons pas chiffrés, donc ils n'apparaissent pas ici.</p>
+    </div>
+    <table>
+      <thead><tr><th>Où</th><th>Quoi</th><th>Prix relevé le 2 oct. 2026</th><th>Ce que le prix ne comprend pas</th></tr></thead>
+      <tbody>
+        <tr><td>Domadoo (FR)</td><td>SONOFF ZBDongle-E — clé Zigbee 3.0 USB + antenne (puce Silicon Labs EFR32MG21)</td><td><strong>18,99 €</strong> TTC <em>(en stock)</em></td><td>le logiciel (gratuit), une rallonge USB, la machine hôte</td></tr>
+        <tr><td>Domadoo (FR)</td><td>SONOFF ZBDongle-P — clé Zigbee 3.0 USB + antenne (puce Texas Instruments CC2652P)</td><td><strong>18,99 €</strong> TTC</td><td>idem : logiciel, rallonge USB, machine hôte</td></tr>
+        <tr><td>Domadoo (FR)</td><td>SONOFF Dongle-LMG21 — mini-clé Zigbee/Thread USB</td><td><strong>19,99 €</strong> TTC</td><td>idem, plus un éventuel firmware Thread à écrire</td></tr>
+        <tr><td>Domadoo (FR)</td><td>SONOFF Dongle-M — coordinateur Zigbee/Thread, Ethernet et PoE</td><td><strong>39,99 €</strong> TTC</td><td>un câble réseau, une alimentation PoE ou secteur</td></tr>
+        <tr><td>Domadoo (FR)</td><td>NABU CASA — Home Assistant Green, la box officielle (logiciel inclus)</td><td><strong>179,00 €</strong> TTC <em>(en stock)</em></td><td>la clé Zigbee, vendue séparément</td></tr>
+        <tr><td>Boutique Philips Hue FR</td><td>Philips Hue Bridge — hub propriétaire</td><td><strong>79,99 €</strong></td><td>un compte Hue ; il sert d'abord l'écosystème Hue</td></tr>
+        <tr><td>Boutique Philips Hue FR</td><td>Philips Hue Bridge Pro — hub propriétaire</td><td><strong>149,99 €</strong></td><td>idem : conçu pour l'écosystème Hue</td></tr>
+      </tbody>
+    </table>
+    <p>La lecture honnête de ce tableau n'est pas « la clé est moins chère ». La clé à <strong>18,99 €</strong> est une pièce, pas un système : elle suppose une machine qui tourne déjà chez vous. Le hub à <strong>79,99 €</strong> est un système complet — mais fermé sur sa marque. Vous ne payez pas la même chose : d'un côté l'<em>universalité et le contrôle local</em>, de l'autre le <em>confort d'un produit fini</em>. Et si vous n'avez aucune machine à consacrer, la box officielle à 179,00 € remet les compteurs à égalité avec un hub haut de gamme.</p>
+  </section>
+
+  <section id="pieges" class="switch dyn">
+    <h2>Les cinq pièges du démarrage</h2>
+
+    <h3>1. La clé doit souvent être flashée — et le choix du firmware n'est pas évident</h3>
+    <p>C'est le premier mur. Une clé vendue « Zigbee 3.0 USB » n'est pas forcément prête pour le logiciel que vous allez installer : il faut lui écrire un <em>firmware coordinateur</em> à jour. La documentation officielle de Zigbee2MQTT le dit d'entrée, et les fils du forum francophone le confirment côté vécu : un débutant découvre en pleine installation qu'il « doit flasher sa clé », sans savoir laquelle des versions choisir.</p>
+    <div class="quotebox">
+      « Je ne suis pas super à l'aise avec tout ce qui est flash et compagnie. J'ai effectivement vu cette page pour le flash, mais rien n'est précisé (après ont choisi quel firmware, car des 7.4… j'en ai vu au moins 3 ?) »
+      <span class="qsrc">Forum Home Assistant Communauté Francophone, fil « Mise à jour Sonoff DONGLE-E pour Zigbee2mqtt (EMBER) », message du 3 mai 2024 (utilisateur pascal_ha). Orthographe d'origine.</span>
+    </div>
+    <p>Ce même fil décrit la manipulation réelle : brancher la clé sur un PC, vérifier le pilote sous Windows (le dongle doit apparaître en « Silicon Labs CP210x »), choisir le fichier de firmware puis le réinjecter. Rien de sorcier, mais ce n'est pas « on branche et ça marche ».</p>
+
+    <h3>2. ZHA et Zigbee2MQTT se disputent la même clé</h3>
+    <p>Home Assistant propose deux chemins pour le Zigbee, et le second n'est pas un simple réglage du premier : ce sont deux logiciels distincts qui veulent tous les deux la main sur le port série et sur le réseau radio. La conséquence est un démarrage qui échoue, avec un message que les débutants recopient sur le forum sans comprendre.</p>
+    <div class="quotebox">
+      « Je suis nouveau sous HA, j'ai fait mon installation sous Nuc et j'avais acheté ce donggle courant mois d'avril, je pensait qu'il fonctionnait »
+      <span class="qsrc">Forum Home Assistant Communauté Francophone, fil « Probleme installation Zigbee2Mqtt », message du 8 septembre 2025 (utilisateur Vito_1). Orthographe d'origine. Le journal affichait « error: z2m: Failed to start zigbee-herdsman ».</span>
+    </div>
+    <div class="quotebox">
+      « tu ne dois pas utiliser ZHA avec Z2M ya un conflit car ils utilisent la même clé, désactive ZHA comme a dit WarC0zes et installe Z2M »
+      <span class="qsrc">Même fil, réponse du même jour (utilisateur lecureuil). C'est la réponse qui revient le plus souvent à ce symptôme.</span>
+    </div>
+    <p>La règle à retenir : <strong>une clé, un seul logiciel</strong>. Décidez de ZHA <em>ou</em> de Zigbee2MQTT avant d'appairer le premier appareil — changer d'avis après coup signifie tout réappairer.</p>
+
+    <figure class="photo dyn"><img src="../img/domotique-sans-abonnement-2.jpg" alt="Carte électronique radio Zigbee avec son antenne et des connecteurs posés à côté, sur fond blanc" loading="lazy" width="1400" height="800">
+      <figcaption>Une carte radio Zigbee (ici un module de prototypage, la même famille de puces que les clés USB) avec son antenne et ses connecteurs. Photo libre — Gabriel Cain Photography, CC BY-SA 3.0, via Wikimedia Commons.</figcaption>
+    </figure>
+
+    <h3>3. Branchée à même le boîtier, la clé s'entend mal avec elle-même</h3>
+    <p>Le Zigbee occupe la bande des 2,4 GHz — exactement celle qu'occupent le Wi-Fi et, surtout, les ports et disques <strong>USB 3.0</strong>, qui émettent des parasites dans cette bande. Une clé enfichée à l'arrière d'un mini-PC, à quelques centimètres d'un SSD, capte donc du bruit au lieu de ses propres appareils. Les guides d'installation du fabricant recommandent une <em>rallonge USB</em> pour écarter la clé du boîtier, et la documentation de Zigbee2MQTT va plus loin :</p>
+    <div class="quotebox">
+      « the recommendation is to use remote adapter that connected via Ethernet (wired) to avoid issues. »
+      <span class="qsrc">Documentation officielle de Zigbee2MQTT, page « Supported Adapters », lue le 2 octobre 2026. Traduction : « la recommandation est d'utiliser un adaptateur distant relié en Ethernet (filaire) pour éviter les problèmes. » C'est le rôle de la clé Dongle-M à 39,99 €, ou d'un adaptateur réseau équivalent.</span>
+    </div>
+    <p>Le prix d'une rallonge USB n'est pas dans nos tableaux : nous ne l'avons pas relevé, donc nous ne l'inventons pas. Retenez juste que la clé la moins chère peut être la plus capricieuse si elle est collée à la machine.</p>
+
+    <h3>4. Le nom du port change, et l'intégration se perd</h3>
+    <p>Les tutoriels montrent souvent un chemin du type <code>/dev/ttyUSB0</code>. Ce nom est attribué dans l'ordre d'arrivée des périphériques : redémarrez la machine, branchez un autre appareil USB, et votre clé peut devenir <code>/dev/ttyUSB1</code> — auquel cas l'intégration ne trouve plus rien. Le guide du fabricant le dit sans détour :</p>
+    <div class="quotebox">
+      « Home Assistant may show /dev/ttyUSB0. When available, /dev/serial/by-id/… is safer because it normally remains stable if USB numbering changes. /dev/ttyUSB0 may change after a restart or after another USB device is connected. »
+      <span class="qsrc">Guide officiel SONOFF « Best Zigbee Dongle for Home Assistant », page lue le 2 octobre 2026. Traduction : « Home Assistant peut afficher /dev/ttyUSB0. Quand il est disponible, /dev/serial/by-id/… est plus sûr, car il reste stable si la numérotation USB change. »</span>
+    </div>
+    <p>Ce n'est pas un piège qui coûte de l'argent, c'est un piège qui coûte une soirée. Notez le chemin <code>by-id</code> au moment de l'installation, pas après la panne.</p>
+
+    <h3>5. « Zigbee » ne veut pas dire « tout »</h3>
+    <p>Trois confusions coûtent un hub acheté pour rien : une clé Zigbee ne parle <em>pas</em> Z-Wave (autre fréquence, autre écosystème), pas Bluetooth, et pas forcément Thread. Et même entre clés Zigbee, les puces ne sont pas interchangeables : la ZBDongle-P embarque une puce Texas Instruments (CC2652P), la ZBDongle-E une puce Silicon Labs (EFR32MG21). La documentation de Zigbee2MQTT précise un point qui compte pour la suite :</p>
+    <div class="quotebox">
+      « Note that only adapters based on zStack or EmberZNet currently support backing up the coordinator (coordinator_backup.json). »
+      <span class="qsrc">Documentation officielle de Zigbee2MQTT, page « Supported Adapters », lue le 2 octobre 2026. Traduction : « Seuls les adaptateurs fondés sur zStack ou EmberZNet prennent actuellement en charge la sauvegarde du coordinateur (coordinator_backup.json). » La sauvegarde, c'est ce qui vous évite de tout réappairer si la clé meurt.</span>
+    </div>
+    <p>Avant d'acheter, faites donc votre inventaire : quels appareils avez-vous (Zigbee ? Z-Wave ? Bluetooth ?), quel logiciel voulez-vous (ZHA ou Zigbee2MQTT), et la clé que vous visez est-elle listée comme compatible avec ce logiciel. Trois minutes de lecture valent mieux qu'un hub en double.</p>
+  </section>
+
+  <section id="chemins" class="switch dyn">
+    <h2>Trois chemins, selon ce que vous avez déjà</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · Vous avez déjà une machine qui tourne</b><span>La clé seule suffit : 18,99 € chez le revendeur français, plus le logiciel gratuit. Le chemin le moins cher, et le plus exigeant — flash du firmware, rallonge USB, choix ZHA ou Zigbee2MQTT à faire avant tout.</span></div>
+      <div class="step"><b>2 · Vous ne voulez pas bricoler</b><span>La box officielle Home Assistant Green (179,00 € TTC) arrive prête, logiciel installé. Il faut y ajouter la clé Zigbee : la box ne contient pas la radio. C'est le ticket d'entrée réaliste pour un débutant pressé.</span></div>
+      <div class="step"><b>3 · Votre serveur est mal placé</b><span>Baie, cave, local technique : une clé USB y perdra ses appareils. Une clé réseau (Dongle-M à 39,99 €, Ethernet/PoE) pose la radio ailleurs, sur un câble — c'est la recommandation de la documentation Zigbee2MQTT elle-même.</span></div>
+    </div>
+    <p>Aucun de ces chemins n'est « le bon » : ils ne répondent pas à la même question. Le seul achat regrettable est une clé choisie sans savoir sur quoi elle sera branchée ni avec quel logiciel elle parlera.</p>
+  </section>
+
+  <section id="checklist" class="switch dyn">
+    <h2>La checklist avant de commander</h2>
+    <ul>
+      <li><strong>Inventoriez vos appareils connectés</strong> : Zigbee, Z-Wave, Bluetooth ? Une clé Zigbee ne remplace que le premier — pour le reste, vous garderez un hub.</li>
+      <li><strong>Choisissez le logiciel d'abord, la clé ensuite</strong> : ZHA (intégré) ou Zigbee2MQTT (pont séparé). Vérifiez que la clé visée figure bien dans la liste des adaptateurs pris en charge par celui que vous avez choisi.</li>
+      <li><strong>Prévoyez de flasher le firmware</strong> : lisez la page de flashage <em>avant</em> l'achat, pas devant un écran qui refuse de démarrer. Et sachez où trouver la version de firmware correspondant exactement à votre puce.</li>
+      <li><strong>Ajoutez une rallonge USB</strong> (quelques euros) et éloignez la clé du boîtier, des disques et du routeur Wi-Fi. Sur une machine mal placée, préférez une clé réseau.</li>
+      <li><strong>Notez le chemin <code>/dev/serial/by-id/…</code></strong> au lieu de <code>/dev/ttyUSB0</code> : le premier ne change pas quand le second change.</li>
+      <li><strong>Comptez la machine, pas seulement la clé.</strong> Sans ordinateur allumé en permanence, la clé à 18,99 € ne sert à rien : c'est le poste qu'on oublie dans tous les comparatifs.</li>
+      <li><strong>Comparez le total port compris le jour de l'achat</strong>, pas sur un guide daté — y compris celui-ci : nos prix sont ceux du 2 octobre 2026.</li>
+    </ul>
+  </section>
+
+  <section id="cta" class="switch dyn">
+    <div class="cta">
+      <h2>Par où commencer, concrètement</h2>
+      <p>Ces liens sont ceux des projets, des documentations et des vendeurs cités. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez les prix et les compatibilités à la source.</p>
+      <ul>
+        <li><strong>Comprendre le logiciel :</strong> <a href="https://www.home-assistant.io/" rel="nofollow noopener">Home Assistant</a> (logiciel libre) et sa page <a href="https://www.home-assistant.io/installation/" rel="nofollow noopener">d'installation</a>.</li>
+        <li><strong>Comparer les deux voies Zigbee :</strong> <a href="https://www.home-assistant.io/integrations/zha/" rel="nofollow noopener">ZHA</a> et <a href="https://www.zigbee2mqtt.io/guide/adapters/" rel="nofollow noopener">Zigbee2MQTT — Supported Adapters</a> (c'est cette page qui liste les clés prises en charge et la sauvegarde du coordinateur).</li>
+        <li><strong>Voir les prix cités :</strong> les clés SONOFF et la box Home Assistant Green chez <a href="https://www.domadoo.fr/fr/recherche?controller=search&amp;s=zbdongle" rel="nofollow noopener">Domadoo (FR)</a>, et les hubs sur la <a href="https://www.philips-hue.com/fr-fr/p/hue-hue-bridge/8719514342620" rel="nofollow noopener">boutique officielle Philips Hue FR</a> — prix constatés le 2 octobre 2026.</li>
+      </ul>
+      <p>Le réflexe qui évite l'achat inutile : inventorier ses appareils, choisir son logiciel, vérifier la compatibilité de la clé — et seulement ensuite regarder le prix.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="switch dyn">
+    <h2>Questions</h2>
+    <details><summary>Une clé Zigbee à 18,99 € remplace-t-elle vraiment un hub ?</summary><p>Le hub oui, la machine non. La clé contient la radio, mais elle ne fait rien seule : il faut un ordinateur allumé en permanence et un logiciel gratuit (ZHA ou Zigbee2MQTT). Un hub propriétaire à 79,99 €, lui, fonctionne dès la sortie de la boîte — avec son propre écosystème.</p></details>
+    <details><summary>Faut-il flasher la clé avant de s'en servir ?</summary><p>Souvent, oui. La documentation de Zigbee2MQTT écrit qu'un adaptateur doit recevoir un firmware « coordinateur » avant de pouvoir être utilisé (certains arrivent préflashés). Sur le forum francophone, la mise à jour d'une clé Sonoff ZBDongle-E est un sujet à part entière, avec plusieurs versions de firmware et un changement de pilote à faire au bon moment.</p></details>
+    <details><summary>Peut-on installer ZHA et Zigbee2MQTT en même temps ?</summary><p>Pas sur la même clé. Les deux se disputent le port série et le réseau Zigbee : c'est la cause la plus fréquente d'un « Zigbee2MQTT refuse de démarrer ». Choisissez l'un des deux et désactivez l'autre avant de relancer.</p></details>
+    <details><summary>Pourquoi brancher la clé sur une rallonge USB ?</summary><p>Parce qu'un boîtier et un port USB 3.0 rayonnent dans la bande des 2,4 GHz, celle du Zigbee. Une rallonge écarte la clé de la machine ; si l'emplacement est vraiment mauvais, la documentation conseille un adaptateur réseau (Ethernet). La rallonge n'est pas chiffrée dans cette page : nous ne l'avons pas relevée.</p></details>
+    <details><summary>La clé gère-t-elle tous les protocoles sans fil ?</summary><p>Non : une clé Zigbee ne parle que Zigbee. Ni Z-Wave, ni Bluetooth. Certaines clés récentes ajoutent Thread (le protocole de Matter), c'est indiqué sur la fiche. Vérifiez ce que vous avez déjà avant d'acheter, sinon vous garderez un hub en plus.</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Les programmes que nous pourrions utiliser (Amazon Partenaires France, AliExpress) sont enregistrés chez nous comme candidats — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré mis à jour avec la date.</p></details>
+  </section>
+
+  <section id="honesty" class="switch dyn">
+    <h2>Comment cette page est faite</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié ici.</strong> Les programmes pertinents pour ce matériel (Amazon Partenaires France, AliExpress) sont enregistrés chez nous comme <em>candidats</em> : aucun compte créé, aucun lien posé. Si un lien affilié arrive un jour, il sera étiqueté « lien affilié — on est payé si vous souscrivez » à l'endroit où il apparaît, avec <code>rel="sponsored"</code>, et cet encadré sera mis à jour avec la date.</li>
+      <li><strong>Les prix sont ceux que nous avons lus nous-mêmes</strong>, le 2 octobre 2026 : sur les pages d'un revendeur domotique français (clés SONOFF et box Home Assistant Green, prix TTC affichés) et sur la fiche produit de la boutique officielle Philips Hue en France (Hue Bridge). Nous datons chaque montant parce qu'ils bougent.</li>
+      <li><strong>Ce que nous ne savons pas est écrit comme tel :</strong> le prix d'une rallonge USB, d'une alimentation, et le coût de la machine hôte (hors box officielle) n'ont pas été relevés — ils n'apparaissent donc dans aucun total ni dans aucun graphique.</li>
+      <li><strong>Les avis et messages cités sont publics et datés</strong>, avec le fil, la date et, quand il est connu, le pseudo de leur auteur. Ils sont reproduits tels quels, orthographe comprise, et ne sont pas des témoignages de clients de cette page.</li>
+      <li><strong>Nous ne fabriquons aucun avis, aucun témoignage et aucune statistique.</strong> Les contraintes techniques citées viennent des documentations officielles de Zigbee2MQTT et de SONOFF, et des fils publics du forum Home Assistant Communauté Francophone.</li>
+      <li><strong>Corrections :</strong> si un prix a changé ou si nous nous sommes trompés, écrivez-nous, nous corrigeons et nous datons la correction.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch dyn">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Documentation officielle Zigbee2MQTT, page « Supported Adapters » (firmware coordinateur obligatoire avant usage ; seuls zStack et EmberZNet prennent en charge la sauvegarde du coordinateur ; recommandation d'un adaptateur réseau pour éviter les problèmes) — lue le 2 octobre 2026.</li>
+      <li>Guide officiel SONOFF « Best Zigbee Dongle for Home Assistant » (rallonge USB recommandée pour un coordinateur USB ; <code>/dev/serial/by-id/…</code> plus sûr que <code>/dev/ttyUSB0</code>) — lu le 2 octobre 2026.</li>
+      <li>Forum Home Assistant Communauté Francophone, fil « Mise à jour Sonoff DONGLE-E pour Zigbee2mqtt (EMBER) » (messages d'avril-mai 2024 : pilotage du firmware, changement de pilote « ezsp » vers « ember », pilote Windows à installer) — lu le 2 octobre 2026.</li>
+      <li>Forum Home Assistant Communauté Francophone, fil « Probleme installation Zigbee2Mqtt » (messages du 8 septembre 2025 : « Failed to start zigbee-herdsman », conflit ZHA/Zigbee2MQTT sur la même clé) — lu le 2 octobre 2026.</li>
+      <li>Page de résultats « zbdongle » et fiches produit, Domadoo (revendeur domotique français) : ZBDongle-E et ZBDongle-P à 18,99 € TTC, Dongle-LMG21 à 19,99 € TTC, Dongle-M à 39,99 € TTC, Home Assistant Green (NABU CASA) à 179,00 € TTC — relevés le 2 octobre 2026.</li>
+      <li>Boutique officielle Philips Hue France : Hue Bridge 79,99 € et Hue Bridge Pro 149,99 € — relevés le 2 octobre 2026.</li>
+      <li>Dépôt GitHub <em>home-assistant/core</em> (licence Apache-2.0, 91 231 étoiles) et <em>Koenkk/zigbee2mqtt</em> (licence GPL-3.0) — consultés le 2 octobre 2026.</li>
+      <li>Photos : cartes Raspberry Pi — SimonWaldherr, CC BY-SA 4.0 ; module radio Zigbee — Gabriel Cain Photography, CC BY-SA 3.0. Toutes deux via Wikimedia Commons.</li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch dyn">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix et les conditions changent ; confirmez sur la source officielle avant de vous engager.</p>
+    <p>Mis à jour le 2 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
+(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
+/* barre de progression au scroll */
+(function(){
+  var bar = document.getElementById('progress');
+  function frame(){
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    var p = max > 0 ? (d.scrollTop / max) : 0;
+    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+  }
+  var queued = false;
+  window.addEventListener('scroll', function(){
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function(){ queued = false; frame(); });
+  }, {passive:true});
+  window.addEventListener('resize', frame, {passive:true});
+  frame();
+})();
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Domotique sans abonnement — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Domotique sans abonnement\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<style>
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style>
+</body>
+</html>

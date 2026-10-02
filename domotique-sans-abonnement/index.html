@@ -99,14 +99,14 @@
 
 <main id="main" class="wrap">
   <section class="hero">
-    <p class="kicker">Domotique locale · aucun lien affilié sur cette page · prix relevés le 2 oct. 2026</p>
+    <p class="kicker">Domotique locale · un lien partenaire Amazon.fr, étiqueté · prix relevés le 2 oct. 2026</p>
     <h1>Domotique sans abonnement : une clé Zigbee à 18,99 € au lieu d'un hub par marque — et les cinq pièges du démarrage</h1>
 
     <figure class="photo"><img src="../img/domotique-sans-abonnement.jpg" alt="Plusieurs cartes Raspberry Pi et un petit clavier posés sur un fond blanc" loading="lazy" width="1400" height="800"></figure>
 
     <p class="lede">Un hub par marque, c'est un compte cloud, une application et un boîtier de plus. Une <span class="hl">clé Zigbee USB à 18,99 € TTC</span> (relevée le 2 oct. 2026 chez un revendeur français) parle à la quasi-totalité des marques Zigbee — IKEA, Aqara, Sonoff, Tuya — à travers Home Assistant, en local. Mais elle ne fait rien seule, et <span class="hl">elle ne s'utilise pas toujours sans la flasher</span> : voilà ce que les tutoriels passent sous silence.</p>
     <p class="chips">
-      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip chip-good">Un lien partenaire Amazon.fr, étiqueté — voir <a href="#honesty">comment ça marche</a></span>
       <span class="chip">Prix lus le 2 oct. 2026</span>
     </p>
   </section>
@@ -290,13 +290,13 @@
     <details><summary>Peut-on installer ZHA et Zigbee2MQTT en même temps ?</summary><p>Pas sur la même clé. Les deux se disputent le port série et le réseau Zigbee : c'est la cause la plus fréquente d'un « Zigbee2MQTT refuse de démarrer ». Choisissez l'un des deux et désactivez l'autre avant de relancer.</p></details>
     <details><summary>Pourquoi brancher la clé sur une rallonge USB ?</summary><p>Parce qu'un boîtier et un port USB 3.0 rayonnent dans la bande des 2,4 GHz, celle du Zigbee. Une rallonge écarte la clé de la machine ; si l'emplacement est vraiment mauvais, la documentation conseille un adaptateur réseau (Ethernet). La rallonge n'est pas chiffrée dans cette page : nous ne l'avons pas relevée.</p></details>
     <details><summary>La clé gère-t-elle tous les protocoles sans fil ?</summary><p>Non : une clé Zigbee ne parle que Zigbee. Ni Z-Wave, ni Bluetooth. Certaines clés récentes ajoutent Thread (le protocole de Matter), c'est indiqué sur la fiche. Vérifiez ce que vous avez déjà avant d'acheter, sinon vous garderez un hub en plus.</p></details>
-    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Les programmes que nous pourrions utiliser (Amazon Partenaires France, AliExpress) sont enregistrés chez nous comme candidats — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré mis à jour avec la date.</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Oui, un. Depuis le 3 octobre 2026, cette page porte un lien partenaire Amazon.fr (Identifiant de suivi : honestswitch-21), étiqueté « lien affilié » avec rel=sponsored. Le prix et la disponibilité sont affichés par Amazon au moment du clic — nous ne les recopions pas. Aucun autre lien de cette page ne nous rapporte quoi que ce soit.</p></details>
   </section>
 
   <section id="honesty" class="switch">
     <h2>Comment cette page est faite</h2>
     <ul class="honest-list">
-      <li><strong>Aucun lien affilié ici.</strong> Les programmes pertinents pour ce matériel (Amazon Partenaires France, AliExpress) sont enregistrés chez nous comme <em>candidats</em> : aucun compte créé, aucun lien posé. Si un lien affilié arrive un jour, il sera étiqueté « lien affilié — on est payé si vous souscrivez » à l'endroit où il apparaît, avec <code>rel="sponsored"</code>, et cet encadré sera mis à jour avec la date.</li>
+      <li><strong>Un lien affilié, et un seul.</strong> Depuis le 3 octobre 2026, cette page porte un lien partenaire Amazon.fr (Identifiant de suivi : honestswitch-21), étiqueté « lien affilié » avec <code>rel="sponsored"</code>, à l'endroit où il apparaît. Nous ne recopions ni prix ni disponibilité : ils sont affichés par Amazon au moment du clic. Aucun autre lien de cette page ne nous rapporte quoi que ce soit.</li>
       <li><strong>Les prix sont ceux que nous avons lus nous-mêmes</strong>, le 2 octobre 2026 : sur les pages d'un revendeur domotique français (clés SONOFF et box Home Assistant Green, prix TTC affichés) et sur la fiche produit de la boutique officielle Philips Hue en France (Hue Bridge). Nous datons chaque montant parce qu'ils bougent.</li>
       <li><strong>Ce que nous ne savons pas est écrit comme tel :</strong> le prix d'une rallonge USB, d'une alimentation, et le coût de la machine hôte (hors box officielle) n'ont pas été relevés — ils n'apparaissent donc dans aucun total ni dans aucun graphique.</li>
       <li><strong>Les avis et messages cités sont publics et datés</strong>, avec le fil, la date et, quand il est connu, le pseudo de leur auteur. Ils sont reproduits tels quels, orthographe comprise, et ne sont pas des témoignages de clients de cette page.</li>
@@ -338,6 +338,14 @@
       </form>
       <p class="footnote" id="revok" style="margin-top:10px"></p>
     </div>
+  </section>
+
+  <section class="switch" id="ou-acheter">
+    <h2>Où acheter — lien partenaire</h2>
+    <div class="why">
+      <p>Le lien ci-dessous est un <strong>lien partenaire Amazon.fr</strong> (Identifiant de suivi&nbsp;: honestswitch-21). Si vous achetez en passant par lui, Amazon nous verse une commission&nbsp;: le prix que vous payez ne change pas. Nous ne recopions ni le prix ni la disponibilité, que vous voyez affichés par Amazon au moment du clic.</p>
+    </div>
+    <p><a rel="sponsored nofollow" href="https://www.amazon.fr/s?k=cl%C3%A9+Zigbee+USB&amp;tag=honestswitch-21">Voir «&nbsp;clé Zigbee USB&nbsp;» sur Amazon.fr</a> <small class="aff-note">lien affilié — commission pour nous, prix inchangé pour vous</small></p>
   </section>
 
 </main>

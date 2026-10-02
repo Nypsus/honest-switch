@@ -70,7 +70,7 @@
     {"@type": "Question", "name": "Historique ou standard : quel mode TIC choisir ?",
       "acceptedAnswer": {"@type": "Answer", "text": "L'intégration Teleinfo officielle de Home Assistant ne prend en charge que le mode historique (1200 bauds) et le monophasé : si votre compteur est en standard, la documentation officielle indique de demander à Enedis la bascule inverse. L'ESPHome, lui, accepte les deux modes mais à des vitesses différentes (1200 bauds en historique, 9600 en standard) et, en standard triphasé, la trame dépasse la taille de tampon par défaut du composant. Le mode standard apporte plus de valeurs (et la production photovoltaïque) ; le mode historique est le terrain le plus sûr."}},
     {"@type": "Question", "name": "Cette page contient-elle des liens affiliés ?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Non, aucun à ce jour. Aucun compte n'est ouvert et aucun lien n'est posé : les liens cités sont ceux des projets et des vendeurs, pour que vous vérifiiez les prix à la source. Si un lien affilié arrive, il sera étiqueté à l'endroit où il apparaît et cet encadré sera mis à jour avec la date."}},
+      "acceptedAnswer": {"@type": "Answer", "text": "Oui, un. Depuis le 3 octobre 2026, cette page porte un lien partenaire Amazon.fr (Identifiant de suivi : honestswitch-21), étiqueté « lien affilié » avec rel=sponsored. Le prix et la disponibilité sont affichés par Amazon au moment du clic — nous ne les recopions pas. Aucun autre lien de cette page ne nous rapporte quoi que ce soit."}},
     {"@type": "Question", "name": "Le module Zigbee est-il plus simple que le montage ESP32 ?",
       "acceptedAnswer": {"@type": "Answer", "text": "Oui pour la mécanique : il s'enfiche derrière le cache du Linky et s'alimente sur les bornes du compteur, il n'y a ni soudure ni alimentation à prévoir. Non sur le reste : il faut une passerelle Zigbee, un logiciel (Zigbee2MQTT ou ZHA), et les retours publics montrent des appareils défectueux à la réception et un plantage possible du réseau Zigbee au passage en mode standard. Le montage ESP32 coûte moins cher en pièces mais vous prenez en charge le montage et les réglages."}}
   ]
@@ -99,14 +99,14 @@
 
 <main id="main" class="wrap">
   <section class="hero">
-    <p class="kicker">Compteur Linky · aucun lien affilié sur cette page · sources relevées le 2 oct. 2026</p>
+    <p class="kicker">Compteur Linky · un lien partenaire Amazon.fr, étiqueté · sources relevées le 2 oct. 2026</p>
     <h1>Lire son compteur Linky dans Home Assistant : un module Zigbee à 59,99 €, un module USB à 24,90 € ou une carte ESP32 à 14,40 € — et les quatre pièges que les tutoriels taisent</h1>
 
     <figure class="photo"><img src="../img/linky-home-assistant.jpg" alt="Compteur Linky vert encadré dans un coffret électrique ouvert, à côté du disjoncteur" loading="lazy" width="1400" height="800"></figure>
 
     <p class="lede">Home Assistant ne lit pas un compteur Linky par radio : il lit sa <span class="hl">sortie TIC</span>, un port physique sous le cache du compteur. Trois routes existent, de <span class="hl">14,40 € la carte ESP32</span> à <span class="hl">59,99 € le module Zigbee autoalimenté</span> — mais aucune ne fonctionne si le mode TIC du compteur a été basculé en <em>standard</em>, et presque aucun tutoriel ne commence par là.</p>
     <p class="chips">
-      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip chip-good">Un lien partenaire Amazon.fr, étiqueté — voir <a href="#honesty">comment ça marche</a></span>
       <span class="chip">Prix lus le 2 oct. 2026</span>
     </p>
   </section>
@@ -290,13 +290,13 @@
     <details><summary>Pourquoi mon module ne remonte rien alors que le compteur est bien un Linky ?</summary><p>Trois causes reviennent dans les retours publics : le mode TIC ne correspond pas à ce qu'attend le logiciel ou le montage ; la valeur des résistances est mauvaise sur un montage maison en mode standard ; ou l'appareil est défectueux à la réception — un défaut matériel confirmé après échange est documenté publiquement pour deux unités neuves.</p></details>
     <details><summary>Historique ou standard : que choisir ?</summary><p>Le mode historique est le terrain le plus sûr : c'est le seul que prend en charge l'intégration officielle de Home Assistant, en monophasé. Le standard donne plus de valeurs (dont la production photovoltaïque) et impose 9 600 bauds, une trame plus grosse et, en triphasé, un tampon mémoire plus large que le défaut. Changez de mode en connaissance de cause : la bascule se demande à Enedis.</p></details>
     <details><summary>Le module Zigbee est-il plus simple que le montage ESP32 ?</summary><p>Plus simple à installer, oui : il s'enfiche dans le compteur et s'alimente dessus, sans soudure ni câble. Mais il exige une passerelle Zigbee, et les retours publics mentionnent des pannes matérielles et un réseau Zigbee qui peut tomber au passage en mode standard. Le montage ESP32 coûte moins cher en pièces et vous laisse la main sur tout — y compris sur les réglages.</p></details>
-    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Les revendeurs cités n'ont pas de programme d'affiliation ; le programme AliExpress, pertinent pour les pièces importées, est enregistré chez nous comme candidat — aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré mis à jour avec la date.</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Oui, un. Depuis le 3 octobre 2026, cette page porte un lien partenaire Amazon.fr (Identifiant de suivi : honestswitch-21), étiqueté « lien affilié » avec rel=sponsored. Le prix et la disponibilité sont affichés par Amazon au moment du clic — nous ne les recopions pas. Aucun autre lien de cette page ne nous rapporte quoi que ce soit.</p></details>
   </section>
 
   <section id="honesty" class="switch">
     <h2>Comment cette page est faite</h2>
     <ul class="honest-list">
-      <li><strong>Aucun lien affilié ici.</strong> Les revendeurs cités n'ont pas de programme d'affiliation : le distributeur domotique propose un compte professionnel, pas un programme d'affiliation. Le seul programme pertinent pour les pièces importées (cartes, composants) est le programme d'affiliation AliExpress, enregistré chez nous comme <em>candidat</em> — aucun compte créé, aucun lien posé. Si un lien affilié arrive un jour, il sera étiqueté « lien affilié » à l'endroit où il apparaît, avec <code>rel="sponsored"</code>, et cet encadré sera mis à jour avec la date.</li>
+      <li><strong>Un lien affilié, et un seul.</strong> Depuis le 3 octobre 2026, cette page porte un lien partenaire Amazon.fr (Identifiant de suivi : honestswitch-21), étiqueté « lien affilié » avec <code>rel="sponsored"</code>, à l'endroit où il apparaît. Nous ne recopions ni prix ni disponibilité : ils sont affichés par Amazon au moment du clic. Aucun autre lien de cette page ne nous rapporte quoi que ce soit.</li>
       <li><strong>Les prix sont ceux que nous avons lus nous-mêmes</strong>, le 2 octobre 2026, sur les pages du revendeur domotique et du revendeur de cartes. Le dongle de créateur est affiché en dollars : nous ne l'avons pas converti en euros, précisément pour ne pas fabriquer un chiffre.</li>
       <li><strong>Ce que nous ne savons pas est écrit comme tel :</strong> le prix de l'optocoupleur, des résistances et du boîtier du montage maison n'a pas été relevé, donc il n'apparaît dans aucun total ; nous ne donnons pas non plus de prix de passerelle Zigbee.</li>
       <li><strong>Les avis cités sont publics et datés</strong>, avec le fil, la date et, quand il est connu, le pseudo de leur auteur. Ils sont reproduits tels quels, orthographe comprise, et ne sont pas des témoignages de clients de cette page.</li>
@@ -340,6 +340,14 @@
       </form>
       <p class="footnote" id="revok" style="margin-top:10px"></p>
     </div>
+  </section>
+
+  <section class="switch" id="ou-acheter">
+    <h2>Où acheter — lien partenaire</h2>
+    <div class="why">
+      <p>Le lien ci-dessous est un <strong>lien partenaire Amazon.fr</strong> (Identifiant de suivi&nbsp;: honestswitch-21). Si vous achetez en passant par lui, Amazon nous verse une commission&nbsp;: le prix que vous payez ne change pas. Nous ne recopions ni le prix ni la disponibilité, que vous voyez affichés par Amazon au moment du clic.</p>
+    </div>
+    <p><a rel="sponsored nofollow" href="https://www.amazon.fr/s?k=module+t%C3%A9l%C3%A9information+Linky&amp;tag=honestswitch-21">Voir «&nbsp;module téléinformation Linky&nbsp;» sur Amazon.fr</a> <small class="aff-note">lien affilié — commission pour nous, prix inchangé pour vous</small></p>
   </section>
 
 </main>

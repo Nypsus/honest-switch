@@ -57,9 +57,17 @@
 
   if (reduce) { targets.forEach(show); return; }
 
+  function firstScreen(el) {
+    var r = el.getBoundingClientRect();
+    return r.top < window.innerHeight * 0.82;   // dans le premier écran : montré tout de suite
+  }
+  targets.forEach(function (el) { el.classList.remove('fx-in'); });
+  var firsts = targets.filter(firstScreen);
+  firsts.forEach(function (el) { el.style.transition = 'none'; show(el); });
+
   function inView(el) {
     var r = el.getBoundingClientRect();
-    return r.top < window.innerHeight * 0.90 && r.bottom > 40;
+    return r.top < window.innerHeight * 0.88 && r.bottom > 40;
   }
   function scan() { targets.forEach(function (el) { if (!el.classList.contains('fx-in') && inView(el)) show(el); }); }
 
@@ -68,12 +76,18 @@
       entries.forEach(function (e) {
         if (e.isIntersecting) { show(e.target); io.unobserve(e.target); }
       });
-    }, { rootMargin: '0px 0px -7% 0px', threshold: 0.05 });
-    targets.forEach(function (el) { io.observe(el); });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.04 });
+    targets.forEach(function (el) { if (firsts.indexOf(el) === -1) io.observe(el); });
   }
   var t = null;
-  function onScroll() { if (t) return; t = setTimeout(function () { t = null; scan(); }, 110); }
+  function onScroll() { if (t) return; t = setTimeout(function () { t = null; scan(); }, 90); }
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
-  scan();
+
+  // rendre la transition aux éléments du premier écran après le premier rendu
+  window.requestAnimationFrame(function () {
+    window.requestAnimationFrame(function () {
+      firsts.forEach(function (el) { el.style.transition = ''; });
+    });
+  });
 })();

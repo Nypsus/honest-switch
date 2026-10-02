@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>RTL-SDR : suivre les avions en direct pour 29,50 € — et pourquoi les satellites météo NOAA ne sont plus là — Honest Switch</title>
+<meta name="description" content="RTL-SDR dès 29,50 € TTC (prix relevés le 2 oct. 2026), logiciels libres, et ce que les tutoriels taisent : les satellites NOAA sont hors service depuis août 2025.">
+<link rel="canonical" href="https://nypsus.github.io/honest-switch/recepteur-sdr/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nypsus.github.io/honest-switch/recepteur-sdr/">
+<meta property="og:title" content="RTL-SDR : suivre les avions en direct pour 29,50 € — et pourquoi les satellites météo NOAA ne sont plus là — Honest Switch">
+<meta property="og:description" content="Prix relevés le 2 octobre 2026 chez trois revendeurs, la fin de vie de la V4 écrite noir sur blanc par le fabricant, et ce qu'on reçoit encore à 137 MHz.">
+<meta property="og:image" content="https://nypsus.github.io/honest-switch/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7b52">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e7b52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%E2%87%84%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .callout{border-left:4px solid #0e7b52;background:#f2f7f4;border-radius:10px;padding:16px 18px;margin:22px 0}
+  .callout h2{margin:0 0 8px;font-size:1.05rem}
+  .callout ul{margin:0;padding-left:18px}
+  .callout li{margin:5px 0}
+  .hl{color:#0e7b52;font-weight:700}
+  .quotebox{border:1.5px solid rgba(14,123,82,.4);border-left:5px solid #0e7b52;border-radius:10px;background:#f7faf8;padding:16px 18px;margin:16px 0;font-size:1.02rem;line-height:1.55}
+  .quotebox .qsrc{display:block;margin-top:8px;font-size:.8rem;color:#57523f;letter-spacing:.04em}
+  .chartbox{margin:22px 0;padding:18px;border:1px solid rgba(14,123,82,.25);border-radius:10px;background:#fff}
+  .flow3{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .flow3 .step{flex:1 1 180px;border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:12px 14px;background:#f7faf8}
+  .flow3 .step b{display:block;color:#0e7b52;margin-bottom:4px}
+  .flow3 .step span{font-size:.9rem}
+  .fig{margin:22px 0;padding:16px 16px 12px;border:1px solid rgba(14,123,82,.25);border-radius:12px;background:#fff}
+  .fig svg{display:block;width:100%;height:auto}
+  .fig figcaption{margin-top:10px;font-size:.82rem;color:#57523f;line-height:1.5}
+  .fig h3{margin:0 0 10px;font-size:1.02rem;color:#0e7b52}
+  .cta{border:1.5px solid rgba(14,123,82,.45);border-radius:12px;padding:16px 18px;margin:22px 0;background:#f7faf8}
+  .cta h2{margin:0 0 8px;font-size:1.05rem}
+  .cta ul{margin:8px 0 0;padding-left:18px}
+  .cta li{margin:6px 0}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#0e7b52,#7fd6ae);z-index:60;transition:width .08s linear}
+  .dyn{transition:opacity .55s ease,transform .55s ease}
+  html.js .dyn{opacity:0;transform:translateY(16px)}
+  html.js .dyn.in{opacity:1;transform:none}
+  .arrow{stroke-dasharray:9 7;animation:dashflow 1.5s linear infinite}
+  @keyframes dashflow{to{stroke-dashoffset:-16}}
+  .flow3 .step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+  .flow3 .step:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(14,123,82,.15);border-color:#0e7b52;background:#fff}
+  .quotebox{transition:background .25s ease,border-color .25s ease,transform .25s ease}
+  .quotebox:hover{background:#f1f8f4;border-color:#0e7b52;transform:translateX(3px)}
+  .fig:hover{box-shadow:0 12px 26px rgba(14,123,82,.10)}
+  table tbody tr{transition:background .2s ease}
+  table tbody tr:hover{background:#f6faf8}
+  @media (prefers-reduced-motion:reduce){
+    .dyn{transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}html.js .dyn{opacity:0;transform:translateY(22px)}html.js .dyn.in{opacity:1;transform:none}
+    .arrow{animation:none!important}
+    .flow3 .step:hover,.quotebox:hover{transform:none;box-shadow:none}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Peut-on encore recevoir les images des satellites météo NOAA ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non. La page de tutoriel de rtl-sdr.com sur les images NOAA porte une note datée « 2025 Update » : les satellites NOAA 15, 18 et 19 ont tous été retirés du service en août 2025 et il n'est plus possible de les recevoir. Les tutoriels qui promettent encore ces images ne sont pas à jour. Ce qui reste en 137 MHz, et que SatDump décode, ce sont les satellites Meteor-M (LRPT)."}},
+    {"@type": "Question", "name": "Combien coûte vraiment une clé RTL-SDR en France ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Relevé le 2 octobre 2026 : 29,50 € TTC pour une clé RTL2832U + tuner R820T2/R860 (28,62 € HT) chez Passion Radio, en stock ; 47,90 € TTC pour la RTL-SDR Blog V3 chez rf-market ; 49,91 € TTC (48,41 € HT) pour la V3 officielle RTL-SDR.com chez Passion Radio. La V4 à 63,90 € TTC (61,98 € HT) n'est plus disponible, et son remplacement V4L Lite est en rupture annoncée sous un mois."}},
+    {"@type": "Question", "name": "Faut-il acheter la version officielle RTL-SDR.com ou un modèle d'entrée de gamme ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Les deux fonctionnent, mais pas de la même façon. Les versions officielles V3 et V4 ajoutent une TCXO à 1 ppm (dérive de fréquence corrigée), un connecteur SMA et un bias-tee. La clé d'entrée de gamme relevée à 29,50 € TTC utilise un connecteur MCX femelle, donc une antenne MCX mâle, et un quartz non compensé : elle demande un réglage de correction de fréquence."}},
+    {"@type": "Question", "name": "Quel logiciel utiliser pour suivre les avions ou écouter la radio ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Trois logiciels libres couvrent l'essentiel : SDR++ (6 384 étoiles sur GitHub, GPL-3.0, dernier développement en juillet 2026) pour écouter et balayer le spectre, dump1090 (1 145 étoiles, dernier développement en août 2026) pour décoder l'ADS-B des avions, et SatDump (2 273 étoiles, GPL-3.0, dernier développement le 30 septembre 2026) pour les satellites, décrit par rtl-sdr.com comme « le logiciel le plus recommandé pour le décodage satellite »."}},
+    {"@type": "Question", "name": "Cette page contient-elle des liens affiliés ?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Non, aucun à ce jour. Les programmes d'affiliation du matériel importé (AliExpress) et d'Amazon Partenaires sont enregistrés comme candidats dans nos registres : aucun compte n'est ouvert et aucun lien n'est posé. Si un lien affilié arrive, il sera étiqueté à l'endroit où il apparaît et cet encadré sera mis à jour avec la date."}}
+  ]
+}
+</script>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="brand" href="../"><span class="brand-mark" aria-hidden="true">⇄</span> Honest&nbsp;Switch</a>
+    <nav aria-label="Sections">
+      <a href="#projet">Le matériel</a>
+      <a href="#prix">Les prix</a>
+      <a href="#usages">Ce qu'on reçoit</a>
+      <a href="#limites">Les pièges</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#honesty">Honnêteté</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero dyn">
+    <p class="kicker">Récepteur radio logiciel · aucun lien affilié sur cette page · prix relevés le 2 oct. 2026</p>
+    <h1>RTL-SDR : suivre les avions qui passent au-dessus de chez vous pour 29,50 € — et pourquoi les satellites météo NOAA que promettent les tutoriels n'émettent plus</h1>
+
+    <figure class="photo"><img src="../img/recepteur-sdr.jpg" alt="Carte électronique d'une clé USB RTL-SDR ouverte : puces RTL2832U et R820T, connecteur USB et entrée d'antenne" loading="lazy" width="1400" height="800"></figure>
+
+    <p class="lede">Une clé USB de la taille d'un pouce — <span class="hl">29,50 € TTC</span> chez un revendeur français, relevé le 2 octobre 2026 — transforme un ordinateur en récepteur radio de <span class="hl">24 à 1 766 MHz</span> — sans trou : les avions qui passent au-dessus de votre tête, la FM, les radioamateurs, le trafic maritime. Le logiciel est libre et gratuit. Reste un détail que la majorité des tutoriels n'ont pas mis à jour : <span class="hl">les satellites météo NOAA 15, 18 et 19 ne sont plus en service depuis août 2025</span> — et l'offre officielle du matériel a changé de puce au même moment.</p>
+    <p class="chips">
+      <span class="chip chip-good">Aucun lien affilié sur cette page — voir <a href="#honesty">comment ça marche</a></span>
+      <span class="chip">Prix lus le 2 oct. 2026</span>
+      <span class="chip">Logiciels libres : SDR++, dump1090, SatDump</span>
+    </p>
+  </section>
+
+  <section id="bref" class="switch dyn">
+    <div class="callout">
+      <h2>En bref</h2>
+      <ul>
+        <li><strong>Le point d'entrée réel :</strong> clé RTL2832U + tuner R820T2/R860 (24 à 1 766 MHz) à <span class="hl">29,50 € TTC</span> (28,62 € HT) chez Passion Radio, revendeur officiel RTL-SDR.com en France — <span class="hl">en stock</span> au 2 oct. 2026.</li>
+        <li><strong>La version « officielle » coûte environ 20 € de plus :</strong> la RTL-SDR Blog V3 (TCXO 1 ppm, SMA, bias-tee) se relève à <span class="hl">49,91 € TTC</span> chez Passion Radio et <span class="hl">47,90 € TTC</span> chez rf-market — <span class="hl">le même produit, deux boutiques</span>, 2,01 € d'écart.</li>
+        <li><strong>La V4 est en fin de vie, et c'est le fabricant qui le dit :</strong> le stock de puces R828D est épuisé (les dernières étaient des contrefaçons, écrit-il). Sa remplaçante V4L Lite est relevée à <span class="hl">49,92 € HT</span> chez Passion Radio, <span class="hl">en rupture annoncée « sous 1 mois »</span>.</li>
+        <li><strong>Le kit complet :</strong> clé V4 + antenne dipôle polyvalente à <span class="hl">60,00 € TTC</span> chez HackThePlanet — en rupture, commandable avec des délais plus longs.</li>
+        <li><strong>Le vrai malentendu :</strong> les satellites météo NOAA annoncés partout <span class="hl">ne sont plus reçus depuis août 2025</span> (la source le dit elle-même en tête de son tutoriel). Ce qu'on reçoit encore, et avec quoi, est détaillé plus bas.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projet" class="switch dyn">
+    <h2>De quoi on parle exactement</h2>
+    <p>Une clé RTL-SDR n'est pas un appareil de radioamateur : c'est une <strong>clé USB de réception TV numérique (DVB-T)</strong> dont la puce Realtek RTL2832U a été détournée. Le composant savait déjà transformer un signal radio en données numériques ; il a suffi d'écrire des pilotes libres pour lui faire recevoir n'importe quelle fréquence, au lieu des seules chaînes de télévision. C'est ce détournement qui a mis la radio logicielle à 30 €.</p>
+    <div class="quotebox">
+      « RTL-SDR is a very cheap ~$30 USB dongle that can be used as a computer based radio scanner for receiving live radio signals in your area (no internet required). »
+      <span class="qsrc">Page d'accueil du projet rtl-sdr.com, lue le 2 octobre 2026. Traduction : « Le RTL-SDR est une clé USB à environ 30 $ qui sert de scanner radio piloté par ordinateur pour recevoir les signaux radio de votre région, sans internet. »</span>
+    </div>
+    <p>Concrètement, le matériel est la moitié de la dépense — et souvent la moins chère. Tout le reste est logiciel, libre, sans abonnement et sans compte à créer. Trois projets couvrent la quasi-totalité des usages, et les trois sont vivants :</p>
+    <ul>
+      <li><strong>SDR++</strong> — le poste de radio : spectre, waterfall, démodulation AM/FM/SSB. Dépôt public <span class="hl">6 384 étoiles</span>, <span class="hl">893 forks</span>, licence <span class="hl">GPL-3.0</span>, dernier développement le <span class="hl">5 juillet 2026</span> (interface GitHub, lue le 2 oct. 2026).</li>
+      <li><strong>dump1090</strong> — le décodeur des avions : il transforme le signal ADS-B à 1 090 MHz en positions d'aéronefs. Dépôt de référence <span class="hl">1 145 étoiles</span>, dernier développement le <span class="hl">14 août 2026</span>.</li>
+      <li><strong>SatDump</strong> — le décodeur satellite : <span class="hl">2 273 étoiles</span>, <span class="hl">296 forks</span>, <span class="hl">GPL-3.0</span>, dernier développement le <span class="hl">30 septembre 2026</span>. rtl-sdr.com le présente ainsi : « Because of it's good decoding performance, wide satellite and OS compatibility, it is the most recommended software for satellite decoding » (« en raison de ses bonnes performances de décodage et de sa large compatibilité de systèmes et de satellites, c'est le logiciel le plus recommandé pour le décodage satellite »).</li>
+    </ul>
+    <p>Ce que ça implique, et que peu de guides disent clairement : <strong>vous n'achetez pas un appareil, vous achetez un récepteur nu</strong>. La qualité de ce que vous entendrez dépendra surtout de l'antenne, du câble et de l'endroit où vous posez le tout — pas du prix de la clé.</p>
+  </section>
+
+  <section id="prix" class="switch dyn">
+    <h2>Les prix : ce qui est lu, où, et quand</h2>
+    <p>Les montants ci-dessous ont été relevés le <strong>2 octobre 2026</strong> sur les fiches produits, en euros, chez des revendeurs qui expédient depuis la France. Quand la fiche affichait le prix hors taxes et le prix toutes taxes comprises, les deux sont donnés ; quand seul le HT était affiché, c'est écrit. Nous ne convertissons aucune devise et nous n'arrondissons rien.</p>
+    <div class="chartbox">
+      <h3>Ce que coûte une clé RTL-SDR en France (€ TTC, prix relevés le 2 oct. 2026)</h3>
+      <svg viewBox="0 0 720 300" role="img" aria-label="Graphique à barres, prix TTC relevés le 2 octobre 2026 : clé RTL2832U avec tuner R820T2/R860 chez Passion Radio 29,50 euros ; RTL-SDR Blog V3 chez rf-market 47,90 euros ; RTL-SDR.com V3 chez Passion Radio 49,91 euros ; kit V4 avec antenne dipôle chez HackThePlanet 60,00 euros ; RTL-SDR.com V4 chez Passion Radio 63,90 euros">
+        <title>Prix TTC des clés RTL-SDR relevés le 2 octobre 2026</title>
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12" fill="#57523f">
+          <text x="70" y="32">Clé RTL2832U + R820T2/R860 (Passion Radio)</text>
+          <rect x="70" y="38" width="259" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="335" y="52" fill="#0e7b52" font-weight="700">29,50 €</text>
+
+          <text x="70" y="82">RTL-SDR Blog V3 (rf-market)</text>
+          <rect x="70" y="88" width="420" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="496" y="102" fill="#0e7b52" font-weight="700">47,90 €</text>
+
+          <text x="70" y="132">RTL-SDR.com V3 officielle (Passion Radio)</text>
+          <rect x="70" y="138" width="437" height="20" rx="3" fill="#7fd6ae"></rect>
+          <text x="513" y="152" fill="#0e7b52" font-weight="700">49,91 €</text>
+
+          <text x="70" y="182">Kit V4 + antenne dipôle (HackThePlanet)</text>
+          <rect x="70" y="188" width="526" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="602" y="202" fill="#0e7b52" font-weight="700">60,00 €</text>
+
+          <text x="70" y="232">RTL-SDR.com V4 (Passion Radio)</text>
+          <rect x="70" y="238" width="560" height="20" rx="3" fill="#0e7b52"></rect>
+          <text x="636" y="252" fill="#0e7b52" font-weight="700">63,90 €</text>
+        </g>
+      </svg>
+      <p class="footnote">Barres proportionnelles aux montants ci-dessus, base à zéro. Aucune barre n'est estimée : les cinq montants sont des prix TTC lus sur les fiches le 2 octobre 2026. La V4L Lite de Passion Radio (49,92 €) n'apparaît pas dans ce graphique car sa fiche n'affichait qu'un prix <em>hors taxes</em> : elle figure dans le tableau, avec cette mention.</p>
+    </div>
+    <table>
+      <thead><tr><th>Boutique</th><th>Modèle</th><th>Prix relevé le 2 oct. 2026</th><th>Disponibilité relevée</th></tr></thead>
+      <tbody>
+        <tr><td>Passion Radio (FR)</td><td>Clé RTL2832U + tuner R860 (≡ R820T2), 24–1 766 MHz, antenne 15 cm MCX incluse</td><td><strong>29,50 € TTC</strong> (28,62 € HT)</td><td>En stock (2 pièces, expédition FR 24–72 h)</td></tr>
+        <tr><td>rf-market (FR)</td><td>RTL-SDR Blog V3 R860 — TCXO 0,5 ppm, SMA femelle, boîtier aluminium</td><td><strong>47,90 € TTC</strong></td><td>En stock</td></tr>
+        <tr><td>Passion Radio (FR)</td><td>Dongle RTL-SDR.com V3 — TCXO, SMA, bias-tee, tuner R860</td><td><strong>49,91 € TTC</strong> (48,41 € HT)</td><td>En stock (plus de 10 pièces)</td></tr>
+        <tr><td>Passion Radio (FR)</td><td>RTL-SDR.com V4L Lite — tuner R828S, 500 kHz–1 766 MHz, TCXO, bias-tee</td><td><strong>49,92 € HT</strong> (aucun TTC affiché sur la fiche)</td><td>En rupture — « disponible sous 1 mois »</td></tr>
+        <tr><td>HackThePlanet (FR)</td><td>Kit RTL-SDR V4 + antenne dipôle polyvalente (60 cm de câble, brins télescopiques, trépied, ventouse)</td><td><strong>60,00 € TTC</strong></td><td>En rupture — commandable, délais plus longs</td></tr>
+        <tr><td>Passion Radio (FR)</td><td>RTL-SDR.com V4 — tuner R828D, édition limitée</td><td><strong>63,90 € TTC</strong> (61,98 € HT)</td><td>« Ce matériel n'est plus disponible »</td></tr>
+      </tbody>
+    </table>
+    <p>Deux lectures utiles. D'abord, <strong>la version officielle n'est pas toujours plus chère ailleurs</strong> : la même RTL-SDR Blog V3 se relève à 49,91 € TTC chez un revendeur et 47,90 € TTC chez un autre, le même jour — la boutique compte autant que le modèle. Ensuite, <strong>le prix affiché ne dit rien de la disponibilité</strong> : sur les six lignes du tableau, deux sont en rupture et une n'est plus produite.</p>
+  </section>
+
+  <section id="usages" class="switch dyn">
+    <h2>Ce qu'on reçoit réellement, et ce qui a changé</h2>
+    <p>Trois usages reviennent dans tous les guides. Deux sont intacts ; le troisième a perdu ses satellites.</p>
+
+    <h3>1 · Les avions (ADS-B, 1 090 MHz)</h3>
+    <p>C'est l'usage le plus spectaculaire et le plus fiable : chaque avion en vol diffuse en clair sa position, son altitude et son identifiant. Avec une clé, une antenne adaptée à 1 090 MHz et dump1090, vous voyez le trafic au-dessus de chez vous sur une carte, sans compte ni abonnement. Aucun tutoriel ne dit le reste : <strong>la petite antenne livrée avec une clé d'entrée de gamme est taillée pour la TV, pas pour cette fréquence</strong>. Chez le revendeur cité plus haut, une antenne dédiée et un filtre-préampli ADS-B sont proposés en option sur la même fiche (l'option ADS-B relevée à 13,90 € le 2 oct. 2026).</p>
+
+    <h3>2 · Les satellites météo : ce qui restait est en partie éteint</h3>
+    <p>C'est ici que la documentation disponible en ligne est la plus trompeuse. La page de tutoriel de référence sur les images NOAA porte aujourd'hui cette note, en tête d'article :</p>
+    <div class="quotebox">
+      « ***NOTE*** Unfortunately, the NOAA 15/18/19 satellites have now all been decommissioned as of August 2025. Therefore, it is no longer possible to receive them. We will leave this tutorial post up for archival and historical reasons. »
+      <span class="qsrc">Note « 2025 Update » de la page « RTL-SDR Tutorial: Receiving NOAA Weather Satellite Images », rtl-sdr.com, lue le 2 octobre 2026. Traduction : « Malheureusement, les satellites NOAA 15/18/19 ont tous été retirés du service en août 2025. Il n'est donc plus possible de les recevoir. Nous laissons ce tutoriel en ligne pour raisons d'archive et d'historique. »</span>
+    </div>
+    <p>Ce qui reste à 137 MHz : les satellites <strong>Meteor-M</strong>, dont le flux LRPT est décodé par SatDump (le relevé rtl-sdr.com documente une réception Meteor-M 2-3 sur 137,900 MHz). Un satellite météo se reçoit par passages de 10 à 15 minutes, uniquement quand il passe au-dessus de vous, avec une antenne adaptée — c'est un projet du soir, pas un service permanent.</p>
+
+    <figure class="photo dyn"><img src="../img/recepteur-sdr-2.jpg" alt="Antenne dipôle fabriquée maison pour 1090 MHz : câble coaxial fixé sur un support en bois et un tube PVC" loading="lazy" width="1400" height="800">
+      <figcaption>Une antenne dipôle 1 090 MHz fabriquée maison — c'est ce genre de montage, et non la clé, qui décide de ce que vous capterez. Photo libre — Happy-marmotte, CC BY-SA 3.0, via Wikimedia Commons.</figcaption>
+    </figure>
+
+    <h3>3 · L'écoute radio (FM, radioamateurs, marine, signaux numériques)</h3>
+    <p>Le reste est du ressort de SDR++ : stations FM, bandes radioamateur, trafic VHF maritime et aérien, et un grand nombre de protocoles numériques (ACARS, POCSAG, P25, DRM, capteurs 433 MHz) que le site du projet documente tutoriel par tutoriel. C'est là que la clé d'entrée de gamme et la version officielle donnent les résultats les plus proches — la différence se paie surtout en stabilité de fréquence.</p>
+
+    <div class="fig">
+      <h3>Ce qui a changé côté matériel, en une image</h3>
+      <svg viewBox="0 0 720 170" role="img" aria-label="Schéma : la génération V3 reste disponible et moins chère ; la V4 est en fin de vie car sa puce R828D n'existe plus ; la V4L Lite la remplace avec une puce R828S">
+        <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="12.5">
+          <rect x="20" y="20" width="216" height="126" rx="10" fill="#f2f7f4" stroke="#0e7b52"></rect>
+          <text x="38" y="46" fill="#0e7b52" font-weight="700">V3 — disponible</text>
+          <text x="38" y="72" fill="#57523f">Tuner R860 (≡ R820T2)</text>
+          <text x="38" y="94" fill="#57523f">TCXO, SMA, bias-tee</text>
+          <text x="38" y="116" fill="#57523f">47,90 à 49,91 € TTC</text>
+          <text x="38" y="138" fill="#57523f">En stock le 2 oct. 2026</text>
+
+          <rect x="252" y="20" width="216" height="126" rx="10" fill="#fff" stroke="#c9d8d0"></rect>
+          <text x="270" y="46" fill="#57523f" font-weight="700">V4 — fin de vie</text>
+          <text x="270" y="72" fill="#57523f">Tuner R828D épuisé</text>
+          <text x="270" y="94" fill="#57523f">Stock tiers contrefait</text>
+          <text x="270" y="116" fill="#57523f">63,90 € TTC</text>
+          <text x="270" y="138" fill="#57523f">Plus disponible</text>
+
+          <rect x="484" y="20" width="216" height="126" rx="10" fill="#f7faf8" stroke="#c9d8d0"></rect>
+          <text x="502" y="46" fill="#0e7b52" font-weight="700">V4L Lite — remplaçante</text>
+          <text x="502" y="72" fill="#57523f">Tuner R828S</text>
+          <text x="502" y="94" fill="#57523f">Filtrage diplex au lieu de triplex</text>
+          <text x="502" y="116" fill="#57523f">49,92 € HT</text>
+          <text x="502" y="138" fill="#57523f">Rupture annoncée « sous 1 mois »</text>
+        </g>
+      </svg>
+      <figcaption>Les trois générations telles que les fiches et l'annonce du fabricant les décrivent en septembre-octobre 2026, avec les prix relevés le 2 octobre 2026.</figcaption>
+    </div>
+  </section>
+
+  <section id="limites" class="switch dyn">
+    <h2>Ce que les guides oublient de dire</h2>
+    <ul>
+      <li><strong>La V4 ne se produira plus — et la raison est racontée par le fabricant lui-même.</strong> Dans son annonce du 11 août 2026, rtl-sdr.com écrit : « the Blog V4 line of products was recently made end-of-life due to the exhaustion of the stockpile of Rafael R828D tuner chips that the V4 models require » (« la gamme V4 est passée en fin de vie à cause de l'épuisement du stock de puces R828D que les modèles V4 exigent »), et il précise que les derniers lots de puces trouvés chez des tiers <em>étaient contrefaits</em>. Autrement dit : acheter une « V4 » aujourd'hui dans une boutique qui n'est pas un revendeur identifié, c'est courir le risque d'une puce fausse.</li>
+      <li><strong>Le prix d'appel le plus bas que nous ayons vu a disparu en une journée.</strong> Notre veille avait relevé un clone générique à 11,90 € le 2 octobre 2026 ; au moment d'écrire cette page, la fiche renvoyait une <strong>erreur 404</strong>. Nous ne l'affichons donc pas comme un prix disponible : le vrai plancher vérifié, ce jour-là, est 29,50 € TTC en stock.</li>
+      <li><strong>Le connecteur d'antenne n'est pas le même selon le modèle.</strong> La clé à 29,50 € est équipée d'un <strong>connecteur MCX femelle</strong> — sa propre fiche précise que l'antenne à prendre doit être en MCX mâle. Les versions officielles V3/V4 sont en <strong>SMA</strong>. Un adaptateur MCX mâle vers SMA femelle était relevé à 5,15 € sur la même boutique. Commander une antenne SMA pour une clé MCX, c'est un colis inutilisable.</li>
+      <li><strong>Sous Windows, il faut remplacer le pilote.</strong> L'ancien tutoriel officiel du projet l'écrit noir sur blanc : « Run Zadig.exe […] Select Bulk-In, Interface (Interface 0) […] and click Install Driver ». Rien de compliqué, mais aucune clé ne fonctionne « brancher et écouter » sur un PC neuf.</li>
+      <li><strong>Le quartz des clés bon marché dérive.</strong> C'est la différence invisible entre l'entrée de gamme et les versions officielles : la TCXO (1 ppm sur la V4, 0,5 ppm sur la V3 de rf-market) stabilise la fréquence. Sur une clé non compensée, il faut corriger la dérive logiciellement, signal par signal.</li>
+      <li><strong>Le port USB compte sur un Raspberry Pi.</strong> Le guide d'installation d'un projet public consacré à ce matériel (Cascade-SDR) le note : les ports USB 3.0 brouillent le récepteur, il conseille les ports USB 2.0 et une courte rallonge pour éloigner la clé de la machine.</li>
+      <li><strong>La V4L « Lite » n'est pas un simple renommage.</strong> L'annonce du fabricant explique que la puce R828S n'a qu'une entrée RF de moins que la R828D : le filtrage passe de triplex à diplex, donc <em>moins</em> de filtrage en entrée (meilleure sensibilité, mais moins de protection contre les signaux forts — le test deux tons serait identique à celui de la V3). Une économie de prix, pas un gain universel.</li>
+    </ul>
+  </section>
+
+  <section id="etapes" class="switch dyn">
+    <h2>Trois étapes, dans cet ordre</h2>
+    <div class="flow3">
+      <div class="step"><b>1 · La clé</b><span>29,50 € TTC pour une entrée de gamme en stock, 47,90 à 49,91 € TTC pour une version officielle avec TCXO et SMA. C'est le seul achat obligatoire — et le moins déterminant pour ce que vous capterez.</span></div>
+      <div class="step"><b>2 · Le logiciel libre</b><span>SDR++ pour écouter, dump1090 pour les avions, SatDump pour les satellites. Gratuits, sans compte, sans abonnement. Sous Windows, l'étape pilote (Zadig) se fait une seule fois.</span></div>
+      <div class="step"><b>3 · L'antenne</b><span>C'est elle qui décide. La mini-antenne livrée suffit pour la FM, pas pour l'ADS-B à 1 090 MHz ni pour les 137 MHz des satellites. Vérifiez le connecteur (MCX ou SMA) avant de commander.</span></div>
+    </div>
+    <p>Le seul mauvais achat vraiment fréquent n'est pas de prendre la clé la moins chère : c'est de commander une antenne incompatible, ou de croire qu'un tutoriel de 2019 décrit encore le ciel de 2026.</p>
+  </section>
+
+  <section id="checklist" class="switch dyn">
+    <h2>La checklist avant de commander</h2>
+    <ul>
+      <li><strong>Vérifiez le connecteur d'antenne</strong> du modèle exact : MCX femelle sur les clés d'entrée de gamme, SMA femelle sur les V3/V4 officielles. Prévoir l'adaptateur si besoin (relevé à 5,15 €).</li>
+      <li><strong>Regardez la ville d'expédition.</strong> Les deux revendeurs cités expédient depuis la France en 24–72 h ; les boutiques du fabricant annonçaient, en août 2026, des envois depuis la Chine pour les premiers lots de V4L.</li>
+      <li><strong>Vérifiez la disponibilité, pas seulement le prix</strong> : deux des six modèles relevés étaient en rupture et un troisième n'est plus produit.</li>
+      <li><strong>Choisissez l'usage avant le modèle</strong> : avions (antenne 1 090 MHz), satellites (137 MHz, passages de 10–15 min), écoute générale (la clé d'entrée de gamme suffit).</li>
+      <li><strong>Prévoyez la correction de fréquence</strong> si vous n'achetez pas de TCXO : elle se règle dans SDR++, mais il faut savoir qu'elle existe.</li>
+      <li><strong>Ne comptez pas sur les satellites NOAA</strong> : ils ne sont plus en service depuis août 2025. Si c'était votre motivation, visez Meteor-M avec SatDump.</li>
+      <li><strong>Méfiez-vous des « V4 » à prix cassé</strong> : le fabricant signale des puces contrefaites dans les stocks tiers.</li>
+    </ul>
+  </section>
+
+  <section id="cta" class="switch dyn">
+    <div class="cta">
+      <h2>Par où commencer, concrètement</h2>
+      <p>Ces liens sont ceux des projets et des revendeurs cités. <strong>Aucun n'est affilié</strong> : ils sont là pour que vous vérifiiez les prix, les connecteurs et les logiciels à la source.</p>
+      <ul>
+        <li><strong>Comprendre le matériel :</strong> <a href="https://www.rtl-sdr.com/about-rtl-sdr/" rel="nofollow noopener">rtl-sdr.com</a>, sa <a href="https://www.rtl-sdr.com/rtl-sdr-quick-start-guide/" rel="nofollow noopener">prise en main</a> et son annonce de la <a href="https://www.rtl-sdr.com/rtl-sdr-blog-v4l-lite-now-available-for-purchase/" rel="nofollow noopener">V4L Lite</a> (11 août 2026).</li>
+        <li><strong>Le logiciel d'écoute :</strong> <a href="https://github.com/AlexandreRouma/SDRPlusPlus" rel="nofollow noopener">SDR++ (GPL-3.0)</a>.</li>
+        <li><strong>Les avions :</strong> <a href="https://github.com/flightaware/dump1090" rel="nofollow noopener">dump1090</a> — pensez à l'antenne 1 090 MHz.</li>
+        <li><strong>Les satellites :</strong> <a href="https://github.com/SatDump/SatDump" rel="nofollow noopener">SatDump</a> et sa <a href="https://docs.satdump.org/" rel="nofollow noopener">documentation</a>. La page NOAA de rtl-sdr.com est archivée, ne la suivez plus.</li>
+        <li><strong>Voir une clé et son prix :</strong> la <a href="https://www.passion-radio.fr/cles-rtl-sdr/rtlsdr-tcxo-472.html" rel="nofollow noopener">V3 officielle</a> (49,91 € TTC le 2 oct. 2026), la <a href="https://rf-market.fr/sdr/1194-recepteur-cle-usb-rtl-sdr-blog-v3-r860.html" rel="nofollow noopener">même V3 chez rf-market</a> (47,90 € TTC), la <a href="https://www.passion-radio.fr/recepteurs-sdr/rtl-sdr-r820t2-248.html" rel="nofollow noopener">clé d'entrée de gamme en MCX</a> (29,50 € TTC).</li>
+      </ul>
+      <p>Le réflexe qui évite le mauvais achat : décidez d'abord <em>ce que vous voulez capter</em>. Une clé à 29,50 € et une bonne antenne battent une clé à 63,90 € avec la mini-antenne d'origine.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="switch dyn">
+    <h2>Questions</h2>
+    <details><summary>Peut-on encore recevoir les images des satellites météo NOAA ?</summary><p>Non. La page de tutoriel de référence porte une note « 2025 Update » : les satellites NOAA 15, 18 et 19 ont tous été retirés du service en août 2025, et il n'est plus possible de les recevoir. Les tutoriels qui promettent encore ces images sont périmés. Ce qui reste à 137 MHz, et que SatDump décode, ce sont les satellites Meteor-M (LRPT).</p></details>
+    <details><summary>Quelle clé choisir : l'entrée de gamme ou la version officielle ?</summary><p>Pour écouter la FM et les bandes radioamateur, l'entrée de gamme en stock à 29,50 € TTC suffit — mais elle est en MCX et son quartz dérive. Pour l'ADS-B et les satellites, la TCXO des versions officielles (47,90 à 49,91 € TTC) évite de corriger la fréquence à chaque signal.</p></details>
+    <details><summary>La V4 vaut-elle encore le coup ?</summary><p>Elle n'est plus produite : le stock de puces R828D est épuisé et le fabricant signale des contrefaçons dans les stocks tiers. Sa remplaçante V4L Lite utilise une puce R828S, relevée à 49,92 € HT en rupture annoncée sous un mois le 2 octobre 2026.</p></details>
+    <details><summary>Faut-il un abonnement ou un compte ?</summary><p>Non. La clé se branche en USB, les logiciels (SDR++, dump1090, SatDump) sont libres et gratuits, et rien n'est envoyé dans le cloud : le décodage se fait sur votre machine, y compris hors connexion.</p></details>
+    <details><summary>Cette page contient-elle des liens affiliés ?</summary><p>Non, aucun à ce jour. Le programme AliExpress (matériel importé) et Amazon Partenaires sont enregistrés chez nous comme candidats : aucun compte créé, aucun lien posé. Si cela change, le lien sera étiqueté et cet encadré mis à jour.</p></details>
+  </section>
+
+  <section id="honesty" class="switch dyn">
+    <h2>Comment cette page est faite</h2>
+    <ul class="honest-list">
+      <li><strong>Aucun lien affilié ici.</strong> Le programme AliExpress et Amazon Partenaires sont enregistrés comme candidats dans nos registres : aucun compte n'est créé, aucun lien n'est posé. Si un lien affilié arrive, il sera étiqueté « lien affilié » à l'endroit où il apparaît, avec <code>rel="sponsored"</code>, et cet encadré sera mis à jour avec la date.</li>
+      <li><strong>Les prix sont ceux que nous avons lus nous-mêmes</strong> sur les fiches produits, le 2 octobre 2026, en euros. Les montants HT et TTC sont distingués quand la fiche affichait les deux ; aucune devise n'est convertie.</li>
+      <li><strong>Ce que nous ne savons pas est écrit comme tel :</strong> les frais de port livrés ne sont pas relevés, la commission du programme d'affiliation n'est pas connue (aucun compte ouvert), et nous n'avons pas vérifié si l'offre à 11,90 € relevée le matin même reviendra en stock — sa fiche répondait 404 l'après-midi.</li>
+      <li><strong>Nous ne fabriquons aucun avis, aucun témoignage et aucune statistique.</strong> Les chiffres des logiciels (étoiles, forks, dates de développement) viennent de l'interface publique de GitHub, datés ; la fin de service des satellites NOAA et la fin de vie de la V4 sont citées mot pour mot depuis la source qui les annonce.</li>
+      <li><strong>Corrections :</strong> si un prix a changé ou si nous nous sommes trompés, écrivez-nous, nous corrigeons et nous datons la correction.</li>
+    </ul>
+  </section>
+
+  <section id="sources" class="switch dyn">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Interfaces publiques GitHub, lues le 2 octobre 2026 : SDR++ (AlexandreRouma/SDRPlusPlus) 6 384 étoiles, 893 forks, GPL-3.0, dernière poussée 5 juillet 2026, C++ ; SatDump (SatDump/SatDump) 2 273 étoiles, 296 forks, GPL-3.0, dernière poussée 30 septembre 2026, 193 tickets ouverts ; dump1090 (flightaware/dump1090) 1 145 étoiles, dernière poussée 14 août 2026.</li>
+      <li>rtl-sdr.com, « RTL-SDR Tutorial: Receiving NOAA Weather Satellite Images » : note « 2025 Update » sur le retrait du service des satellites NOAA 15/18/19 en août 2025, et note de 2024 renvoyant à SatDump — page lue le 2 octobre 2026.</li>
+      <li>rtl-sdr.com, annonce « RTL-SDR Blog V4L (Lite) Now Available for Purchase! » du 11 août 2026 : fin de vie de la gamme V4 (épuisement du stock de puces R828D), contrefaçons dans les stocks tiers, passage à la puce R828S (filtrage diplex au lieu de triplex, test deux tons identique à la V3), lots initiaux expédiés de Chine — page lue le 2 octobre 2026.</li>
+      <li>rtl-sdr.com, page de tag « Meteor M2-3 » : description de SatDump comme logiciel de décodage satellite le plus recommandé, réception Meteor-M 2-3 en LRPT sur 137,900 MHz — page lue le 2 octobre 2026.</li>
+      <li>Passion Radio (revendeur officiel RTL-SDR.com en France, prix en euros, expédition France) : clé RTL2832U + R860 29,50 € TTC (28,62 € HT), en stock, connecteur MCX femelle, antenne 15 cm incluse, adaptateur MCX/SMA 5,15 € ; dongle RTL-SDR.com V3 49,91 € TTC (48,41 € HT), en stock ; RTL-SDR.com V4L Lite 49,92 € HT, en rupture ; RTL-SDR.com V4 63,90 € TTC (61,98 € HT), « n'est plus disponible » — fiches lues le 2 octobre 2026.</li>
+      <li>rf-market.fr : RTL-SDR Blog V3 R860 à 47,90 € TTC, en stock, TCXO 0,5 ppm, SMA femelle, boîtier aluminium, option filtre-préampli ADS-B 1 090 MHz relevée à 13,90 € — fiche lue le 2 octobre 2026.</li>
+      <li>HackThePlanet (boutique française) : kit RTL-SDR V4 + antenne dipôle polyvalente à 60,00 € TTC, en rupture (commandable, délais plus longs) — fiche lue le 2 octobre 2026.</li>
+      <li>Dépôt public rzfk2v/Cascade-SDR : remarque d'installation sur le bruit des ports USB 3.0 d'un Raspberry Pi et le pilote spécifique des V4 — lu le 2 octobre 2026.</li>
+      <li>Photos : carte d'une clé RTL-SDR (puces RTL2832U et R820T) — Razor512, CC BY 2.0 ; antenne dipôle 1 090 MHz fabriquée maison — Happy-marmotte, CC BY-SA 3.0. Toutes deux via Wikimedia Commons.</li>
+    </ul>
+  </section>
+
+  <section id="avis" class="switch dyn">
+    <h2>Avis clients</h2>
+    <p class="why">Avis sur ce guide, publiés après vérification. Chaque avis négatif reçoit une réponse publique — c'est comme ça qu'on s'améliore.</p>
+    <div style="margin:14px 0">
+      <p class="footnote">Les premiers avis seront publiés ici dès que de vrais lecteurs en enverront.</p>
+    </div>
+    <div style="border:1px solid rgba(14,123,82,.35);border-radius:10px;padding:16px;margin:12px 0">
+      <b>Vous avez utilisé ce guide ? Laissez un avis</b>
+      <form onsubmit="return sendReview(event)">
+        <div style="margin:8px 0">
+          <label for="rscore" style="color:rgba(0,0,0,.55);font-size:.85rem">Note :</label>
+          <div class="stars-in" id="r_score_stars" role="radiogroup" aria-label="Note" style="display:inline-flex;margin-left:6px;vertical-align:middle"><button type="button" class="star" data-v="1" aria-label="1 étoile">☆</button><button type="button" class="star" data-v="2" aria-label="2 étoiles">☆</button><button type="button" class="star" data-v="3" aria-label="3 étoiles">☆</button><button type="button" class="star" data-v="4" aria-label="4 étoiles">☆</button><button type="button" class="star" data-v="5" aria-label="5 étoiles">☆</button></div><input type="hidden" id="rscore" value="5">
+        </div>
+        <input type="email" id="remail" placeholder="vous@email.com (pour vérifier que vous êtes un vrai lecteur)" required style="width:100%;box-sizing:border-box">
+        <textarea id="rtext" rows="3" placeholder="Votre expérience…" required style="width:100%;box-sizing:border-box;margin-top:8px"></textarea>
+        <button type="submit" style="margin-top:8px">Envoyer mon avis</button>
+      </form>
+      <p class="footnote" id="revok" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Honest Switch</strong> — une page de comparaison indépendante. Les prix et les conditions changent ; confirmez sur la source officielle avant de vous engager.</p>
+    <p>Mis à jour le 2 oct. 2026 · Pas de cookies, pas de traceurs, pas d'analytics tiers — les visites sont comptées par notre compteur sans cookie (aucune donnée personnelle, IP jamais stockée) · Written by Nypsus · <a href="/honest-switch/about/">À propos &amp; comment on gagne de l'argent</a> · <a href="mailto:nypsus.business@gmail.com" data-zy-event="email">nypsus.business@gmail.com</a></p>
+  </div>
+</footer>
+<script src="/honest-switch/counter.js" defer></script>
+<script>
+/* apparition progressive des sections + illustrations (désactivée si mouvement réduit) */
+(function(){var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;var items = Array.prototype.slice.call(document.querySelectorAll('.dyn'));function show(el){ if (el && !el.classList.contains('in')) el.classList.add('in'); }var hero = document.querySelector('.hero.dyn'); if (hero) show(hero);if (reduce) { for (var i0 = 0; i0 < items.length; i0++) show(items[i0]); return; }function inView(el){ var r = el.getBoundingClientRect(); return r.top < (window.innerHeight * 0.92) && r.bottom > 24; }function scan(){ for (var i = 0; i < items.length; i++){ if (!items[i].classList.contains('in') && inView(items[i])) show(items[i]); } }var io = null;if ('IntersectionObserver' in window) {io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ show(e.target); io.unobserve(e.target); } }); }, {rootMargin: '0px 0px -8% 0px', threshold: 0.06});for (var j = 0; j < items.length; j++) io.observe(items[j]);}var t = null;function onScroll(){ if (t) return; t = setTimeout(function(){ t = null; scan(); }, 120); }window.addEventListener('scroll', onScroll, {passive: true});window.addEventListener('resize', onScroll);scan();})();
+/* barre de progression au scroll */
+(function(){
+  var bar = document.getElementById('progress');
+  function frame(){
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    var p = max > 0 ? (d.scrollTop / max) : 0;
+    if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+  }
+  var queued = false;
+  window.addEventListener('scroll', function(){
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function(){ queued = false; frame(); });
+  }, {passive:true});
+  window.addEventListener('resize', frame, {passive:true});
+  frame();
+})();
+function sendReview(ev){
+  var sc = document.getElementById("rscore").value;
+  var em = document.getElementById("remail").value;
+  var tx = document.getElementById("rtext").value;
+  if (!em || !tx) return false;
+  var sujet = encodeURIComponent("Honest Switch — Récepteur SDR (RTL-SDR) — Avis client (" + sc + "/5)");
+  var corps = encodeURIComponent(
+    "Avis Honest Switch — Récepteur SDR (RTL-SDR)\n\nNote : " + sc + "/5\nClient : " + em +
+    "\n\n" + tx + "\n\n(avis vérifié — l'auteur confirme avoir lu la page)");
+  window.location.href = "mailto:nypsus.business@gmail.com?subject=" + sujet + "&body=" + corps;
+  document.getElementById("revok").innerHTML =
+    "✓ Votre application mail s'ouvre avec un message pré-rempli — envoyez-le. Nous vérifions puis publions.";
+  ev.preventDefault();
+  return false;
+}
+</script>
+<script>
+/* ---------- étoiles cliquables (avis clients) ---------- */
+(function(){
+  var box = document.getElementById('r_score_stars');
+  if (!box) return;
+  var stars = box.querySelectorAll('.star');
+  var hidden = document.getElementById('rscore');
+  function paint(v){
+    for (var i = 0; i < stars.length; i++){
+      stars[i].classList.toggle('on', parseInt(stars[i].getAttribute('data-v'), 10) <= v);
+      stars[i].textContent = parseInt(stars[i].getAttribute('data-v'), 10) <= v ? '★' : '☆';
+    }
+  }
+  for (var i = 0; i < stars.length; i++){
+    stars[i].addEventListener('click', function(){
+      var v = parseInt(this.getAttribute('data-v'), 10);
+      hidden.value = v;
+      paint(v);
+    });
+  }
+  paint(5);
+})();
+</script>
+<style>
+.stars-in{display:flex;gap:4px;margin:8px 0 4px}
+.stars-in .star{background:transparent;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:#b9c4bd;padding:2px 4px;transition:color .15s,transform .1s;margin:0}
+.stars-in .star:hover{transform:scale(1.15)}
+.stars-in .star.on{color:#ffb400}
+.stars-in .star:focus{outline:2px solid #0e7b52;outline-offset:2px;border-radius:4px}
+</style>
+</body>
+</html>

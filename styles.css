@@ -83,6 +83,8 @@ h1 {
 .chip a { font-weight: 700; }
 .chip-good { background: var(--accent-soft); border-color: #cfe6d9; color: #14523a; }
 .chip-good a { color: #0a5c3d; }
+.chip-aff { background: #fdf3d8; border-color: #ecd9a3; color: #6b4e00; }
+.chip-aff a { color: #6b4e00; }
 .aff-note { display: block; font-weight: 400; font-size: 11px; color: var(--muted); margin-top: 3px; }
 
 /* ---------- sections ---------- */
